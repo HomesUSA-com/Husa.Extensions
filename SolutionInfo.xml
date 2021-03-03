@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <Copyright>Copyright © 2021 HomesUSA.com, Inc. All rights reserved.</Copyright>
+        <Company>HomesUSA.com, Inc.</Company>
+        <Authors>HomesUSA.com, Inc.</Authors>
+        <Version>0.1.0</Version>
+    </PropertyGroup>
+</Project>
