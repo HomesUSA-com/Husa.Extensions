@@ -2,10 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <Version>0.1.0-dev001</Version>
+        <Version>0.1.0-dev002</Version>
     </PropertyGroup>
 
     <Import Project="..\SolutionInfo.xml" />
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
