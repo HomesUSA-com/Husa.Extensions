@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <Version>0.1.0-dev001</Version>
     </PropertyGroup>
 
     <Import Project="..\SolutionInfo.xml" />
