@@ -9,8 +9,15 @@ namespace Husa.Extensions.Api
 
     public static class MvcConfigurationExtensions
     {
-        public static MvcOptions AddControllerPrefixConventions(this MvcOptions options, string prefix, params string[] excluded)
+        private const string DefaultApiPrefix = "api";
+
+        public static MvcOptions AddControllerPrefixConventions(this MvcOptions options, string prefix = DefaultApiPrefix, params string[] excluded)
         {
+            if (options is null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
             options.Conventions.Add(new RoutePrefixConvention(prefix, excluded));
 
             return options;
