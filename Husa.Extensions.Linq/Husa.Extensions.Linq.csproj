@@ -11,15 +11,4 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Update="StyleCop.Analyzers" Version="1.2.0-beta.333">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-    </ItemGroup>
-
 </Project>

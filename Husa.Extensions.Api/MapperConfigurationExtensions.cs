@@ -1,5 +1,6 @@
 namespace Husa.Extensions.Api
 {
+    using System;
     using AutoMapper;
     using AutoMapper.Configuration;
 
@@ -15,12 +16,17 @@ namespace Husa.Extensions.Api
             return config;
         }
 
-        public static IMapperConfigurationExpression AddMapping<T>(this IMapperConfigurationExpression config)
+        public static IMapperConfigurationExpression AddMapping<T>(this IMapperConfigurationExpression mapperConfigExpression)
             where T : class
         {
-            config.AddMaps(typeof(T));
+            if (mapperConfigExpression is null)
+            {
+                throw new ArgumentNullException(nameof(mapperConfigExpression));
+            }
 
-            return config;
+            mapperConfigExpression.AddMaps(typeof(T));
+
+            return mapperConfigExpression;
         }
     }
 }
