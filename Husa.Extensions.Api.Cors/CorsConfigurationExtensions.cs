@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Api
+namespace Husa.Extensions.Api.Cors
 {
     using System;
     using System.Collections.Generic;

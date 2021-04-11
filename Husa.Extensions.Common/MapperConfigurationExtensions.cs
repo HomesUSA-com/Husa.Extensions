@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Api
+namespace Husa.Extensions.Common
 {
     using System;
     using AutoMapper;
