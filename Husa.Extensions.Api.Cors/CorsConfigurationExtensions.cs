@@ -32,7 +32,7 @@ namespace Husa.Extensions.Api.Cors
                 throw new ArgumentException("You must provide at least one origin", nameof(origins));
             }
 
-            if (allowedMethods != null && allowedMethods.Any())
+            if (allowedMethods == null || !allowedMethods.Any())
             {
                 allowedMethods = new[]
                 {

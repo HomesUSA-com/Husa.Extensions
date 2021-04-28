@@ -25,5 +25,10 @@ namespace Husa.Extensions.Common
 
             return Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
         }
+
+        public static bool EqualsTo(this string leftStr, string rightStr)
+        {
+            return !string.IsNullOrEmpty(leftStr) ? leftStr.Equals(rightStr, StringComparison.InvariantCultureIgnoreCase) : false;
+        }
     }
 }
