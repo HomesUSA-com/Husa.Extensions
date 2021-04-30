@@ -17,7 +17,7 @@ namespace Husa.Extensions.Linq
 
             var visitor = new SubstExpressionVisitor
             {
-                subst =
+                Subst =
                 {
                     [subQuery.Parameters[0]] = parameterExpression,
                 },
@@ -33,7 +33,7 @@ namespace Husa.Extensions.Linq
 
             var visitor = new SubstExpressionVisitor
             {
-                subst =
+                Subst =
                 {
                     [subQuery.Parameters[0]] = parameterExpression,
                 },
@@ -50,11 +50,11 @@ namespace Husa.Extensions.Linq
 
         internal class SubstExpressionVisitor : ExpressionVisitor
         {
-            public Dictionary<Expression, Expression> subst = new Dictionary<Expression, Expression>();
+            public IDictionary<Expression, Expression> Subst = new Dictionary<Expression, Expression>();
 
             protected override Expression VisitParameter(ParameterExpression node)
             {
-                return this.subst.TryGetValue(node, out var newValue) ? newValue : node;
+                return this.Subst.TryGetValue(node, out var newValue) ? newValue : node;
             }
         }
     }

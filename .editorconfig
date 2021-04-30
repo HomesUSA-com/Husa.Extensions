@@ -143,3 +143,6 @@ dotnet_diagnostic.CS8603.severity = suggestion # CS8603: Possible null reference
 
 # CS8620: Argument cannot be used for parameter due to differences in the nullability of reference types.
 dotnet_diagnostic.CS8620.severity = none
+
+# CA9998: Deprecated package installed
+dotnet_diagnostic.CA9998.severity = suggestion
