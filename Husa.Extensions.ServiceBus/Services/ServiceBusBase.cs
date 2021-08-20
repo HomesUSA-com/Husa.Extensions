@@ -9,7 +9,7 @@ namespace Husa.Extensions.ServiceBus.Services
 
     public abstract class ServiceBusBase : IServiceBusBase
     {
-        internal TopicClient TopicClient = null;
+        public TopicClient TopicClient = null;
         private readonly ILogger logger;
 
         public ServiceBusBase(ILogger logger)
@@ -17,7 +17,7 @@ namespace Husa.Extensions.ServiceBus.Services
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task SendMessage<T>(T eventMessage)
+        public async Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null)
             where T : IProvideBusEvent
         {
             try
@@ -25,7 +25,9 @@ namespace Husa.Extensions.ServiceBus.Services
                 this.logger.LogInformation($"Starting to send a message with id {eventMessage.Id} to the topic: '{this.TopicClient.TopicName}'.");
 
                 var message = new Message(eventMessage.SerializeMessage());
-
+                message.UserProperties["BodyType"] = typeof(T).Name;
+                message.UserProperties["UserId"] = userId;
+                message.CorrelationId = correlationId;
                 await this.TopicClient.SendAsync(message);
 
                 this.logger.LogInformation($"Message to the topic: '{this.TopicClient.TopicName}' was sent.");
