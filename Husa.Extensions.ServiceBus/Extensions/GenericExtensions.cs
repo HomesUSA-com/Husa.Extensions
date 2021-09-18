@@ -1,5 +1,6 @@
 namespace Husa.Extensions.ServiceBus.Extensions
 {
+    using System;
     using System.Text;
     using System.Text.Json;
     using Husa.Extensions.ServiceBus.Interfaces;
@@ -10,7 +11,6 @@ namespace Husa.Extensions.ServiceBus.Extensions
             where T : class
         {
             var msg = Encoding.UTF8.GetString(message);
-
             return JsonSerializer.Deserialize<T>(msg);
         }
 
@@ -19,6 +19,19 @@ namespace Husa.Extensions.ServiceBus.Extensions
         {
             var data = JsonSerializer.Serialize(message);
             return Encoding.UTF8.GetBytes(data);
+        }
+
+        public static object DeserializeMessage(this byte[] message, Type type)
+        {
+            var msg = Encoding.UTF8.GetString(message);
+
+            return JsonSerializer.Deserialize(msg, type);
+        }
+
+        public static object DeserializeMessage(this byte[] message, string fullyQualifiedName)
+        {
+            var type = Type.GetType(fullyQualifiedName);
+            return message.DeserializeMessage(type);
         }
     }
 }
