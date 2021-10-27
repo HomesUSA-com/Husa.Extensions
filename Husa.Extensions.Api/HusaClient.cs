@@ -1,4 +1,4 @@
-namespace Husa.Library.Client
+namespace Husa.Extensions.Api
 {
     using System;
     using System.Net.Http;
@@ -7,18 +7,15 @@ namespace Husa.Library.Client
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
-    using Husa.Extensions.Api;
 
     public class HusaClient<TClient>
     {
         private readonly HttpClient httpClient;
         private readonly JsonSerializerOptions options;
-        private readonly TClient client;
 
-        public HusaClient(HttpClient httpClient, TClient client)
+        public HusaClient(HttpClient httpClient)
         {
             this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            this.client = client ?? throw new ArgumentNullException(nameof(client));
             this.options = new JsonSerializerOptions().SetConfiguration();
         }
 

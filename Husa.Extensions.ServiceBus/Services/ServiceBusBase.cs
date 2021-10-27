@@ -25,7 +25,8 @@ namespace Husa.Extensions.ServiceBus.Services
                 this.logger.LogInformation($"Starting to send a message with id {eventMessage.Id} to the topic: '{this.TopicClient.TopicName}'.");
 
                 var message = new Message(eventMessage.SerializeMessage());
-                message.UserProperties["BodyType"] = typeof(T).Name;
+                message.UserProperties["BodyType"] = typeof(T).FullName;
+                message.UserProperties["AssemblyName"] = typeof(T).AssemblyQualifiedName;
                 message.UserProperties["UserId"] = userId;
                 message.CorrelationId = correlationId;
                 await this.TopicClient.SendAsync(message);

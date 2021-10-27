@@ -28,9 +28,9 @@ namespace Husa.Extensions.ServiceBus.Extensions
             return JsonSerializer.Deserialize(msg, type);
         }
 
-        public static object DeserializeMessage(this byte[] message, string fullyQualifiedName)
+        public static object DeserializeMessage(this byte[] message, string assemblyName)
         {
-            var type = Type.GetType(fullyQualifiedName);
+            var type = Type.GetType(assemblyName);
             return message.DeserializeMessage(type);
         }
     }

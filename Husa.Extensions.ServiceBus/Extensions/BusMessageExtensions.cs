@@ -17,19 +17,19 @@ namespace Husa.Extensions.ServiceBus.Extensions
             return message.Body.DeserializeMessage<T>();
         }
 
-        public static object DeserializeMessage(this Message message, string fullyQualifiedName)
+        public static object DeserializeMessage(this Message message, string assemblyName)
         {
             if (message is null)
             {
                 throw new ArgumentNullException(nameof(message));
             }
 
-            if (string.IsNullOrWhiteSpace(fullyQualifiedName))
+            if (string.IsNullOrWhiteSpace(assemblyName))
             {
-                throw new ArgumentNullException(nameof(fullyQualifiedName), $"The {nameof(fullyQualifiedName)} must be present to deserialize.");
+                throw new ArgumentNullException(nameof(assemblyName), $"The {nameof(assemblyName)} must be present to deserialize.");
             }
 
-            return message.Body.DeserializeMessage(fullyQualifiedName);
+            return message.Body.DeserializeMessage(assemblyName);
         }
 
         public static object DeserializeMessage(this Message message)
@@ -39,13 +39,13 @@ namespace Husa.Extensions.ServiceBus.Extensions
                 throw new ArgumentNullException(nameof(message));
             }
 
-            const string bodyType = "BodyType";
-            if (!message.UserProperties.Any() && !message.UserProperties.ContainsKey(bodyType))
+            const string assemblyName = "AssemblyName";
+            if (!message.UserProperties.Any() && !message.UserProperties.ContainsKey(assemblyName))
             {
-                throw new InvalidOperationException($"The key '{bodyType}' must be present to deserialize.");
+                throw new InvalidOperationException($"The key '{assemblyName}' must be present to deserialize.");
             }
 
-            return message.DeserializeMessage(message.UserProperties[bodyType].ToString());
+            return message.DeserializeMessage(message.UserProperties[assemblyName].ToString());
         }
 
         public static object DeserializeMessage(this Message message, Type type)
