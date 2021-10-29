@@ -9,12 +9,13 @@ namespace Husa.Extensions.ServiceBus.Services
 
     public abstract class ServiceBusBase : IServiceBusBase
     {
-        public TopicClient TopicClient = null;
+        private readonly ITopicClient topicClient = null;
         private readonly ILogger logger;
 
-        public ServiceBusBase(ILogger logger)
+        public ServiceBusBase(ILogger logger, ITopicClient topicClient)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            this.topicClient = topicClient ?? throw new ArgumentNullException(nameof(topicClient));
         }
 
         public async Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null)
@@ -22,25 +23,25 @@ namespace Husa.Extensions.ServiceBus.Services
         {
             try
             {
-                this.logger.LogInformation($"Starting to send a message with id {eventMessage.Id} to the topic: '{this.TopicClient.TopicName}'.");
+                this.logger.LogInformation($"Starting to send a message with id {eventMessage.Id} to the topic: '{this.topicClient.TopicName}'.");
 
                 var message = new Message(eventMessage.SerializeMessage());
                 message.UserProperties["BodyType"] = typeof(T).FullName;
                 message.UserProperties["AssemblyName"] = typeof(T).AssemblyQualifiedName;
                 message.UserProperties["UserId"] = userId;
                 message.CorrelationId = correlationId;
-                await this.TopicClient.SendAsync(message);
+                await this.topicClient.SendAsync(message);
 
-                this.logger.LogInformation($"Message to the topic: '{this.TopicClient.TopicName}' was sent.");
+                this.logger.LogInformation($"Message to the topic: '{this.topicClient.TopicName}' was sent.");
             }
             catch (Exception exception)
             {
-                this.logger.LogError(exception, $"The application failed while attempting to send the message to the topic '{this.TopicClient.TopicName}'. With the following exception message: \n\n{exception.Message}");
+                this.logger.LogError(exception, $"The application failed while attempting to send the message to the topic '{this.topicClient.TopicName}'. With the following exception message: \n\n{exception.Message}");
             }
             finally
             {
-                this.logger.LogInformation($"Closing connection with the Azure Service Bus made for topic '{this.TopicClient.TopicName}'.");
-                await this.TopicClient.CloseAsync();
+                this.logger.LogInformation($"Closing connection with the Azure Service Bus made for topic '{this.topicClient.TopicName}'.");
+                await this.topicClient.CloseAsync();
             }
         }
     }

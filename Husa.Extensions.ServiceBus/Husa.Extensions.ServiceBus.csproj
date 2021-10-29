@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-      <Version>0.1.0-dev012</Version>
+      <Version>0.1.0-dev013</Version>
       <Product>Husa.Extensions.ServiceBus</Product>
       <Product>Husa.Extensions.ServiceBus</Product>
       <PackageId>Husa.Extensions.ServiceBus</PackageId>
