@@ -3,14 +3,21 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
         <RootNamespace>Husa.Extensions.Api</RootNamespace>
-        <Version>0.1.0-dev012</Version>
         <ProductVersion>0.1.0</ProductVersion>
         <FileVersion>0.1.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
+        <Version>0.1.0-dev012</Version>
+        <PackageVersion>0.1.0-dev012</PackageVersion>
         <PackageTags>Extensions; Api;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

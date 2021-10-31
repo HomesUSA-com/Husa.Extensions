@@ -3,14 +3,21 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Linq</AssemblyName>
         <RootNamespace>Husa.Extensions.Linq</RootNamespace>
-        <Version>0.1.0-dev005</Version>
         <ProductVersion>0.1.0</ProductVersion>
         <FileVersion>0.1.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
+        <Version>0.1.0-dev003</Version>
+        <PackageVersion>0.1.0-dev003</PackageVersion>
         <PackageTags>Extensions; Linq;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

@@ -3,14 +3,21 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Linq</AssemblyName>
         <RootNamespace>Husa.Extensions.Linq</RootNamespace>
-        <Version>0.1.0-dev014</Version>
-        <ProductVersion>0.1.0</ProductVersion>
         <FileVersion>0.1.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
+        <ProductVersion>0.1.0</ProductVersion>
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
+        <Version>0.1.0-dev014</Version>
+        <PackageVersion>0.1.0-dev014</PackageVersion>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

@@ -3,14 +3,21 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api.Cors</AssemblyName>
         <RootNamespace>Husa.Extensions.Api.Cors</RootNamespace>
-        <Version>0.1.0-dev003</Version>
         <ProductVersion>0.1.0</ProductVersion>
         <FileVersion>0.1.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Api Cors Extensions</Product>
         <Description>Husa Api Cors</Description>
         <PackageId>Husa.Extensions.Api.Cors</PackageId>
+        <Version>0.1.0-dev003</Version>
+        <PackageVersion>0.1.0-dev003</PackageVersion>
         <PackageTags>Extensions; Cors; ApiCors;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
