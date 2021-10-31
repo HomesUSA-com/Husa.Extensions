@@ -8,7 +8,10 @@ namespace Husa.Extensions.Api
     using System.Threading;
     using System.Threading.Tasks;
 
+#pragma warning disable S2326 // This warning is temporarily disabled until the need for the generic type is defined
     public class HusaClient<TClient>
+#pragma warning restore S2326 // Unused type parameters should be removed
+        where TClient : class
     {
         private readonly HttpClient httpClient;
         private readonly JsonSerializerOptions options;

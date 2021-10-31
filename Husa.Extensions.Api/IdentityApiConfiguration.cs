@@ -1,9 +1,13 @@
 namespace Husa.Extensions.Api
 {
     using System;
-    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     using Husa.Extensions.Api.Configuration;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -28,27 +32,34 @@ namespace Husa.Extensions.Api
                 return services;
             }
 
-            if (settings.Policies.Claims.Any())
+            foreach (var claim in settings.Policies.Claims)
             {
-                foreach (var claim in settings.Policies.Claims)
-                {
-                    services.AddAuthorization(o => o.AddPolicy(
-                        claim.Name,
-                        p => p.RequireClaim(claim.Type, claim.AllowedValues)));
-                }
+                services.AddAuthorization(o => o.AddPolicy(
+                    claim.Name,
+                    p => p.RequireClaim(claim.Type, claim.AllowedValues)));
             }
 
-            if (settings.Policies.Roles.Any())
+            foreach (var role in settings.Policies.Roles)
             {
-                foreach (var role in settings.Policies.Roles)
-                {
-                    services.AddAuthorization(o => o.AddPolicy(
-                        role.Name,
-                        p => p.RequireRole(role.RolesClaim)));
-                }
+                services.AddAuthorization(o => o.AddPolicy(
+                    role.Name,
+                    p => p.RequireRole(role.RolesClaim)));
             }
 
             return services;
+        }
+
+        public static async Task ConfigureClientAsync(
+            this HttpClient client,
+            IServiceProvider provider,
+            string baseAddress,
+            string tokenName = "access_token",
+            string authenticationHeaderScheme = "Bearer")
+        {
+            var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
+            var accessToken = await httpContextAccessor.HttpContext.GetTokenAsync(tokenName);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authenticationHeaderScheme, accessToken);
+            client.BaseAddress = new Uri(baseAddress);
         }
 
         public static void GetSettings(IConfiguration configuration)

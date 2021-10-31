@@ -22,7 +22,7 @@ namespace Husa.Extensions.Linq
                 .GetMethods(BindingFlags.Instance | BindingFlags.Public)
                 .First(m => m.Name.Equals(applyConfigMethod, StringComparison.OrdinalIgnoreCase));
 
-            var ret = typeof(T).Assembly
+            _ = typeof(T).Assembly
                 .GetTypes()
                 .Select(t => (t, i: t.GetInterfaces().FirstOrDefault(i => i.Name.Equals(typeof(IEntityTypeConfiguration<>).Name, StringComparison.Ordinal))))
                 .Where(it => it.i != null)

@@ -1,14 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Version>0.1.0-dev002</Version>
+        <AssemblyName>Husa.Extensions.Linq</AssemblyName>
+        <RootNamespace>Husa.Extensions.Linq</RootNamespace>
+        <Version>0.1.0-dev005</Version>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Linq Extensions</Product>
+        <Description>Husa Linq</Description>
+        <PackageId>Husa.Extensions.Linq</PackageId>
+        <PackageTags>Extensions; Linq;</PackageTags>
     </PropertyGroup>
 
-    <Import Project="..\SolutionInfo.xml" />
-
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
     </ItemGroup>
 
 </Project>

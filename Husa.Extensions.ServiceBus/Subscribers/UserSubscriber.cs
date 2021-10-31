@@ -9,15 +9,13 @@ namespace Husa.Extensions.ServiceBus.Subscribers
     public class UserSubscriber : ISubscribeToUserService
     {
         public const string TopicName = "topic-user";
-        private readonly IOptions<ServiceBusSettings> busSettings;
 
-        public UserSubscriber(IOptions<ServiceBusSettings> busSettings)
+        public UserSubscriber(IOptions<ServiceBusSettings> busOptions)
         {
-            this.busSettings = busSettings ?? throw new ArgumentNullException(nameof(busSettings));
-            var topicSettings = this.busSettings.Value.Topics.Single(t => t.Name == TopicName);
-
+            var busSettings = busOptions is null ? throw new ArgumentNullException(nameof(busOptions)) : busOptions.Value;
+            var topicSettings = busSettings.Topics.Single(t => t.Name == TopicName);
             this.Client = new SubscriptionClient(
-                this.busSettings.Value.ConnectionString,
+                busSettings.ConnectionString,
                 topicSettings.Name,
                 topicSettings.Subscription.Name);
         }

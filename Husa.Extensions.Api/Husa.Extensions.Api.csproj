@@ -1,17 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Version>0.1.0-dev011</Version>
+        <AssemblyName>Husa.Extensions.Api</AssemblyName>
+        <RootNamespace>Husa.Extensions.Api</RootNamespace>
+        <Version>0.1.0-dev012</Version>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Api Extensions</Product>
+        <Description>Husa Api</Description>
+        <PackageId>Husa.Extensions.Api</PackageId>
+        <PackageTags>Extensions; Api;</PackageTags>
     </PropertyGroup>
-
-    <Import Project="..\SolutionInfo.xml" />
 
     <ItemGroup>
         <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
-        <PackageReference Include="Azure.Identity" Version="1.4.0" />
+        <PackageReference Include="Azure.Identity" Version="1.5.0" />
         <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     </ItemGroup>

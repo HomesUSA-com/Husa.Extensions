@@ -1,8 +1,0 @@
-<Project>
-    <PropertyGroup>
-        <Copyright>Copyright © 2021 HomesUSA.com, Inc. All rights reserved.</Copyright>
-        <Company>HomesUSA.com, Inc.</Company>
-        <Authors>HomesUSA.com, Inc.</Authors>
-        <GeneratePackageOnBuild Condition=" '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
-    </PropertyGroup>
-</Project>

@@ -12,7 +12,7 @@ namespace Husa.Extensions.ServiceBus.Services
         private readonly ITopicClient topicClient = null;
         private readonly ILogger logger;
 
-        public ServiceBusBase(ILogger logger, ITopicClient topicClient)
+        protected ServiceBusBase(ILogger logger, ITopicClient topicClient)
         {
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.topicClient = topicClient ?? throw new ArgumentNullException(nameof(topicClient));

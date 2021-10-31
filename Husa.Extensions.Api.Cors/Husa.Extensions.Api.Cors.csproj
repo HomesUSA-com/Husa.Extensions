@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Version>0.1.0-dev002</Version>
+        <AssemblyName>Husa.Extensions.Api.Cors</AssemblyName>
+        <RootNamespace>Husa.Extensions.Api.Cors</RootNamespace>
+        <Version>0.1.0-dev003</Version>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Api Cors Extensions</Product>
+        <Description>Husa Api Cors</Description>
+        <PackageId>Husa.Extensions.Api.Cors</PackageId>
+        <PackageTags>Extensions; Cors; ApiCors;</PackageTags>
     </PropertyGroup>
-
-    <Import Project="..\SolutionInfo.xml" />
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />

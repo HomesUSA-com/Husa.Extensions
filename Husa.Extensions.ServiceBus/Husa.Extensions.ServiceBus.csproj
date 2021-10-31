@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-      <Version>0.1.0-dev013</Version>
-      <Product>Husa.Extensions.ServiceBus</Product>
-      <Product>Husa.Extensions.ServiceBus</Product>
-      <PackageId>Husa.Extensions.ServiceBus</PackageId>
-      <Description>Husa ServiceBus</Description>
-  </PropertyGroup>
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.Linq</AssemblyName>
+        <RootNamespace>Husa.Extensions.Linq</RootNamespace>
+        <Version>0.1.0-dev014</Version>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>ServiceBus Extensions</Product>
+        <Description>Husa ServiceBus</Description>
+        <PackageId>Husa.Extensions.ServiceBus</PackageId>
+        <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
+    </PropertyGroup>
 
-  <Import Project="..\SolutionInfo.xml" />
-
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.3" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    </ItemGroup>
 
 </Project>

@@ -19,13 +19,18 @@ namespace Husa.Extensions.ServiceBus.Extensions
             provider.Client.RegisterMessageHandler(handler.HandleMessage, MessageOptions(handler.HandleException));
         }
 
-        public static async Task CloseClient(this IProvideSubscriptionClient provider)
+        public static Task CloseClient(this IProvideSubscriptionClient provider)
         {
             if (provider is null)
             {
                 throw new ArgumentNullException(nameof(provider));
             }
 
+            return CloseClientAsync(provider);
+        }
+
+        private static async Task CloseClientAsync(IProvideSubscriptionClient provider)
+        {
             if (!provider.Client.IsClosedOrClosing)
             {
                 await provider.Client.CloseAsync();

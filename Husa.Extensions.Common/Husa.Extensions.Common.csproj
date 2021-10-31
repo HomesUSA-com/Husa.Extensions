@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-        <Version>0.1.0-dev003</Version>
+        <AssemblyName>Husa.Extensions.Common</AssemblyName>
+        <RootNamespace>Husa.Extensions.Common</RootNamespace>
+        <Version>0.1.0-dev004</Version>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Common Extensions</Product>
+        <Description>Husa Common</Description>
+        <PackageId>Husa.Extensions.Common</PackageId>
+        <PackageTags>Extensions; Common;</PackageTags>
     </PropertyGroup>
-
-    <Import Project="..\SolutionInfo.xml" />
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />

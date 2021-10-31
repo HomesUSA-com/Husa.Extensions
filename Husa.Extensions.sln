@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		README.md = README.md
-		SolutionInfo.xml = SolutionInfo.xml
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
@@ -21,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Common", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api.Cors", "Husa.Extensions.Api.Cors\Husa.Extensions.Api.Cors.csproj", "{D02BAD72-FBA8-478F-A965-BE74FB43B422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.ServiceBus", "Husa.Extensions.ServiceBus\Husa.Extensions.ServiceBus.csproj", "{EA680664-6D98-4FDB-9D50-3CD648436CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.ServiceBus", "Husa.Extensions.ServiceBus\Husa.Extensions.ServiceBus.csproj", "{EA680664-6D98-4FDB-9D50-3CD648436CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
