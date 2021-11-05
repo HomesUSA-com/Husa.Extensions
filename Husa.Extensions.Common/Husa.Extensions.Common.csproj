@@ -9,8 +9,8 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.1.0-dev004</Version>
-        <PackageVersion>0.1.0-dev004</PackageVersion>
+        <Version>0.1.0-dev005</Version>
+        <PackageVersion>0.1.0-dev005</PackageVersion>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
