@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyName>Husa.Extensions.Linq</AssemblyName>
-        <RootNamespace>Husa.Extensions.Linq</RootNamespace>
+        <AssemblyName>Husa.Extensions.ServiceBus</AssemblyName>
+        <RootNamespace>Husa.Extensions.ServiceBus</RootNamespace>
         <FileVersion>0.1.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <ProductVersion>0.1.0</ProductVersion>
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
-        <Version>0.1.0-dev014</Version>
-        <PackageVersion>0.1.0-dev014</PackageVersion>
+        <Version>0.1.0-dev017</Version>
+        <PackageVersion>0.1.0-dev017</PackageVersion>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>

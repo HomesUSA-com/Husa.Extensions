@@ -14,9 +14,11 @@ namespace Husa.Extensions.Api
             if (host.HostingEnvironment.IsProduction())
             {
                 var builtConfig = configuration.Build();
+                string assignedClientId = builtConfig["KeyVault:ClientId"];
+                var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = assignedClientId });
                 var secretClient = new SecretClient(
-                    new Uri($"https://{builtConfig["KeyVaultName"]}.vault.azure.net/"),
-                    new DefaultAzureCredential());
+                    new Uri($"https://{builtConfig["KeyVault:Name"]}.vault.azure.net/"),
+                    credential);
 
                 configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
             }
