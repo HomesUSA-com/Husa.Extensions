@@ -42,7 +42,7 @@ namespace Husa.Extensions.Linq
             Expression body = Expression.OrElse(baseQuery.Body, visitor.Visit(subQuery.Body));
             return Expression.Lambda<Func<T, bool>>(body, parameterExpression);
         }
-8
+
         public static Expression<Func<T, bool>> AndIf<T>(this Expression<Func<T, bool>> baseQuery, bool addExpression, Expression<Func<T, bool>> subQuery)
         {
             return addExpression ? baseQuery.And(subQuery) : baseQuery;
