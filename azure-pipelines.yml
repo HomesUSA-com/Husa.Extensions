@@ -28,12 +28,8 @@ steps:
     nobuild: true
     versioningScheme: 'off'    
 - task: NuGetCommand@2
-  displayName: 'nuget push'
   inputs:
     command: 'push'
-    feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'HomeUSAExtensionsFeed'
-    versioningScheme: 'off'
-    allowPackageConflicts: true
+    publishVstsFeed: 'f820f957-6781-4cd6-b5f5-e720c189507f/d3042851-dde7-4277-ba26-4e6991d0e6b1'
