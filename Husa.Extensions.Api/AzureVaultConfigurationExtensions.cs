@@ -20,6 +20,7 @@ namespace Husa.Extensions.Api
                     new Uri($"https://{builtConfig["KeyVault:Name"]}.vault.azure.net/"),
                     credential);
 
+
                 configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
             }
 
