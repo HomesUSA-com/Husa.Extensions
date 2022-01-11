@@ -8,8 +8,8 @@
         <ProductVersion>0.1.0</ProductVersion>
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
-        <Version>0.1.0-dev017</Version>
-        <PackageVersion>0.1.0-dev017</PackageVersion>
+        <Version>0.1.0-dev018</Version>
+        <PackageVersion>0.1.0-dev018</PackageVersion>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>

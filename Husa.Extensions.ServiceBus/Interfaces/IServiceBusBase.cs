@@ -6,5 +6,10 @@ namespace Husa.Extensions.ServiceBus.Interfaces
     {
         Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null)
             where T : IProvideBusEvent;
+
+        Task SendMessageNoDispose<T>(T eventMessage, string userId = null, string correlationId = null)
+            where T : IProvideBusEvent;
+
+        Task DisposeClient();
     }
 }
