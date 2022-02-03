@@ -59,6 +59,12 @@ namespace Husa.Extensions.Api
             var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
             var accessToken = await httpContextAccessor.HttpContext.GetTokenAsync(tokenName);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authenticationHeaderScheme, accessToken);
+
+            if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers["CurrentCompanySelected"], out var currentCompanyId))
+            {
+                client.DefaultRequestHeaders.Add("CurrentCompanySelected", currentCompanyId.ToString());
+            }
+
             client.BaseAddress = new Uri(baseAddress);
         }
 
