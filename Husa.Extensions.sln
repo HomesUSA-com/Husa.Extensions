@@ -22,6 +22,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api.Cors", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.ServiceBus", "Husa.Extensions.ServiceBus\Husa.Extensions.ServiceBus.csproj", "{EA680664-6D98-4FDB-9D50-3CD648436CBD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization", "Husa.Extensions.Authorization\Husa.Extensions.Authorization.csproj", "{2E397807-3BC8-45B4-8329-713A63E2CFEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Authorization.Filters", "Husa.Extensions.Authorization.Filters\Husa.Extensions.Authorization.Filters.csproj", "{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,14 @@ Global
 		{EA680664-6D98-4FDB-9D50-3CD648436CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA680664-6D98-4FDB-9D50-3CD648436CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA680664-6D98-4FDB-9D50-3CD648436CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
