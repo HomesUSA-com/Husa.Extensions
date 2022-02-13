@@ -2,7 +2,6 @@ namespace Husa.Extensions.Common
 {
     using System;
     using AutoMapper;
-    using AutoMapper.Configuration;
 
     public static class MapperConfigurationExtensions
     {

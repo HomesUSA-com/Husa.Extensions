@@ -9,20 +9,21 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.1.0-dev006</Version>
-        <PackageVersion>0.1.0-dev006</PackageVersion>
+        <Version>0.1.0-dev007</Version>
+        <PackageVersion>0.1.0-dev007</PackageVersion>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
             - Added sonarqube coding standards analyzer.
             - Updated code according to new coding standards.
+            - Updated version of automapper
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="AutoMapper" Version="11.0.1" />
     </ItemGroup>
 
 </Project>
