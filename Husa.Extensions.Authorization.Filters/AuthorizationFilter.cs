@@ -4,7 +4,6 @@ namespace Husa.Extensions.Authorization.Filters
     using System.Linq;
     using System.Threading.Tasks;
     using Husa.CompanyServicesManager.Api.Client.Interfaces;
-    using Husa.Extensions.Authorization.Enums;
     using Husa.Extensions.Authorization.Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -64,7 +63,7 @@ namespace Husa.Extensions.Authorization.Filters
                     return;
                 }
 
-                user.EmployeeRole = (RoleEmployee)userEmployee.RoleName;
+                user.EmployeeRole = userEmployee.RoleName;
             }
 
             this.userProvider.SetCurrentUser(user);
