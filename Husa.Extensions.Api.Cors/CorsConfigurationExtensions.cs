@@ -49,6 +49,7 @@ namespace Husa.Extensions.Api.Cors
                         builder
                             .WithOrigins(origins.ToArray())
                             .AllowAnyHeader()
+                            .AllowCredentials()
                             .WithMethods(allowedMethods.ToArray());
                     });
             });

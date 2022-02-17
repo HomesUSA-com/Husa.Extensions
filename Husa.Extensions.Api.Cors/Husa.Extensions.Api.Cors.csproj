@@ -9,8 +9,8 @@
         <Product>Api Cors Extensions</Product>
         <Description>Husa Api Cors</Description>
         <PackageId>Husa.Extensions.Api.Cors</PackageId>
-        <Version>0.1.0-dev003</Version>
-        <PackageVersion>0.1.0-dev003</PackageVersion>
+        <Version>0.1.0-dev004</Version>
+        <PackageVersion>0.1.0-dev004</PackageVersion>
         <PackageTags>Extensions; Cors; ApiCors;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
