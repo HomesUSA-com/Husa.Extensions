@@ -5,8 +5,6 @@ namespace Husa.Extensions.Authorization.Enums
     public enum RoleEmployee
     {
         All = 0, // Role type All is not a valid option, just for UI request support
-        [Display(Name = "MLS Admin")]
-        MLSAdmin,
         [Display(Name = "Company Admin")]
         CompanyAdmin,
         [Display(Name = "Sales Employee")]
@@ -17,5 +15,7 @@ namespace Husa.Extensions.Authorization.Enums
         SupraTech,
         [Display(Name = "No Role")]
         NoRole,
+        [Display(Name = "Read-only")]
+        Readonly,
     }
 }
