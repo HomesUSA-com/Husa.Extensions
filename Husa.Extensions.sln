@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api", "Husa.Extensions.Api\Husa.Extensions.Api.csproj", "{0F836D5A-CC63-408C-A8FE-2514C52AECE5}"
 EndProject
@@ -24,7 +24,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.ServiceBus"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization", "Husa.Extensions.Authorization\Husa.Extensions.Authorization.csproj", "{2E397807-3BC8-45B4-8329-713A63E2CFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Authorization.Filters", "Husa.Extensions.Authorization.Filters\Husa.Extensions.Authorization.Filters.csproj", "{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization.Filters", "Husa.Extensions.Authorization.Filters\Husa.Extensions.Authorization.Filters.csproj", "{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Cache", "Husa.Extensions.Cache\Husa.Extensions.Cache.csproj", "{CCC152B8-3680-4972-B468-F43B478C8606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.UserInfo", "Husa.Extensions.UserInfo\Husa.Extensions.UserInfo.csproj", "{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +64,14 @@ Global
 		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC152B8-3680-4972-B468-F43B478C8606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC152B8-3680-4972-B468-F43B478C8606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC152B8-3680-4972-B468-F43B478C8606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC152B8-3680-4972-B468-F43B478C8606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
