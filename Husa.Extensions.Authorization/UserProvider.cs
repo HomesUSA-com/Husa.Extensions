@@ -30,6 +30,11 @@ namespace Husa.Extensions.Authorization
             return this.currentUser.Id;
         }
 
+        public bool HasCurrentUser()
+        {
+            return this.currentUser != null;
+        }
+
         public void SetCurrentUser(IUserContext user)
         {
             this.logger.LogInformation($"Setting current user with id:'{user.Id}'");
