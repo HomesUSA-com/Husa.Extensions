@@ -8,8 +8,8 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>0.1.0-dev005</Version>
-        <PackageVersion>0.1.0-dev005</PackageVersion>
+        <Version>0.1.0-dev006</Version>
+        <PackageVersion>0.1.0-dev006</PackageVersion>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:

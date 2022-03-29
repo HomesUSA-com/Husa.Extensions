@@ -6,5 +6,7 @@ namespace Husa.Extensions.Authorization
         Guid GetCurrentUserId();
 
         IUserContext GetCurrentUser();
+
+        bool HasCurrentUser();
     }
 }
