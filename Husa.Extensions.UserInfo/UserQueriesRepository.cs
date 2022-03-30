@@ -93,12 +93,15 @@ namespace Husa.Extensions.UserInfo
                 }
             }
 
-            var usersNotInCache = await this.GetUsersNotInCache(idsNotInCache);
-
-            foreach (IUserEntity user in usersNotInCache)
+            if (idsNotInCache.Count > 0)
             {
-                this.cache.Insert(user.Id.ToString(), user, 3600);
-                users.Add(user);
+                var usersNotInCache = await this.GetUsersNotInCache(idsNotInCache);
+
+                foreach (IUserEntity user in usersNotInCache)
+                {
+                    this.cache.Insert(user.Id.ToString(), user, 3600);
+                    users.Add(user);
+                }
             }
 
             return users;
