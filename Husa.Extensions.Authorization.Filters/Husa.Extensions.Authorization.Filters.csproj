@@ -23,7 +23,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-        <PackageReference Include="Husa.CompanyServiceManager.Client" Version="0.1.0-dev015" />
+        <PackageReference Include="Husa.CompanyServiceManager.Client" Version="0.1.0-dev016" />
         <PackageReference Include="Husa.Extensions.Authorization" Version="0.1.0-dev005" />
     </ItemGroup>
 </Project>

@@ -26,9 +26,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorizati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization.Filters", "Husa.Extensions.Authorization.Filters\Husa.Extensions.Authorization.Filters.csproj", "{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Cache", "Husa.Extensions.Cache\Husa.Extensions.Cache.csproj", "{CCC152B8-3680-4972-B468-F43B478C8606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Cache", "Husa.Extensions.Cache\Husa.Extensions.Cache.csproj", "{CCC152B8-3680-4972-B468-F43B478C8606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.UserInfo", "Husa.Extensions.UserInfo\Husa.Extensions.UserInfo.csproj", "{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.UserInfo", "Husa.Extensions.UserInfo\Husa.Extensions.UserInfo.csproj", "{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Media", "Husa.Extensions.Media\Husa.Extensions.Media.csproj", "{970AAEDF-4509-44B9-8D10-44AEE713EEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970AAEDF-4509-44B9-8D10-44AEE713EEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970AAEDF-4509-44B9-8D10-44AEE713EEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970AAEDF-4509-44B9-8D10-44AEE713EEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970AAEDF-4509-44B9-8D10-44AEE713EEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
