@@ -8,8 +8,8 @@
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>0.1.0-dev000</Version>
-        <PackageVersion>0.1.0-dev000</PackageVersion>
+        <Version>0.1.0-dev001</Version>
+        <PackageVersion>0.1.0-dev001</PackageVersion>
         <PackageTags>Extensions; UserInfo;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

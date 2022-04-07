@@ -9,8 +9,8 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.1.0-dev008</Version>
-        <PackageVersion>0.1.0-dev008</PackageVersion>
+        <Version>0.1.0-dev009</Version>
+        <PackageVersion>0.1.0-dev009</PackageVersion>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
@@ -24,6 +24,8 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
         <PackageReference Include="AutoMapper" Version="11.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>
 
 </Project>
