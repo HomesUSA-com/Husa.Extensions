@@ -8,13 +8,13 @@
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>0.1.0-dev001</Version>
-        <PackageVersion>0.1.0-dev001</PackageVersion>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
         <PackageTags>Extensions; UserInfo;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Cache" Version="0.1.0-dev001" />
+        <PackageReference Include="Husa.Extensions.Cache" Version="0.1.0" />
     </ItemGroup>
 </Project>

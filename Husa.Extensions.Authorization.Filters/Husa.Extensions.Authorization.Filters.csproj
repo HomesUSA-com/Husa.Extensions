@@ -8,8 +8,8 @@
         <Product>Authorization FIlters Extensions</Product>
         <Description>Husa Authorization Filters</Description>
         <PackageId>Husa.Extensions.Authorization.Filters</PackageId>
-        <Version>0.1.0-dev004</Version>
-        <PackageVersion>0.1.0-dev004</PackageVersion>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
         <PackageTags>Extensions; Authorization; Filters;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
@@ -23,7 +23,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
-        <PackageReference Include="Husa.CompanyServiceManager.Client" Version="0.1.0-dev016" />
-        <PackageReference Include="Husa.Extensions.Authorization" Version="0.1.0-dev005" />
+        <PackageReference Include="Husa.CompanyServiceManager.Client" Version="0.1.0" />
+        <PackageReference Include="Husa.Extensions.Authorization" Version="0.1.0" />
     </ItemGroup>
 </Project>

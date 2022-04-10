@@ -9,8 +9,8 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>0.1.0-dev004</Version>
-        <PackageVersion>0.1.0-dev004</PackageVersion>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:

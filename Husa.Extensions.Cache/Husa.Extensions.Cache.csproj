@@ -8,8 +8,8 @@
         <Product>Cache Extensions</Product>
         <Description>Husa Cache</Description>
         <PackageId>Husa.Extensions.Cache</PackageId>
-        <Version>0.1.0-dev001</Version>
-        <PackageVersion>0.1.0-dev001</PackageVersion>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
         <PackageTags>Extensions; Cache;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
