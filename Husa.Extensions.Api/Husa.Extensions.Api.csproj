@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.Api</AssemblyName>
+        <RootNamespace>Husa.Extensions.Api</RootNamespace>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Api Extensions</Product>
+        <Description>Husa Api</Description>
+        <PackageId>Husa.Extensions.Api</PackageId>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
+        <PackageTags>Extensions; Api;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+        <PackageReference Include="Azure.Identity" Version="1.5.0" />
+        <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+
+</Project>

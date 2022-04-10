@@ -1,0 +1,29 @@
+<Project >
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RuntimeFrameworkVersion>5.0.9</RuntimeFrameworkVersion>
+        <LangVersion>latest</LangVersion>
+        <RunCodeAnalysis>false</RunCodeAnalysis>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Nullable>disable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <Authors>HomesUSA.com Dev Team</Authors>
+        <Company>HomesUSA.com, Inc.</Company>
+        <Copyright>Copyright © 2021 HomesUSA.com, Inc. All rights reserved.</Copyright>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://bitbucket.org/homesusa/husa.extensions</RepositoryUrl>
+        <GeneratePackageOnBuild Condition=" '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="..\stylecop.json" />
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.30.0.37606">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.354">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

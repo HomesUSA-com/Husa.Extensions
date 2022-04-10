@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.Media</AssemblyName>
+        <RootNamespace>Husa.Extensions.Media</RootNamespace>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Api Extensions</Product>
+        <Description>Husa Media</Description>
+        <PackageId>Husa.Extensions.Media</PackageId>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
+        <PackageTags>Extensions; Media;</PackageTags>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />      
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.Authorization</AssemblyName>
+        <RootNamespace>Husa.Extensions.Authorization</RootNamespace>
+        <ProductVersion>0.1.0</ProductVersion>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Product>Authorization Extensions</Product>
+        <Description>Husa Authorization</Description>
+        <PackageId>Husa.Extensions.Authorization</PackageId>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
+        <PackageTags>Extensions; Authorization;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Added sonarqube coding standards analyzer.
+            - Updated code according to new coding standards.
+            - Added bootstrapping extension
+            - Added validation to prevent failure when retrieving the current user id
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    </ItemGroup>
+</Project>
