@@ -26,7 +26,13 @@ namespace Husa.Extensions.Authorization
 
         public Guid GetCurrentUserId()
         {
-            this.logger.LogInformation($"Returning current userId: '{this.currentUser.Id}'");
+            if (!this.HasCurrentUser())
+            {
+                this.logger.LogWarning("Current user is not set, returning 'userId'", this.currentUser.Id);
+                return Guid.Empty;
+            }
+
+            this.logger.LogInformation("Returning current userId: 'userId'", this.currentUser.Id);
             return this.currentUser.Id;
         }
 

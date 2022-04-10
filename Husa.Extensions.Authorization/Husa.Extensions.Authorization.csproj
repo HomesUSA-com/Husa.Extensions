@@ -8,14 +8,15 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>0.1.0-dev007</Version>
-        <PackageVersion>0.1.0-dev007</PackageVersion>
+        <Version>0.1.0-dev008</Version>
+        <PackageVersion>0.1.0-dev008</PackageVersion>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
             - Added sonarqube coding standards analyzer.
             - Updated code according to new coding standards.
             - Added bootstrapping extension
+            - Added validation to prevent failure when retrieving the current user id
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
