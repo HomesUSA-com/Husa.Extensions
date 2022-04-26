@@ -9,8 +9,8 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>0.1.0</Version>
-        <PackageVersion>0.1.0</PackageVersion>
+        <Version>0.1.1</Version>
+        <PackageVersion>0.1.1</PackageVersion>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
             Release 0.1.0:
@@ -27,6 +27,10 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
+        <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="3.1.0" />
     </ItemGroup>
 
 </Project>
