@@ -10,11 +10,11 @@ namespace Husa.Extensions.Authorization.Filters
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.Logging;
 
-    public class AuthorizationFilter : IAsyncAuthorizationFilter
+    public class AuthorizationFilter : Interfaces.IAuthorizationFilter
     {
+        protected readonly IServiceSubscriptionClient serviceSubscriptionClient;
         private readonly ILogger<AuthorizationFilter> logger;
         private readonly IUserProvider userProvider;
-        private readonly IServiceSubscriptionClient serviceSubscriptionClient;
 
         public AuthorizationFilter(IUserProvider userProvider, IServiceSubscriptionClient serviceSubscriptionClient, ILogger<AuthorizationFilter> logger)
         {
@@ -45,6 +45,13 @@ namespace Husa.Extensions.Authorization.Filters
             user.CompanyId = Guid.TryParse(context.HttpContext.Request.Headers["CurrentCompanySelected"], out var currentCompanyId) &&
                 !currentCompanyId.Equals(Guid.Empty) ? currentCompanyId : null;
 
+            await this.GetCompanyEmployeeAsync(context, user);
+
+            this.userProvider.SetCurrentUser(user);
+        }
+
+        public virtual async Task GetCompanyEmployeeAsync(AuthorizationFilterContext context, IUserContext user)
+        {
             if (!user.IsMLSAdministrator)
             {
                 if (!user.CompanyId.HasValue)
@@ -65,8 +72,6 @@ namespace Husa.Extensions.Authorization.Filters
 
                 user.EmployeeRole = userEmployee.RoleName;
             }
-
-            this.userProvider.SetCurrentUser(user);
         }
     }
 }
