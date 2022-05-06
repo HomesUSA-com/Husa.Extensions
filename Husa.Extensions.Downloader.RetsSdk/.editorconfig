@@ -1,0 +1,173 @@
+[*.cs]
+
+# Temporary exclusions to create nuget
+
+# Code Analysis Rules
+# CA1711: Identifiers should not have incorrect suffix
+dotnet_diagnostic.CA1711.severity = suggestion
+
+# Sonar Rules
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = suggestion
+
+# SA1117: Parameters should be on same line or separate lines
+dotnet_diagnostic.SA1117.severity = suggestion
+
+# SA1127: Generic type constraints should be on their own line
+dotnet_diagnostic.SA1127.severity = suggestion
+
+# SA1201: Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = suggestion
+
+# SA1208: System using directives should be placed before other using directives
+dotnet_diagnostic.SA1208.severity = suggestion
+
+# SA1309: Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = suggestion
+
+# SA1306: Field names should begin with lower-case letter
+dotnet_diagnostic.SA1306.severity = suggestion
+
+# SA1312: Variable names should begin with lower-case letter
+dotnet_diagnostic.SA1312.severity = suggestion
+
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = suggestion
+
+# SA1507: Code should not contain multiple blank lines in a row
+dotnet_diagnostic.SA1507.severity = silent
+
+# SA1508: Closing braces should not be preceded by blank line
+dotnet_diagnostic.SA1508.severity = suggestion
+
+# SA1512: Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = suggestion
+
+# SA1513: Closing brace should be followed by blank line
+dotnet_diagnostic.SA1513.severity = suggestion
+
+# SA1518: Use line endings correctly at end of file
+dotnet_diagnostic.SA1518.severity = suggestion
+
+# SA1614: Element parameter documentation should have text
+dotnet_diagnostic.SA1614.severity = suggestion
+
+# SA1616: Element return value documentation should have text
+dotnet_diagnostic.SA1616.severity = suggestion
+
+# SA1629: Documentation text should end with a period
+dotnet_diagnostic.SA1629.severity = suggestion
+
+# SA1505: Opening braces should not be followed by blank line
+dotnet_diagnostic.SA1505.severity = suggestion
+
+# SA1503: Braces should not be omitted
+dotnet_diagnostic.SA1503.severity = suggestion
+
+# S2933: Fields that are only assigned in the constructor should be "readonly"
+dotnet_diagnostic.S2933.severity = suggestion
+
+# S927: Parameter names should match base declaration and other partial definitions
+dotnet_diagnostic.S927.severity = suggestion
+
+# SA1210: Using directives should be ordered alphabetically by namespace
+dotnet_diagnostic.SA1210.severity = suggestion
+
+# SA1202: Elements should be ordered by access
+dotnet_diagnostic.SA1202.severity = suggestion
+
+# SA1122: Use string.Empty for empty strings
+dotnet_diagnostic.SA1122.severity = suggestion
+
+# S3928: Parameter names used into ArgumentException constructors should match an existing one 
+dotnet_diagnostic.S3928.severity = suggestion
+
+# SA1106: Code should not contain empty statements
+dotnet_diagnostic.SA1106.severity = suggestion
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = suggestion
+
+# S3877: Exceptions should not be thrown from unexpected methods
+dotnet_diagnostic.S3877.severity = suggestion
+
+# S112: General exceptions should never be thrown
+dotnet_diagnostic.S112.severity = suggestion
+
+# S125: Sections of code should not be commented out
+dotnet_diagnostic.S125.severity = suggestion
+
+# SA1119: Statement should not use unnecessary parenthesis
+dotnet_diagnostic.SA1119.severity = suggestion
+
+# S1168: Empty arrays and collections should be returned instead of null
+dotnet_diagnostic.S1168.severity = suggestion
+
+# SA1000: Keywords should be spaced correctly
+dotnet_diagnostic.SA1000.severity = suggestion
+
+# S2225: "ToString()" method should not return null
+dotnet_diagnostic.S2225.severity = suggestion
+
+# SA1025: Code should not contain multiple whitespace in a row
+dotnet_diagnostic.SA1025.severity = suggestion
+
+# S3925: "ISerializable" should be implemented correctly
+dotnet_diagnostic.S3925.severity = suggestion
+
+# S3442: "abstract" classes should not have "public" constructors
+dotnet_diagnostic.S3442.severity = suggestion
+
+# SA1107: Code should not contain multiple statements on one line
+dotnet_diagnostic.SA1107.severity = suggestion
+
+# S1128: Unused "using" should be removed
+dotnet_diagnostic.S1128.severity = suggestion
+
+# IDE0005: Using directive is unnecessary.
+dotnet_diagnostic.IDE0005.severity = suggestion
+
+# S3376: Attribute, EventArgs, and Exception type names should end with the type being extended
+dotnet_diagnostic.S3376.severity = suggestion
+
+# S4136: Method overloads should be grouped together
+dotnet_diagnostic.S4136.severity = suggestion
+
+# S4457: Parameter validation in "async"/"await" methods should be wrapped
+dotnet_diagnostic.S4457.severity = suggestion
+
+# S2737: "catch" clauses should do more than rethrow
+dotnet_diagnostic.S2737.severity = suggestion
+
+# S1066: Collapsible "if" statements should be merged
+dotnet_diagnostic.S1066.severity = suggestion
+
+# S2259: Null pointers should not be dereferenced
+dotnet_diagnostic.S2259.severity = suggestion
+
+# S1118: Utility classes should not have public constructors
+dotnet_diagnostic.S1118.severity = suggestion
+
+# S2190: Recursion should not be infinite
+dotnet_diagnostic.S2190.severity = suggestion
+
+# S1481: Unused local variables should be removed
+dotnet_diagnostic.S1481.severity = suggestion
+
+# S4487: Unread "private" fields should be removed
+dotnet_diagnostic.S4487.severity = suggestion
+
+# S2971: "IEnumerable" LINQs should be simplified
+dotnet_diagnostic.S2971.severity = suggestion
+
+# S1116: Empty statements should be removed
+dotnet_diagnostic.S1116.severity = suggestion
+
+# SA1003: Symbols should be spaced correctly
+dotnet_diagnostic.SA1003.severity = suggestion
+
+# SA1024: Colons Should Be Spaced Correctly
+dotnet_diagnostic.SA1024.severity = suggestion
+
+# SA1001: Commas should be spaced correctly
+dotnet_diagnostic.SA1001.severity = suggestion
