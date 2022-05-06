@@ -2,20 +2,18 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Authorization.Filters</AssemblyName>
         <RootNamespace>Husa.Extensions.Authorization.Filters</RootNamespace>
-        <ProductVersion>0.1.1</ProductVersion>
-        <FileVersion>0.1.1</FileVersion>
+        <ProductVersion>0.2.0</ProductVersion>
+        <FileVersion>0.2.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Authorization FIlters Extensions</Product>
         <Description>Husa Authorization Filters</Description>
         <PackageId>Husa.Extensions.Authorization.Filters</PackageId>
-        <Version>0.1.1</Version>
-        <PackageVersion>0.1.1</PackageVersion>
+        <Version>0.2.0</Version>
+        <PackageVersion>0.2.0</PackageVersion>
         <PackageTags>Extensions; Authorization; Filters;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.1:
-            - Added sonarqube coding standards analyzer.
-            - Updated code according to new coding standards.
-            - Removed dependency to extension project and used nuget package instead
+            Release 0.2.0:
+            - Adjusted the AuthorizationFilter add a new method to get employee
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
