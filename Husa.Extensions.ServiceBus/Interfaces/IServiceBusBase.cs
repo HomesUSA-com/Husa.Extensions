@@ -4,10 +4,7 @@ namespace Husa.Extensions.ServiceBus.Interfaces
 
     public interface IServiceBusBase
     {
-        Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null)
-            where T : IProvideBusEvent;
-
-        Task SendMessageNoDispose<T>(T eventMessage, string userId = null, string correlationId = null)
+        Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null, bool dispose = true)
             where T : IProvideBusEvent;
 
         Task DisposeClient();

@@ -3,19 +3,18 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.ServiceBus</AssemblyName>
         <RootNamespace>Husa.Extensions.ServiceBus</RootNamespace>
-        <ProductVersion>0.2.0</ProductVersion>
-        <FileVersion>0.2.0</FileVersion>
+        <ProductVersion>0.2.1</ProductVersion>
+        <FileVersion>0.2.1</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>0.2.0</Version>
-        <PackageVersion>0.2.0</PackageVersion>
+        <Version>0.2.1</Version>
+        <PackageVersion>0.2.1</PackageVersion>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - new class ServiceBusBase.
-            - Updated code according to new coding standards.
+            Release 0.2.1:
+            - Adjusted ServiceBusBase to remove the no dispose method and added the dispose as an optional parameter
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
