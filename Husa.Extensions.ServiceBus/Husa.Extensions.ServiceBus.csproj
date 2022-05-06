@@ -3,24 +3,25 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.ServiceBus</AssemblyName>
         <RootNamespace>Husa.Extensions.ServiceBus</RootNamespace>
-        <FileVersion>0.1.0</FileVersion>
+        <ProductVersion>0.2.0</ProductVersion>
+        <FileVersion>0.2.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
-        <ProductVersion>0.1.0</ProductVersion>
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
-        <Version>0.1.0</Version>
-        <PackageVersion>0.1.0</PackageVersion>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
+        <Version>0.2.0</Version>
+        <PackageVersion>0.2.0</PackageVersion>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.0:
-            - Added sonarqube coding standards analyzer.
+            Release 0.2.0:
+            - new class ServiceBusBase.
             - Updated code according to new coding standards.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0" />
         <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.3" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
