@@ -3,18 +3,14 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
         <RootNamespace>Husa.Extensions.Api</RootNamespace>
-        <ProductVersion>0.2.0</ProductVersion>
-        <FileVersion>0.2.0</FileVersion>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>0.2.0</Version>
-        <PackageVersion>0.2.0</PackageVersion>
+        <Version>0.2.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - Added LoggingConfiguration class to setup apps with ApplicationInsights.
+            Release 0.2.1:
+            - Fixed bug on ConfigureHttpClient where httpcontext is null.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
