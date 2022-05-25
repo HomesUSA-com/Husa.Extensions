@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Common.Exception.Filters
+namespace Husa.Extensions.Common.Exceptions.Filters
 {
     public class ApiError
     {

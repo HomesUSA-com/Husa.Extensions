@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Common.Exception
+namespace Husa.Extensions.Common.Exceptions
 {
     using System;
     using System.Runtime.Serialization;

@@ -7,13 +7,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - Added Domain exception.
-            - Added Api Error class.
-            - Updated exception loggin filter attribute. 
+            Release 0.2.1:
+            - Namespaces changed to pural
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
