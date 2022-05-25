@@ -19,29 +19,48 @@ namespace Husa.Extensions.Common.Exception.Filters
 
         public override Task OnExceptionAsync(ExceptionContext context)
         {
-            var exceptionMessage = context.Exception.GetBaseException().Message;
             var errorMessage = string.Empty;
+            var handledApiError = new ApiError(errorMessage);
             switch (context.Exception)
             {
                 case NotFoundException notFoundException:
-                    errorMessage = notFoundException.Message;
-                    context.Result = new NotFoundObjectResult(notFoundException.Message);
+                    handledApiError.Message = notFoundException.Message;
+                    context.Result = new NotFoundObjectResult(handledApiError);
                     break;
                 case HttpRequestException httpException when httpException.StatusCode == HttpStatusCode.NotFound:
-                    errorMessage = httpException.Message;
-                    context.Result = new NotFoundObjectResult(httpException.Message);
+                    handledApiError.Message = httpException.Message;
+                    context.Result = new NotFoundObjectResult(handledApiError);
                     break;
                 case HttpRequestException httpException:
-                    errorMessage = httpException.Message;
-                    context.Result = new BadRequestObjectResult(httpException.Message);
+                    handledApiError.Message = httpException.Message;
+                    context.Result = new BadRequestObjectResult(handledApiError);
+                    break;
+                case DomainException domainException:
+                    handledApiError.Message = domainException.Message;
+                    context.Result = new BadRequestObjectResult(handledApiError);
                     break;
                 default:
+#if !DEBUG
+                    var apiError = new ApiError("An unhandled error occurred.")
+                    {
+                        Detail = null,
+                    };
+#else
+                    var exceptionMessage = context.Exception.GetBaseException().Message;
+                    string stackTrace = context.Exception.StackTrace;
+
+                    var apiError = new ApiError(exceptionMessage)
+                    {
+                        Detail = stackTrace,
+                    };
+#endif
+                    errorMessage = "The request could not be served.";
                     context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    context.Result = new BadRequestObjectResult(exceptionMessage);
+                    context.Result = new JsonResult(apiError);
                     break;
             }
 
-            this.logger.LogError(context.Exception, errorMessage);
+            this.logger.LogError(context.Exception, "errorMessage: {errorMessage}", errorMessage);
             context.ExceptionHandled = true;
             return base.OnExceptionAsync(context);
         }
