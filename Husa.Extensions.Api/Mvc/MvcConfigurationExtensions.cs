@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Api
+namespace Husa.Extensions.Api.Mvc
 {
     using System;
     using System.Text.Json;

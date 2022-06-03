@@ -2,6 +2,7 @@ namespace Husa.Extensions.Common
 {
     using System;
     using System.Text;
+    using System.Text.RegularExpressions;
     using Microsoft.AspNetCore.WebUtilities;
 
     public static class StringExtensions
@@ -27,5 +28,15 @@ namespace Husa.Extensions.Common
         }
 
         public static bool EqualsTo(this string leftStr, string rightStr) => !string.IsNullOrEmpty(leftStr) && leftStr.Equals(rightStr, StringComparison.InvariantCultureIgnoreCase);
+
+        public static string RemoveNonNumericCharacters(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return string.Empty;
+            }
+
+            return Regex.Replace(str, "[^0-9]+", string.Empty, RegexOptions.Compiled);
+        }
     }
 }

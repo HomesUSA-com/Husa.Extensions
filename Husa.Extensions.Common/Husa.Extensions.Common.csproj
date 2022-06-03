@@ -3,15 +3,14 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Common</AssemblyName>
         <RootNamespace>Husa.Extensions.Common</RootNamespace>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.2.1</Version>
+        <Version>0.3.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.1:
-            - Namespaces changed to pural
+            Release 0.3.0:
+            - Added method to remove all non-numeric characters from a string
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

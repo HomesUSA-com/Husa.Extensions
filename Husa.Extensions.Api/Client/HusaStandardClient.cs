@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Api
+namespace Husa.Extensions.Api.Client
 {
     using System;
     using System.Net.Http;
@@ -7,19 +7,25 @@ namespace Husa.Extensions.Api
     using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
+    using Husa.Extensions.Api.Mvc;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
 
-#pragma warning disable S2326 // This warning is temporarily disabled until the need for the generic type is defined
-    public class HusaClient<TClient>
-#pragma warning restore S2326 // Unused type parameters should be removed
-        where TClient : class
+    public abstract class HusaStandardClient
     {
         private readonly HttpClient httpClient;
         private readonly JsonSerializerOptions options;
 
-        public HusaClient(HttpClient httpClient)
+        protected HusaStandardClient(HttpClient httpClient)
         {
             this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             this.options = new JsonSerializerOptions().SetConfiguration();
+        }
+
+        protected HusaStandardClient(HttpClient httpClient, IOptions<JsonOptions> options)
+        {
+            this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            this.options = options?.Value?.JsonSerializerOptions ?? throw new ArgumentNullException(nameof(options));
         }
 
         public async Task<T> GetAsync<T>(string url, CancellationToken token = default)
