@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.3.0</Version>
+        <Version>0.3.1</Version>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.3.0:
-            - Added method to remove all non-numeric characters from a string
+            Release 0.3.1:
+            - Changed nuget version to fix runtime issues
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
