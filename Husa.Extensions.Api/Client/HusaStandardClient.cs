@@ -57,20 +57,23 @@ namespace Husa.Extensions.Api.Client
         public async Task PostAsJsonAsync<T>(string url, T dataObject, CancellationToken token = default)
         {
             var httpResponse = await this.httpClient.PostAsJsonAsync(url, dataObject, cancellationToken: token);
+
             httpResponse.EnsureSuccessStatusCode();
         }
 
         public async Task<TResult> PostAsJsonAsync<T, TResult>(string url, T dataObject, CancellationToken token = default)
         {
             var httpResponse = await this.httpClient.PostAsJsonAsync(url, dataObject, cancellationToken: token);
+
             httpResponse.EnsureSuccessStatusCode();
 
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
-        public async Task<TResult> PostAsync<TResult>(string url, HttpContent content, CancellationToken token = default)
+        public async Task<TResult> PostAsync<TResult>(string url, HttpContent content = null, CancellationToken token = default)
         {
             using var httpResponse = await this.httpClient.PostAsync(url, content, cancellationToken: token);
+
             httpResponse.EnsureSuccessStatusCode();
 
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
@@ -79,7 +82,26 @@ namespace Husa.Extensions.Api.Client
         public async Task PutAsJsonAsync<T>(string url, T dataObject, CancellationToken token = default)
         {
             var httpResponse = await this.httpClient.PutAsJsonAsync(url, dataObject, cancellationToken: token);
+
             httpResponse.EnsureSuccessStatusCode();
+        }
+
+        public async Task<TResult> PutAsJsonAsync<T, TResult>(string url, T dataObject, CancellationToken token = default)
+        {
+            var httpResponse = await this.httpClient.PutAsJsonAsync(url, dataObject, cancellationToken: token);
+
+            httpResponse.EnsureSuccessStatusCode();
+
+            return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
+        }
+
+        public async Task<TResult> PutAsync<TResult>(string url, HttpContent content = null, CancellationToken token = default)
+        {
+            using var httpResponse = await this.httpClient.PutAsync(url, content, cancellationToken: token);
+
+            httpResponse.EnsureSuccessStatusCode();
+
+            return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
     }
 }

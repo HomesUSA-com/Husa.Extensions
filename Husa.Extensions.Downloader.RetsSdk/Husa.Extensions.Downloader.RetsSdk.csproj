@@ -3,19 +3,14 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Downloader.RetsSdk</AssemblyName>
         <RootNamespace>Husa.Extensions.Downloader.RetsSdk</RootNamespace>
-        <ProductVersion>2.1.0</ProductVersion>
-        <FileVersion>2.1.0</FileVersion>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>HomesUSA Rets SDK</Product>
         <Description>.Client library for interacting with a RETS server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.RetsSdk</PackageId>
-        <Version>2.1.0</Version>
-        <PackageVersion>2.1.0</PackageVersion>
         <PackageTags>Extensions; Rets; RetsSDK; Downloader</PackageTags>
+        <Version>2.1.1</Version>
         <PackageReleaseNotes>
-            Release 2.1.0:
-            - Updated models to allow alphanumeric mls numbers
-            - Added new resource type to enable media download
+            Release 2.1.1:
+            - Adjusted nuget project properties
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

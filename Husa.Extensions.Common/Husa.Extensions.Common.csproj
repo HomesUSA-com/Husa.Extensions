@@ -6,12 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.3.1</Version>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <Version>0.3.2</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.3.1:
-            - Changed nuget version to fix runtime issues
+            Release 0.3.2:
+            - adjusted nuget project properties
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
