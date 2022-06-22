@@ -4,6 +4,7 @@ namespace Husa.Extensions.Api.Client
     using System.Drawing;
     using System.IO;
     using System.Linq;
+    using System.Net.Mime;
     using System.Text.RegularExpressions;
     using Microsoft.AspNetCore.Http;
 
@@ -11,10 +12,10 @@ namespace Husa.Extensions.Api.Client
     {
         public const int ImageMinimumBytes = 512;
         public const string RegexExp = @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy";
-        private static readonly string[] ValidContentTypes = new[] { "image/jpg", "image/jpeg", "image/pjpeg", "image/gif", "image/x-png", "image/png" };
-        private static readonly string[] ValidFileExtensions = new[] { ".jpg", ".png", ".gif", ".jpeg" };
+        private static readonly string[] ValidContentTypes = new[] { "image/jpg", MediaTypeNames.Image.Jpeg, "image/pjpeg", MediaTypeNames.Image.Gif, "image/x-png", "image/png", MediaTypeNames.Application.Pdf };
+        private static readonly string[] ValidFileExtensions = new[] { ".jpg", ".png", ".gif", ".jpeg", ".pdf" };
 
-        public static bool IsImage(this IFormFile file)
+        public static bool IsValid(this IFormFile file)
         {
             return file.ContentType.IsValidContentType() && Path.GetExtension(file.FileName).IsValidExtension() && file.IsValidSize() && file.IsValidContent() && file.IsValidStream();
         }
@@ -69,6 +70,16 @@ namespace Husa.Extensions.Api.Client
 
         private static bool IsValidStream(this IFormFile file)
         {
+            if (file == null)
+            {
+                return false;
+            }
+
+            if (file.ContentType.Equals(MediaTypeNames.Application.Pdf, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
             try
             {
                 using var bitmap = new Bitmap(file.OpenReadStream());
