@@ -4,16 +4,16 @@ namespace Husa.Extensions.Api.Client
     using System.Drawing;
     using System.IO;
     using System.Linq;
-    using System.Net.Mime;
     using System.Text.RegularExpressions;
+    using Husa.Extensions.Api.Constants;
     using Microsoft.AspNetCore.Http;
 
     public static class FormFileExtensions
     {
         public const int ImageMinimumBytes = 512;
         public const string RegexExp = @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy";
-        private static readonly string[] ValidContentTypes = new[] { "image/jpg", MediaTypeNames.Image.Jpeg, "image/pjpeg", MediaTypeNames.Image.Gif, "image/x-png", "image/png", MediaTypeNames.Application.Pdf };
-        private static readonly string[] ValidFileExtensions = new[] { ".jpg", ".png", ".gif", ".jpeg", ".pdf" };
+        private static readonly string[] ValidContentTypes = new[] { ManagedMediaTypes.Jpg, ManagedMediaTypes.Jpeg, ManagedMediaTypes.Pjpeg, ManagedMediaTypes.Gif, ManagedMediaTypes.Xpng, ManagedMediaTypes.Png, ManagedMediaTypes.Pdf };
+        private static readonly string[] ValidFileExtensions = new[] { ManagedFileExtensions.Jpg, ManagedFileExtensions.Png, ManagedFileExtensions.Gif, ManagedFileExtensions.Jpeg, ManagedFileExtensions.Pdf };
 
         public static bool IsValid(this IFormFile file)
         {
@@ -75,7 +75,7 @@ namespace Husa.Extensions.Api.Client
                 return false;
             }
 
-            if (file.ContentType.Equals(MediaTypeNames.Application.Pdf, StringComparison.InvariantCultureIgnoreCase))
+            if (file.ContentType.Equals(ManagedMediaTypes.Pdf, StringComparison.InvariantCultureIgnoreCase))
             {
                 return true;
             }
