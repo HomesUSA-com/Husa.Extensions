@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
@@ -6,10 +6,10 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>0.4.1</Version>
+        <Version>0.5.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.4.1:
+            Release 0.5.1:
             - Updated form file extensions to the lastest version of media service.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
@@ -20,6 +20,7 @@
         <PackageReference Include="Azure.Identity" Version="1.5.0" />
         <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+        <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="5.0.17" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
         <PackageReference Include="Serilog" Version="2.10.0" />
