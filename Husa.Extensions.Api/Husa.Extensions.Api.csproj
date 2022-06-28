@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
@@ -6,13 +6,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>0.5.0</Version>
+        <Version>0.5.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.5.0:
-            - Added new put async method to allow requesting put operations without a payload
-            - Added new put as json async method that returns the operation response object
-            - Added form file extensions
+            Release 0.5.1:
+            - Updated form file extensions to the lastest version of media service.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
