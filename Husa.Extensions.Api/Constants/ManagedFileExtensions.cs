@@ -1,7 +1,5 @@
-﻿namespace Husa.Extensions.Api.Constants
+namespace Husa.Extensions.Api.Constants
 {
-    using System.Net.Mime;
-
     public static class ManagedFileExtensions
     {
         public const string Jpg = ".jpg";
