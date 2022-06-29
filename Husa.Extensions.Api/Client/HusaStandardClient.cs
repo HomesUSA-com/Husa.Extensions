@@ -28,22 +28,44 @@ namespace Husa.Extensions.Api.Client
             this.options = options?.Value?.JsonSerializerOptions ?? throw new ArgumentNullException(nameof(options));
         }
 
-        public async Task<T> GetAsync<T>(string url, CancellationToken token = default)
+        protected string BearerToken { get; private set; }
+
+        public void AddCustomHeader(string headerName, string headerValue)
         {
+            if (this.httpClient.DefaultRequestHeaders.Contains(headerName))
+            {
+                this.httpClient.DefaultRequestHeaders.Remove(headerName);
+            }
+
+            this.httpClient.DefaultRequestHeaders.Add(headerName, headerValue);
+        }
+
+        public async Task<string> GetAsync(string url, CancellationToken token = default)
+        {
+            this.httpClient.AddBearerToken(this.BearerToken);
             using var httpResponse = await this.httpClient.GetAsync(url, token);
             httpResponse.EnsureSuccessStatusCode();
+            return await httpResponse.Content.ReadAsStringAsync(token);
+        }
 
+        public async Task<T> GetAsync<T>(string url, CancellationToken token = default)
+        {
+            this.httpClient.AddBearerToken(this.BearerToken);
+            using var httpResponse = await this.httpClient.GetAsync(url, token);
+            httpResponse.EnsureSuccessStatusCode();
             return await httpResponse.Content.ReadFromJsonAsync<T>(this.options, cancellationToken: token);
         }
 
         public async Task DeleteAsync(string url, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var httpResponse = await this.httpClient.DeleteAsync(url, cancellationToken: token);
             httpResponse.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteAsync<T>(string url, T dataObject, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var serializedDataObject = JsonSerializer.Serialize(dataObject);
             var content = new StringContent(serializedDataObject, Encoding.UTF8, "application/json");
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Delete, url)
@@ -56,52 +78,58 @@ namespace Husa.Extensions.Api.Client
 
         public async Task PostAsJsonAsync<T>(string url, T dataObject, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var httpResponse = await this.httpClient.PostAsJsonAsync(url, dataObject, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
         }
 
         public async Task<TResult> PostAsJsonAsync<T, TResult>(string url, T dataObject, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var httpResponse = await this.httpClient.PostAsJsonAsync(url, dataObject, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
-
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
         public async Task<TResult> PostAsync<TResult>(string url, HttpContent content = null, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             using var httpResponse = await this.httpClient.PostAsync(url, content, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
-
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
         public async Task PutAsJsonAsync<T>(string url, T dataObject, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var httpResponse = await this.httpClient.PutAsJsonAsync(url, dataObject, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
         }
 
         public async Task<TResult> PutAsJsonAsync<T, TResult>(string url, T dataObject, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             var httpResponse = await this.httpClient.PutAsJsonAsync(url, dataObject, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
-
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
         public async Task<TResult> PutAsync<TResult>(string url, HttpContent content = null, CancellationToken token = default)
         {
+            this.httpClient.AddBearerToken(this.BearerToken);
             using var httpResponse = await this.httpClient.PutAsync(url, content, cancellationToken: token);
-
             httpResponse.EnsureSuccessStatusCode();
-
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
+        }
+
+        protected void AddBearerToken(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new ArgumentException($"'{nameof(token)}' cannot be null or empty.", nameof(token));
+            }
+
+            this.BearerToken = token;
         }
     }
 }
