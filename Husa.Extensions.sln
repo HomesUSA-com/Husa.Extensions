@@ -24,15 +24,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.ServiceBus"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization", "Husa.Extensions.Authorization\Husa.Extensions.Authorization.csproj", "{2E397807-3BC8-45B4-8329-713A63E2CFEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Authorization.Filters", "Husa.Extensions.Authorization.Filters\Husa.Extensions.Authorization.Filters.csproj", "{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Cache", "Husa.Extensions.Cache\Husa.Extensions.Cache.csproj", "{CCC152B8-3680-4972-B468-F43B478C8606}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.UserInfo", "Husa.Extensions.UserInfo\Husa.Extensions.UserInfo.csproj", "{E06CC61E-C0FC-47FD-96FA-DFFDA0D112DF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Media", "Husa.Extensions.Media\Husa.Extensions.Media.csproj", "{970AAEDF-4509-44B9-8D10-44AEE713EEB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Downloader.RetsSdk", "Husa.Extensions.Downloader.RetsSdk\Husa.Extensions.Downloader.RetsSdk.csproj", "{C5FCC6C7-216F-4D01-8EF8-9FC8A90A8383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Downloader.RetsSdk", "Husa.Extensions.Downloader.RetsSdk\Husa.Extensions.Downloader.RetsSdk.csproj", "{C5FCC6C7-216F-4D01-8EF8-9FC8A90A8383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +62,6 @@ Global
 		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E397807-3BC8-45B4-8329-713A63E2CFEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DD16AE3-AD0D-45B9-A3E3-4994D62801F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCC152B8-3680-4972-B468-F43B478C8606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCC152B8-3680-4972-B468-F43B478C8606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCC152B8-3680-4972-B468-F43B478C8606}.Release|Any CPU.ActiveCfg = Release|Any CPU

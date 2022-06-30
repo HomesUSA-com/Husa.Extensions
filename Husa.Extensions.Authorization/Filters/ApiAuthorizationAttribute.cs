@@ -4,6 +4,7 @@ namespace Husa.Extensions.Authorization.Filters
     using System.Linq;
     using System.Threading.Tasks;
     using Husa.Extensions.Authorization.Enums;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -22,10 +23,16 @@ namespace Husa.Extensions.Authorization.Filters
             var userContext = context.HttpContext.RequestServices.GetRequiredService<IUserContextProvider>();
             var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<ApiAuthorizationAttribute>>();
 
-            var user = userContext.GetCurrentUser();
-            logger.LogInformation("Authorizing user '{userId}' roles", user.Id);
+            if (context.ActionDescriptor.EndpointMetadata.OfType<AllowAnonymousAttribute>().Any())
+            {
+                logger.LogInformation("Skipping the filter and continue as Anonymous request");
+                Task.FromResult(true);
+            }
 
-            return Task.FromResult(user.IsMLSAdministrator || (user.EmployeeRole.HasValue && this.role.Contains(user.EmployeeRole.Value)));
+            var user = userContext.GetCurrentUser();
+            logger.LogInformation("Validating API authorization for user '{userId}'.", user.Id);
+
+            return Task.FromResult(user.UserRole != UserRole.User || (user.EmployeeRole.HasValue && this.role.Contains(user.EmployeeRole.Value)));
         }
     }
 }

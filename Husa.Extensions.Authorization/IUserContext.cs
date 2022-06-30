@@ -15,6 +15,8 @@ namespace Husa.Extensions.Authorization
 
         Guid? CompanyId { get; set; }
 
+        UserRole UserRole { get; set; }
+
         RoleEmployee? EmployeeRole { get; set; }
     }
 }
