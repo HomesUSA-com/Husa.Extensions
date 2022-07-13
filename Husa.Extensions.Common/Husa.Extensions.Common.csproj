@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>0.3.3</Version>
+        <Version>1.0.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.3.3:
+            Release 1.0.0:
             - Last version with .Net5
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
