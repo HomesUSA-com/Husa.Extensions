@@ -5,15 +5,11 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - Added sonarqube coding standards analyzer.
-            - Updated code according to new coding standards.
-            - Added bootstrapping extension
-            - Added validation to prevent failure when retrieving the current user id
-            - Added UserRole to UserContext and filters
+            Release 0.2.1:
+            - Last version with .Net5
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

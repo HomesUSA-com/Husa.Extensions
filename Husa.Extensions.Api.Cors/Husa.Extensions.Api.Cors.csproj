@@ -7,11 +7,11 @@
         <Product>Api Cors Extensions</Product>
         <Description>Husa Api Cors</Description>
         <PackageId>Husa.Extensions.Api.Cors</PackageId>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <PackageTags>Extensions; Cors; ApiCors;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - Added PATCH verbose method.
+            Release 0.2.1:
+            - Last version with .Net5
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

@@ -2,14 +2,14 @@
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.UserInfo</AssemblyName>
         <RootNamespace>Husa.Extensions.UserInfo</RootNamespace>
-        <ProductVersion>0.1.0</ProductVersion>
-        <FileVersion>0.1.0</FileVersion>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>0.1.0</Version>
-        <PackageVersion>0.1.0</PackageVersion>
+        <Version>0.1.1</Version>
+        <PackageReleaseNotes>
+            Release 0.1.1:
+            - Last version with .Net5
+        </PackageReleaseNotes>
         <PackageTags>Extensions; UserInfo;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

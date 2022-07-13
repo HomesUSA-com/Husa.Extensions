@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
@@ -6,14 +6,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>0.6.0</Version>
+        <Version>0.6.2</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.6.0:
-            - Added feature to allow passing a jwt bearer token to the http client
-            - Added option to add custom headers to the http client
-            - Added get options for endpoints that only return strings
-			- Added extension methods to manage bearer tokens
+            Release 0.6.2:
+            - Last version with .Net5
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
