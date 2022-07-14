@@ -31,7 +31,6 @@ namespace Husa.Extensions.Api.Mvc
             }
 
             options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            options.IgnoreNullValues = false;
             options.AllowTrailingCommas = true;
 
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));

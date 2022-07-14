@@ -1,20 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.UserInfo</AssemblyName>
         <RootNamespace>Husa.Extensions.UserInfo</RootNamespace>
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>1.0.0</Version>
-        <PackageTags>Extensions; UserInfo;</PackageTags>
+        <Version>2.0.0</Version>
         <PackageReleaseNotes>
-            Release 1.0.0:
-            - Last version with .Net5
+            Release 2.0.0:
+            - Migrated to .Net 6.0
         </PackageReleaseNotes>
+        <PackageTags>Extensions; UserInfo;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Cache" Version="1.0.0" />
+        <PackageReference Include="Husa.Extensions.Cache" Version="2.0.0" />
     </ItemGroup>
 </Project>

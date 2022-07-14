@@ -5,17 +5,17 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>1.0.0</Version>
+        <Version>2.0.0</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 1.0.0:
-            - Last version with .Net5
+            Release 2.0.0:
+            - Migrated to .Net 6.0
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     </ItemGroup>
 </Project>

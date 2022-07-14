@@ -1,12 +1,12 @@
 namespace Husa.Extensions.Api.Client
 {
     using System;
-    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
     using Husa.Extensions.Api.Constants;
     using Microsoft.AspNetCore.Http;
+    using SixLabors.ImageSharp;
 
     public static class FormFileExtensions
     {
@@ -82,7 +82,7 @@ namespace Husa.Extensions.Api.Client
 
             try
             {
-                using var bitmap = new Bitmap(file.OpenReadStream());
+                using var image = Image.Load(file.OpenReadStream());
             }
             catch (ArgumentException)
             {
