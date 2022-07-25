@@ -7,5 +7,6 @@ namespace Husa.Extensions.EmailNotification.Enums
         PasswordRequest = 51,
         PasswordReset = 52,
         WelcomeUserToHomesUsa = 77,
+        ReturnedListingRequest = 86,
     }
 }

@@ -12,5 +12,9 @@ namespace Husa.Extensions.EmailNotification.Enums
         Username,
         [Description("PASSWORD")]
         Password,
+        [Description("ADDRESS")]
+        Address,
+        [Description("RETURNEDREASON")]
+        ReturnedReason,
     }
 }
