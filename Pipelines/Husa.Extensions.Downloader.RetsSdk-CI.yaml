@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -21,6 +24,7 @@ steps:
     projects: '**/Husa.Extensions.Downloader.RetsSdk.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 - task: DotNetCoreCLI@2
+  condition: ne(variables.isPullRequest, true)
   inputs:
     command: 'pack'
     packagesToPack: '**/Husa.Extensions.Downloader.RetsSdk.csproj'
@@ -30,4 +34,4 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: 'drop'
-  condition: succeededOrFailed()
+  condition: and(succeededOrFailed(), ne(variables.isPullRequest, true))

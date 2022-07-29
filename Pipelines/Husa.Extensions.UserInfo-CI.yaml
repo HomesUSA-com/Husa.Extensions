@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+
 steps:
 - task: DotNetCoreCLI@2
   inputs:
@@ -22,6 +25,7 @@ steps:
     projects: '**/Husa.Extensions.UserInfo.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 - task: DotNetCoreCLI@2
+  condition: ne(variables.isPullRequest, true)
   inputs:
     command: 'pack'
     packagesToPack: '**/Husa.Extensions.UserInfo.csproj'
@@ -31,4 +35,4 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: 'drop'
-  condition: succeededOrFailed()
+  condition: and(succeededOrFailed(), ne(variables.isPullRequest, true))
