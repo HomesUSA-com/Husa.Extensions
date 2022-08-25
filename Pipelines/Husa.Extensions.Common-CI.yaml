@@ -13,6 +13,17 @@ variables:
   isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
 
 steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloudHomesUSA'
+    organization: 'homesusa'
+    scannerMode: 'MSBuild'
+    projectKey: 'Husa_Extensions.Common'
+    projectName: 'Husa.Extensions.Common'
+    extraProperties: |
+      sonar.exclusions=**/obj/**,**/*.dll
+      sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
+      sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
@@ -23,6 +34,10 @@ steps:
   inputs:
     projects: '**/Husa.Extensions.Common.csproj'
     arguments: '--configuration $(BuildConfiguration)'
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: DotNetCoreCLI@2
   condition: ne(variables.isPullRequest, true)
   inputs:
