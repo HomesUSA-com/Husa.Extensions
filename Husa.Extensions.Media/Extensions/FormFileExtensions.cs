@@ -1,10 +1,10 @@
-namespace Husa.Extensions.Api.Client
+namespace Husa.Extensions.Media.Extensions
 {
     using System;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using Husa.Extensions.Api.Constants;
+    using Husa.Extensions.Media.Constants;
     using Microsoft.AspNetCore.Http;
     using SixLabors.ImageSharp;
 

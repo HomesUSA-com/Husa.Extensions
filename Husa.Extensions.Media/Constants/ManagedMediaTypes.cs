@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Api.Constants
+namespace Husa.Extensions.Media.Constants
 {
     using System.Net.Mime;
 
