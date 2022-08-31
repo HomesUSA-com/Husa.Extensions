@@ -5,13 +5,12 @@
         <Product>Email Notification Extensions</Product>
         <Description>Husa Email Notification</Description>
         <PackageId>Husa.Extensions.EmailNotification</PackageId>
-        <Version>2.1.0</Version>
+        <Version>2.2.0</Version>
         <PackageTags>Extensions; Email; Notification;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.1.0:
-            - Returned Listing Request Template type added.
-            - Address parameter added.
-            - Returned Reason parameter added.
+            Release 2.2.0:
+            - Photo Request Templates types added.
+            - Multiple Photo Request Templates parameters added.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

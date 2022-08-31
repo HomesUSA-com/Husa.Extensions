@@ -16,5 +16,41 @@ namespace Husa.Extensions.EmailNotification.Enums
         Address,
         [Description("RETURNEDREASON")]
         ReturnedReason,
+        [Description("EMPLOYEE_FULLNAME")]
+        EmployeeFullName,
+        [Description("DATE")]
+        Date,
+        [Description("REASON_BY_USER_WHO_CANCELLED_REQUEST")]
+        ReasonRequestCancelled,
+        [Description("PLAN")]
+        Plan,
+        [Description("COMMUNITY")]
+        Community,
+        [Description("CITY")]
+        City,
+        [Description("ZIP")]
+        Zip,
+        [Description("BUILDER")]
+        Builder,
+        [Description("PHOTO_REQUEST_TYPE")]
+        PhotoRequestType,
+        [Description("CONTACT_INFO")]
+        ContactInfo,
+        [Description("DIRECTIONS")]
+        Directions,
+        [Description("GUIDELINES")]
+        Guidelines,
+        [Description("INSTRUCTIONS")]
+        Instructions,
+        [Description("REASON_TRIP_WAS_DENIED")]
+        ReasonTripDenied,
+        [Description("EMPLOYEE_EMAIL")]
+        EmployeeEmail,
+        [Description("ERROR_REPORTED_ON_PHOTO_REQUEST")]
+        ErrorPhotoRequest,
+        [Description("REASON_FOR_THE_REJECTION_TRIP_CHARGE")]
+        ReasonRejectionTripCharge,
+        [Description("MESSAGE_TO_PHOTOGRAPHER")]
+        MessageToPhotographer,
     }
 }
