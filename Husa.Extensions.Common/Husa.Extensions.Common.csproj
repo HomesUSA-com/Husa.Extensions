@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.1.0</Version>
+        <Version>2.2.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.1.0:
-            - Enum extensions methods added
+            Release 2.2.0:
+            - Fixed issue with exception handling filter
+            - Added unit test project to the common library
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

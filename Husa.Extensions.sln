@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api", "Husa.Extensions.Api\Husa.Extensions.Api.csproj", "{0F836D5A-CC63-408C-A8FE-2514C52AECE5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9D7FAA8-8639-4063-B4B1-10BA44BE9765}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5384D71C-9D9E-4E0C-A295-F03CBAFF417C}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
@@ -14,9 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api", "Husa.Extensions.Api\Husa.Extensions.Api.csproj", "{0F836D5A-CC63-408C-A8FE-2514C52AECE5}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Linq", "Husa.Extensions.Linq\Husa.Extensions.Linq.csproj", "{C5411DBE-0221-4D1C-B6A1-549BED44FE8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Common", "Husa.Extensions.Common\Husa.Extensions.Common.csproj", "{25D600E3-2978-4627-AEB4-5922BFB19FA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Common.Tests", "Husa.Extensions.Common.Tests\Husa.Extensions.Common.Tests.csproj", "{FFAE5800-A15B-49B5-92AE-C5672EF9B830}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api.Cors", "Husa.Extensions.Api.Cors\Husa.Extensions.Api.Cors.csproj", "{D02BAD72-FBA8-478F-A965-BE74FB43B422}"
 EndProject
@@ -52,6 +54,10 @@ Global
 		{25D600E3-2978-4627-AEB4-5922BFB19FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25D600E3-2978-4627-AEB4-5922BFB19FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25D600E3-2978-4627-AEB4-5922BFB19FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAE5800-A15B-49B5-92AE-C5672EF9B830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAE5800-A15B-49B5-92AE-C5672EF9B830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAE5800-A15B-49B5-92AE-C5672EF9B830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAE5800-A15B-49B5-92AE-C5672EF9B830}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D02BAD72-FBA8-478F-A965-BE74FB43B422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D02BAD72-FBA8-478F-A965-BE74FB43B422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D02BAD72-FBA8-478F-A965-BE74FB43B422}.Release|Any CPU.ActiveCfg = Release|Any CPU
