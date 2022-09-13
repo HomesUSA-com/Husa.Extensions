@@ -42,7 +42,9 @@ namespace Husa.Extensions.EmailNotification.Enums
         Guidelines,
         [Description("INSTRUCTIONS")]
         Instructions,
-        [Description("REASON_TRIP_WAS_DENIED")]
+        [Description("REASON_FOR_TRIP_CHARGE")]
+        ReasonTripCharge,
+        [Description("REASON_TRIP_CHARGE_WAS_DENIED")]
         ReasonTripDenied,
         [Description("EMPLOYEE_EMAIL")]
         EmployeeEmail,

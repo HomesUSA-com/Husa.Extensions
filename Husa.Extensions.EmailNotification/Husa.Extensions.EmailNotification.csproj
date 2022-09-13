@@ -5,12 +5,11 @@
         <Product>Email Notification Extensions</Product>
         <Description>Husa Email Notification</Description>
         <PackageId>Husa.Extensions.EmailNotification</PackageId>
-        <Version>2.2.0</Version>
+        <Version>2.2.1</Version>
         <PackageTags>Extensions; Email; Notification;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.2.0:
-            - Photo Request Templates types added.
-            - Multiple Photo Request Templates parameters added.
+            Release 2.2.1:
+            - Added parameter REASON_FOR_TRIP_CHARGE to photorequest Template.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
