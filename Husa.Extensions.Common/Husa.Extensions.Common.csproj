@@ -6,13 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.3.0</Version>
+        <Version>2.3.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.3.0:
-            - Fixed issue with exception handling filter
-            - Added unit test project to the common library
-            - Added PhoneType enum
+            Release 2.3.1:
+            - CST Datetime extensions
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
