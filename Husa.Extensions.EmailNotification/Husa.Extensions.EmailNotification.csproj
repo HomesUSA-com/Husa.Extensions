@@ -5,11 +5,11 @@
         <Product>Email Notification Extensions</Product>
         <Description>Husa Email Notification</Description>
         <PackageId>Husa.Extensions.EmailNotification</PackageId>
-        <Version>2.2.2</Version>
+        <Version>2.3.0</Version>
         <PackageTags>Extensions; Email; Notification;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.2.2:
-            - Updated template Tripcharge denied ids.
+            Release 2.3.0:
+            - Photo Request Rejected Photos template added.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

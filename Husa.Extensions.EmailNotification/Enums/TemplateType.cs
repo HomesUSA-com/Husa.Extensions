@@ -22,5 +22,6 @@ namespace Husa.Extensions.EmailNotification.Enums
         TripChargeApprovedNotification = 87,
         TripChargeRejected = 90,
         MessageToPhotographer = 92,
+        PhotoRequestRejectedPhotos = 93,
     }
 }

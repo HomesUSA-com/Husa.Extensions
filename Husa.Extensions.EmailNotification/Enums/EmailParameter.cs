@@ -54,5 +54,7 @@ namespace Husa.Extensions.EmailNotification.Enums
         ReasonRejectionTripCharge,
         [Description("MESSAGE_TO_PHOTOGRAPHER")]
         MessageToPhotographer,
+        [Description("REASON_FOR_PHOTOS_REJECT")]
+        ReasonForPhotosReject,
     }
 }
