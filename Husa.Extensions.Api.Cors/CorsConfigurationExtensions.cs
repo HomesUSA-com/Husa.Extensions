@@ -36,7 +36,7 @@ namespace Husa.Extensions.Api.Cors
             {
                 allowedMethods = new[]
                 {
-                    "PUT", "DELETE", "GET", "POST", "PATCH",
+                    "PUT", "DELETE", "GET", "POST", "PATCH", "OPTIONS",
                 };
             }
 
