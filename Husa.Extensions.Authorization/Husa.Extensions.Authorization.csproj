@@ -5,11 +5,13 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>2.0.0</Version>
+        <Version>2.1.0</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.0.0:
-            - Migrated to .Net 6.0
+            Release 2.1.0:
+            - Fixed issue when getting the current user id and the current user is not set
+            - Converted the HasCurrentUser method to a class property
+            - Corrected an issue with the log messages that were not logging the parameters correctly
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

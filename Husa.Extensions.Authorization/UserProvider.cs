@@ -13,37 +13,34 @@ namespace Husa.Extensions.Authorization
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        public bool HasCurrentUser => this.currentUser != null;
+
         public IUserContext GetCurrentUser()
         {
-            if (this.currentUser == null)
+            if (!this.HasCurrentUser)
             {
                 throw new InvalidOperationException("The current user is not yet set, Please set it before using it.");
             }
 
-            this.logger.LogInformation($"Returning current user, id: '{this.currentUser.Id}'");
+            this.logger.LogInformation("Returning current user '{userId}'", this.currentUser.Id);
             return this.currentUser;
         }
 
         public Guid GetCurrentUserId()
         {
-            if (!this.HasCurrentUser())
+            if (!this.HasCurrentUser)
             {
-                this.logger.LogWarning("Current user is not set, returning 'userId'", this.currentUser.Id);
+                this.logger.LogWarning("Current user is not set, returning '{userId}'", Guid.Empty);
                 return Guid.Empty;
             }
 
-            this.logger.LogInformation("Returning current userId: 'userId'", this.currentUser.Id);
+            this.logger.LogInformation("Returning current user Id '{userId}'", this.currentUser.Id);
             return this.currentUser.Id;
-        }
-
-        public bool HasCurrentUser()
-        {
-            return this.currentUser != null;
         }
 
         public void SetCurrentUser(IUserContext user)
         {
-            this.logger.LogInformation($"Setting current user with id:'{user.Id}'");
+            this.logger.LogInformation("Setting current user '{userId}'", user.Id);
             this.currentUser = user;
         }
     }

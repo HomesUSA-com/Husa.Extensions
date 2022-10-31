@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.3.1</Version>
+        <Version>2.4.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.3.1:
-            - CST Datetime extensions
+            Release 2.4.0:
+            - Added CommandResult class for passing result information between layers
+            - Included the enum ResponseCode as part of the CommandResult class
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
