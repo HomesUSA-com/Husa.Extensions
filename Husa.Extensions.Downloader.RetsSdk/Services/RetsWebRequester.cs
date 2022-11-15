@@ -69,7 +69,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
 
             if (resource != null && !string.IsNullOrWhiteSpace(resource.Cookie))
             {
-                client.DefaultRequestHeaders.Add("Set-Cookie", resource.Cookie);
+                client.DefaultRequestHeaders.Add("Cookie", resource.Cookie);
             }
 
             if (resource != null && !string.IsNullOrWhiteSpace(resource.SessionId))

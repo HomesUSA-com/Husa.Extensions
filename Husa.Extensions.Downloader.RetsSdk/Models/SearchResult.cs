@@ -8,6 +8,9 @@ namespace Husa.Extensions.Downloader.RetsSdk.Models
     {
         public RetsResource Resource { get; private set; }
         public string ClassName { get; private set; }
+
+        public int TotalCount { get; private set; }
+
         private string RestrictedValue;
         private string[] Columns { get; set; }
         private Dictionary<string, SearchResultRow> Rows { get; set; }
@@ -107,6 +110,11 @@ namespace Husa.Extensions.Downloader.RetsSdk.Models
         public void SetColumns(IEnumerable<string> columns)
         {
             SetColumns(columns?.AsEnumerable());
+        }
+
+        public void SetTotalCount(int totalCount)
+        {
+            TotalCount = totalCount;
         }
 
         public bool IsRestricted(string value)

@@ -7,6 +7,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
     {
         Task<bool> Start();
         Task End();
+        int GetMarketLimit();
 
         SessionResource Resource { get; }
         bool IsStarted();

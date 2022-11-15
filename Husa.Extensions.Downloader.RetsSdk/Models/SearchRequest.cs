@@ -9,10 +9,9 @@ namespace Husa.Extensions.Downloader.RetsSdk.Models
         public string SearchType { get; set; }
         public string Class { get; set; }
         public string QueryType { get; set; } = "DMQL2";
-        public int Count { get; set; } = 0;
+        public int Count { get; set; } = 1;
         public string Format { get; set; } = "COMPACT-DECODED"; // COMPACT-DECODED
         public string RestrictedIndicator { get; set; } = "****";
-        public int Limit { get; set; } = int.MaxValue;
         public int StandardNames { get; set; } = 0;
         public QueryParameterGroup ParameterGroup { get; set; }
         private List<string> Columns = new List<string>();

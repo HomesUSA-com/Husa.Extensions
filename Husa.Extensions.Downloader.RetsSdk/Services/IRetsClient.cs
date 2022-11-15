@@ -9,7 +9,6 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
     {
         Task Connect();
         Task Disconnect();
-
         Task<SearchResult> Search(SearchRequest request);
         Task<RetsSystem> GetSystemMetadata();
         Task<RetsResourceCollection> GetResourcesMetadata();

@@ -25,7 +25,8 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
         protected Uri GetObjectUri => Session.Resource.GetCapability(Capability.GetObject);
         protected Uri SearchUri => Session.Resource.GetCapability(Capability.Search);
         protected Uri GetMetadataUri => Session.Resource.GetCapability(Capability.GetMetadata);
-        
+        protected int MarketLimit => Session.GetMarketLimit();
+
 
         public RetsClient(IRetsSession session, IRetsRequester requester, ILogger<RetsClient> logger)
             : base(logger)
@@ -44,11 +45,42 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
             await Session.End();
         }
 
+        /// <summary>
+        /// Searches using the criteria of the request parameter, performs a batch query search forcing a
+        /// round trip and using MarketLimit as batch size to prevent having too many outstanding requests.
+        /// </summary>
+        /// <param name="request">Search criteria.</param>
+        /// <returns> Returns a SearchResult containing the results of the search</returns>
         public async Task<SearchResult> Search(SearchRequest request)
+        {
+            var offset = 1;
+
+            RetsResource resource = await GetResourceMetadata(request.SearchType);
+            var result = await Search(request, offset);
+            offset += MarketLimit;
+
+            while (offset <= result.TotalCount)
+            {
+                SearchResult _results = await RoundTrip(async () =>
+                {
+                    return await Search(request, offset);
+                });
+
+                foreach (var row in _results.GetRows())
+                {
+                    result.AddRow(row);
+                }
+                offset += MarketLimit;
+            }
+
+            return result;
+        }
+
+        private async Task<SearchResult> Search(SearchRequest request, int offset)
         {
             if (request == null)
             {
-                throw new Exception($"{request} cannot be null");
+                throw new ArgumentNullException($"{request} cannot be null");
             }
 
             RetsResource resource = await GetResourceMetadata(request.SearchType);
@@ -68,7 +100,8 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
             query.Add("QueryType", request.QueryType);
             query.Add("Count", request.Count.ToString());
             query.Add("Format", request.Format);
-            query.Add("Limit", request.Limit.ToString());
+            query.Add("Limit", MarketLimit.ToString());
+            query.Add("Offset", offset.ToString());
             query.Add("StandardNames", request.StandardNames.ToString());
             query.Add("RestrictedIndicator", request.RestrictedIndicator);
             query.Add("Query", request.ParameterGroup.ToString());
@@ -102,6 +135,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
                     if (code == 0)
                     {
                         char delimiterValue = GetCompactDelimiter(doc);
+                        result.SetTotalCount(GetCount(doc));
 
                         XNamespace ns = doc.Root.GetDefaultNamespace();
                         XElement columns = doc.Descendants(ns + "COLUMNS").FirstOrDefault();
@@ -259,7 +293,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
             foreach (var page in pages)
             {
                 // To prevent having to many outstanding requests
-                // we should connect, force round trip on every page 
+                // we should connect, force round trip on every page
 
                 IEnumerable<FileObject> _files = await RoundTrip(async () =>
                 {
@@ -510,6 +544,24 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
             }
 
             return Convert.ToChar(9);
+        }
+
+        protected int GetCount(XDocument doc)
+        {
+            XNamespace ns = doc.Root.GetDefaultNamespace();
+            XElement count = doc.Descendants(ns + "COUNT").FirstOrDefault();
+            if (count == null)
+            {
+                throw new RetsParsingException("Unable to find count!");
+            }
+
+            var countAttribute = count.Attribute("Records");
+            if (countAttribute != null && int.TryParse(countAttribute.Value, out int value))
+            {
+                return value;
+            }
+
+            return 0;
         }
 
         protected FileObject ProcessMessage(MimePart message)

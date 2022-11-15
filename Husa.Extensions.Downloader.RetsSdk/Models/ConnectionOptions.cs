@@ -15,6 +15,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Models
         public TimeSpan Timeout { get; set; }
         public UriKind UriType { get; set; } = UriKind.Absolute;
         public string BaseUrl { get; set; }
+        public int MarketLimit { get; set; }
 
         public ConnectionOptions()
         {

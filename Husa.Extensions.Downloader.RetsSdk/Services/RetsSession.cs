@@ -66,9 +66,17 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
 
         public async Task End()
         {
-            await RetsRequester.Get(LogoutUri, _Resource);
+            if (_Resource != null)
+            {
+                await RetsRequester.Get(LogoutUri, _Resource);
+                _Resource = null;
+            }
+        }
 
-            _Resource = null;
+        public int GetMarketLimit()
+        {
+
+            return Options.MarketLimit != 0 ? Options.MarketLimit : int.MaxValue;
         }
 
 
