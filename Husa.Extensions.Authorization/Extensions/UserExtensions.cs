@@ -27,8 +27,14 @@ namespace Husa.Extensions.Authorization.Extensions
             }
 
             var nameIdentifier = user.FindFirst(ClaimTypes.NameIdentifier);
-            var username = user.Claims.FirstOrDefault(x => x.Type == "username").Value.ToString();
 
+            var usernameClaim = user.Claims.FirstOrDefault(x => x.Type == HusaClaimTypes.Username);
+            if (usernameClaim is null)
+            {
+                throw new InvalidOperationException($"{HusaClaimTypes.Username} claim must be informed");
+            }
+
+            var username = usernameClaim.Value.ToString();
             return new UserContext
             {
                 Email = username,
