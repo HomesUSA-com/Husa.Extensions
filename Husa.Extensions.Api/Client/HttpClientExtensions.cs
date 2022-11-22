@@ -11,14 +11,18 @@ namespace Husa.Extensions.Api.Client
     public static class HttpClientExtensions
     {
         public const string Bearer = "Bearer";
+        public const string AccessToken = "access_token";
+        public const string CurrentCompanyHeaderName = "CurrentCompanySelected";
+        public const string CookieHeaderName = "Cookie";
+        public const string AuthorizationHeaderName = "Authorization";
 
         public static IServiceCollection ConfigureHeaderPropagation(this IServiceCollection services)
         {
             services.AddHeaderPropagation(options =>
             {
-                options.Headers.Add("Authorization");
-                options.Headers.Add("Cookie");
-                options.Headers.Add("CurrentCompanySelected");
+                options.Headers.Add(AuthorizationHeaderName);
+                options.Headers.Add(CookieHeaderName);
+                options.Headers.Add(CurrentCompanyHeaderName);
             });
 
             return services;

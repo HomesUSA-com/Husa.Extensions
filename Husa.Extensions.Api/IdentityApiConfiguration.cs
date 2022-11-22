@@ -4,6 +4,7 @@ namespace Husa.Extensions.Api
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+    using Husa.Extensions.Api.Client;
     using Husa.Extensions.Api.Configuration;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,7 +14,7 @@ namespace Husa.Extensions.Api
 
     public static class IdentityApiConfiguration
     {
-        private static ApplicationOptions settings;
+        private static ApiOptions settings;
 
         public static IServiceCollection ConfigureApiClients(this IServiceCollection services, IConfiguration configuration)
         {
@@ -53,8 +54,8 @@ namespace Husa.Extensions.Api
             this HttpClient client,
             IServiceProvider provider,
             string baseAddress,
-            string tokenName = "access_token",
-            string authenticationHeaderScheme = "Bearer")
+            string tokenName = HttpClientExtensions.AccessToken,
+            string authenticationHeaderScheme = HttpClientExtensions.Bearer)
         {
             var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
             if (httpContextAccessor.HttpContext != null)
@@ -62,9 +63,9 @@ namespace Husa.Extensions.Api
                 var accessToken = await httpContextAccessor.HttpContext.GetTokenAsync(tokenName);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authenticationHeaderScheme, accessToken);
 
-                if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers["CurrentCompanySelected"], out var currentCompanyId))
+                if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentCompanyHeaderName], out var currentCompanyId))
                 {
-                    client.DefaultRequestHeaders.Add("CurrentCompanySelected", currentCompanyId.ToString());
+                    client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentCompanyHeaderName, currentCompanyId.ToString());
                 }
             }
 
@@ -73,9 +74,9 @@ namespace Husa.Extensions.Api
 
         public static void GetSettings(IConfiguration configuration)
         {
-            var applicationOptions = new ApplicationOptions();
-            configuration.GetSection(ApplicationOptions.Section).Bind(applicationOptions);
-            settings = applicationOptions;
+            var apiOptions = new ApiOptions();
+            configuration.GetSection(ApiOptions.Section).Bind(apiOptions);
+            settings = apiOptions;
         }
     }
 }

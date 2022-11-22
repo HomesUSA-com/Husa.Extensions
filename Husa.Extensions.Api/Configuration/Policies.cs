@@ -4,6 +4,8 @@ namespace Husa.Extensions.Api.Configuration
 
     public class Policies
     {
+        public const string CompanyApi = "CompanyAPIPolicy";
+
         public IEnumerable<Claims> Claims { get; set; }
 
         public IEnumerable<Roles> Roles { get; set; }

@@ -2,9 +2,9 @@ namespace Husa.Extensions.Api.Configuration
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ApplicationOptions
+    public class ApiOptions
     {
-        public const string Section = "Application";
+        public const string Section = "Api";
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "A SubDomain must be provided.")]
         public string SubDomain { get; set; }
