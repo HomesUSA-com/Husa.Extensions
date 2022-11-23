@@ -6,11 +6,11 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>3.1.0</Version>
+        <Version>3.1.1</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.1.0:
-            - Updated the SonarAnalyzer.CSharp library version and fixed the associated issues
+            Release 3.1.1:
+            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
             - Updated all nuget packages to the latest version possible
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>

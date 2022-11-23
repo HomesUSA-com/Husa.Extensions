@@ -5,11 +5,11 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>2.2.0</Version>
+        <Version>2.2.1</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.2.0:
-            - Updated the SonarAnalyzer.CSharp library version and fixed the associated issues
+            Release 2.2.1:
+            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
             - Created HusaClaimTypes constants class to unify all common claims
             - Updated all nuget packages to the latest version possible
         </PackageReleaseNotes>

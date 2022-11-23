@@ -6,11 +6,11 @@
         <Product>Api Cors Extensions</Product>
         <Description>Husa Api Cors</Description>
         <PackageId>Husa.Extensions.Api.Cors</PackageId>
-        <Version>2.1.0</Version>
+        <Version>2.2.0</Version>
         <PackageTags>Extensions; Cors; ApiCors;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.1.0:
-            - Included the OPTIONS verb into the CORS configuration
+            Release 2.2.0:
+            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
