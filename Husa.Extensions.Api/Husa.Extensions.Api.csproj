@@ -6,14 +6,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>3.0.1</Version>
+        <Version>3.1.0</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.0.1:
-            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
-            - Added Role constants
-            - Added CompanyAPIPolicy constant
-            - Modified the json settings location and renamed the configuration class
+            Release 3.1.0:
+            - Add Patch method to HusaStandardClient
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

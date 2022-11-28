@@ -122,6 +122,21 @@ namespace Husa.Extensions.Api.Client
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
+        public async Task PatchAsync(string url, HttpContent content = null, CancellationToken token = default)
+        {
+            this.httpClient.AddBearerToken(this.BearerToken);
+            using var httpResponse = await this.httpClient.PatchAsync(url, content, cancellationToken: token);
+            httpResponse.EnsureSuccessStatusCode();
+        }
+
+        public async Task<TResult> PatchAsync<TResult>(string url, HttpContent content = null, CancellationToken token = default)
+        {
+            this.httpClient.AddBearerToken(this.BearerToken);
+            using var httpResponse = await this.httpClient.PatchAsync(url, content, cancellationToken: token);
+            httpResponse.EnsureSuccessStatusCode();
+            return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
+        }
+
         protected void AddBearerToken(string token)
         {
             if (string.IsNullOrEmpty(token))
