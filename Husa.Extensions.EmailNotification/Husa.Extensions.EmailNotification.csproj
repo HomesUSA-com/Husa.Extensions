@@ -1,28 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.EmailNotification</AssemblyName>
         <RootNamespace>Husa.Extensions.EmailNotification</RootNamespace>
         <Product>Email Notification Extensions</Product>
         <Description>Husa Email Notification</Description>
         <PackageId>Husa.Extensions.EmailNotification</PackageId>
-        <Version>2.3.0</Version>
+        <Version>2.4.0</Version>
         <PackageTags>Extensions; Email; Notification;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.3.0:
-            - Photo Request Rejected Photos template added.
+            Release 2.4.0:
+            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
+            - Removed Newtonsoft.Json
+            - Removed AutoMapper
+            - Updated all nuget packages to the latest version possible
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="11.0.1" />
-      <PackageReference Include="Enums.NET" Version="4.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Enums.NET" Version="4.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="7.0.0" />
       <PackageReference Include="sib_api_v3_sdk" Version="3.3.0" />
     </ItemGroup>
 </Project>
