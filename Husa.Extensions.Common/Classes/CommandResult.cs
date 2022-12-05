@@ -7,10 +7,16 @@ namespace Husa.Extensions.Common.Classes
     public sealed class CommandResult<T>
         where T : class
     {
+        public CommandResult()
+        {
+            this.Code = ResponseCode.Success;
+            this.Results = new List<T>();
+        }
+
         private CommandResult(ResponseCode code)
+            : this()
         {
             this.Code = code;
-            this.Results = new List<T>();
         }
 
         private CommandResult(ResponseCode code, string message)
