@@ -5,11 +5,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Media</Description>
         <PackageId>Husa.Extensions.Media</PackageId>
-        <Version>2.1.0</Version>
+        <Version>2.2.0</Version>
         <PackageReleaseNotes>
-            Release 2.1.0:
-            - Migrated to .Net 6.0
-            - Added a new method to BlobService
+            Release 2.2.0:
+            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
+            - Updated Microsoft.AspNetCore.Authentication.JwtBearer to latest possible
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
@@ -20,6 +20,6 @@
         <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.11" />
     </ItemGroup>
 </Project>
