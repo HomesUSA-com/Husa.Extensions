@@ -29,6 +29,7 @@ steps:
   inputs:
     command: restore
     projects: '**/Husa.Extensions.ServiceBus.csproj'
+    restoreArguments: '/property:Configuration=Release'
     feedsToUse: 'select'
     vstsFeed: 'f820f957-6781-4cd6-b5f5-e720c189507f/891ce0ed-37b7-4336-b1fe-079c0525a171'
 - task: DotNetCoreCLI@2

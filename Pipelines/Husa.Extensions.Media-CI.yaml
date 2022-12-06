@@ -29,6 +29,7 @@ steps:
   inputs:
     command: restore
     projects: '**/Husa.Extensions.Media.csproj'
+    restoreArguments: '/property:Configuration=Release'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
