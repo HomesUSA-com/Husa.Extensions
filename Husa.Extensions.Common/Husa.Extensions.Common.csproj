@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.5.2</Version>
+        <Version>2.6.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.5.2:
-            - public constructor added in CommandResult class
+            Release 2.6.0:
+            - Enum description added to marketcode
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
