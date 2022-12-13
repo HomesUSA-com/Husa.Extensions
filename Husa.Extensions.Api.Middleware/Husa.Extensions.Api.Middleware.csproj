@@ -1,16 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+      <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>      
       <AssemblyName>Husa.Extensions.Api.Middleware</AssemblyName>
       <RootNamespace>Husa.Extensions.Api.Middleware</RootNamespace>
       <Product>Api Middleware Extensions</Product>
       <Description>Husa Api Middleware</Description>
       <PackageId>Husa.Extensions.Api.Middleware</PackageId>
-      <Version>1.0.0</Version>
+      <Version>1.1.0</Version>
       <PackageTags>Extensions; Middleware; ApiMiddleware;</PackageTags>
       <PackageReleaseNotes>
-          Release 1.0.0:
-          - First version of middleware to include the product version as custom response header
+          Release 1.1.0:
+          - Added netstandad2.1 TargetFrameworks
       </PackageReleaseNotes>
       <IsPackable>true</IsPackable>
   </PropertyGroup>
