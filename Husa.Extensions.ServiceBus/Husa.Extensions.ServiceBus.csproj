@@ -6,22 +6,21 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>3.1.1</Version>
+        <Version>3.2.0</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.1.1:
-            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
-            - Updated all nuget packages to the latest version possible
+            Release 3.2.0:
+            - Downgraded Microsoft.Extensions.Options from version 7.0.0 to 6.0.0
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="2.5.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="2.7.0-dev001" />
         <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.11.1" />
         <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     </ItemGroup>
 
 </Project>

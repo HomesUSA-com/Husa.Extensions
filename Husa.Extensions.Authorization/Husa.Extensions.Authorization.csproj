@@ -5,19 +5,17 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>2.2.1</Version>
+        <Version>2.3.0</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.2.1:
-            - Updated the StyleCop.Analyzers and SonarAnalyzer.CSharp libraries versions and fixed the associated issues
-            - Created HusaClaimTypes constants class to unify all common claims
-            - Updated all nuget packages to the latest version possible
+            Release 2.3.0:
+            - Downgrade Microsoft.Extensions.Logging from 7.0.0 to 6.0.0
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     </ItemGroup>
 </Project>

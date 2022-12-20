@@ -6,11 +6,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>3.1.0</Version>
+        <Version>3.2.0</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.1.0:
-            - Add Patch method to HusaStandardClient
+            Release 3.2.0:
+            - Downgrade Microsoft.Extensions.Hosting.Abstractions from 7.0.0 to 6.0.0
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -23,7 +23,7 @@
         <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="6.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.11" />
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     </ItemGroup>
 
 </Project>
