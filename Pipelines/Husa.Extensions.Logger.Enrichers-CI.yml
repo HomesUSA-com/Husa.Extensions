@@ -4,7 +4,7 @@ pr:
       - master
   paths:
     include:
-      - Husa.Extensions.Cache
+      - Husa.Extensions.Logger.Enrichers
 
 trigger:
   branches:
@@ -12,7 +12,7 @@ trigger:
       - master
   paths:
     include:
-      - Husa.Extensions.Cache
+      - Husa.Extensions.Logger.Enrichers
 
 pool:
   vmImage: windows-latest
@@ -26,8 +26,8 @@ steps:
     SonarCloud: 'SonarCloudHomesUSA'
     organization: 'homesusa'
     scannerMode: 'MSBuild'
-    projectKey: 'Husa_Extensions.Cache'
-    projectName: 'Husa.Extensions.Cache'
+    projectKey: 'Husa_Extensions.Logger.Enrichers'
+    projectName: 'Husa.Extensions.Logger.Enrichers'
     extraProperties: |
       sonar.exclusions=**/obj/**,**/*.dll
       sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
@@ -36,12 +36,12 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: restore
-    projects: '**/Husa.Extensions.Cache.csproj'
+    projects: '**/Husa.Extensions.Logger.Enrichers.csproj'
     restoreArguments: '/property:Configuration=Release'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '**/Husa.Extensions.Cache.csproj'
+    projects: '**/Husa.Extensions.Logger.Enrichers.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
@@ -51,7 +51,7 @@ steps:
   condition: ne(variables.isPullRequest, true)
   inputs:
     command: 'pack'
-    packagesToPack: '**/Husa.Extensions.Cache.csproj'
+    packagesToPack: '**/Husa.Extensions.Logger.Enrichers.csproj'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'

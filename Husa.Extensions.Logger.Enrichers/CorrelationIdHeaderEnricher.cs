@@ -51,7 +51,7 @@ namespace Husa.Extensions.Logger.Enrichers
             return correlationId;
         }
 
-        private string? GetHeader()
+        private string GetHeader()
         {
             if (this.contextAccessor.HttpContext.Request.Headers.TryGetValue(HeaderKey, out var values))
             {

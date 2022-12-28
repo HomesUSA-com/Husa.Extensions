@@ -1,3 +1,11 @@
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Husa.Extensions.Linq
+
 trigger:
   branches:
     include:
