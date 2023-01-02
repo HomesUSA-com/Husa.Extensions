@@ -4,6 +4,8 @@ namespace Husa.Extensions.Api.Client
     using System.IdentityModel.Tokens.Jwt;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+    using IdentityModel.Client;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Net.Http.Headers;
@@ -26,6 +28,18 @@ namespace Husa.Extensions.Api.Client
             });
 
             return services;
+        }
+
+        public static async Task<string> GetPasswordToken(this HttpClient httpClient, PasswordTokenRequest tokenRequest)
+        {
+            // request the access token token
+            var tokenResponse = await httpClient.RequestPasswordTokenAsync(tokenRequest);
+            if (tokenResponse.IsError)
+            {
+                throw new HttpRequestException(tokenResponse.Error);
+            }
+
+            return tokenResponse.AccessToken;
         }
 
         public static void AddBearerToken(this HttpClient httpClient, string authToken)

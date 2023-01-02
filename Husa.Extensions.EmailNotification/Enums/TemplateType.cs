@@ -23,5 +23,7 @@ namespace Husa.Extensions.EmailNotification.Enums
         TripChargeRejected = 90,
         MessageToPhotographer = 92,
         PhotoRequestRejectedPhotos = 93,
+        OverdueEstimatedCompletionDate = 95,
+        HomesToListNow = 96,
     }
 }
