@@ -38,7 +38,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.EmailNotifi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Api.Middleware", "Husa.Extensions.Api.Middleware\Husa.Extensions.Api.Middleware.csproj", "{6EC63994-1AE7-471F-8576-6E73AC12F7D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Logger.Enrichers", "Husa.Extensions.Logger.Enrichers\Husa.Extensions.Logger.Enrichers.csproj", "{4F94D211-B2DB-49A5-9440-B8AE377105DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Logger.Enrichers", "Husa.Extensions.Logger.Enrichers\Husa.Extensions.Logger.Enrichers.csproj", "{4F94D211-B2DB-49A5-9440-B8AE377105DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Logger.Enrichers.Tests", "Husa.Extensions.Logger.Enrichers.Tests\Husa.Extensions.Logger.Enrichers.Tests.csproj", "{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +104,10 @@ Global
 		{4F94D211-B2DB-49A5-9440-B8AE377105DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F94D211-B2DB-49A5-9440-B8AE377105DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F94D211-B2DB-49A5-9440-B8AE377105DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

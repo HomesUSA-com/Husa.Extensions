@@ -5,12 +5,14 @@
     <PackageId>Husa.Extensions.Logger.Enrichers</PackageId>
     <AssemblyName>Husa.Extensions.Logger.Enrichers</AssemblyName>
     <RootNamespace>Husa.Extensions.Logger.Enrichers</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Product>Logger Custom Enrichers</Product>
     <PackageTags>Extensions; Logger; Enrichers</PackageTags>
     <PackageReleaseNotes>
-       Release 0.1.0:
-       -Added CorrelationIdHeaderEnricher to correlate logs between apps.
+       Release 0.2.0:
+       -Replaced internal access modifier to public where needed
+       -Added Tests
+       -Removed repeated packages
     </PackageReleaseNotes>
     <IsPackable>true</IsPackable>
     </PropertyGroup>

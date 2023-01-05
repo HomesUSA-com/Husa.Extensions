@@ -18,7 +18,7 @@ namespace Husa.Extensions.Logger.Enrichers
         {
         }
 
-        internal CorrelationIdHeaderEnricher(IHttpContextAccessor contextAccessor)
+        public CorrelationIdHeaderEnricher(IHttpContextAccessor contextAccessor)
         {
             this.contextAccessor = contextAccessor;
         }
