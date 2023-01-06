@@ -25,5 +25,8 @@ namespace Husa.Extensions.EmailNotification.Enums
         PhotoRequestRejectedPhotos = 93,
         OverdueEstimatedCompletionDate = 95,
         HomesToListNow = 96,
+        InadequateRemarks = 97,
+        BackOnMarket = 98,
+        IncompleteChangeRequest = 99,
     }
 }

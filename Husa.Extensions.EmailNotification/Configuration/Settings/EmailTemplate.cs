@@ -9,6 +9,6 @@ namespace Husa.Extensions.EmailNotification.Configuration.Settings
 
         public string Subject { get; set; }
 
-        public IEnumerable<EmailParameter> Parameters { get; set; }
+        public IEnumerable<string> Parameters { get; set; }
     }
 }

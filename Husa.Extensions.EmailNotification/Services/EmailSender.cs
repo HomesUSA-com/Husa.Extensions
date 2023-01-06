@@ -3,13 +3,11 @@ namespace Husa.Extensions.EmailNotification.Services
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using EnumsNET;
     using Husa.Extensions.EmailNotification.Configuration.Options;
     using Husa.Extensions.EmailNotification.Configuration.Settings;
     using Husa.Extensions.EmailNotification.Enums;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json.Linq;
     using sib_api_v3_sdk.Api;
     using sib_api_v3_sdk.Model;
 
@@ -29,7 +27,21 @@ namespace Husa.Extensions.EmailNotification.Services
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public void SendEmail(string recipient, string name, IReadOnlyDictionary<EmailParameter, string> emailParameters, TemplateType templateType = TemplateType.NoTemplate)
+        public void SendEmail<TEmailParameterValue>(
+            string recipient,
+            string name,
+            IReadOnlyDictionary<EmailParameter, TEmailParameterValue> emailParameters,
+            TemplateType templateType = TemplateType.NoTemplate)
+        {
+            this.SendEmail<EmailParameter, TEmailParameterValue>(recipient, name, emailParameters, templateType);
+        }
+
+        public void SendEmail<TEmailParameterKey, TEmailParameterValue>(
+            string recipient,
+            string name,
+            IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters,
+            TemplateType templateType = TemplateType.NoTemplate)
+            where TEmailParameterKey : struct
         {
             if (emailParameters is null)
             {
@@ -82,20 +94,24 @@ namespace Husa.Extensions.EmailNotification.Services
 
             public string Subject { get; set; }
 
-            public JObject Parameters { get; set; }
+            public Dictionary<string, object> Parameters { get; set; }
 
-            public static EmailParameters ConfigureForTemplate(IReadOnlyDictionary<EmailParameter, string> emailParameters, EmailTemplate templateOptions)
+            public static EmailParameters ConfigureForTemplate<TEmailParameterKey, TEmailParameterValue>(
+                IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters,
+                EmailTemplate templateOptions)
+            where TEmailParameterKey : struct
             {
                 var parameters = new EmailParameters(templateOptions.TemplateType, templateOptions.Subject);
 
                 foreach (var parameter in templateOptions.Parameters)
                 {
-                    if (!emailParameters.TryGetValue(parameter, out var emailParam))
+                    if (!Enum.TryParse(typeof(TEmailParameterKey), parameter, out var paramEnum) || !emailParameters.TryGetValue((TEmailParameterKey)paramEnum, out var emailParam))
                     {
                         throw new ArgumentException($"The value of '{parameter}' in '{nameof(emailParameters)}' cannot be null or whitespace.", nameof(emailParameters));
                     }
 
-                    parameters.Parameters.Add(parameter.AsString(EnumFormat.Description), emailParam);
+                    var enumDescription = EnumExtensions.GetEnumDescription<TEmailParameterKey>(parameter);
+                    parameters.Parameters.Add(enumDescription, emailParam);
                 }
 
                 return parameters;
