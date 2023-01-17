@@ -28,5 +28,6 @@ namespace Husa.Extensions.EmailNotification.Enums
         InadequateRemarks = 97,
         BackOnMarket = 98,
         IncompleteChangeRequest = 99,
+        ClientComparisonReport = 100,
     }
 }

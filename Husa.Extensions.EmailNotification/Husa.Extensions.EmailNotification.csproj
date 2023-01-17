@@ -5,11 +5,11 @@
         <Product>Email Notification Extensions</Product>
         <Description>Husa Email Notification</Description>
         <PackageId>Husa.Extensions.EmailNotification</PackageId>
-        <Version>2.7.0</Version>
+        <Version>2.8.0</Version>
         <PackageTags>Extensions; Email; Notification;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.7.0:
-            - Changed email params from string to object
+            Release 2.8.0:
+            - Appended 'ClientComparisonReport' constant in TemplateType enum
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
