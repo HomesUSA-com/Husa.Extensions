@@ -26,5 +26,8 @@ namespace Husa.Extensions.Common.Enums
         [Display(Name = "Waco")]
         [Description("Waco")]
         Waco,
+        [Display(Name = "CTX")]
+        [Description("CTX")]
+        CTX,
     }
 }

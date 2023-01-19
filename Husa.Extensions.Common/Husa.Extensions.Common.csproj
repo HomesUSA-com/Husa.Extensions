@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.7.0</Version>
+        <Version>2.8.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.7.0:
-            - Downgrade Microsoft.Extensions.Logging.Abstractions from 7.0.0 to 6.0.0
+            Release 2.8.0:
+            - Appended 'CTX' market in the MarketCode enum.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
