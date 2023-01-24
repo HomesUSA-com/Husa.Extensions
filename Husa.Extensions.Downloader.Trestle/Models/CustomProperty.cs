@@ -1,0 +1,101 @@
+namespace Husa.Extensions.Downloader.Trestle.Models
+{
+    using System;
+    using Husa.Extensions.Downloader.Trestle.Models.Enums;
+
+    public class CustomProperty
+    {
+        public string AboveGradeFinishedAreaRange { get; set; }
+        public AreaSource AboveGradeFinishedAreaRangeSource { get; set; }
+        public AreaUnits AboveGradeFinishedAreaRangeUnits { get; set; }
+        public string AboveGradeUnfinishedAreaRange { get; set; }
+        public AreaSource AboveGradeUnfinishedAreaRangeSource { get; set; }
+        public AreaUnits AboveGradeUnfinishedAreaRangeUnits { get; set; }
+        public string AdditionalInfo1 { get; set; }
+        public string AdditionalInfo2 { get; set; }
+        public string AdditionalInfo3 { get; set; }
+        public AvailabilityType AvailabilityType { get; set; }
+        public string BelowGradeFinishedAreaRange { get; set; }
+        public AreaSource BelowGradeFinishedAreaRangeSource { get; set; }
+        public AreaUnits BelowGradeFinishedAreaRangeUnits { get; set; }
+        public string BelowGradeUnfinishedAreaRange { get; set; }
+        public AreaSource BelowGradeUnfinishedAreaRangeSource { get; set; }
+        public AreaUnits BelowGradeUnfinishedAreaRangeUnits { get; set; }
+        public string BoatDockAccommodates { get; set; }
+        public decimal BoatDockHeight { get; set; }
+        public string BoatDockSlipDescription { get; set; }
+        public BoatDockSlipFeatures BoatDockSlipFeatures { get; set; }
+        public bool BoatDockYN { get; set; }
+        public bool BoatSlipYN { get; set; }
+        public string BuildingAreaTotalRange { get; set; }
+        public AreaSource BuildingAreaTotalRangeSource { get; set; }
+        public AreaUnits BuildingAreaTotalRangeUnits { get; set; }
+        public string ComplexName { get; set; }
+        public string ConsumerRemarks { get; set; }
+        public string CustomFields { get; set; }
+        public string DevelopmentName { get; set; }
+        public string FractionalShare { get; set; }
+        public decimal GuestHouseAreaTotal { get; set; }
+        public AreaSource GuestHouseAreaTotalSource { get; set; }
+        public AreaUnits GuestHouseAreaTotalUnits { get; set; }
+        public string GuestHouseDescription { get; set; }
+        public bool GuestHouseYN { get; set; }
+        public GulfAccessType GulfAccessType { get; set; }
+        public bool GulfAccessYN { get; set; }
+        public bool HumanModifiedYN { get; set; }
+        public string IDXContactInfo { get; set; }
+        public bool InternetEntireListingDisplayYN { get; set; }
+        public string LakeChainName { get; set; }
+        public string LakeId { get; set; }
+        public string LakeName { get; set; }
+        public string LakeSize { get; set; }
+        public LandTenure LandTenure { get; set; }
+        public bool LastMonthRentReqYN { get; set; }
+        public decimal LeaseAmountPerArea { get; set; }
+        public LeaseAmountPerAreaUnit LeaseAmountPerAreaUnit { get; set; }
+        public string LeaseTermsDescription { get; set; }
+        public string ListAgentKey { get; set; }
+        public string ListingId { get; set; }
+        public string ListingKey { get; set; }
+        public string ListOfficeKey { get; set; }
+        public string ListOfficeMlsId { get; set; }
+        public string LivingAreaRange { get; set; }
+        public AreaSource LivingAreaRangeSource { get; set; }
+        public AreaSource LivingAreaRangeUnits { get; set; }
+        public string Location { get; set; }
+        public string LotSizeRange { get; set; }
+        public LotSizeSource LotSizeRangeSource { get; set; }
+        public LotSizeUnits LotSizeRangeUnits { get; set; }
+        public Membership Membership { get; set; }
+        public decimal MembershipFee { get; set; }
+        public FeeFrequency MembershipFeeFrequency { get; set; }
+        public bool MembershipRequiredYN { get; set; }
+        public MineralRights MineralRights { get; set; }
+        public DateTimeOffset ModificationTimestamp { get; set; }
+        public string MonthlyRate { get; set; }
+        public int NumberOfBoatDocks { get; set; }
+        public int NumberOfBoatSlips { get; set; }
+        public DateTime OffMarketDate { get; set; }
+        public string OffSeasonRate { get; set; }
+        public string OriginatingSystemKey { get; set; }
+        public string OriginatingSystemName { get; set; }
+        public string OriginatingSystemSubName { get; set; }
+        public Permission Permission { get; set; }
+        public string PermissionPrivate { get; set; }
+        public string PotentialShortSale { get; set; }
+        public decimal PricePerArea { get; set; }
+        public PricePerAreaUnit PricePerAreaUnit { get; set; }
+        public string PrivateShowingInstructions { get; set; }
+        public string ProjectName { get; set; }
+        public Restrictions Restrictions { get; set; }
+        public string RiverName { get; set; }
+        public string SaleOrLeaseIncludes { get; set; }
+        public string SeasonRate { get; set; }
+        public int SourceSupplementPublicCount { get; set; }
+        public StandardStatus StandardStatus { get; set; }
+        public string TaxYearRange { get; set; }
+        public string UnitLocation { get; set; }
+        public bool WaterAccessYN { get; set; }
+        public string WeeklyRate { get; set; }
+    }
+}

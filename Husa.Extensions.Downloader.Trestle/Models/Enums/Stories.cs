@@ -1,0 +1,31 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum Stories
+    {
+        Eight,
+        Eighteen,
+        Eleven,
+        Fifteen,
+        Five,
+        Four,
+        Fourteen,
+        Nine,
+        Nineteen,
+        NotApplicable,
+        One,
+        OneandOneHalf,
+        Seven,
+        Seventeen,
+        Six,
+        Sixteen,
+        Ten,
+        Thirteen,
+        Thirty,
+        Three,
+        Twelve,
+        Twenty,
+        Two,
+        TwoandOneHalf,
+        Zero,
+    }
+}

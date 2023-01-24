@@ -1,0 +1,35 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum PetsAllowed
+    {
+        BirdOK,
+        BreedRestrictions,
+        BuildingCatsOK,
+        BuildingDogsOK,
+        BuildingNo,
+        BuildingSizeLimit,
+        BuildingYes,
+        Call,
+        CatsOK,
+        ChickensOK,
+        Conditional,
+        DogsOK,
+        FishOK,
+        Negotiable,
+        No,
+        NoBreedRestrictions,
+        NoDogs,
+        NoPetRestrictions,
+        NoSizeLimit,
+        NumberLimit,
+        Other,
+        OwnerOnly,
+        PetDeposit,
+        PetFee,
+        PetRestrictions,
+        ReptileOK,
+        SeeRemarks,
+        SizeLimit,
+        Yes,
+    }
+}

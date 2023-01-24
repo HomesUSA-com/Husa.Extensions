@@ -1,0 +1,38 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum RentIncludes
+    {
+        Advertising,
+        AirConditioning,
+        AllUtilities,
+        AssociationDues,
+        BuildingMaintenance,
+        CableTV,
+        CommonAreaMaintenance,
+        Electricity,
+        FitnessCenter,
+        Gardener,
+        Gas,
+        Heat,
+        HotWater,
+        HVAC,
+        Insurance,
+        Internet,
+        LaundryFacilities,
+        MaidService,
+        Management,
+        None,
+        Other,
+        Parking,
+        PestControl,
+        Pool,
+        SecuritySystem,
+        SeeRemarks,
+        Sewer,
+        SnowRemoval,
+        SomeUtilities,
+        Taxes,
+        TrashCollection,
+        Water,
+    }
+}

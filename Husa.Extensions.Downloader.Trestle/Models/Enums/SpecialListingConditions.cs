@@ -1,0 +1,38 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum SpecialListingConditions
+    {
+        AffordableHousingSubsidy,
+        AllowanceFlooring,
+        AllowanceRoofing,
+        Auction,
+        BankruptcyProperty,
+        BuilderOwned,
+        Conservatorship,
+        CorporateListing,
+        Estate,
+        GovernmentOwned,
+        GSEOwned,
+        HUDOwned,
+        InForeclosure,
+        ListedAsIs,
+        Model,
+        NoSmoking,
+        None,
+        NoticeOfDefault,
+        Other,
+        PetRestrictions,
+        PreForeclosure,
+        ProbateListing,
+        RealEstateOwned,
+        Relocation,
+        Section8Accepted,
+        SeeAgent,
+        SeeRemarks,
+        ShortSale,
+        Standard,
+        ThirdPartyApproval,
+        Trust,
+        VAOwned,
+    }
+}

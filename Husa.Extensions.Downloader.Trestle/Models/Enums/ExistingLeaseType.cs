@@ -1,0 +1,29 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum ExistingLeaseType
+    {
+        AbsoluteNet,
+        BasePercentage,
+        CPIAdjustment,
+        DepositRequired,
+        EscalationClause,
+        Fixed,
+        FullService,
+        Gross,
+        GroundLease,
+        IndustrialGross,
+        Modified,
+        ModifiedGross,
+        Net,
+        NN,
+        NNN,
+        None,
+        NotforLease,
+        Oral,
+        Other,
+        Percentage,
+        SeeAgent,
+        SeeRemarks,
+        Sublease,
+    }
+}

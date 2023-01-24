@@ -1,0 +1,31 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum Skirt
+    {
+        Alcan,
+        Aluminum,
+        Block,
+        Brick,
+        CementBoard,
+        Combination,
+        Concrete,
+        Fiberglass,
+        Flagstone,
+        Frame,
+        Glass,
+        Masonite,
+        Metal,
+        None,
+        Other,
+        SeeRemarks,
+        Siding,
+        Steel,
+        Stone,
+        Stucco,
+        Synthetic,
+        Unknown,
+        Veneer,
+        Vinyl,
+        Wood,
+    }
+}

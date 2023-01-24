@@ -1,0 +1,30 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum GreenEnergyEfficient
+    {
+        Appliances,
+        Construction,
+        Doors,
+        ExposureShade,
+        HealthyLivingFeatures,
+        HVAC,
+        Incentives,
+        Insulation,
+        Lighting,
+        Materials,
+        Other,
+        RadiantAtticBarrier,
+        RainFreezeSensors,
+        Roof,
+        SeeRemarks,
+        SolarFeatures,
+        SolarPanels,
+        SolarPanelsLeased,
+        SolarScreens,
+        Sustainability,
+        Thermostat,
+        WaterConservation,
+        WaterHeater,
+        Windows,
+    }
+}

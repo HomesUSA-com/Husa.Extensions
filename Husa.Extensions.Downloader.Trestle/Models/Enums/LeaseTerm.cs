@@ -1,0 +1,29 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum LeaseTerm
+    {
+        Item12Months,
+        Item24Months,
+        Item3Months,
+        Item3to5Years,
+        Item36Months,
+        Item4Years,
+        Item5Years,
+        Item6Years,
+        Item6Months,
+        Item9Months,
+        Daily,
+        LessThan1Year,
+        LongTerm,
+        MonthToMonth,
+        Negotiable,
+        None,
+        Other,
+        RenewalOption,
+        Seasonal,
+        SeeRemarks,
+        ShortTermLease,
+        Sublease,
+        Weekly,
+    }
+}

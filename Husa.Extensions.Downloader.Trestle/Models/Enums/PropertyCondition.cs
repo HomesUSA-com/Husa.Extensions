@@ -1,0 +1,32 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum PropertyCondition
+    {
+        AdditionsAlterations,
+        AverageCondition,
+        BelowAverage,
+        BuildingPermit,
+        Excellent,
+        Fixer,
+        GoodCondition,
+        NeverOccupied,
+        NewConstruction,
+        Other,
+        PoorCondition,
+        RepairsCosmetic,
+        RepairsMajor,
+        Resale,
+        SeeDisclosure,
+        SeeRemarks,
+        ShowsWell,
+        TearDownValueinLand,
+        TermiteClearance,
+        ToBeBuilt,
+        Turnkey,
+        UnderConstruction,
+        UnderRenovation,
+        Unknown,
+        UpdatedRemodeled,
+        VeryGoodCondition,
+    }
+}

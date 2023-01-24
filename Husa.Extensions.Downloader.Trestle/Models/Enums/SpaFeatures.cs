@@ -1,0 +1,30 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum SpaFeatures
+    {
+        AboveGround,
+        Association,
+        Bath,
+        Community,
+        Conventional,
+        ElectricHeat,
+        Fiberglass,
+        GasHeat,
+        Gunite,
+        Heated,
+        HotTub,
+        InGround,
+        IndoorHotTub,
+        NoPermits,
+        None,
+        OutdoorHotTub,
+        Permits,
+        Private,
+        RoofTop,
+        Sauna,
+        Screened,
+        SeeRemarks,
+        SolarHeat,
+        SteamRoom,
+    }
+}

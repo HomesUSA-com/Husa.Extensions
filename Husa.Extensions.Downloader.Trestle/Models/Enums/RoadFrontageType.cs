@@ -1,0 +1,35 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum RoadFrontageType
+    {
+        AccessisSeasonal,
+        AllWeatherRoad,
+        Alley,
+        CityStreet,
+        CountryRoad,
+        CountyRoad,
+        CulDeSac,
+        DeededAccess,
+        Easement,
+        FarmtoMarketRoad,
+        Freeway,
+        FrontageRoad,
+        Highway,
+        Interchange,
+        Interstate,
+        MainThoroughfare,
+        None,
+        NotApplicable,
+        Other,
+        PrivateRoad,
+        PublicRoad,
+        RightofWay,
+        SeeRemarks,
+        ServiceRoad,
+        Shared,
+        StateRoad,
+        TownRoad,
+        Unimproved,
+        YearRound,
+    }
+}

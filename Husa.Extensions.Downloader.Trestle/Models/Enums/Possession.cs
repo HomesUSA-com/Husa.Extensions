@@ -1,0 +1,31 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum Possession
+    {
+        BeforeClosing,
+        CloseOfEscrow,
+        ClosePlus,
+        ClosePlus1Day,
+        ClosePlus2Days,
+        ClosePlus3Days,
+        ClosePlus3to5Days,
+        ClosePlus30Days,
+        ClosePlus30to60Days,
+        ClosePlus5to30Days,
+        ClosePlus60to90Days,
+        Closing,
+        ClosingFunding,
+        DeliveryOfDeed,
+        Immediately,
+        Negotiable,
+        Other,
+        Over90Days,
+        RentalAgreement,
+        SeeAgent,
+        SeeRemarks,
+        SellerRentBack,
+        SpecifiedDate,
+        SubjectToTenantRights,
+        TimeofTransfer,
+    }
+}
