@@ -2,38 +2,33 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Net.Http.Json;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
     using System.Xml;
-    using Husa.Extensions.Downloader.Trestle.Helpers.Extensions;
+    using Husa.Extensions.Downloader.Trestle.Contracts;
     using Husa.Extensions.Downloader.Trestle.Models;
     using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     public class TrestleRequester : ITrestleRequester
     {
+        private const string PAGESIZE = "1000";
         private readonly MarketOptions connectionOptions;
-        private readonly JsonSerializerOptions jsonSerializerOptions;
+        private readonly JsonSerializerSettings jsonSerializerSettings;
         private readonly IHttpClientFactory httpClientFactory;
 
         public TrestleRequester(IOptions<MarketOptions> connectionOptions, IHttpClientFactory httpClientFactory)
         {
             this.connectionOptions = connectionOptions.Value;
             this.httpClientFactory = httpClientFactory;
-            this.jsonSerializerOptions = new JsonSerializerOptions().SetConfiguration();
-            this.jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-        }
-
-        public TrestleRequester(IOptions<MarketOptions> connectionOptions, IOptions<JsonSerializerOptions> jsonSerializerOptions, IHttpClientFactory httpClientFactory)
-        {
-            this.connectionOptions = connectionOptions.Value ?? throw new ArgumentNullException(nameof(connectionOptions));
-            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-            this.jsonSerializerOptions = jsonSerializerOptions.Value ?? throw new ArgumentNullException(nameof(jsonSerializerOptions));
-            this.jsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            this.jsonSerializerSettings = new JsonSerializerSettings 
+            { 
+                NullValueHandling = NullValueHandling.Ignore,
+                Error = HandleDeserializationError,
+            };
         }
 
         public async Task<HttpClient> GetAuthenticatedClient()
@@ -50,33 +45,38 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             client.BaseAddress = new Uri(this.connectionOptions.BaseUrl);
             var httpResponse = await client.PostAsync(this.connectionOptions.LoginUrl, stringContent);
             httpResponse.EnsureSuccessStatusCode();
-            var result = await httpResponse.Content.ReadFromJsonAsync<AuthenticationResult>(this.jsonSerializerOptions);
-
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<AuthenticationResult>(content, this.jsonSerializerSettings);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
             return client;
         }
 
-        public async Task<ODataResponse<T>> GetData<T>(HttpClient client, string resource, string query)
+        public async Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter)
         {
-            var uri = $"odata/{resource}";
-            if (query != null)
+            var uri = $"odata/{resource}?&$top={PAGESIZE}";
+            if (filter != null)
             {
-                uri += "?" + query;
+                uri += $"&$filter={filter}";
             }
 
-            var response = await client.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-#pragma warning disable SYSLIB0020 // El tipo o el miembro están obsoletos
-            var options = new JsonSerializerOptions
+            var result = await this.GetData<T>(client, uri);
+            return result;
+        }
+
+        private async Task<IEnumerable<T>> GetData<T>(HttpClient client, string nextLink)
+        {
+            var httpResponse = await client.GetAsync(nextLink);
+            httpResponse.EnsureSuccessStatusCode();
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<ODataResponse<T>>(content, this.jsonSerializerSettings);
+            var result = response.Value;
+
+
+            if (response.NextLink != null)
             {
-                IgnoreNullValues = true,
-                WriteIndented = true
-            };
-#pragma warning restore SYSLIB0020 // El tipo o el miembro están obsoletos
-            var content = await response.Content.ReadAsStringAsync();
-            var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
-            var result = JsonConvert.DeserializeObject<ODataResponse<T>>(content, serializerSettings);
+                result = result.Concat(await this.GetData<T>(client, response.NextLink));
+            }
             return result;
         }
 
@@ -87,6 +87,10 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(body);
             return xmlDocument;
+        }
+        public void HandleDeserializationError(object sender, ErrorEventArgs errorArgs)
+        {
+            errorArgs.ErrorContext.Handled = true;
         }
     }
 }

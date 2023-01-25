@@ -4,7 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
     using Microsoft.Spatial;
     using Husa.Extensions.Downloader.Trestle.Models.Enums;
 
-    public  class Property
+    public class Property
     {
         public decimal AboveGradeFinishedArea { get; set; }
         public AreaSource AboveGradeFinishedAreaSource { get; set; }
@@ -484,7 +484,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public decimal PastureArea { get; set; }
         public PatioAndPorchFeatures PatioAndPorchFeatures { get; set; }
         public DateTimeOffset PendingTimestamp { get; set; }
-        public Permission Permission { get; set; }
+        public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
         public decimal PestControlExpense { get; set; }
         public decimal PetDeposit { get; set; }
