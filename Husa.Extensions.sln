@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Logger.Enri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Logger.Enrichers.Tests", "Husa.Extensions.Logger.Enrichers.Tests\Husa.Extensions.Logger.Enrichers.Tests.csproj", "{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Downloader.Trestle", "Husa.Extensions.Downloader.Trestle\Husa.Extensions.Downloader.Trestle.csproj", "{BC02416D-B006-44E5-8839-AAF2FE035700}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D4E5CC8-DC25-4DB1-B837-07CD681B5A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC02416D-B006-44E5-8839-AAF2FE035700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC02416D-B006-44E5-8839-AAF2FE035700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC02416D-B006-44E5-8839-AAF2FE035700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC02416D-B006-44E5-8839-AAF2FE035700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

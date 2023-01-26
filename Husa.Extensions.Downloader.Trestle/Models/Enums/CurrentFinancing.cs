@@ -1,0 +1,30 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum CurrentFinancing
+    {
+        Assumable,
+        CalVetLoan,
+        Cash,
+        Contract,
+        Conventional,
+        ExistingBonds,
+        FannieMae,
+        FHA,
+        FHA203b,
+        FHA203k,
+        FreddieMac,
+        GovernmentLoan,
+        LeasedRenewables,
+        None,
+        Other,
+        PowerPurchaseAgreement,
+        Private,
+        PropertyAssessedCleanEnergy,
+        SeeRemarks,
+        TrustDeed,
+        USDA,
+        VA,
+        VANoLoan,
+        VANoNoLoan,
+    }
+}

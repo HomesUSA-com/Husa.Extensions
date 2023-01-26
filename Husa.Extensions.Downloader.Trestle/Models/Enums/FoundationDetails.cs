@@ -1,0 +1,32 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum FoundationDetails
+    {
+        Basement,
+        Block,
+        BrickMortar,
+        Cellar,
+        Combination,
+        ConcretePerimeter,
+        Crawlspace,
+        FHAApproved,
+        HUDApproved,
+        None,
+        NotPermanent,
+        Other,
+        PerimeterWall,
+        Permanent,
+        PierJacks,
+        PillarPostPier,
+        Poured,
+        QuakeBracing,
+        Raised,
+        Sealed,
+        SeeRemarks,
+        Skirt,
+        Slab,
+        StemWall,
+        Stone,
+        TieDown,
+    }
+}
