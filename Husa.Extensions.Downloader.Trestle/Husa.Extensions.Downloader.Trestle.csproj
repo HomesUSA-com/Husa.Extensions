@@ -7,10 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <PackageReleaseNotes>
-            Release 1.0.0:
-            - First Version of client library
+            Release 1.0.1:
+            - JsonConverter added to Office model
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
