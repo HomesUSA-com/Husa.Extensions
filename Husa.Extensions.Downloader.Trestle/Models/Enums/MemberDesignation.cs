@@ -1,5 +1,7 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
+    using System.Runtime.Serialization;
+
     public enum MemberDesignation
     {
         AccreditedAppraiserCanadianInstitute,
@@ -55,9 +57,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CounselorofRealEstateCRE,
         DesignatedAgencyRepresentatives,
         DistinguishedRealEstateInstructor,
-#pragma warning disable SA1300 // Element should begin with upper-case letter
-        ePRO,
-#pragma warning restore SA1300 // Element should begin with upper-case letter
+        [EnumMember(Value = "ePRO")]
+        EPRO,
         EcoBroker,
         FellowoftheRealEstateInstitute,
         FellowoftheRealEstateInstituteAppraisalSpecialist,

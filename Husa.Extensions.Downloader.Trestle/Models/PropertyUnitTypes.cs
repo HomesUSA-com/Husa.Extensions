@@ -14,7 +14,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public DateTimeOffset ModificationTimestamp { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
-        public Permission Permission { get; set; }
+        public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
         public decimal UnitTypeActualRent { get; set; }
         public string UnitTypeActualRentRange { get; set; }
@@ -24,7 +24,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public decimal UnitTypeDeposit { get; set; }
         public string UnitTypeDescription { get; set; }
         public bool UnitTypeFireplaceYN { get; set; }
-        public Furnished UnitTypeFurnished { get; set; }
+        public Furnished? UnitTypeFurnished { get; set; }
         public bool UnitTypeGarageAttachedYN { get; set; }
         public decimal UnitTypeGarageSpaces { get; set; }
         public string UnitTypeKey { get; set; }
@@ -34,12 +34,12 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool UnitTypeMonthToMonthYN { get; set; }
         public int UnitTypeNumFullBaths { get; set; }
         public int UnitTypeNumHalfBaths { get; set; }
-        public UnitTypeOccupantType UnitTypeOccupantType { get; set; }
+        public UnitTypeOccupantType? UnitTypeOccupantType { get; set; }
         public decimal UnitTypePetDeposit { get; set; }
         public bool UnitTypePetDepositPerPetYN { get; set; }
         public int UnitTypeProForma { get; set; }
         public decimal UnitTypeTotalRent { get; set; }
-        public UnitTypeType UnitTypeType { get; set; }
+        public UnitTypeType? UnitTypeType { get; set; }
         public string UnitTypeUnitNum { get; set; }
         public int UnitTypeUnitsTotal { get; set; }
     }

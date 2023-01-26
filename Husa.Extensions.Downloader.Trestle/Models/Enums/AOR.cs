@@ -1,5 +1,7 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
+    using System.Runtime.Serialization;
+
     public enum AOR
     {
         AbileneAssociationOfRealtors,
@@ -268,9 +270,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         HoustonAssociationofRealtors,
         HuntsvilleAreaAssociationofRealtorsInc,
         HuronPerthAssociationofREALTORS,
-#pragma warning disable SA1300 // Element should begin with upper-case letter
-        iTech,
-#pragma warning restore SA1300 // Element should begin with upper-case letter
+        [EnumMember(Value = "iTech")]
+        ITech,
         InclineVillageBoardofRealtors,
         IndianRiver,
         InformationandRealEstateServices,

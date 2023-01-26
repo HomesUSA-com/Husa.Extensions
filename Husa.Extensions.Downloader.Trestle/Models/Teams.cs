@@ -13,9 +13,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string OriginatingSystemKey { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
-        public Permission Permission { get; set; }
+        public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
-        public SocialMediaType SocialMediaType { get; set; }
+        public SocialMediaType? SocialMediaType { get; set; }
         public string SourceSystemID { get; set; }
         public string SourceSystemKey { get; set; }
         public string SourceSystemName { get; set; }
@@ -23,7 +23,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamAddress2 { get; set; }
         public string TeamCarrierRoute { get; set; }
         public string TeamCity { get; set; }
-        public Country TeamCountry { get; set; }
+        public Country? TeamCountry { get; set; }
         public string TeamCountyOrParish { get; set; }
         public string TeamDescription { get; set; }
         public string TeamDirectPhone { get; set; }
@@ -37,7 +37,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamLeadMlsId { get; set; }
         public string TeamLeadNationalAssociationId { get; set; }
         public string TeamLeadStateLicense { get; set; }
-        public StateOrProvince TeamLeadStateLicenseState { get; set; }
+        public StateOrProvince? TeamLeadStateLicenseState { get; set; }
         public string TeamMobilePhone { get; set; }
         public string TeamName { get; set; }
         public string TeamOfficePhone { get; set; }
@@ -46,8 +46,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamPostalCodePlus4 { get; set; }
         public string TeamPreferredPhone { get; set; }
         public string TeamPreferredPhoneExt { get; set; }
-        public StateOrProvince TeamStateOrProvince { get; set; }
-        public TeamStatus TeamStatus { get; set; }
+        public StateOrProvince? TeamStateOrProvince { get; set; }
+        public TeamStatus? TeamStatus { get; set; }
         public string TeamTollFreePhone { get; set; }
         public string TeamVoiceMail { get; set; }
         public string TeamVoiceMailExt { get; set; }

@@ -82,6 +82,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Title,
         TitleInsurance,
         TopographicalSurvey,
+        TopoMap,
         TrafficCounts,
         UnitMixSchedule,
         Warranties,

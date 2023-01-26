@@ -5,30 +5,27 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Net.Http.Json;
+    using System.Text.Json;
     using System.Threading.Tasks;
     using System.Xml;
     using Husa.Extensions.Downloader.Trestle.Contracts;
+    using Husa.Extensions.Downloader.Trestle.Helpers.Converters;
     using Husa.Extensions.Downloader.Trestle.Models;
     using Microsoft.Extensions.Options;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Serialization;
 
     public class TrestleRequester : ITrestleRequester
     {
         private const string PAGESIZE = "1000";
         private readonly MarketOptions connectionOptions;
-        private readonly JsonSerializerSettings jsonSerializerSettings;
+        private readonly JsonSerializerOptions jsonSerializerOptions;
         private readonly IHttpClientFactory httpClientFactory;
 
         public TrestleRequester(IOptions<MarketOptions> connectionOptions, IHttpClientFactory httpClientFactory)
         {
             this.connectionOptions = connectionOptions.Value;
             this.httpClientFactory = httpClientFactory;
-            this.jsonSerializerSettings = new JsonSerializerSettings 
-            { 
-                NullValueHandling = NullValueHandling.Ignore,
-                Error = HandleDeserializationError,
-            };
+            this.jsonSerializerOptions = new JsonSerializerOptions { Converters = { new BoolConverter() } };
         }
 
         public async Task<HttpClient> GetAuthenticatedClient()
@@ -41,12 +38,11 @@ namespace Husa.Extensions.Downloader.Trestle.Services
                 new KeyValuePair<string, string>("scope", "api"),
             });
             
-            var client = httpClientFactory.CreateClient();
+            var client = this.httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(this.connectionOptions.BaseUrl);
             var httpResponse = await client.PostAsync(this.connectionOptions.LoginUrl, stringContent);
             httpResponse.EnsureSuccessStatusCode();
-            var content = await httpResponse.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<AuthenticationResult>(content, this.jsonSerializerSettings);
+            var result = await httpResponse.Content.ReadFromJsonAsync<AuthenticationResult>(this.jsonSerializerOptions);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
             return client;
@@ -64,22 +60,6 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return result;
         }
 
-        private async Task<IEnumerable<T>> GetData<T>(HttpClient client, string nextLink)
-        {
-            var httpResponse = await client.GetAsync(nextLink);
-            httpResponse.EnsureSuccessStatusCode();
-            var content = await httpResponse.Content.ReadAsStringAsync();
-            var response = JsonConvert.DeserializeObject<ODataResponse<T>>(content, this.jsonSerializerSettings);
-            var result = response.Value;
-
-
-            if (response.NextLink != null)
-            {
-                result = result.Concat(await this.GetData<T>(client, response.NextLink));
-            }
-            return result;
-        }
-
         public async Task<XmlDocument> GetMetadata(HttpClient client)
         {
             var response = await client.GetAsync("odata/$metadata");
@@ -88,9 +68,20 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             xmlDocument.LoadXml(body);
             return xmlDocument;
         }
-        public void HandleDeserializationError(object sender, ErrorEventArgs errorArgs)
+
+        private async Task<IEnumerable<T>> GetData<T>(HttpClient client, string nextLink)
         {
-            errorArgs.ErrorContext.Handled = true;
+            var httpResponse = await client.GetAsync(nextLink);
+            httpResponse.EnsureSuccessStatusCode();
+            var response = await httpResponse.Content.ReadFromJsonAsync<ODataResponse<T>>(this.jsonSerializerOptions);
+            var result = response.Value;
+
+
+            if (response.NextLink != null)
+            {
+                result = result.Concat(await this.GetData<T>(client, response.NextLink));
+            }
+            return result;
         }
     }
 }

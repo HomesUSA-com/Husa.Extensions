@@ -1,5 +1,7 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
+    using System.Runtime.Serialization;
+
     public enum EventTarget
     {
         Agent,
@@ -9,9 +11,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Facebook,
         FacebookMessenger,
         GooglePlus,
-#pragma warning disable SA1300 // Element should begin with upper-case letter
-        iMessage,
-#pragma warning restore SA1300 // Element should begin with upper-case letter
+        [EnumMember(Value = "iMessage")]
+        IMessage,
         Instagram,
         LinkedIn,
         Pinterest,
