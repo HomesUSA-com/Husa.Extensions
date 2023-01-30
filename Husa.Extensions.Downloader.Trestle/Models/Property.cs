@@ -808,5 +808,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? YearsCurrentOwner { get; set; }
         public string Zoning { get; set; }
         public string ZoningDescription { get; set; }
+        public IEnumerable<OpenHouse> OpenHouse { get; set; }
+        public IEnumerable<PropertyRooms> Rooms { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
 
         public StringNullableEnumConverter(JsonSerializerOptions options)
         {
-            // for performance, use the existing converter if available
             if (options != null)
             {
                 this.converter = (JsonConverter<T>)options.GetConverter(typeof(T));
