@@ -10,16 +10,15 @@ Client library for interacting with a Trestle server to pull real estate listing
 * .Net Core 6
 
 # Installing
-Install the nugget, add the following services to bootstraper configuration
-* services.AddHttpClient();
-* services.AddScoped<IBlobTableRepository, BlobTableRepository>();
-* services.AddScoped<ITrestleRequester, TrestleRequester>();
-* services.AddScoped<ITrestleClient, TrestleClient>();
 
-Bind MarketOptions and BlobOptions:
-* services.AddOptions<MarketOptions>().Configure<IConfiguration>((settings, config) => config.GetSection(MarketOptions.Section).Bind(settings));
-* services.AddOptions<BlobOptions>().Configure<IConfiguration>((settings, config) => config.GetSection(BlobOptions.Section).Bind(settings));
+Install the nugget, bind Trestle Options in bootstraper configuration:
+* services.BindTrestleOptions();
 
+Add the trestle services
+* services.AddTrestleServices();
+
+# Trestle Client
+Inject ITrestleClient to your service and use the methods defined in the interface to pull information from trestle
 
 ## Values required in the secrets.json file to run the application
 For security reasons the passwords and connection strings have been removed from the **appsettings.json** and **appsettings.Development.json** files and replaced by default values that won't work. These must be provided via the secrets.json file. _Please keep in mind the password must match the username and db instance already set in either the **appsettings.json** or **appsettings.Development.json**_.
