@@ -137,6 +137,13 @@ namespace Husa.Extensions.Api.Client
             return await httpResponse.Content.ReadFromJsonAsync<TResult>(this.options, cancellationToken: token);
         }
 
+        public Task PatchAsJsonAsync<T>(string url, T dataObject, CancellationToken token = default)
+        {
+            var serializedDataObject = JsonSerializer.Serialize(dataObject);
+            var content = new StringContent(serializedDataObject, Encoding.UTF8, "application/json");
+            return this.PatchAsync(url, content, token);
+        }
+
         protected void AddBearerToken(string token)
         {
             if (string.IsNullOrEmpty(token))
