@@ -1,8 +1,8 @@
 namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
 {
-    using System.Text.Json.Serialization;
-    using System.Text.Json;
     using System;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class StringNullableEnumConverter<T> : JsonConverter<T>
     {
@@ -49,7 +49,7 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
             && !Enum.TryParse(this.underlyingType, value, ignoreCase: true, out result))
             {
                 throw new JsonException(
-                    $"Unable to convert \"{value}\" to Enum \"{underlyingType}\".");
+                    $"Unable to convert \"{value}\" to Enum \"{this.underlyingType}\".");
             }
 
             return (T)result;

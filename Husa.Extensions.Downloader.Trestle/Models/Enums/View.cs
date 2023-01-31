@@ -86,6 +86,5 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Vineyard,
         Water,
         West,
-
     }
 }

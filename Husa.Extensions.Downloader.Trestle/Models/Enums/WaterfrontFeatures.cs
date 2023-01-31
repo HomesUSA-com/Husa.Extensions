@@ -78,6 +78,5 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         WalktoWater,
         WaterAccess,
         Waterfront,
-
     }
 }

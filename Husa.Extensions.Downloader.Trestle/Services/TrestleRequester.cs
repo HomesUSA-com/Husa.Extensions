@@ -89,7 +89,6 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var response = await httpResponse.Content.ReadFromJsonAsync<ODataResponse<T>>(this.jsonSerializerOptions);
             var result = response.Value;
 
-
             if (response.NextLink != null)
             {
                 result = result.Concat(await this.GetData<T>(client, response.NextLink));

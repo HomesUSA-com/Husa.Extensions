@@ -1,7 +1,5 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    using System.Text.Json.Serialization;
-
     public enum AssociationFeeIncludes
     {
         AllFacilities,

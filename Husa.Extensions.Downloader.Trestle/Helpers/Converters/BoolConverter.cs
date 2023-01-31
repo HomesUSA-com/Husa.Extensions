@@ -1,8 +1,8 @@
 namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
 {
-    using System.Text.Json.Serialization;
-    using System.Text.Json;
     using System;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class BoolConverter : JsonConverter<bool?>
     {

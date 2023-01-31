@@ -2,11 +2,11 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 {
     using System;
     using System.Threading.Tasks;
+    using Azure;
     using Azure.Data.Tables;
     using Husa.Extensions.Downloader.Trestle.Contracts;
-    using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
-    using Azure;
     using Husa.Extensions.Downloader.Trestle.Models;
+    using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
     using Microsoft.Extensions.Options;
 
     public class BlobTableRepository : IBlobTableRepository
@@ -42,6 +42,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
                 {
                     return null;
                 }
+
                 throw;
             }
         }

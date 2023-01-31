@@ -1,11 +1,11 @@
 namespace Husa.Extensions.Downloader.Trestle.Models
 {
     using System;
-    using Microsoft.Spatial;
-    using Husa.Extensions.Downloader.Trestle.Models.Enums;
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
     using Husa.Extensions.Downloader.Trestle.Helpers.Converters;
+    using Husa.Extensions.Downloader.Trestle.Models.Enums;
+    using Microsoft.Spatial;
 
     public class Property
     {
@@ -21,7 +21,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string AdditionalParcelsDescription { get; set; }
         public bool? AdditionalParcelsYN { get; set; }
         public string AnchorsCoTenants { get; set; }
-        
         [JsonConverter(typeof(StringListEnumConverter<Appliances>))]
         public IEnumerable<Appliances> Appliances { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<ArchitecturalStyle>))]
@@ -218,7 +217,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public CommonInterest? CommonInterest { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<CommonWalls>))]
         public IEnumerable<CommonWalls> CommonWalls { get; set; }
-        
+
         [JsonConverter(typeof(StringListEnumConverter<CommunityFeatures>))]
         public IEnumerable<CommunityFeatures> CommunityFeatures { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Concessions?>))]
@@ -481,7 +480,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? ListingKeyNumeric { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<ListingService?>))]
         public ListingService? ListingService { get; set; }
-        
+
         [JsonConverter(typeof(StringListEnumConverter<ListingTerms>))]
         public IEnumerable<ListingTerms> ListingTerms { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
@@ -666,7 +665,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public SaleOrLeaseIndicator? SaleOrLeaseIndicator { get; set; }
         public int? SeatingCapacity { get; set; }
         public decimal? SecurityDeposit { get; set; }
-        
+
         [JsonConverter(typeof(StringListEnumConverter<SecurityFeatures>))]
         public IEnumerable<SecurityFeatures> SecurityFeatures { get; set; }
         public bool? SeniorCommunityYN { get; set; }
@@ -781,7 +780,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string VirtualTourURLUnbranded3 { get; set; }
         public int? WalkScore { get; set; }
         public string WaterBodyName { get; set; }
-        
+
         [JsonConverter(typeof(StringListEnumConverter<WaterfrontFeatures>))]
         public IEnumerable<WaterfrontFeatures> WaterfrontFeatures { get; set; }
         public bool? WaterfrontYN { get; set; }

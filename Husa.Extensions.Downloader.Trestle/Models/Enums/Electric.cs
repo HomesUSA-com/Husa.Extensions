@@ -2,7 +2,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum Electric
     {
-
         Item100AmpService,
         Item110Volts,
         Item150AmpService,

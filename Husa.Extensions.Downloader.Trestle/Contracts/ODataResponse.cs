@@ -16,7 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Contracts
 
         [JsonPropertyName("@odata.Count")]
         public int Count { get; set; }
-        
+
         [JsonPropertyName("value")]
         public IEnumerable<T> Value { get; set; }
     }
