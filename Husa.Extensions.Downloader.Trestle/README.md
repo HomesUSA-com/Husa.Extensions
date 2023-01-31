@@ -26,7 +26,6 @@ For security reasons the passwords and connection strings have been removed from
 ```
 {
   "MarketConfiguration": {
-      "ConnectionString": "connection-to-replace",
       "ClientId": "client_to-replace",
       "ClientSecret": "password-to-replace",
       "AuthenticationType": "Basic",
