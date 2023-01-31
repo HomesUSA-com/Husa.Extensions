@@ -1,11 +1,14 @@
 namespace Husa.Extensions.Downloader.Trestle.Models
 {
     using System;
+    using System.Collections.Generic;
+    using System.Text.Json.Serialization;
+    using Husa.Extensions.Downloader.Trestle.Helpers.Converters;
     using Husa.Extensions.Downloader.Trestle.Models.Enums;
 
     public class Teams
     {
-        public bool HumanModifiedYN { get; set; }
+        public bool? HumanModifiedYN { get; set; }
         public DateTimeOffset ModificationTimestamp { get; set; }
         public string OfficeKey { get; set; }
         public DateTimeOffset OriginalEntryTimestamp { get; set; }
@@ -13,9 +16,11 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string OriginatingSystemKey { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
         public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
-        public SocialMediaType? SocialMediaType { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<SocialMediaType>))]
+        public IEnumerable<SocialMediaType> SocialMediaType { get; set; }
         public string SourceSystemID { get; set; }
         public string SourceSystemKey { get; set; }
         public string SourceSystemName { get; set; }
@@ -23,6 +28,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamAddress2 { get; set; }
         public string TeamCarrierRoute { get; set; }
         public string TeamCity { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<Country?>))]
         public Country? TeamCountry { get; set; }
         public string TeamCountyOrParish { get; set; }
         public string TeamDescription { get; set; }
@@ -30,13 +36,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamEmail { get; set; }
         public string TeamFax { get; set; }
         public string TeamKey { get; set; }
-        public int TeamKeyNumeric { get; set; }
+        public int? TeamKeyNumeric { get; set; }
         public string TeamLeadKey { get; set; }
-        public int TeamLeadKeyNumeric { get; set; }
+        public int? TeamLeadKeyNumeric { get; set; }
         public string TeamLeadLoginId { get; set; }
         public string TeamLeadMlsId { get; set; }
         public string TeamLeadNationalAssociationId { get; set; }
         public string TeamLeadStateLicense { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<StateOrProvince?>))]
         public StateOrProvince? TeamLeadStateLicenseState { get; set; }
         public string TeamMobilePhone { get; set; }
         public string TeamName { get; set; }
@@ -46,7 +53,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string TeamPostalCodePlus4 { get; set; }
         public string TeamPreferredPhone { get; set; }
         public string TeamPreferredPhoneExt { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<StateOrProvince?>))]
         public StateOrProvince? TeamStateOrProvince { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<TeamStatus?>))]
         public TeamStatus? TeamStatus { get; set; }
         public string TeamTollFreePhone { get; set; }
         public string TeamVoiceMail { get; set; }

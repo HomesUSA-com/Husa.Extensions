@@ -11,6 +11,6 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 
         Task<XmlDocument> GetMetadata(HttpClient client);
 
-        Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter);
+        Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter = "");
     }
 }
