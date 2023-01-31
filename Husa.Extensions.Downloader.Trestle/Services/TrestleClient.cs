@@ -23,36 +23,36 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             var queryFilter = Utils.GetFilter<Member>(modificationTimestamp, filter);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<Member>(client, "Member", queryFilter);
+            var agents = await this.trestleRequester.GetData<Member>(client, "Member", queryFilter);
 
-            return response;
+            return agents;
         }
 
         public async Task<IEnumerable<Office>> GetOffices(DateTimeOffset? modificationTimestamp = null, string filter = null)
         {
             var queryFilter = Utils.GetFilter<Office>(modificationTimestamp, filter);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<Office>(client, "Office", queryFilter);
+            var offices = await this.trestleRequester.GetData<Office>(client, "Office", queryFilter);
 
-            return response;
+            return offices;
         }
 
         public async Task<IEnumerable<Property>> GetListings(DateTimeOffset? modificationTimestamp = null, string filter = null, bool expand = false)
         {
             var queryFilter = Utils.GetFilter<Property>(modificationTimestamp, filter, expand);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<Property>(client, "Property", queryFilter);
+            var listings = await this.trestleRequester.GetData<Property>(client, "Property", queryFilter);
 
-            return response;
+            return listings;
         }
 
-        public async Task<IEnumerable<GroupEntity<Media>>> GetMedia(IEnumerable<string> listingKey)
+        public async Task<IEnumerable<GroupEntity<Media>>> GetMedia(IEnumerable<string> listingsKeys)
         {
-            var listingKeyString = string.Join(",", listingKey.Select(c => { return $"'{c}'"; }));
+            var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<Media>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<Media>(client, "Media", queryFilter);
-            var groupMedia = response.GroupBy(x => x.ResourceRecordKey).Select(group => new GroupEntity<Media>
+            var media = await this.trestleRequester.GetData<Media>(client, "Media", queryFilter);
+            var groupMedia = media.GroupBy(x => x.ResourceRecordKey).Select(group => new GroupEntity<Media>
             {
                 Id = group.Key,
                 Values = group.ToList(),
@@ -61,14 +61,14 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupMedia;
         }
 
-        public async Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingKey)
+        public async Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingsKeys)
         {
-            var listingKeyString = string.Join(",", listingKey.Select(c => { return $"'{c}'"; }));
+            var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<PropertyRooms>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<PropertyRooms>(client, "PropertyRooms", queryFilter);
+            var rooms = await this.trestleRequester.GetData<PropertyRooms>(client, "PropertyRooms", queryFilter);
 
-            var groupRoom = response.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<PropertyRooms>
+            var groupRoom = rooms.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<PropertyRooms>
             {
                 Id = group.Key,
                 Values = group.ToList(),
@@ -77,14 +77,14 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupRoom;
         }
 
-        public async Task<IEnumerable<GroupEntity<OpenHouse>>> GetOpenHouse(IEnumerable<string> listingKey)
+        public async Task<IEnumerable<GroupEntity<OpenHouse>>> GetOpenHouse(IEnumerable<string> listingsKeys)
         {
-            var listingKeyString = string.Join(",", listingKey.Select(c => { return $"'{c}'"; }));
+            var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<OpenHouse>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var response = await this.trestleRequester.GetData<OpenHouse>(client, "OpenHouse", queryFilter);
+            var openHouse = await this.trestleRequester.GetData<OpenHouse>(client, "OpenHouse", queryFilter);
 
-            var groupOpenHouse = response.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<OpenHouse>
+            var groupOpenHouse = openHouse.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<OpenHouse>
             {
                 Id = group.Key,
                 Values = group.ToList(),

@@ -1,6 +1,7 @@
 namespace Husa.Extensions.Downloader.Trestle.Helpers
 {
     using System;
+    using System.Collections.Generic;
     using Husa.Extensions.Downloader.Trestle.Models;
     using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
 
@@ -23,34 +24,24 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
                 throw new ArgumentNullException(nameof(filter));
             }
 
-            string filterUrl;
-            var top = $"?&$top={(expand ? EXPANDPAGESIZE : PAGESIZE)}";
-            var timeFilter = modificationTimestamp != null
-                ? $"&$filter=ModificationTimestamp ge {string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", modificationTimestamp)}"
-                : string.Empty;
-
-            var localFilter1 = !string.IsNullOrEmpty(filter) ? timeFilter + $" and {filter}" : timeFilter;
-            var localFilter2 = !string.IsNullOrEmpty(filter) ? $"&$filter={filter}" : string.Empty;
+            var filterUrl = $"?&$top={(expand ? EXPANDPAGESIZE : PAGESIZE)}";
+            var modificationTime = modificationTimestamp.HasValue ? $"ModificationTimestamp ge {string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", modificationTimestamp)}" : null;
             if (typeof(Property) == typeof(T))
             {
-                var expandFilter = expand ? "&$expand=OpenHouse,Rooms" : string.Empty;
-                var localFilter = !string.IsNullOrEmpty(timeFilter) ? localFilter1 : localFilter2;
-                filterUrl = top + expandFilter + localFilter;
+                filterUrl = filterUrl.AddQueryStrings("filter", new List<string> { filter, modificationTime });
+                filterUrl = filterUrl.AddQueryString("expand", "OpenHouse,Rooms", expand);
             }
             else if (typeof(Media) == typeof(T))
             {
-                var localFilter = $"&$filter=ResourceRecordKey in ({filter})";
-                filterUrl = top + localFilter;
+                filterUrl = filterUrl.AddQueryString("filter", $"ResourceRecordKey in ({filter})", !string.IsNullOrEmpty(filter));
             }
             else if (typeof(PropertyRooms) == typeof(T) || typeof(OpenHouse) == typeof(T))
             {
-                var localFilter = $"&$filter=ListingKey in ({filter})";
-                filterUrl = top + localFilter;
+                filterUrl = filterUrl.AddQueryString("filter", $"ListingKey in ({filter})", !string.IsNullOrEmpty(filter));
             }
             else
             {
-                var localFilter = !string.IsNullOrEmpty(timeFilter) ? localFilter1 : localFilter2;
-                filterUrl = top + localFilter;
+                filterUrl = filterUrl.AddQueryStrings("filter", new List<string> { modificationTime, filter });
             }
 
             return filterUrl;

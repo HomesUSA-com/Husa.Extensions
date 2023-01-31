@@ -17,9 +17,9 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
                 throw new ArgumentException(string.Format("Unexpected token on StringListEnumConverter. Expected String, got {0}.", reader.TokenType));
             }
 
-            string stringList = reader.GetString().Trim();
-            char[] delimiter = new char[1] { ',' };
-            string[] stringEnums = stringList.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+            var strings = reader.GetString().Trim();
+            var delimiter = new char[1] { ',' };
+            var stringEnums = strings.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
             var result = new List<T>();
 
             for (int sequence = 0; sequence <= stringEnums.Length - 1; sequence++)

@@ -61,7 +61,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return result;
         }
 
-        public async Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter)
+        public async Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter = null)
         {
             var uri = $"odata/{resource}";
             if (!string.IsNullOrEmpty(filter))
