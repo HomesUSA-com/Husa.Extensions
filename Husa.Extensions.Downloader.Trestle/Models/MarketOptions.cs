@@ -5,6 +5,12 @@ namespace Husa.Extensions.Downloader.Trestle.Models
     public class MarketOptions
     {
         public const string Section = "MarketConfiguration";
+
+        public MarketOptions()
+        {
+            this.Timeout = TimeSpan.FromHours(1);
+        }
+
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
         public string LoginUrl { get; set; }
@@ -12,10 +18,5 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public UriKind UriType { get; set; } = UriKind.Absolute;
         public string BaseUrl { get; set; }
         public int MarketLimit { get; set; }
-
-        public MarketOptions()
-        {
-            this.Timeout = TimeSpan.FromHours(1);
-        }
     }
 }

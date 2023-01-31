@@ -11,6 +11,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? HumanModifiedYN { get; set; }
         public string ListAgentKey { get; set; }
         public string ListingId { get; set; }
+        [JsonConverter(typeof(IntToStringConverter))]
         public string ListingKey { get; set; }
         public int? ListingKeyNumeric { get; set; }
         public string ListOfficeKey { get; set; }

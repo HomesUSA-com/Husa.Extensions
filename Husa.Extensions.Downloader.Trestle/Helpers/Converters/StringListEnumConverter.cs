@@ -1,9 +1,9 @@
 namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
 {
-    using System.Text.Json.Serialization;
-    using System.Text.Json;
     using System;
     using System.Collections.Generic;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class StringListEnumConverter<T> : JsonConverter<IEnumerable<T>>
     {
@@ -17,9 +17,9 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
                 throw new ArgumentException(string.Format("Unexpected token on StringListEnumConverter. Expected String, got {0}.", reader.TokenType));
             }
 
-            string stringList = reader.GetString().Trim();
-            char[] delimiter = new char[1] { ',' };
-            string[] stringEnums = stringList.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);;
+            var strings = reader.GetString().Trim();
+            var delimiter = new char[1] { ',' };
+            var stringEnums = strings.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
             var result = new List<T>();
 
             for (int sequence = 0; sequence <= stringEnums.Length - 1; sequence++)
@@ -35,10 +35,8 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
                     {
                         throw new ArgumentException(string.Format("Unexpected value parsing. Expected {0} string, got {1}", typeof(T).Name, value));
                     }
-
                 }
             }
-
 
             return result;
         }

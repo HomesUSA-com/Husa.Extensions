@@ -30,7 +30,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public MediaClassification? MediaClassification { get; set; }
         public string MediaHTML { get; set; }
         public string MediaKey { get; set; }
-        public int? MediaKeyNumeric { get; set; }
+        public long? MediaKeyNumeric { get; set; }
         public DateTimeOffset MediaModificationTimestamp { get; set; }
         public string MediaObjectID { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<MediaStatus?>))]

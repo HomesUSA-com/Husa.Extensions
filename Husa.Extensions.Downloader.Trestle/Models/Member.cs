@@ -61,7 +61,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string MemberPreferredPhone { get; set; }
         public string MemberPreferredPhoneExt { get; set; }
         public string MemberStateLicense { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<MemberOtherPhoneType?>))]
+        [JsonConverter(typeof(StringNullableEnumConverter<StateOrProvince?>))]
         public StateOrProvince? MemberStateLicenseState { get; set; }
         public string MemberStateLicenseType { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<StateOrProvince?>))]
