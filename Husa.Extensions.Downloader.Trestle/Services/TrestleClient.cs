@@ -23,7 +23,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             var queryFilter = Utils.GetFilter<Member>(modificationTimestamp, filter);
             var client = await this.GetAuthenticatedClient();
-            var agents = await this.trestleRequester.GetData<Member>(client, "Member", queryFilter);
+            var agents = await this.trestleRequester.GetData<Member>(client, resource: "Member", queryFilter);
 
             return agents;
         }
@@ -32,7 +32,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             var queryFilter = Utils.GetFilter<Office>(modificationTimestamp, filter);
             var client = await this.GetAuthenticatedClient();
-            var offices = await this.trestleRequester.GetData<Office>(client, "Office", queryFilter);
+            var offices = await this.trestleRequester.GetData<Office>(client, resource: "Office", queryFilter);
 
             return offices;
         }
@@ -41,7 +41,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             var queryFilter = Utils.GetFilter<Property>(modificationTimestamp, filter, expand);
             var client = await this.GetAuthenticatedClient();
-            var listings = await this.trestleRequester.GetData<Property>(client, "Property", queryFilter);
+            var listings = await this.trestleRequester.GetData<Property>(client, resource: "Property", queryFilter);
 
             return listings;
         }
@@ -51,7 +51,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<Media>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var media = await this.trestleRequester.GetData<Media>(client, "Media", queryFilter);
+            var media = await this.trestleRequester.GetData<Media>(client, resource: "Media", queryFilter);
             var groupMedia = media.GroupBy(x => x.ResourceRecordKey).Select(group => new GroupEntity<Media>
             {
                 Id = group.Key,
@@ -66,7 +66,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<PropertyRooms>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var rooms = await this.trestleRequester.GetData<PropertyRooms>(client, "PropertyRooms", queryFilter);
+            var rooms = await this.trestleRequester.GetData<PropertyRooms>(client, resource: "PropertyRooms", queryFilter);
 
             var groupRoom = rooms.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<PropertyRooms>
             {
@@ -82,7 +82,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
             var queryFilter = Utils.GetFilter<OpenHouse>(filter: listingKeyString);
             var client = await this.GetAuthenticatedClient();
-            var openHouse = await this.trestleRequester.GetData<OpenHouse>(client, "OpenHouse", queryFilter);
+            var openHouse = await this.trestleRequester.GetData<OpenHouse>(client, resource: "OpenHouse", queryFilter);
 
             var groupOpenHouse = openHouse.GroupBy(x => x.ListingKey).Select(group => new GroupEntity<OpenHouse>
             {
