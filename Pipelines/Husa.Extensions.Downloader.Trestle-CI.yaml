@@ -1,0 +1,61 @@
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Husa.Extensions.Downloader.Trestle
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Husa.Extensions.Downloader.Trestle
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloudHomesUSA'
+    organization: 'homesusa'
+    scannerMode: 'MSBuild'
+    projectKey: 'Husa_Extensions.Downloader.Trestle'
+    projectName: 'Husa.Extensions.Downloader.Trestle'
+    extraProperties: |
+      sonar.exclusions=**/obj/**,**/*.dll
+      sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
+      sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/Husa.Extensions.Downloader.Trestle.csproj'
+    restoreArguments: '/property:Configuration=Release'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/Husa.Extensions.Downloader.Trestle.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+- task: DotNetCoreCLI@2
+  condition: ne(variables.isPullRequest, true)
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Husa.Extensions.Downloader.Trestle.csproj'
+    versioningScheme: 'off'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'drop'
+  condition: and(succeededOrFailed(), ne(variables.isPullRequest, true))
