@@ -1,8 +1,10 @@
 namespace Husa.Extensions.Common
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using System.Runtime.Serialization;
 
     public static class EnumExtensions
     {
@@ -50,6 +52,54 @@ namespace Husa.Extensions.Common
             }
 
             return (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name);
+        }
+
+        public static T ToEnumFromEnumMember<T>(this string enumMemberValue)
+            where T : Enum
+        {
+            var enumType = typeof(T);
+            var result = Enum.GetNames(enumType)
+            .Where(enumName =>
+                ((EnumMemberAttribute[])enumType.GetField(enumName).GetCustomAttributes(typeof(EnumMemberAttribute), inherit: true))
+                .Single()
+                .Value == enumMemberValue)
+            .Select(enumName => (T)Enum.Parse(enumType, enumName))
+            .SingleOrDefault();
+
+            return result is not null ? result : default;
+        }
+
+        public static string ToStringFromEnumMember<T>(this T type)
+            where T : Enum
+        {
+            var enumType = typeof(T);
+            var name = Enum.GetName(enumType, type);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            return enumMemberAttribute.Value;
+        }
+
+        public static string ToStringFromEnumMembers<T>(this IEnumerable<T> enumElements)
+            where T : Enum
+        {
+            if (enumElements is null || !enumElements.Any())
+            {
+                return null;
+            }
+
+            return string.Join(",", enumElements.Select(garageFeature => garageFeature.ToStringFromEnumMember()));
+        }
+
+        public static IEnumerable<T> CsvToEnum<T>(this string enumElements)
+            where T : Enum
+        {
+            if (string.IsNullOrWhiteSpace(enumElements))
+            {
+                return Array.Empty<T>();
+            }
+
+            return enumElements
+                .Split(",")
+                .Select(garageFeature => garageFeature.ToEnumFromEnumMember<T>());
         }
     }
 }
