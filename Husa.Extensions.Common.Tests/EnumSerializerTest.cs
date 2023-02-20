@@ -61,7 +61,7 @@ namespace Husa.Extensions.Common.Tests
         };
 
         [Fact]
-        public void TestEnumSerializationCorrectly()
+        internal void TestEnumSerializationCorrectly()
         {
             // Arrange
             // Act
@@ -72,7 +72,7 @@ namespace Husa.Extensions.Common.Tests
         }
 
         [Fact]
-        public void TestEnumDeserializationCorrectly()
+        internal void TestEnumDeserializationCorrectly()
         {
             // Arrange
             // Act
@@ -83,6 +83,31 @@ namespace Husa.Extensions.Common.Tests
             {
                 Assert.Contains(garageFeature, serializedGarageFeatures);
             });
+        }
+
+        [Theory]
+        [InlineData("NONE", GarageDescription.NotApplicable)]
+        [InlineData("None/Not Applicable", GarageDescription.NotApplicable)]
+        [InlineData("none/not applicable", GarageDescription.NotApplicable)]
+        [InlineData("NotApplicable", GarageDescription.NotApplicable)]
+        [InlineData("notapplicable", GarageDescription.NotApplicable)]
+        [InlineData("4+GAR", GarageDescription.FourPlusCarGarage)]
+        [InlineData("Four or More Car Garage", GarageDescription.FourPlusCarGarage)]
+        [InlineData("four or more car garage", GarageDescription.FourPlusCarGarage)]
+        [InlineData("FourPlusCarGarage", GarageDescription.FourPlusCarGarage)]
+        [InlineData("fourpluscargarage", GarageDescription.FourPlusCarGarage)]
+        [InlineData("3GAR", GarageDescription.ThreeCarGarage)]
+        [InlineData("Three Car Garage", GarageDescription.ThreeCarGarage)]
+        [InlineData("three car garage", GarageDescription.ThreeCarGarage)]
+        [InlineData("ThreeCarGarage", GarageDescription.ThreeCarGarage)]
+        [InlineData("threecargarage", GarageDescription.ThreeCarGarage)]
+        internal void FindEnumFromTextCorrectly(string city, GarageDescription expectedGarageDescription)
+        {
+            // Act
+            var garageDescriptionEnum = city.GetEnumFromText<GarageDescription>();
+
+            // Assert
+            Assert.Equal(expectedGarageDescription, garageDescriptionEnum);
         }
     }
 }

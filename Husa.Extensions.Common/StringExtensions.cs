@@ -38,5 +38,49 @@ namespace Husa.Extensions.Common
 
             return Regex.Replace(str, "[^0-9]+", string.Empty, RegexOptions.Compiled);
         }
+
+        public static string RemoveWhiteSpaces(this string str)
+        {
+            var inputAsArray = str.ToCharArray();
+            int characterNewIndex = 0;
+            for (int index = 0; index < str.Length; index++)
+            {
+                var inputCharacter = inputAsArray[index];
+                switch (inputCharacter)
+                {
+                    case '\u0020':
+                    case '\u00A0':
+                    case '\u1680':
+                    case '\u2000':
+                    case '\u2001':
+                    case '\u2002':
+                    case '\u2003':
+                    case '\u2004':
+                    case '\u2005':
+                    case '\u2006':
+                    case '\u2007':
+                    case '\u2008':
+                    case '\u2009':
+                    case '\u200A':
+                    case '\u202F':
+                    case '\u205F':
+                    case '\u3000':
+                    case '\u2028':
+                    case '\u2029':
+                    case '\u0009':
+                    case '\u000A':
+                    case '\u000B':
+                    case '\u000C':
+                    case '\u000D':
+                    case '\u0085':
+                        continue;
+                    default:
+                        inputAsArray[characterNewIndex++] = inputCharacter;
+                        break;
+                }
+            }
+
+            return new string(inputAsArray, startIndex: 0, characterNewIndex);
+        }
     }
 }

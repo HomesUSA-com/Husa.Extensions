@@ -101,5 +101,52 @@ namespace Husa.Extensions.Common
                 .Split(",")
                 .Select(garageFeature => garageFeature.ToEnumFromEnumMember<T>());
         }
+
+        public static TEnum? GetEnumFromText<TEnum>(this string enumValuetoFind)
+            where TEnum : struct
+        {
+            if (string.IsNullOrWhiteSpace(enumValuetoFind))
+            {
+                throw new ArgumentException($"'{nameof(enumValuetoFind)}' cannot be null or whitespace.", nameof(enumValuetoFind));
+            }
+
+            var enumType = typeof(TEnum);
+            if (!enumType.IsEnum)
+            {
+                throw new InvalidOperationException($"The type {enumType.Name} must be an enum");
+            }
+
+            var valueWithoutSpaces = enumValuetoFind.RemoveWhiteSpaces();
+
+            if (Enum.TryParse<TEnum>(valueWithoutSpaces, ignoreCase: true, out var enumValue))
+            {
+                return enumValue;
+            }
+
+            var enumMembers = enumType.GetMembers();
+            var memberInfo = enumMembers
+                .SingleOrDefault(member => member
+                    .GetCustomAttributes(typeof(DescriptionAttribute), inherit: false)
+                    .FirstOrDefault(attribute => IsValueFound(valueToCompare: ((DescriptionAttribute)attribute).Description, enumValuetoFind, valueWithoutSpaces)) != null);
+
+            if (memberInfo != null)
+            {
+                return (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name);
+            }
+
+            memberInfo = enumMembers
+                .SingleOrDefault(member => member
+                    .GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false)
+                    .FirstOrDefault(attribute => IsValueFound(valueToCompare: ((EnumMemberAttribute)attribute).Value, enumValuetoFind, valueWithoutSpaces)) != null);
+
+            return memberInfo != null ? (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name) : null;
+        }
+
+        private static bool IsValueFound(string valueToCompare, string enumValuetoFind, string valueWithoutSpaces)
+        {
+            return valueToCompare.EqualsTo(valueWithoutSpaces) ||
+            valueToCompare.Contains(valueWithoutSpaces, StringComparison.InvariantCultureIgnoreCase) ||
+            enumValuetoFind.Contains(valueToCompare, StringComparison.InvariantCultureIgnoreCase);
+        }
     }
 }
