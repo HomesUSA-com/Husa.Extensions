@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.10.0</Version>
+        <Version>2.10.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.10.0:
-            - Added new enum from text extension method to match a string with an enum value
+            Release 2.10.1:
+            - Optional parameter enumMember added to CsvToEnum and ToStringFromEnumMembers
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

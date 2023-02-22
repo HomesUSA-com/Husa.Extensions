@@ -1,4 +1,4 @@
-namespace Husa.Quicklister.Sabor.Data.ValueConverters
+namespace Husa.Extensions.Linq.ValueConverters
 {
     using System;
     using Husa.Extensions.Common;

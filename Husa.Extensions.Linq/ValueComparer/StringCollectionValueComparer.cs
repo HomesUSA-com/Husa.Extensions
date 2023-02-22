@@ -1,4 +1,4 @@
-namespace Husa.Quicklister.Sabor.Data.ValueComparer
+namespace Husa.Extensions.Linq.ValueComparer
 {
     using System;
     using System.Collections.Generic;
