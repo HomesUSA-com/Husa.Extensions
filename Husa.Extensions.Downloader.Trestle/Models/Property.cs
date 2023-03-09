@@ -25,8 +25,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public IEnumerable<Appliances> Appliances { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<ArchitecturalStyle>))]
         public IEnumerable<ArchitecturalStyle> ArchitecturalStyle { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<AssociationAmenities?>))]
-        public AssociationAmenities? AssociationAmenities { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<AssociationAmenities>))]
+        public IEnumerable<AssociationAmenities> AssociationAmenities { get; set; }
         public decimal? AssociationFee { get; set; }
         public decimal? AssociationFee2 { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<FeeFrequency?>))]
@@ -369,18 +369,18 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? GrazingPermitsBlmYN { get; set; }
         public bool? GrazingPermitsForestServiceYN { get; set; }
         public bool? GrazingPermitsPrivateYN { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<GreenEnergyEfficient?>))]
-        public GreenEnergyEfficient? GreenEnergyEfficient { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<GreenEnergyEfficient>))]
+        public IEnumerable<GreenEnergyEfficient> GreenEnergyEfficient { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GreenEnergyGeneration?>))]
         public GreenEnergyGeneration? GreenEnergyGeneration { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<GreenIndoorAirQuality?>))]
-        public GreenIndoorAirQuality? GreenIndoorAirQuality { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<GreenIndoorAirQuality>))]
+        public IEnumerable<GreenIndoorAirQuality> GreenIndoorAirQuality { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GreenLocation?>))]
         public GreenLocation? GreenLocation { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GreenSustainability?>))]
         public GreenSustainability? GreenSustainability { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<GreenWaterConservation?>))]
-        public GreenWaterConservation? GreenWaterConservation { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<GreenWaterConservation>))]
+        public IEnumerable<GreenWaterConservation> GreenWaterConservation { get; set; }
         public decimal? GrossIncome { get; set; }
         public decimal? GrossScheduledIncome { get; set; }
         public bool? HabitableResidenceYN { get; set; }
@@ -651,8 +651,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? RentControlYN { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<RentIncludes>))]
         public IEnumerable<RentIncludes> RentIncludes { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<RoadFrontageType?>))]
-        public RoadFrontageType? RoadFrontageType { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<RoadFrontageType>))]
+        public IEnumerable<RoadFrontageType> RoadFrontageType { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<RoadResponsibility?>))]
         public RoadResponsibility? RoadResponsibility { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<RoadSurfaceType?>))]
