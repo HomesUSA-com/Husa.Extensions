@@ -6,11 +6,11 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>3.4.0</Version>
+        <Version>3.5.0</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.4.0:
-            - Added PatchAsJsonAsync method to HusaStandardClient
+            Release 3.5.0:
+            - Add market to header propagation
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

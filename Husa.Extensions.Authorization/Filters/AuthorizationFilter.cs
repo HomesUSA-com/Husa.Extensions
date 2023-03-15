@@ -4,6 +4,7 @@ namespace Husa.Extensions.Authorization.Filters
     using System.Linq;
     using System.Threading.Tasks;
     using Husa.Extensions.Authorization.Extensions;
+    using Husa.Extensions.Common.Enums;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,6 +12,8 @@ namespace Husa.Extensions.Authorization.Filters
 
     public abstract class AuthorizationFilter : Interfaces.IAuthorizationFilter
     {
+        public const string CurrentCompanyHeaderName = "CurrentCompanySelected";
+        public const string CurrentMarketHeaderName = "CurrentMarketSelected";
         protected readonly ILogger<AuthorizationFilter> logger;
         protected readonly IUserProvider userProvider;
 
@@ -39,7 +42,10 @@ namespace Husa.Extensions.Authorization.Filters
                 return;
             }
 
-            user.CompanyId = Guid.TryParse(context.HttpContext.Request.Headers["CurrentCompanySelected"], out var currentCompanyId) &&
+            var marketHeader = context.HttpContext.Request.Headers[CurrentMarketHeaderName];
+            user.Market = Enum.TryParse(marketHeader.FirstOrDefault(), result: out MarketCode marketCode, ignoreCase: true) ? marketCode : null;
+
+            user.CompanyId = Guid.TryParse(context.HttpContext.Request.Headers[CurrentCompanyHeaderName], out var currentCompanyId) &&
                 !currentCompanyId.Equals(Guid.Empty) ? currentCompanyId : null;
 
             await this.GetCompanyEmployeeAsync(context, user);

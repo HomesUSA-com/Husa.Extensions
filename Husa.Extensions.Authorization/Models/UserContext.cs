@@ -2,6 +2,7 @@ namespace Husa.Extensions.Authorization.Models
 {
     using System;
     using Husa.Extensions.Authorization.Enums;
+    using Husa.Extensions.Common.Enums;
 
     public class UserContext : IUserContext
     {
@@ -12,6 +13,8 @@ namespace Husa.Extensions.Authorization.Models
         public string Email { get; set; }
 
         public bool IsMLSAdministrator { get; set; }
+
+        public MarketCode? Market { get; set; }
 
         public Guid? CompanyId { get; set; }
 

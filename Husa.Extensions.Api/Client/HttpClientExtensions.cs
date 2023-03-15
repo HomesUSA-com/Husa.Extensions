@@ -15,6 +15,7 @@ namespace Husa.Extensions.Api.Client
         public const string Bearer = "Bearer";
         public const string AccessToken = "access_token";
         public const string CurrentCompanyHeaderName = "CurrentCompanySelected";
+        public const string CurrentMarketHeaderName = "CurrentMarketSelected";
         public const string CookieHeaderName = "Cookie";
         public const string AuthorizationHeaderName = "Authorization";
 
@@ -25,6 +26,7 @@ namespace Husa.Extensions.Api.Client
                 options.Headers.Add(AuthorizationHeaderName);
                 options.Headers.Add(CookieHeaderName);
                 options.Headers.Add(CurrentCompanyHeaderName);
+                options.Headers.Add(CurrentMarketHeaderName);
             });
 
             return services;
