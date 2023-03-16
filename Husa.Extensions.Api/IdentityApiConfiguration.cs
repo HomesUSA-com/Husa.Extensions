@@ -1,6 +1,7 @@
 namespace Husa.Extensions.Api
 {
     using System;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -66,6 +67,12 @@ namespace Husa.Extensions.Api
                 if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentCompanyHeaderName], out var currentCompanyId))
                 {
                     client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentCompanyHeaderName, currentCompanyId.ToString());
+                }
+
+                var market = httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentMarketHeaderName].FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(market))
+                {
+                    client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentMarketHeaderName, market);
                 }
             }
 
