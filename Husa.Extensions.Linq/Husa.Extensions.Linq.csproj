@@ -6,17 +6,18 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>2.3.0</Version>
+        <Version>2.3.1</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.3.0:
-            -Ordered enum fields in EnumCollectionValueConverter
+            Release 2.3.1:
+            -Increased Common package version
+            -Added arguments to EnumCollectionValueConverter
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="2.9.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="2.10.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     </ItemGroup>
 
