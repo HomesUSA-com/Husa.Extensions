@@ -11,7 +11,7 @@ namespace Husa.Extensions.Linq.ValueConverters
     {
         public EnumCollectionValueConverter()
             : base(
-                  convertToProviderExpression: enumField => enumField.ToStringFromEnumMembers(),
+                  convertToProviderExpression: enumField => enumField.Order().ToStringFromEnumMembers(),
                   convertFromProviderExpression: enumField => enumField.CsvToEnum<T>().ToList())
         {
         }
