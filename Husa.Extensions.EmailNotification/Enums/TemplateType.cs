@@ -29,5 +29,6 @@ namespace Husa.Extensions.EmailNotification.Enums
         BackOnMarket = 98,
         IncompleteChangeRequest = 99,
         ClientComparisonReport = 100,
+        PhotoRequestAwaitingApproval = 101,
     }
 }

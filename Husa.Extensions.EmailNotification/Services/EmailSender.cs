@@ -40,7 +40,8 @@ namespace Husa.Extensions.EmailNotification.Services
             string recipient,
             string name,
             IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters,
-            TemplateType templateType = TemplateType.NoTemplate)
+            TemplateType templateType = TemplateType.NoTemplate,
+            string[] ccRecipients = null)
             where TEmailParameterKey : struct
         {
             if (emailParameters is null)
@@ -60,6 +61,14 @@ namespace Husa.Extensions.EmailNotification.Services
             foreach (var bccRecipient in this.options.BccRecipients)
             {
                 bccRecipients.Add(new(bccRecipient.Email, bccRecipient.Name));
+            }
+
+            if (ccRecipients != null)
+            {
+                foreach (var bccRecipient in ccRecipients)
+                {
+                    bccRecipients.Add(new(bccRecipient));
+                }
             }
 
             var templateOptions = this.options.EmailTemplates.Single(e => e.TemplateType == templateType);

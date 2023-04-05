@@ -6,12 +6,13 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>2.3.1</Version>
+        <Version>2.4.0</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.3.1:
+            Release 2.4.0:
             -Increased Common package version
             -Added arguments to EnumCollectionValueConverter
+            -Added StringCollectionValueConverter
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

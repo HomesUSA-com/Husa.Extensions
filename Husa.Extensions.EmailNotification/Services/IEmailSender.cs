@@ -5,7 +5,12 @@ namespace Husa.Extensions.EmailNotification.Services
 
     public interface IEmailSender
     {
-        void SendEmail<TEmailParameterKey, TEmailParameterValue>(string recipient, string name, IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters, TemplateType templateType = TemplateType.NoTemplate)
+        void SendEmail<TEmailParameterKey, TEmailParameterValue>(
+            string recipient,
+            string name,
+            IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters,
+            TemplateType templateType = TemplateType.NoTemplate,
+            string[] ccRecipients = null)
             where TEmailParameterKey : struct;
     }
 }
