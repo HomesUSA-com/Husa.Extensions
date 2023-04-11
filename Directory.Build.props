@@ -1,7 +1,7 @@
 <Project >
 
     <PropertyGroup>
-        <TargetFrameworks>net7.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <RunCodeAnalysis>false</RunCodeAnalysis>
         <NeutralLanguage>en</NeutralLanguage>
@@ -16,7 +16,7 @@
     </PropertyGroup>
     <ItemGroup>
         <AdditionalFiles Include="..\stylecop.json" />
-        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.50.0.58025">
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.55.0.65544">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

@@ -4,6 +4,9 @@ namespace Husa.Extensions.Common
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+#if NET6_0
+    using System.Linq.Expressions;
+#endif
     using System.Reflection;
     using Husa.Extensions.Common.ValueObjects;
 
@@ -60,15 +63,7 @@ namespace Husa.Extensions.Common
                             .GetMethods(BindingFlags.Public | BindingFlags.Static)
                             .Single(m => m.Name == nameof(Enumerable.SequenceEqual) && m.GetParameters().Length == 2)
                             .MakeGenericMethod(underlyingType);
-
-                        var orderMethod = typeof(Enumerable)
-                            .GetMethods(BindingFlags.Public | BindingFlags.Static)
-                            .Single(m => m.Name == nameof(Enumerable.Order) && m.GetParameters().Length == 1)
-                            .MakeGenericMethod(underlyingType);
-
-                        var newValueOrdered = orderMethod.Invoke(obj: null, new[] { newValue });
-                        var oldValueOrdered = orderMethod.Invoke(obj: null, new[] { oldValue });
-
+                        var (newValueOrdered, oldValueOrdered) = SortArrays(underlyingType, newValue, oldValue);
                         var areEqual = (bool)sequenceEqualMethod.Invoke(obj: null, new[] { newValueOrdered, oldValueOrdered });
 
                         if (!areEqual)
@@ -140,5 +135,43 @@ namespace Husa.Extensions.Common
                 }
             }
         }
+
+#if NET7_0
+        private static (object NewValueOrdered, object OldValueOrdered) SortArrays(Type underlyingType, object newValue, object oldValue)
+        {
+            var newValueOrderParams = new[] { newValue };
+            var oldValueOrderParams = new[] { oldValue };
+
+            var orderMethod = typeof(Enumerable)
+                            .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                            .Single(m => m.Name == nameof(Enumerable.Order) && m.GetParameters().Length == 1)
+                            .MakeGenericMethod(underlyingType);
+
+            var newValueOrdered = orderMethod.Invoke(obj: null, newValueOrderParams);
+            var oldValueOrdered = orderMethod.Invoke(obj: null, oldValueOrderParams);
+
+            return (newValueOrdered, oldValueOrdered);
+        }
+#elif NET6_0
+        private static (object NewValueOrdered, object OldValueOrdered) SortArrays(Type underlyingType, object newValue, object oldValue)
+        {
+            var parameter = Expression.Parameter(underlyingType, "enumOption");
+            var orderByExpression = Expression.Lambda(parameter, parameter);
+            var orderByFunc = orderByExpression.Compile();
+
+            var newValueOrderParams = new[] { newValue, orderByFunc };
+            var oldValueOrderParams = new[] { oldValue, orderByFunc };
+
+            var orderMethod = typeof(Enumerable)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Single(m => m.Name == nameof(Enumerable.OrderBy) && m.GetParameters().Length == 2)
+                .MakeGenericMethod(underlyingType, underlyingType);
+
+            var newValueOrdered = orderMethod.Invoke(obj: null, newValueOrderParams);
+            var oldValueOrdered = orderMethod.Invoke(obj: null, oldValueOrderParams);
+
+            return (newValueOrdered, oldValueOrdered);
+        }
+#endif
     }
 }

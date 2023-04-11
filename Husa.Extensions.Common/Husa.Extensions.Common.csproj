@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>2.11.0</Version>
+        <Version>3.0.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.11.0:
-            - Added SummaryExtensions, SummaryField and ValueObject
+            Release 3.0.1:
+            - Added support for net6 framework
+            - Removed unnecessary code
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

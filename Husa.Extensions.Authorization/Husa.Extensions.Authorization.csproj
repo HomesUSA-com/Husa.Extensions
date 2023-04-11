@@ -5,17 +5,17 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>2.4.0</Version>
+        <Version>3.0.0</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.4.0:
-            - Add market to user context
+            Release 3.0.0:
+            - Added support for both net7 and net6 frameworks
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
-    
+
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="2.9.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="3.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     </ItemGroup>

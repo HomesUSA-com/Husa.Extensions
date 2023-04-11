@@ -19,6 +19,10 @@ namespace Husa.Extensions.Common.Tests
     {
         private readonly Mock<ILogger<ExceptionLoggingFilterAttribute>> logger = new();
 
+        private interface IFakeEntity
+        {
+        }
+
         [Fact]
         public async Task NotFoundExceptionThrownIsHandledCorrectly()
         {
@@ -26,7 +30,7 @@ namespace Husa.Extensions.Common.Tests
             var id = Guid.NewGuid();
             var exceptionContext = GetExceptionContext();
             exceptionContext.SetupAllProperties();
-            exceptionContext.SetupGet(ec => ec.Exception).Returns(new NotFoundException<FakeEntity>(id));
+            exceptionContext.SetupGet(ec => ec.Exception).Returns(new NotFoundException<IFakeEntity>(id));
 
             var sut = new ExceptionLoggingFilterAttribute(this.logger.Object);
 
@@ -81,11 +85,6 @@ namespace Husa.Extensions.Common.Tests
             var filters = new Mock<IList<IFilterMetadata>>();
 
             return new Mock<ExceptionContext>(actionContext.Object, filters.Object);
-        }
-
-        private class FakeEntity
-        {
-            public Guid Id { get; set; }
         }
     }
 }

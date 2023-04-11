@@ -5,10 +5,10 @@
         <Product>Cache Extensions</Product>
         <Description>Husa Cache</Description>
         <PackageId>Husa.Extensions.Cache</PackageId>
-        <Version>2.2.0</Version>
+        <Version>3.0.0</Version>
         <PackageReleaseNotes>
-            Release 2.2.0:
-            - Downgrade Microsoft.Extensions.Hosting.Abstractions from 7.0.0 to 6.0.0
+            Release 3.0.0:
+            - Added support for net6 framework
         </PackageReleaseNotes>
         <PackageTags>Extensions; Cache;</PackageTags>
         <IsPackable>true</IsPackable>
