@@ -5,8 +5,10 @@ namespace Husa.Extensions.Api.Client
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+    using Husa.Extensions.Api.Handlers;
     using IdentityModel.Client;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Net.Http.Headers;
 
@@ -86,6 +88,26 @@ namespace Husa.Extensions.Api.Client
 
             var jwtToken = new JwtSecurityToken(token);
             return jwtToken.ValidTo >= DateTime.UtcNow.AddMinutes(-1);
+        }
+
+        public static void ConfigureHeaderHandling(this IHttpClientBuilder httpClientBuilder, bool withTokenRequest)
+        {
+            if (!withTokenRequest)
+            {
+                httpClientBuilder.AddHeaderPropagation();
+            }
+            else
+            {
+                httpClientBuilder.AddHttpMessageHandler<AuthTokenHandler>();
+            }
+        }
+
+        public static IServiceCollection BindIdentitySettings(this IServiceCollection services)
+        {
+            services.AddOptions<IdentitySettings>()
+                .Configure<IConfiguration>((settings, config) => config.GetSection(IdentitySettings.Section).Bind(settings));
+            services.AddTransient<AuthTokenHandler>();
+            return services;
         }
     }
 }

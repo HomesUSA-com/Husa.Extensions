@@ -6,11 +6,12 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>4.0.0</Version>
+        <Version>4.0.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.0:
+            Release 4.0.1:
             - Added support for both net7 and net6 frameworks
+            - Added AuthTokenHandler
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
