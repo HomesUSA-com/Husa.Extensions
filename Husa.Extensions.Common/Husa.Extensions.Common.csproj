@@ -6,12 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.0.1</Version>
+        <Version>3.1.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.0.1:
-            - Added support for net6 framework
-            - Removed unnecessary code
+            Release 3.1.0:
+            - Added states enums to common library
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -22,10 +21,6 @@
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Interfaces\" />
     </ItemGroup>
 
 </Project>
