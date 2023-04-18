@@ -42,51 +42,61 @@ namespace Husa.Extensions.Common
                 var newValue = propertyInfo.GetValue(newObject);
                 var oldValue = oldObject is null ? null : propertyInfo.GetValue(oldObject);
 
-                switch (newValue, oldValue)
+                switch (newValue)
                 {
-                    case (bool, bool):
-                    case (string, string):
-                        if (!newValue.Equals(oldValue))
+                    case string newValueAsString:
+                        if (!newValueAsString.EqualsTo((string)oldValue))
                         {
-                            yield return new SummaryField()
-                            {
-                                FieldName = propertyInfo.Name,
-                                OldValue = oldValue,
-                                NewValue = newValue,
-                            };
+                            yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
                         }
 
                         break;
-                    case (IEnumerable, IEnumerable):
+                    case IEnumerable:
                         var underlyingType = propertyInfo.PropertyType.GetGenericArguments()[0];
                         var sequenceEqualMethod = typeof(Enumerable)
                             .GetMethods(BindingFlags.Public | BindingFlags.Static)
                             .Single(m => m.Name == nameof(Enumerable.SequenceEqual) && m.GetParameters().Length == 2)
                             .MakeGenericMethod(underlyingType);
+                        if (oldValue is null)
+                        {
+                            yield return GetSummaryField(
+                                type: underlyingType,
+                                newValue: newValue,
+                                oldValue: oldValue,
+                                methodName: nameof(EnumExtensions.ToStringCollectionFromEnumMembers),
+                                fieldName: propertyInfo.Name);
+
+                            break;
+                        }
+
                         var (newValueOrdered, oldValueOrdered) = SortArrays(underlyingType, newValue, oldValue);
                         var areEqual = (bool)sequenceEqualMethod.Invoke(obj: null, new[] { newValueOrdered, oldValueOrdered });
-
-                        if (!areEqual)
+                        if (areEqual)
                         {
-                            yield return new SummaryField()
-                            {
-                                FieldName = propertyInfo.Name,
-                                OldValue = oldValue,
-                                NewValue = newValue,
-                            };
+                            break;
                         }
+
+                        yield return GetSummaryField(
+                            type: underlyingType,
+                            newValue: newValueOrdered,
+                            oldValue: oldValueOrdered,
+                            methodName: nameof(EnumExtensions.ToStringCollectionFromEnumMembers),
+                            fieldName: propertyInfo.Name);
 
                         break;
                     default:
-                        if (!object.Equals(newValue, oldValue))
+                        if (object.Equals(newValue, oldValue))
                         {
-                            yield return new SummaryField()
-                            {
-                                FieldName = propertyInfo.Name,
-                                OldValue = oldValue,
-                                NewValue = newValue,
-                            };
+                            break;
                         }
+
+                        var propType = newValue.GetType();
+                        yield return GetSummaryField(
+                            type: propType,
+                            newValue: newValue,
+                            oldValue: oldValue,
+                            methodName: nameof(EnumExtensions.ToStringCollectionFromOptionalEnumMember),
+                            fieldName: propertyInfo.Name);
 
                         break;
                 }
@@ -116,22 +126,12 @@ namespace Husa.Extensions.Common
                 {
                     if (!newValue.Equals(oldValue))
                     {
-                        yield return new SummaryField()
-                        {
-                            FieldName = propertyInfo.Name,
-                            OldValue = oldValue,
-                            NewValue = newValue,
-                        };
+                        yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
                     }
                 }
                 else if (!object.Equals(newValue, oldValue))
                 {
-                    yield return new SummaryField()
-                    {
-                        FieldName = propertyInfo.Name,
-                        OldValue = oldValue,
-                        NewValue = newValue,
-                    };
+                    yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
                 }
             }
         }
@@ -173,5 +173,25 @@ namespace Husa.Extensions.Common
             return (newValueOrdered, oldValueOrdered);
         }
 #endif
+
+        private static MethodInfo GetGenericStringCollectionFromEnumMember(Type propType, string methodName) =>
+            typeof(EnumExtensions)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Single(m => m.Name == methodName)
+                .MakeGenericMethod(propType);
+
+        private static SummaryField GetSummaryField(Type type, object newValue, object oldValue, string methodName, string fieldName)
+        {
+            if (type.IsEnum)
+            {
+                var toStringCollectionFromEnumMember = GetGenericStringCollectionFromEnumMember(
+                        type, methodName);
+                var newValueAsString = toStringCollectionFromEnumMember.Invoke(obj: null, new[] { newValue });
+                var oldValueAsString = (oldValue is null) ? null : toStringCollectionFromEnumMember.Invoke(obj: null, new[] { oldValue });
+                return new SummaryField(fieldName: fieldName, oldValue: oldValueAsString, newValue: newValueAsString);
+            }
+
+            return new SummaryField(fieldName: fieldName, oldValue: oldValue, newValue: newValue);
+        }
     }
 }

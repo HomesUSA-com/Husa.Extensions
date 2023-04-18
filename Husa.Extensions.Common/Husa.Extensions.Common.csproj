@@ -6,11 +6,15 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.1.0</Version>
+        <Version>3.2.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.1.0:
-            - Added states enums to common library
+            Release 3.2.0:
+            - Removed bool case when getting summary fields.
+            - Returned list when converting enums to string collection.
+            - Fixed case when updating from null values
+            - Returned String Collection instead of String when converting optional enum members
+            - Refactored switch case
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

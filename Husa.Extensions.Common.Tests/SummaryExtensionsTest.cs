@@ -1,5 +1,6 @@
 namespace Husa.Extensions.Common.Tests
 {
+    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
@@ -36,6 +37,43 @@ namespace Husa.Extensions.Common.Tests
         [EnumMember(Value = "OTHSE")]
         [Description("Other-See Remarks")]
         OtherSeeRemarks,
+    }
+
+    internal enum MarketStatuses
+    {
+        Active,
+        ActiveUnderContract,
+        Canceled,
+        Closed,
+        ComingSoon,
+        CompSold,
+        Contingent,
+        Delete,
+        Expired,
+        Hold,
+        Incomplete,
+        Leased,
+        Pending,
+        Terminated,
+        Withdrawn,
+    }
+
+    internal enum OpenHouseType
+    {
+        [EnumMember(Value = "Monday")]
+        Monday = 0,
+        [EnumMember(Value = "Tuesday")]
+        Tuesday = 1,
+        [EnumMember(Value = "Wednesday")]
+        Wednesday = 2,
+        [EnumMember(Value = "Thursday")]
+        Thursday = 3,
+        [EnumMember(Value = "Friday")]
+        Friday = 4,
+        [EnumMember(Value = "Saturday")]
+        Saturday = 5,
+        [EnumMember(Value = "Sunday")]
+        Sunday = 6,
     }
 
     public class SummaryExtensionsTest
@@ -117,7 +155,7 @@ namespace Husa.Extensions.Common.Tests
             var updatedLocalProperty = new LocalPropertyInfo(updatedTestString);
 
             // Act
-            var result = SummaryExtensions.GetFieldSummary(localProperty, updatedLocalProperty, isInnerSummary: true);
+            var result = SummaryExtensions.GetFieldSummary(localProperty, updatedLocalProperty, isInnerSummary: true).ToList();
 
             // Assert
             Assert.NotEmpty(result);
@@ -173,6 +211,97 @@ namespace Husa.Extensions.Common.Tests
             Assert.Empty(result);
         }
 
+        [Fact]
+        public void GetFieldSummaryDifferentCollectionsObjectsSuccess()
+        {
+            // Arrange
+            var documents = new HashSet<DocumentsAvailableDescription>
+            {
+                DocumentsAvailableDescription.PlansAndSpecs,
+                DocumentsAvailableDescription.BuildingPlans,
+                DocumentsAvailableDescription.MUDWaterDistrict,
+            };
+
+            var localProperty = new LocalPropertyInfo(documents)
+            {
+                OpenHouseType = OpenHouseType.Friday,
+                MarketStatus = MarketStatuses.Active,
+            };
+
+            var updatedDocuments = new HashSet<DocumentsAvailableDescription>
+            {
+                DocumentsAvailableDescription.PlansAndSpecs,
+                DocumentsAvailableDescription.BuildingPlans,
+            };
+            var updatedLocalProperty = new LocalPropertyInfo(updatedDocuments)
+            {
+                OpenHouseType = OpenHouseType.Saturday,
+                MarketStatus = MarketStatuses.Pending,
+            };
+
+            var expectedResult = new HashSet<HashSet<string>>
+            {
+                new HashSet<string>
+                {
+                    DocumentsAvailableDescription.BuildingPlans.ToStringFromEnumMember(),
+                    DocumentsAvailableDescription.PlansAndSpecs.ToStringFromEnumMember(),
+                },
+                new HashSet<string> { MarketStatuses.Pending.ToString() },
+                new HashSet<string> { updatedLocalProperty.OpenHouseType.ToStringFromEnumMember() },
+            };
+
+            // Act
+            var result = SummaryExtensions.GetFieldSummary(updatedLocalProperty, localProperty, isInnerSummary: true).ToList();
+            var resultNewValues = result.Select(x => x.NewValue).ToList();
+
+            // Assert
+            Assert.NotEmpty(result);
+            Assert.Equal(resultNewValues, expectedResult);
+        }
+
+        [Fact]
+        public void GetFieldSummaryNewCollectionsObjectsSuccess()
+        {
+            var myString = "string";
+
+            var documents = new HashSet<DocumentsAvailableDescription>
+            {
+                DocumentsAvailableDescription.PlansAndSpecs,
+                DocumentsAvailableDescription.BuildingPlans,
+                DocumentsAvailableDescription.MUDWaterDistrict,
+            };
+
+            var updatedLocalProperty = new LocalPropertyInfo(documents)
+            {
+                OpenHouseType = OpenHouseType.Saturday,
+                MarketStatus = MarketStatuses.Pending,
+                MyString = myString,
+            };
+
+            var expectedCollectionResult = new HashSet<HashSet<string>>
+            {
+                new HashSet<string>
+                {
+                    DocumentsAvailableDescription.PlansAndSpecs.ToStringFromEnumMember(),
+                    DocumentsAvailableDescription.BuildingPlans.ToStringFromEnumMember(),
+                    DocumentsAvailableDescription.MUDWaterDistrict.ToStringFromEnumMember(),
+                },
+                new HashSet<string> { MarketStatuses.Pending.ToString() },
+                new HashSet<string> { updatedLocalProperty.OpenHouseType.ToStringFromEnumMember() },
+            };
+
+            // Act
+            var result = SummaryExtensions.GetFieldSummary(updatedLocalProperty, (LocalPropertyInfo)null, isInnerSummary: true).ToList();
+            var resultNewValues = result.Select(x => x.NewValue).ToList();
+            var resultCollections = resultNewValues.Where(x => x is ICollection).ToList();
+            var resultString = resultNewValues.SingleOrDefault(x => x is string);
+
+            // Assert
+            Assert.NotEmpty(result);
+            Assert.Equal(resultCollections, expectedCollectionResult);
+            Assert.Equal(myString, resultString);
+        }
+
         private sealed record LocalPropertyInfo
         {
             public LocalPropertyInfo(IEnumerable<DocumentsAvailableDescription> documentsAvailable)
@@ -199,6 +328,11 @@ namespace Husa.Extensions.Common.Tests
             }
 
             public ICollection<DocumentsAvailableDescription> DocumentsAvailable { get; set; }
+
+            public MarketStatuses MarketStatus { get; set; }
+
+            public OpenHouseType OpenHouseType { get; set; }
+
             public string MyString { get; set; }
             public bool MyBoolean { get; set; }
         }

@@ -97,6 +97,23 @@ namespace Husa.Extensions.Common
             return enumMemberAttribute.Value;
         }
 
+        public static IEnumerable<string> ToStringCollectionFromOptionalEnumMember<T>(this T type)
+            where T : Enum
+        {
+            var enumType = typeof(T);
+            var name = Enum.GetName(enumType, type);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).SingleOrDefault();
+
+            var enumString = enumMemberAttribute != null ?
+                    enumMemberAttribute.Value :
+                    name;
+
+            return new List<string>
+            {
+                enumString,
+            };
+        }
+
         public static string ToStringFromEnumMembers<T>(this IEnumerable<T> enumElements, bool enumMember = true)
             where T : Enum
         {
@@ -106,6 +123,17 @@ namespace Husa.Extensions.Common
             }
 
             return string.Join(",", enumElements.Select(garageFeature => enumMember ? garageFeature.ToStringFromEnumMember() : Enum.GetName(typeof(T), garageFeature)));
+        }
+
+        public static IEnumerable<string> ToStringCollectionFromEnumMembers<T>(this IEnumerable<T> enumElements)
+            where T : Enum
+        {
+            if (enumElements is null || !enumElements.Any())
+            {
+                return Array.Empty<string>();
+            }
+
+            return enumElements.Select(enumElement => enumElement.ToStringFromEnumMember()).ToList();
         }
 
         public static IEnumerable<T> CsvToEnum<T>(this string enumElements, bool enumMember = true)
