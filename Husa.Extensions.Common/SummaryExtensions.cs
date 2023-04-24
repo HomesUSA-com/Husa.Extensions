@@ -95,7 +95,7 @@ namespace Husa.Extensions.Common
                             type: propType,
                             newValue: newValue,
                             oldValue: oldValue,
-                            methodName: nameof(EnumExtensions.ToStringCollectionFromOptionalEnumMember),
+                            methodName: nameof(EnumExtensions.ToStringFromEnumMember),
                             fieldName: propertyInfo.Name);
 
                         break;
@@ -174,7 +174,7 @@ namespace Husa.Extensions.Common
         }
 #endif
 
-        private static MethodInfo GetGenericStringCollectionFromEnumMember(Type propType, string methodName) =>
+        private static MethodInfo GetGenericStringMethodFromEnumMember(Type propType, string methodName) =>
             typeof(EnumExtensions)
                 .GetMethods(BindingFlags.Public | BindingFlags.Static)
                 .Single(m => m.Name == methodName)
@@ -184,14 +184,24 @@ namespace Husa.Extensions.Common
         {
             if (type.IsEnum)
             {
-                var toStringCollectionFromEnumMember = GetGenericStringCollectionFromEnumMember(
+                var toStringMethodFromEnumMember = GetGenericStringMethodFromEnumMember(
                         type, methodName);
-                var newValueAsString = toStringCollectionFromEnumMember.Invoke(obj: null, new[] { newValue });
-                var oldValueAsString = (oldValue is null) ? null : toStringCollectionFromEnumMember.Invoke(obj: null, new[] { oldValue });
+                var newValueAsString = GetValuesAsString(toStringMethodFromEnumMember, methodName, newValue);
+                var oldValueAsString = (oldValue is null) ? null : GetValuesAsString(toStringMethodFromEnumMember, methodName, oldValue);
                 return new SummaryField(fieldName: fieldName, oldValue: oldValueAsString, newValue: newValueAsString);
             }
 
             return new SummaryField(fieldName: fieldName, oldValue: oldValue, newValue: newValue);
+        }
+
+        private static object GetValuesAsString(MethodInfo stringMethod, string methodName, object value)
+        {
+            if (methodName == nameof(EnumExtensions.ToStringFromEnumMember))
+            {
+                return stringMethod.Invoke(obj: null, new[] { value, true });
+            }
+
+            return stringMethod.Invoke(obj: null, new[] { value });
         }
     }
 }

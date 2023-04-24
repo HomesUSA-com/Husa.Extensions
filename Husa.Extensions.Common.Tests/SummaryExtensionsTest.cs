@@ -239,24 +239,31 @@ namespace Husa.Extensions.Common.Tests
                 MarketStatus = MarketStatuses.Pending,
             };
 
-            var expectedResult = new HashSet<HashSet<string>>
+            var expectedDocuments = new HashSet<HashSet<string>>
             {
                 new HashSet<string>
                 {
                     DocumentsAvailableDescription.BuildingPlans.ToStringFromEnumMember(),
                     DocumentsAvailableDescription.PlansAndSpecs.ToStringFromEnumMember(),
                 },
-                new HashSet<string> { MarketStatuses.Pending.ToString() },
-                new HashSet<string> { updatedLocalProperty.OpenHouseType.ToStringFromEnumMember() },
+            };
+
+            var expectedEnums = new HashSet<string>
+            {
+                updatedLocalProperty.MarketStatus.ToString(),
+                updatedLocalProperty.OpenHouseType.ToStringFromEnumMember(),
             };
 
             // Act
             var result = SummaryExtensions.GetFieldSummary(updatedLocalProperty, localProperty, isInnerSummary: true).ToList();
             var resultNewValues = result.Select(x => x.NewValue).ToList();
+            var resultDocuments = resultNewValues.Where(x => x is ICollection).ToList();
+            var resultEnums = resultNewValues.Where(x => x is string).ToList();
 
             // Assert
             Assert.NotEmpty(result);
-            Assert.Equal(resultNewValues, expectedResult);
+            Assert.Equal(resultDocuments, expectedDocuments);
+            Assert.Equal(resultEnums, expectedEnums);
         }
 
         [Fact]
@@ -286,20 +293,25 @@ namespace Husa.Extensions.Common.Tests
                     DocumentsAvailableDescription.BuildingPlans.ToStringFromEnumMember(),
                     DocumentsAvailableDescription.MUDWaterDistrict.ToStringFromEnumMember(),
                 },
-                new HashSet<string> { MarketStatuses.Pending.ToString() },
-                new HashSet<string> { updatedLocalProperty.OpenHouseType.ToStringFromEnumMember() },
+            };
+
+            var expectedStrings = new HashSet<string>
+            {
+                updatedLocalProperty.MarketStatus.ToString(),
+                updatedLocalProperty.OpenHouseType.ToStringFromEnumMember(),
+                myString,
             };
 
             // Act
             var result = SummaryExtensions.GetFieldSummary(updatedLocalProperty, (LocalPropertyInfo)null, isInnerSummary: true).ToList();
             var resultNewValues = result.Select(x => x.NewValue).ToList();
             var resultCollections = resultNewValues.Where(x => x is ICollection).ToList();
-            var resultString = resultNewValues.SingleOrDefault(x => x is string);
+            var resultString = resultNewValues.Where(x => x is string).ToList();
 
             // Assert
             Assert.NotEmpty(result);
-            Assert.Equal(resultCollections, expectedCollectionResult);
-            Assert.Equal(myString, resultString);
+            Assert.Equal(expectedCollectionResult, resultCollections);
+            Assert.Equal(expectedStrings, resultString);
         }
 
         private sealed record LocalPropertyInfo

@@ -88,30 +88,20 @@ namespace Husa.Extensions.Common
             return result;
         }
 
-        public static string ToStringFromEnumMember<T>(this T type)
-            where T : Enum
-        {
-            var enumType = typeof(T);
-            var name = Enum.GetName(enumType, type);
-            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
-            return enumMemberAttribute.Value;
-        }
-
-        public static IEnumerable<string> ToStringCollectionFromOptionalEnumMember<T>(this T type)
+        public static string ToStringFromEnumMember<T>(this T type, bool isOptional = false)
             where T : Enum
         {
             var enumType = typeof(T);
             var name = Enum.GetName(enumType, type);
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).SingleOrDefault();
+            if (!isOptional)
+            {
+                return enumMemberAttribute?.Value;
+            }
 
-            var enumString = enumMemberAttribute != null ?
+            return enumMemberAttribute != null ?
                     enumMemberAttribute.Value :
                     name;
-
-            return new List<string>
-            {
-                enumString,
-            };
         }
 
         public static string ToStringFromEnumMembers<T>(this IEnumerable<T> enumElements, bool enumMember = true)
@@ -122,7 +112,7 @@ namespace Husa.Extensions.Common
                 return null;
             }
 
-            return string.Join(",", enumElements.Select(garageFeature => enumMember ? garageFeature.ToStringFromEnumMember() : Enum.GetName(typeof(T), garageFeature)));
+            return string.Join(",", enumElements.Select(enumElement => enumMember ? enumElement.ToStringFromEnumMember() : Enum.GetName(typeof(T), enumElement)));
         }
 
         public static IEnumerable<string> ToStringCollectionFromEnumMembers<T>(this IEnumerable<T> enumElements)
