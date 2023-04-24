@@ -9,7 +9,7 @@ namespace Husa.Extensions.Linq.ValueConverters
     {
         public EnumFieldValueConverter()
             : base(
-                  convertToProviderExpression: enumField => enumField.ToStringFromEnumMember(),
+                  convertToProviderExpression: enumField => enumField.ToStringFromEnumMember(false),
                   convertFromProviderExpression: enumField => enumField.ToEnumFromEnumMember<T>())
         {
         }
