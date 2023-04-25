@@ -1,4 +1,4 @@
-namespace Husa.Quicklister.Sabor.Data.Extensions
+namespace Husa.Extensions.Linq
 {
     using System;
     using System.Collections.Generic;

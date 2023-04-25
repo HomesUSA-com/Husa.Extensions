@@ -1,6 +1,8 @@
 namespace Husa.Extensions.Common
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using Microsoft.AspNetCore.WebUtilities;
@@ -81,6 +83,26 @@ namespace Husa.Extensions.Common
             }
 
             return new string(inputAsArray, startIndex: 0, characterNewIndex);
+        }
+
+        public static ICollection<string> ToCollectionFromString(this string enumElements, string separator = ",")
+        {
+            if (string.IsNullOrWhiteSpace(enumElements))
+            {
+                return Array.Empty<string>();
+            }
+
+            return enumElements.Split(separator).ToList();
+        }
+
+        public static string ToStringFromCollection(this ICollection<string> enumElements, string separator = ",")
+        {
+            if (enumElements == null || !enumElements.Any())
+            {
+                return null;
+            }
+
+            return string.Join(separator, enumElements);
         }
     }
 }

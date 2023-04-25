@@ -6,12 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.3.0</Version>
+        <Version>3.4.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.3.0:
-            - Removed toStringFromOptionalEnumMember.
-            - Modified toStringFromEnumMember to include optional functionality
+            Release 3.4.0:
+            - Added new string extensions to handle csv strings
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

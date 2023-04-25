@@ -6,11 +6,12 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>3.1.0</Version>
+        <Version>3.1.1</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.1.0:
-            -Updated Common package
+            Release 3.1.1:
+            - Updated Common package
+            - Corrected project namespaces
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

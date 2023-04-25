@@ -1,7 +1,6 @@
 namespace Husa.Extensions.Linq.ValueConverters
 {
     using System.Collections.Generic;
-    using Husa.Quicklister.Sabor.Data.Extensions;
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
     public class StringCollectionValueConverter : ValueConverter<ICollection<string>, string>
