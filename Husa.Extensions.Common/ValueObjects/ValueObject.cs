@@ -60,7 +60,7 @@ namespace Husa.Extensions.Common.ValueObjects
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
+            if (obj == null || obj.GetType() != this.GetType())
             {
                 return false;
             }
