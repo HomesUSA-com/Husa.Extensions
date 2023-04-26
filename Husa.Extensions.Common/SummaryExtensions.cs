@@ -90,9 +90,8 @@ namespace Husa.Extensions.Common
                             break;
                         }
 
-                        var propType = newValue.GetType();
                         yield return GetSummaryField(
-                            type: propType,
+                            type: propertyInfo.PropertyType,
                             newValue: newValue,
                             oldValue: oldValue,
                             methodName: nameof(EnumExtensions.ToStringFromEnumMember),
