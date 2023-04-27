@@ -63,13 +63,7 @@ namespace Husa.Extensions.EmailNotification.Services
                 bccRecipients.Add(new(bccRecipient.Email, bccRecipient.Name));
             }
 
-            if (ccRecipients != null)
-            {
-                foreach (var bccRecipient in ccRecipients)
-                {
-                    bccRecipients.Add(new(bccRecipient));
-                }
-            }
+            var smtpCcRecipients = ccRecipients != null ? ccRecipients.Select(email => new SendSmtpEmailCc(email)).ToList() : null;
 
             var templateOptions = this.options.EmailTemplates.Single(e => e.TemplateType == templateType);
 
@@ -79,6 +73,7 @@ namespace Husa.Extensions.EmailNotification.Services
                 sender: sender,
                 to: recipients,
                 bcc: bccRecipients,
+                cc: smtpCcRecipients,
                 subject: paramToUse.Subject,
                 templateId: paramToUse.TemplateId,
                 _params: paramToUse.Parameters);
