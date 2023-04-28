@@ -6,13 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.4.2</Version>
+        <Version>3.4.3-dev001</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.4.2:
-            - Added new string extensions to handle csv strings
-            - Updated equal method in ValueObjects
-            - Return property type when new value in null in a summary field
+            Release 3.4.3:
+            - Modified GetEnumFromText to provide better results
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

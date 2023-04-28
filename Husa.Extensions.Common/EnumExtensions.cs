@@ -161,29 +161,14 @@ namespace Husa.Extensions.Common
             }
 
             var enumMembers = enumType.GetMembers();
-            var memberInfo = enumMembers
-                .SingleOrDefault(member => member
-                    .GetCustomAttributes(typeof(DescriptionAttribute), inherit: false)
-                    .FirstOrDefault(attribute => IsValueFound(valueToCompare: ((DescriptionAttribute)attribute).Description, enumValuetoFind, valueWithoutSpaces)) != null);
-
-            if (memberInfo != null)
-            {
-                return (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name);
-            }
-
-            memberInfo = enumMembers
-                .SingleOrDefault(member => member
-                    .GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false)
-                    .FirstOrDefault(attribute => IsValueFound(valueToCompare: ((EnumMemberAttribute)attribute).Value, enumValuetoFind, valueWithoutSpaces)) != null);
+            var memberInfo = enumMembers.SingleOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => ((DescriptionAttribute)attribute).Description.EqualsTo(valueWithoutSpaces)) != null)
+                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => ((DescriptionAttribute)attribute).Description.Contains(valueWithoutSpaces, StringComparison.InvariantCultureIgnoreCase)) != null)
+                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => enumValuetoFind.Contains(((DescriptionAttribute)attribute).Description, StringComparison.InvariantCultureIgnoreCase)) != null)
+                ?? enumMembers.SingleOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => ((EnumMemberAttribute)attribute).Value.EqualsTo(valueWithoutSpaces)) != null)
+                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => ((EnumMemberAttribute)attribute).Value.Contains(valueWithoutSpaces)) != null)
+                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => enumValuetoFind.Contains(((EnumMemberAttribute)attribute).Value, StringComparison.InvariantCultureIgnoreCase)) != null);
 
             return memberInfo != null ? (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name) : null;
-        }
-
-        private static bool IsValueFound(string valueToCompare, string enumValuetoFind, string valueWithoutSpaces)
-        {
-            return valueToCompare.EqualsTo(valueWithoutSpaces) ||
-            valueToCompare.Contains(valueWithoutSpaces, StringComparison.InvariantCultureIgnoreCase) ||
-            enumValuetoFind.Contains(valueToCompare, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }
