@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.4.3</Version>
+        <Version>3.5.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.4.3:
-            - Modified GetEnumFromText to provide better results
+            Release 3.5.0:
+            - Do not use enum member in SummaryExtensions
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

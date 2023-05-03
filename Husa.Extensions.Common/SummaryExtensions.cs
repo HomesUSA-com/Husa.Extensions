@@ -8,6 +8,7 @@ namespace Husa.Extensions.Common
     using System.Linq.Expressions;
 #endif
     using System.Reflection;
+    using Husa.Extensions.Common.Interfaces;
     using Husa.Extensions.Common.ValueObjects;
 
     public static class SummaryExtensions
@@ -59,12 +60,7 @@ namespace Husa.Extensions.Common
                             .MakeGenericMethod(underlyingType);
                         if (oldValue is null)
                         {
-                            yield return GetSummaryField(
-                                type: underlyingType,
-                                newValue: newValue,
-                                oldValue: oldValue,
-                                methodName: nameof(EnumExtensions.ToStringCollectionFromEnumMembers),
-                                fieldName: propertyInfo.Name);
+                            yield return new SummaryField(propertyInfo.Name, oldValue, newValue);
 
                             break;
                         }
@@ -76,12 +72,7 @@ namespace Husa.Extensions.Common
                             break;
                         }
 
-                        yield return GetSummaryField(
-                            type: underlyingType,
-                            newValue: newValueOrdered,
-                            oldValue: oldValueOrdered,
-                            methodName: nameof(EnumExtensions.ToStringCollectionFromEnumMembers),
-                            fieldName: propertyInfo.Name);
+                        yield return new SummaryField(propertyInfo.Name, oldValueOrdered, newValueOrdered);
 
                         break;
                     default:
@@ -90,12 +81,7 @@ namespace Husa.Extensions.Common
                             break;
                         }
 
-                        yield return GetSummaryField(
-                            type: propertyInfo.PropertyType,
-                            newValue: newValue,
-                            oldValue: oldValue,
-                            methodName: nameof(EnumExtensions.ToStringFromEnumMember),
-                            fieldName: propertyInfo.Name);
+                        yield return new SummaryField(propertyInfo.Name, oldValue, newValue);
 
                         break;
                 }
@@ -112,6 +98,63 @@ namespace Husa.Extensions.Common
             }
 
             return GetSummaryFields(propertiesInfo, newObject, oldObject);
+        }
+
+        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(this ICollection<T> currentElements, IEnumerable<T> oldElements)
+            where T : IProvideType
+            where TComparer : IEqualityComparer<T>, new()
+        {
+            static IEnumerable<SummaryField> FieldSummary(IEnumerable<T> fieldElements, bool newValues)
+            {
+                foreach (var field in fieldElements)
+                {
+                    yield return new SummaryField(field.FieldType, newValues ? null : field, newValues ? field : null);
+                }
+            }
+
+            if (oldElements == null)
+            {
+                return FieldSummary(currentElements, newValues: true);
+            }
+
+            if (!currentElements.Any())
+            {
+                return FieldSummary(oldElements, newValues: false);
+            }
+
+            var summary = new List<SummaryField>();
+            var equalElements = new List<T>();
+            var comparer = new TComparer();
+
+            IEnumerable<T> currentElems = currentElements;
+            List<T> oldElems = oldElements.ToList();
+
+            foreach (var currentElem in currentElems)
+            {
+                var oldElementIndex = oldElems.FindIndex(x => comparer.Equals(x, currentElem));
+                if (oldElementIndex > -1)
+                {
+                    equalElements.Add(currentElem);
+                    oldElems.RemoveAt(oldElementIndex);
+                }
+                else
+                {
+                    // new
+                    summary.Add(new SummaryField(currentElem.FieldType, null, currentElem));
+                }
+            }
+
+            if (oldElems.Any())
+            {
+                summary.AddRange(FieldSummary(oldElems, newValues: false));
+            }
+
+            if (summary.Any())
+            {
+                summary.AddRange(equalElements.Select(elem => new SummaryField(elem.FieldType, elem, elem)));
+            }
+
+            return summary;
         }
 
         private static IEnumerable<SummaryField> GetSummaryFields<T>(IEnumerable<PropertyInfo> properties, T newObject, T oldObject)
@@ -172,35 +215,5 @@ namespace Husa.Extensions.Common
             return (newValueOrdered, oldValueOrdered);
         }
 #endif
-
-        private static MethodInfo GetGenericStringMethodFromEnumMember(Type propType, string methodName) =>
-            typeof(EnumExtensions)
-                .GetMethods(BindingFlags.Public | BindingFlags.Static)
-                .Single(m => m.Name == methodName)
-                .MakeGenericMethod(propType);
-
-        private static SummaryField GetSummaryField(Type type, object newValue, object oldValue, string methodName, string fieldName)
-        {
-            if (type.IsEnum)
-            {
-                var toStringMethodFromEnumMember = GetGenericStringMethodFromEnumMember(
-                        type, methodName);
-                var newValueAsString = GetValuesAsString(toStringMethodFromEnumMember, methodName, newValue);
-                var oldValueAsString = (oldValue is null) ? null : GetValuesAsString(toStringMethodFromEnumMember, methodName, oldValue);
-                return new SummaryField(fieldName: fieldName, oldValue: oldValueAsString, newValue: newValueAsString);
-            }
-
-            return new SummaryField(fieldName: fieldName, oldValue: oldValue, newValue: newValue);
-        }
-
-        private static object GetValuesAsString(MethodInfo stringMethod, string methodName, object value)
-        {
-            if (methodName == nameof(EnumExtensions.ToStringFromEnumMember))
-            {
-                return stringMethod.Invoke(obj: null, new[] { value, true });
-            }
-
-            return stringMethod.Invoke(obj: null, new[] { value });
-        }
     }
 }
