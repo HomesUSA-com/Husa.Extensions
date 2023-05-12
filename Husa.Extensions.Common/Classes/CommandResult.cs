@@ -43,6 +43,8 @@ namespace Husa.Extensions.Common.Classes
 
         public IEnumerable<T> Results { get; set; }
 
+        public T Result => this.HasResults() ? this.Results.Single() : null;
+
         public static CommandResult<T> Success() => new(ResponseCode.Success);
 
         public static CommandResult<T> Success(T data) => new(ResponseCode.Success, new[] { data });
