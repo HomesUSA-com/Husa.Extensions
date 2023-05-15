@@ -5,8 +5,6 @@ namespace Husa.Extensions.Common.Classes
     using Husa.Extensions.Common.Enums;
 
     public sealed class CommandSingleResult<TResult, TError>
-        where TResult : class
-        where TError : class
     {
         public CommandSingleResult()
         {
