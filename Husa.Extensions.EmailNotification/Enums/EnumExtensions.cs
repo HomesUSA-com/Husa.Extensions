@@ -20,5 +20,16 @@ namespace Husa.Extensions.EmailNotification.Enums
             var customAttribute = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return customAttribute.Length > 0 ? ((DescriptionAttribute)customAttribute[0]).Description : name;
         }
+
+        public static string GetEnumDescription(this Enum enumValue)
+        {
+            var field = enumValue.GetType().GetField(enumValue.ToString());
+            if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
+            {
+                return attribute.Description;
+            }
+
+            throw new ArgumentException("Item not found.", nameof(enumValue));
+        }
     }
 }

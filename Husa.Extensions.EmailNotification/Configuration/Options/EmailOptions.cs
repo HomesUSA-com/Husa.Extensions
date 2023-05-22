@@ -1,10 +1,12 @@
 namespace Husa.Extensions.EmailNotification.Configuration.Options
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Husa.Extensions.EmailNotification.Configuration.Settings;
 
-    public class EmailOptions
+    public class EmailOptions<TTemplateType>
+        where TTemplateType : struct, Enum
     {
         public const string Section = "Email";
 
@@ -17,6 +19,6 @@ namespace Husa.Extensions.EmailNotification.Configuration.Options
 
         public IEnumerable<EmailInfoSettings> BccRecipients { get; set; }
 
-        public IEnumerable<EmailTemplate> EmailTemplates { get; set; }
+        public IEnumerable<EmailTemplate<TTemplateType>> EmailTemplates { get; set; }
     }
 }

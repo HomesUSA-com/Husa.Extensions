@@ -1,6 +1,8 @@
 namespace Husa.Extensions.EmailNotification
 {
+    using System;
     using Husa.Extensions.EmailNotification.Configuration.Options;
+    using Husa.Extensions.EmailNotification.Enums;
     using Husa.Extensions.EmailNotification.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -12,30 +14,38 @@ namespace Husa.Extensions.EmailNotification
         public static IServiceCollection EmailNotificationRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IEmailSender, EmailSender>();
-            services.AddScoped<ITransactionalEmailsApi, TransactionalEmailsApi>();
-            services.ConfigureEmailApi(configuration);
-            services.ConfigureEmailOptions();
-
+            services.EmailNotificationRegister<TemplateType>(configuration);
             return services;
         }
 
-        private static void ConfigureEmailApi(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection EmailNotificationRegister<TTemplateType>(this IServiceCollection services, IConfiguration configuration)
+            where TTemplateType : struct, Enum
         {
-            var emailOptions = configuration.GetSection(EmailOptions.Section).Get<EmailOptions>() ?? new EmailOptions();
+            services.AddScoped<ITransactionalEmailsApi, TransactionalEmailsApi>();
+            services.ConfigureEmailApi<TTemplateType>(configuration);
+            services.ConfigureEmailOptions<TTemplateType>();
+            return services;
+        }
 
-            if (SendingBlueConfiguration.Default.ApiKey.ContainsKey(EmailOptions.ApiKey))
+        private static void ConfigureEmailApi<TTemplateType>(this IServiceCollection services, IConfiguration configuration)
+            where TTemplateType : struct, Enum
+        {
+            var emailOptions = configuration.GetSection(EmailOptions<TTemplateType>.Section).Get<EmailOptions<TTemplateType>>() ?? new EmailOptions<TTemplateType>();
+
+            if (SendingBlueConfiguration.Default.ApiKey.ContainsKey(EmailOptions<TTemplateType>.ApiKey))
             {
                 return;
             }
 
-            SendingBlueConfiguration.Default.ApiKey.Add(EmailOptions.ApiKey, emailOptions.ApiKeySendinblue);
+            SendingBlueConfiguration.Default.ApiKey.Add(EmailOptions<TTemplateType>.ApiKey, emailOptions.ApiKeySendinblue);
         }
 
-        private static IServiceCollection ConfigureEmailOptions(this IServiceCollection services)
+        private static IServiceCollection ConfigureEmailOptions<TTemplateType>(this IServiceCollection services)
+            where TTemplateType : struct, Enum
         {
             services
-                .AddOptions<EmailOptions>()
-                .Configure<IConfiguration>((settings, config) => config.GetSection(EmailOptions.Section).Bind(settings))
+                .AddOptions<EmailOptions<TTemplateType>>()
+                .Configure<IConfiguration>((settings, config) => config.GetSection(EmailOptions<TTemplateType>.Section).Bind(settings))
                 .ValidateDataAnnotations();
 
             return services;

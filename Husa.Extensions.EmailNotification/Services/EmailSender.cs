@@ -3,8 +3,8 @@ namespace Husa.Extensions.EmailNotification.Services
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Husa.Extensions.EmailNotification.Classes;
     using Husa.Extensions.EmailNotification.Configuration.Options;
-    using Husa.Extensions.EmailNotification.Configuration.Settings;
     using Husa.Extensions.EmailNotification.Enums;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
@@ -13,12 +13,12 @@ namespace Husa.Extensions.EmailNotification.Services
 
     public class EmailSender : IEmailSender
     {
-        private readonly EmailOptions options;
+        private readonly EmailOptions<TemplateType> options;
         private readonly ITransactionalEmailsApi transactionalEmailsApi;
         private readonly ILogger<EmailSender> logger;
 
         public EmailSender(
-            IOptions<EmailOptions> options,
+            IOptions<EmailOptions<TemplateType>> options,
             ITransactionalEmailsApi transactionalEmailsApi,
             ILogger<EmailSender> logger)
         {
@@ -67,7 +67,7 @@ namespace Husa.Extensions.EmailNotification.Services
 
             var templateOptions = this.options.EmailTemplates.Single(e => e.TemplateType == templateType);
 
-            var paramToUse = EmailParameters.ConfigureForTemplate(emailParameters, templateOptions);
+            var paramToUse = EmailParameters<TemplateType>.ConfigureForTemplate(emailParameters, templateOptions);
 
             var sendSmtpEmail = new SendSmtpEmail(
                 sender: sender,
@@ -79,47 +79,6 @@ namespace Husa.Extensions.EmailNotification.Services
                 _params: paramToUse.Parameters);
 
             this.transactionalEmailsApi.SendTransacEmail(sendSmtpEmail);
-        }
-
-        private sealed class EmailParameters
-        {
-            private const string DefaultSubject = "HomesUSA.com";
-
-            private EmailParameters(TemplateType templateType, string subject = null)
-            {
-                this.TemplateType = templateType;
-                this.Subject = subject ?? DefaultSubject;
-                this.Parameters = new();
-            }
-
-            public int TemplateId => (int)this.TemplateType;
-
-            public TemplateType TemplateType { get; set; }
-
-            public string Subject { get; set; }
-
-            public Dictionary<string, object> Parameters { get; set; }
-
-            public static EmailParameters ConfigureForTemplate<TEmailParameterKey, TEmailParameterValue>(
-                IReadOnlyDictionary<TEmailParameterKey, TEmailParameterValue> emailParameters,
-                EmailTemplate templateOptions)
-            where TEmailParameterKey : struct
-            {
-                var parameters = new EmailParameters(templateOptions.TemplateType, templateOptions.Subject);
-
-                foreach (var parameter in templateOptions.Parameters)
-                {
-                    if (!Enum.TryParse(typeof(TEmailParameterKey), parameter, out var paramEnum) || !emailParameters.TryGetValue((TEmailParameterKey)paramEnum, out var emailParam))
-                    {
-                        throw new ArgumentException($"The value of '{parameter}' in '{nameof(emailParameters)}' cannot be null or whitespace.", nameof(emailParameters));
-                    }
-
-                    var enumDescription = EnumExtensions.GetEnumDescription<TEmailParameterKey>(parameter);
-                    parameters.Parameters.Add(enumDescription, emailParam);
-                }
-
-                return parameters;
-            }
         }
     }
 }
