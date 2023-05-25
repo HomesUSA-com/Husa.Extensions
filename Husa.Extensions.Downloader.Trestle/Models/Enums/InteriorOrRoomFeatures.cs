@@ -36,6 +36,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CedarClosets,
         CeilingFans,
         CentralVacuum,
+        CentralVacuumRoughIn,
         CeramicBath,
         CeramicCounters,
         ChairRail,

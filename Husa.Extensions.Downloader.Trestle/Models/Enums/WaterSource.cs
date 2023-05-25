@@ -36,6 +36,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         WaterTapFee,
         WaterTapPaid,
         Well,
+        WellInstalled,
         WellNeeded,
     }
 }

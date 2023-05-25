@@ -11,6 +11,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CasementWindows,
         Clad,
         CustomCoverings,
+        DraperyTracks,
         DisplayWindows,
         DoubleHung,
         DoublePaneWindows,
