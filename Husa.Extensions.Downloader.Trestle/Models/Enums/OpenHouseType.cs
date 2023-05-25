@@ -4,6 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         Broker,
         LiveStreamBroker,
+        LiveStreamOffice,
         LiveStreamPublic,
         Office,
         Private,

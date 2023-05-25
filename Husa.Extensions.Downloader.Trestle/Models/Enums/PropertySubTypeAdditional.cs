@@ -33,6 +33,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         LiveWork,
         ManufacturedHome,
         ManufacturedOnLand,
+        MiningClaim,
         MixedUse,
         MobileHome,
         ModularHome,

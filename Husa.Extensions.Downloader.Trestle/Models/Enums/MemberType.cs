@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum MemberType
     {
+        Affiliate,
         Assistant,
         AssociateBroker,
         AssociationStaff,

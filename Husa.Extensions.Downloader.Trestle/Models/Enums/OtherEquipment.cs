@@ -34,6 +34,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         TVAntenna,
         VariesbyUnit,
         VentilationSystem,
+        WaterSoftenerLoop,
         WheelLine,
         Workbench,
     }

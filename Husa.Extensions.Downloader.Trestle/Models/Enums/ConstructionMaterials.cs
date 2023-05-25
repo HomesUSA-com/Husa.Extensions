@@ -68,6 +68,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SlumpBlock,
         SprayFoamInsulation,
         Steel,
+        SteelFrame,
         SteelSiding,
         StickBuilt,
         Stone,

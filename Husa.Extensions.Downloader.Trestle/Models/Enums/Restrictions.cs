@@ -38,7 +38,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ModularHomeAllowed,
         MotorcyclesAllowed,
         NoCommercial,
-        NoConvenants,
+        NoCovenants,
         NoCorporateBuyer,
         NoDeedRestrictions,
         NoDivide,
