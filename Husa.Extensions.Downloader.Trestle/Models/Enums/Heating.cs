@@ -47,6 +47,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         None,
         Oil,
         Other,
+        OutdoorFurnace,
         OverheadHeaters,
         PassiveSolar,
         PelletStove,

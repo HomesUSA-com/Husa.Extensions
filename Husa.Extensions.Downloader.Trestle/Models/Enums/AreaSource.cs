@@ -20,5 +20,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Realist,
         SeeRemarks,
         Survey,
+        Test,
+        Test2,
     }
 }

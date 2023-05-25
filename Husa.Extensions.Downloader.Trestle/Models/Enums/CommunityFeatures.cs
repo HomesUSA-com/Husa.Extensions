@@ -12,6 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BilliardRoom,
         BoatFacilities,
         BoatSlip,
+        BocceCourt,
         Bulkhead,
         BusinessCenter,
         CableTV,
