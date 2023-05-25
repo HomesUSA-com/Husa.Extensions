@@ -22,6 +22,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         NotConnectednearby,
         Other,
         Pond,
+        PotableWater,
         Private,
         Public,
         River,

@@ -14,6 +14,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         InGarage,
         InHall,
         InKitchen,
+        InMudRoom,
         InUnit,
         Inside,
         LaundryLivingArea,
