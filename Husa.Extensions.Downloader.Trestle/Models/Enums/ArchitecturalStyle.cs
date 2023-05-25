@@ -7,6 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         AirLite,
         ArtDeco,
         Backsplit,
+        Barndominium,
         BiLevel,
         Bungalow,
         BungalowRaised,

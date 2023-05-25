@@ -215,6 +215,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SteamShower,
         StoneCounters,
         Storage,
+        Study,
         SunRoom,
         SunkenBathtub,
         SunkenLivingRoom,

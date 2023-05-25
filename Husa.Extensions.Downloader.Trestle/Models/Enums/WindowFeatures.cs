@@ -48,7 +48,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ThermalWindows,
         TiltInWindows,
         TintedWindows,
-        TransumWindows,
+        TransomWindows,
         TriplePaneWindows,
         Vinyl,
         WindowCoverings,

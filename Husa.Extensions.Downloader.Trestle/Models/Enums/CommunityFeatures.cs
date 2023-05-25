@@ -123,6 +123,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Stables,
         StorageFacilities,
         StormDrains,
+        Stream,
+        StreamSeasonal,
         StreetLights,
         Suburban,
         TennisCourts,

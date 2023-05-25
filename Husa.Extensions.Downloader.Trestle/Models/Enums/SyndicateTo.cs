@@ -12,6 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ListHub,
         None,
         Realtorcom,
+        RentalBeast,
         RPR,
         State27Homescom,
         TexasRealEstatecom,
