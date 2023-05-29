@@ -13,7 +13,7 @@ namespace Husa.Extensions.Media.Extensions
         public const int ImageMinimumBytes = 512;
         public const string RegexExp = @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy";
         private static readonly string[] ValidContentTypes = new[] { ManagedMediaTypes.Jpg, ManagedMediaTypes.Jpeg, ManagedMediaTypes.Pjpeg, ManagedMediaTypes.Gif, ManagedMediaTypes.Xpng, ManagedMediaTypes.Png, ManagedMediaTypes.Pdf };
-        private static readonly string[] ValidFileExtensions = new[] { ManagedFileExtensions.Jpg, ManagedFileExtensions.Png, ManagedFileExtensions.Gif, ManagedFileExtensions.Jpeg, ManagedFileExtensions.Pdf };
+        private static readonly string[] ValidFileExtensions = new[] { ManagedFileExtensions.Jpg, ManagedFileExtensions.Png, ManagedFileExtensions.Gif, ManagedFileExtensions.Jpeg, ManagedFileExtensions.Pdf, ManagedFileExtensions.Jfif };
 
         public static bool IsValid(this IFormFile file)
         {

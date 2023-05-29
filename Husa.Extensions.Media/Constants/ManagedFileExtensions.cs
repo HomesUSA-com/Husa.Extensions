@@ -11,5 +11,7 @@ namespace Husa.Extensions.Media.Constants
         public const string Png = ".png";
 
         public const string Pdf = ".pdf";
+
+        public const string Jfif = ".jfif";
     }
 }
