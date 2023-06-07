@@ -2,6 +2,7 @@ namespace Husa.Extensions.Common
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -9,6 +10,18 @@ namespace Husa.Extensions.Common
 
     public static class StringExtensions
     {
+        public static string ToTitleCase(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+
+            var cultureInfo = CultureInfo.CurrentCulture;
+            var textInfo = cultureInfo.TextInfo;
+            return textInfo.ToTitleCase(str.ToLower());
+        }
+
         public static string EncodeToBase64Url(this string token)
         {
             if (string.IsNullOrEmpty(token))
