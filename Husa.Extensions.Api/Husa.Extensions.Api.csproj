@@ -6,7 +6,7 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>4.0.2-dev001</Version>
+        <Version>4.0.2</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
             Release 4.0.2:
