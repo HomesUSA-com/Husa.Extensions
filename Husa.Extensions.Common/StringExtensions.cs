@@ -10,6 +10,8 @@ namespace Husa.Extensions.Common
 
     public static class StringExtensions
     {
+        private static readonly IEnumerable<string> ExcludedWords = new[] { "a", "an", "and", "at", "in", "of", "or", "the", "to", "with" };
+
         public static string ToTitleCase(this string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -17,9 +19,16 @@ namespace Husa.Extensions.Common
                 return str;
             }
 
-            var cultureInfo = CultureInfo.CurrentCulture;
-            var textInfo = cultureInfo.TextInfo;
-            return textInfo.ToTitleCase(str.ToLower());
+            var textInfo = CultureInfo.CurrentCulture.TextInfo;
+            var words = str.Split(' ');
+
+            words = words.Select(word =>
+            {
+                var loweredWord = word.ToLower();
+                return ExcludedWords.Contains(loweredWord) ? loweredWord : textInfo.ToTitleCase(loweredWord);
+            }).ToArray();
+
+            return string.Join(" ", words);
         }
 
         public static string EncodeToBase64Url(this string token)

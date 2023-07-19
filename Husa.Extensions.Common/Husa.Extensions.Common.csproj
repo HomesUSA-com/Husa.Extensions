@@ -9,9 +9,8 @@
         <Version>3.8.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.8.0:
-            - Added if required validation
-            - Add ToTitleCase to string extension
+            Release 3.8.1:
+            - Fix capitalization method
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
