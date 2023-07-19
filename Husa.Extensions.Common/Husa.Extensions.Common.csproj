@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.8.1</Version>
+        <Version>3.8.2</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.8.1:
+            Release 3.8.2:
             - Fix capitalization method
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
