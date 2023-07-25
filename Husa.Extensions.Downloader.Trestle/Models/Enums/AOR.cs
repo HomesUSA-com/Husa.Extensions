@@ -252,6 +252,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         GrossePointeBoardofREALTORS,
         GuelphDistrictAssociationofREALTORS,
         GuernseyMuskingumValleyAssociationofREALTORS,
+        GulfCoastMLS,
         GulfSouthRealEstateInformationNetworkInc,
         GunnisonCountryAssociationRealtors,
         GunnisonCrestedButteAssociationofREALTORS,

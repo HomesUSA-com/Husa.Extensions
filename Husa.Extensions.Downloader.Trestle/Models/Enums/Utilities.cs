@@ -33,6 +33,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SewerConnected,
         SewerNotAvailable,
         TrashCollection,
+        TrashCollectionPrivate,
+        TrashCollectionPublic,
         UndergroundUtilities,
         Unknown,
         WaterAvailable,

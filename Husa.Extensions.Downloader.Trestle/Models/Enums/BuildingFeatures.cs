@@ -11,6 +11,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ConferenceRoom,
         Conveyor,
         Coolers,
+        DangerousGoodsStorage,
         DayCareFacility,
         DeliveryDoor,
         DockGradeLoading,

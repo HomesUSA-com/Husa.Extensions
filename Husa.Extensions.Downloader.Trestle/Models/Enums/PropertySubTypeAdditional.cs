@@ -31,6 +31,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Investment,
         Land,
         LiveWork,
+        Loft,
         ManufacturedHome,
         ManufacturedOnLand,
         MiningClaim,
