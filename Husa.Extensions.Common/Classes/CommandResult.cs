@@ -43,7 +43,7 @@ namespace Husa.Extensions.Common.Classes
 
         public IEnumerable<T> Results { get; set; }
 
-        public T Result => this.HasResults() ? this.Results.Single() : null;
+        public T Result => this.HasResults() ? this.Results.First() : null;
 
         public static CommandResult<T> Success() => new(ResponseCode.Success);
 

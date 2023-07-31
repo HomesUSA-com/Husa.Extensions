@@ -6,7 +6,7 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.8.2</Version>
+        <Version>3.8.3</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
             Release 3.8.2:
