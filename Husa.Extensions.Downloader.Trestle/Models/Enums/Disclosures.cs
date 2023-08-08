@@ -65,6 +65,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         PrincipalisRealEstateLicensed,
         PrivateTransferTaxes,
         ProspectsReserved,
+        PublicImprovementDistrict,
         PurchasertoVerifyElectricity,
         Radon,
         RANM2100Disclosure,

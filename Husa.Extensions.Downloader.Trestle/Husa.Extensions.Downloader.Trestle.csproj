@@ -7,11 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.1.0</Version>
+        <Version>3.2.0</Version>
         <PackageReleaseNotes>
-            Release 3.1.0:
-            - Patches applied up to #167
-            - TrashCollectionPrivate and TrashCollectionPublic added to Utilities (Values not present in the documentation but causing error)
+            Release 3.2.0:
+            - Added PublicImprovementDistrict in Disclosures (Value not found in documentation, but causing error)
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
