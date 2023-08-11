@@ -60,7 +60,14 @@ namespace Husa.Extensions.Domain.Extensions
             var valueList = new List<string>();
             foreach (var value in (IList)obj)
             {
-                valueList.Add(EnumMemberToString(enumType, value));
+                if (enumType.IsEnum)
+                {
+                    valueList.Add(EnumMemberToString(enumType, value));
+                }
+                else
+                {
+                    valueList.Add((string)value);
+                }
             }
 
             return valueList;
