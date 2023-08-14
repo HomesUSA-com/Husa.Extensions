@@ -6,22 +6,29 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>4.1.0</Version>
+        <Version>4.2.0</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.0:
-            - Added support for both net7 and net6 frameworks
-            - Updated Husa.Extensions.Common
+            Release 4.2.0:
+            - Added method that includes the market in the message metadata
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="3.7.0" />
-        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.11.1" />
+        <PackageReference Include="Husa.Extensions.Common" Version="3.8.3" />
+        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.16.0" />
         <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="[7.0.0, 8.0.0)" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="[7.0.1, 8.0.0)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="[6.0.0, 7.0.0)" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="[6.0.0, 7.0.0)" />
     </ItemGroup>
 
 </Project>

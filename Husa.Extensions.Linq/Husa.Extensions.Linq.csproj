@@ -6,19 +6,25 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>3.3.0</Version>
+        <Version>3.4.0</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.3.0:
-            - Downgrade EntityFrameworkCore
-            - Updated Husa.Extensions.Common
+            Release 3.4.0:
+            - Updated packages
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="3.7.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
+        <PackageReference Include="Husa.Extensions.Common" Version="3.8.4" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[7.0.0, 8.0.0)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="[6.0.0, 7.0.0)" />
     </ItemGroup>
 
 </Project>

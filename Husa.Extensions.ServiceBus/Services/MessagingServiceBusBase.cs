@@ -4,6 +4,8 @@ namespace Husa.Extensions.ServiceBus.Services
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Azure.Messaging.ServiceBus;
+    using Husa.Extensions.Common.Enums;
+    using Husa.Extensions.ServiceBus.Attributes;
     using Husa.Extensions.ServiceBus.Extensions;
     using Husa.Extensions.ServiceBus.Interfaces;
     using Microsoft.Extensions.Logging;
@@ -28,6 +30,29 @@ namespace Husa.Extensions.ServiceBus.Services
             string userId,
             string correlationId = null,
             bool dispose = true)
+            where T : IProvideBusEvent => await this.SendMessageBatch(messages, userId, market: null, correlationId, dispose);
+
+        public async Task SendMessage<T>(
+            IEnumerable<T> messages,
+            string userId,
+            MarketCode market,
+            string correlationId = null,
+            bool dispose = true)
+            where T : IProvideBusEvent => await this.SendMessageBatch(messages, userId, market, correlationId, dispose);
+
+        public async Task DisposeClient()
+        {
+            this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic {topicName}.", this.topicName);
+            await this.sender.DisposeAsync();
+            await this.client.DisposeAsync();
+        }
+
+        private async Task SendMessageBatch<T>(
+            IEnumerable<T> messages,
+            string userId,
+            MarketCode? market,
+            string correlationId,
+            bool dispose = true)
             where T : IProvideBusEvent
         {
             try
@@ -38,10 +63,18 @@ namespace Husa.Extensions.ServiceBus.Services
                 {
                     this.logger.LogInformation("Starting to send a message with id {messageId}. for topic {topicName}", message.Id, this.topicName);
                     var serviceBusMessage = new ServiceBusMessage(message.SerializeMessage());
-                    serviceBusMessage.ApplicationProperties.Add("BodyType", typeof(T).FullName);
-                    serviceBusMessage.ApplicationProperties.Add("AssemblyName", typeof(T).AssemblyQualifiedName);
-                    serviceBusMessage.ApplicationProperties.Add("UserId", userId);
-                    serviceBusMessage.CorrelationId = correlationId ?? Guid.NewGuid().ToString();
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, typeof(T).FullName);
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, typeof(T).AssemblyQualifiedName);
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.UserIdField, userId);
+                    if (market.HasValue)
+                    {
+                        serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, market.Value.ToString());
+                    }
+
+                    if (string.IsNullOrEmpty(correlationId))
+                    {
+                        serviceBusMessage.CorrelationId = Guid.NewGuid().ToString();
+                    }
 
                     if (!messageBatch.TryAddMessage(serviceBusMessage))
                     {
@@ -61,13 +94,6 @@ namespace Husa.Extensions.ServiceBus.Services
                     await this.DisposeClient();
                 }
             }
-        }
-
-        public async Task DisposeClient()
-        {
-            this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic {topicName}.", this.topicName);
-            await this.sender.DisposeAsync();
-            await this.client.DisposeAsync();
         }
     }
 }

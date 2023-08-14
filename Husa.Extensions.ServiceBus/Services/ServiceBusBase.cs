@@ -2,6 +2,8 @@ namespace Husa.Extensions.ServiceBus.Services
 {
     using System;
     using System.Threading.Tasks;
+    using Husa.Extensions.Common.Enums;
+    using Husa.Extensions.ServiceBus.Attributes;
     using Husa.Extensions.ServiceBus.Extensions;
     using Husa.Extensions.ServiceBus.Interfaces;
     using Microsoft.Azure.ServiceBus;
@@ -23,6 +25,22 @@ namespace Husa.Extensions.ServiceBus.Services
             string userId = null,
             string correlationId = null,
             bool dispose = true)
+            where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market: null, correlationId, dispose);
+
+        public async Task SendMessage<T>(
+            T eventMessage,
+            string userId,
+            MarketCode market,
+            string correlationId = null,
+            bool dispose = true)
+            where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market, correlationId, dispose);
+
+        public async Task SendSingleMessage<T>(
+            T eventMessage,
+            string userId,
+            MarketCode? market,
+            string correlationId,
+            bool dispose)
             where T : IProvideBusEvent
         {
             try
@@ -30,10 +48,20 @@ namespace Husa.Extensions.ServiceBus.Services
                 this.logger.LogInformation("Starting to send a message with id {messageId} to the topic: '{topicName}'.", eventMessage.Id, this.topicClient.TopicName);
 
                 var message = new Message(eventMessage.SerializeMessage());
-                message.UserProperties["BodyType"] = typeof(T).FullName;
-                message.UserProperties["AssemblyName"] = typeof(T).AssemblyQualifiedName;
-                message.UserProperties["UserId"] = userId;
-                message.CorrelationId = correlationId;
+                message.UserProperties[MessageMetadataConstants.BodyTypeField] = typeof(T).FullName;
+                message.UserProperties[MessageMetadataConstants.AssemblyNameField] = typeof(T).AssemblyQualifiedName;
+                message.UserProperties[MessageMetadataConstants.UserIdField] = userId;
+
+                if (market.HasValue)
+                {
+                    message.UserProperties[MessageMetadataConstants.MarketField] = market.Value.ToString();
+                }
+
+                if (string.IsNullOrEmpty(correlationId))
+                {
+                    message.CorrelationId = Guid.NewGuid().ToString();
+                }
+
                 await this.topicClient.SendAsync(message);
 
                 this.logger.LogInformation("Message to the topic: '{topicName}' was sent.", this.topicClient.TopicName);
