@@ -37,20 +37,7 @@ namespace Husa.Extensions.Domain.Extensions
             }).Select(x => x.Name);
         }
 
-        private static bool EnumCollectionsAreEquals(PropertyInfo propertyInfo, object source, object target)
-        {
-            var argumentType = propertyInfo.PropertyType.GetGenericArguments().Single();
-            var sourceValue = EnumCollectionToStringCollection(propertyInfo.GetValue(source), argumentType);
-            var targetValue = EnumCollectionToStringCollection(propertyInfo.GetValue(target), argumentType);
-            if (!sourceValue.Any() && !targetValue.Any())
-            {
-                return true;
-            }
-
-            return sourceValue.SequenceEqual(targetValue);
-        }
-
-        private static IEnumerable<string> EnumCollectionToStringCollection(object obj, Type enumType)
+        public static IEnumerable<string> EnumCollectionToStringCollection(object obj, Type enumType)
         {
             if (obj == null)
             {
@@ -73,13 +60,26 @@ namespace Husa.Extensions.Domain.Extensions
             return valueList;
         }
 
-        private static string EnumMemberToString(Type type, object value)
+        public static string EnumMemberToString(Type type, object value)
         {
             var enumType = Nullable.GetUnderlyingType(type) ?? type;
             var name = Enum.GetName(enumType, value);
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), inherit: true)).SingleOrDefault();
 
             return enumMemberAttribute != null ? enumMemberAttribute.Value : null;
+        }
+
+        private static bool EnumCollectionsAreEquals(PropertyInfo propertyInfo, object source, object target)
+        {
+            var argumentType = propertyInfo.PropertyType.GetGenericArguments().Single();
+            var sourceValue = EnumCollectionToStringCollection(propertyInfo.GetValue(source), argumentType);
+            var targetValue = EnumCollectionToStringCollection(propertyInfo.GetValue(target), argumentType);
+            if (!sourceValue.Any() && !targetValue.Any())
+            {
+                return true;
+            }
+
+            return sourceValue.SequenceEqual(targetValue);
         }
     }
 }

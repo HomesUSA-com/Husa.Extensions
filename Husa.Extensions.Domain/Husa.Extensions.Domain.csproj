@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Domain</AssemblyName>
@@ -6,12 +6,11 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
-            Release 1.0.1:
-            - Production deploy
-            - GetDifferences allows collections of strings
+            Release 1.1.0:
+            - Added new validation attribute
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
