@@ -10,7 +10,7 @@ namespace Husa.Extensions.Common
 
     public static class StringExtensions
     {
-        private static readonly IEnumerable<string> ExcludedWords = new[] { "a", "an", "and", "at", "in", "of", "or", "the", "to", "with" };
+        private static readonly IEnumerable<string> ExcludedWords = new[] { "a", "an", "and", "at", "in", "of", "or", "to", "with" };
 
         public static string ToTitleCase(this string str)
         {

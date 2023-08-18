@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.8.4</Version>
+        <Version>3.9.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.8.4:
-            - Fix capitalization method
+            Release 3.9.0:
+            - Remove 'the' from excluded words when capitalizing words
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
