@@ -25,6 +25,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         KennelDogRun,
         Kennels,
         LivingQuarters,
+        ManufacturedHome,
         MobileHome,
         None,
         Other,

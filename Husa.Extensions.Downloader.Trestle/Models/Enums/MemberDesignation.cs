@@ -86,6 +86,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         RoyalInstituteofCharteredSurveyors,
         SellerRepresentativeSpecialistSRS,
         SeniorResidentialAppraiser,
+        SeniorsRealEstate,
         SeniorsRealEstateSpecialistSRES,
         ShortSalesForeclosureResourceSFR,
         SocietyofIndustrialandOfficeREALTORSSIOR,
