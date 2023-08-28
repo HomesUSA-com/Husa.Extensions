@@ -6,11 +6,11 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>4.3.0</Version>
+        <Version>4.4.0</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.3.0:
-            - update Common and Service Bus packages
+            Release 4.4.0:
+            - Add Market to Service Bus message if message has that property
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

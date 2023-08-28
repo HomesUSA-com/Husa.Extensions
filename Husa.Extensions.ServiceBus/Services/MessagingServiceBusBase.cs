@@ -71,6 +71,17 @@ namespace Husa.Extensions.ServiceBus.Services
                         serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, market.Value.ToString());
                     }
 
+                    var msgType = message.GetType();
+                    var marketProp = msgType.GetProperty("Market");
+                    if (marketProp is not null)
+                    {
+                        var msgMarket = (MarketCode?)marketProp.GetValue(message);
+                        if (msgMarket.HasValue)
+                        {
+                            serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, msgMarket.Value.ToString());
+                        }
+                    }
+
                     if (string.IsNullOrEmpty(correlationId))
                     {
                         serviceBusMessage.CorrelationId = Guid.NewGuid().ToString();
