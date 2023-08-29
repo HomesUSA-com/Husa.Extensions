@@ -6,11 +6,11 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>4.4.0</Version>
+        <Version>4.5.0</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.4.0:
-            - Add Market to Service Bus message if message has that property
+            Release 4.5.0:
+            - Only send "Message" property if the message has that attribute
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

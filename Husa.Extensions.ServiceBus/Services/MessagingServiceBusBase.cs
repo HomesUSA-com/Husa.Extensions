@@ -62,7 +62,11 @@ namespace Husa.Extensions.ServiceBus.Services
                 foreach (var message in messages)
                 {
                     this.logger.LogInformation("Starting to send a message with id {messageId}. for topic {topicName}", message.Id, this.topicName);
-                    var serviceBusMessage = new ServiceBusMessage(message.SerializeMessage());
+                    var msgType = message.GetType();
+                    var messageProp = msgType.GetProperty("Message");
+                    var serviceBusMessage = (messageProp is not null)
+                        ? new ServiceBusMessage(messageProp.GetValue(message).SerializeMessage())
+                        : new ServiceBusMessage(message.SerializeMessage());
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, typeof(T).FullName);
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, typeof(T).AssemblyQualifiedName);
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.UserIdField, userId);
@@ -71,7 +75,6 @@ namespace Husa.Extensions.ServiceBus.Services
                         serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, market.Value.ToString());
                     }
 
-                    var msgType = message.GetType();
                     var marketProp = msgType.GetProperty("Market");
                     if (marketProp is not null)
                     {
