@@ -7,11 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.2.1</Version>
+        <Version>3.2.2</Version>
         <PackageReleaseNotes>
-            Release 3.2.1:
-            - Added SeniorsRealEstate to MemberDesignation (Value not found in documentation, but causing error)
-            - Added ManufacturedHome to OtherStructures (Value not found in documentation, but causing error)
+            Release 3.2.2:
+            - Added Vineyard to PossibleUse (Value not found in documentation, but causing error)
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

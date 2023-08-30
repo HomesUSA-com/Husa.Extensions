@@ -50,6 +50,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Timber,
         Unimproved,
         Vacant,
+        Vineyard,
         Warehouse,
         Wholesale,
     }
