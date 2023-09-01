@@ -67,8 +67,8 @@ namespace Husa.Extensions.ServiceBus.Services
                     var serviceBusMessage = (messageProp is not null)
                         ? new ServiceBusMessage(messageProp.GetValue(message).SerializeMessage())
                         : new ServiceBusMessage(message.SerializeMessage());
-                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, typeof(T).FullName);
-                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, typeof(T).AssemblyQualifiedName);
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, (messageProp is not null) ? messageProp.GetValue(message).GetType().FullName : typeof(T).FullName);
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, (messageProp is not null) ? messageProp.GetValue(message).GetType().AssemblyQualifiedName : typeof(T).AssemblyQualifiedName);
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.UserIdField, userId);
                     if (market.HasValue)
                     {
