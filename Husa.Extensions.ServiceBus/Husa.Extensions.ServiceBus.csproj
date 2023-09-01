@@ -6,11 +6,11 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>4.6.0</Version>
+        <Version>4.7.0</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.6.0:
-            - Send appropriate AssemblyName and BodyType when needed.
+            Release 4.7.0:
+            - Revert changes to 4.2.0
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

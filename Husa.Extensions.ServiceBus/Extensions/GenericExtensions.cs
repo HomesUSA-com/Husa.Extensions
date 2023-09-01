@@ -14,12 +14,6 @@ namespace Husa.Extensions.ServiceBus.Extensions
             return Encoding.UTF8.GetBytes(data);
         }
 
-        public static byte[] SerializeMessage(this object message)
-        {
-            var data = JsonSerializer.Serialize(message);
-            return Encoding.UTF8.GetBytes(data);
-        }
-
         public static T DeserializeMessage<T>(this byte[] message)
             where T : class
         {

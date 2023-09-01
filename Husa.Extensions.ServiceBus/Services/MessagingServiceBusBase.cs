@@ -62,27 +62,13 @@ namespace Husa.Extensions.ServiceBus.Services
                 foreach (var message in messages)
                 {
                     this.logger.LogInformation("Starting to send a message with id {messageId}. for topic {topicName}", message.Id, this.topicName);
-                    var msgType = message.GetType();
-                    var messageProp = msgType.GetProperty("Message");
-                    var serviceBusMessage = (messageProp is not null)
-                        ? new ServiceBusMessage(messageProp.GetValue(message).SerializeMessage())
-                        : new ServiceBusMessage(message.SerializeMessage());
-                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, (messageProp is not null) ? messageProp.GetValue(message).GetType().FullName : typeof(T).FullName);
-                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, (messageProp is not null) ? messageProp.GetValue(message).GetType().AssemblyQualifiedName : typeof(T).AssemblyQualifiedName);
+                    var serviceBusMessage = new ServiceBusMessage(message.SerializeMessage());
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, typeof(T).FullName);
+                    serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, typeof(T).AssemblyQualifiedName);
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.UserIdField, userId);
                     if (market.HasValue)
                     {
                         serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, market.Value.ToString());
-                    }
-
-                    var marketProp = msgType.GetProperty("Market");
-                    if (marketProp is not null)
-                    {
-                        var msgMarket = (MarketCode?)marketProp.GetValue(message);
-                        if (msgMarket.HasValue)
-                        {
-                            serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.MarketField, msgMarket.Value.ToString());
-                        }
                     }
 
                     if (string.IsNullOrEmpty(correlationId))
