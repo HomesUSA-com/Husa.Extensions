@@ -2,7 +2,9 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
 {
     using System;
     using System.Collections.Generic;
+    using Husa.Extensions.Common;
     using Husa.Extensions.Downloader.Trestle.Models;
+    using Husa.Extensions.Downloader.Trestle.Models.Enums;
     using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
 
     public static class Utils
@@ -45,6 +47,11 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
             }
 
             return filterUrl;
+        }
+
+        public static string AddSystemOriginFilter(string filter, SystemOrigin? systemOrigin)
+        {
+            return systemOrigin is null ? filter : filter + $" and OriginatingSystemName eq '{((SystemOrigin)systemOrigin).ToStringFromEnumMember()}'";
         }
     }
 }

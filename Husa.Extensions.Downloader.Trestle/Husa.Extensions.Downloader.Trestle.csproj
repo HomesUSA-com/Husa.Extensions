@@ -7,16 +7,18 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.2.2</Version>
+        <Version>3.3.0-dev001</Version>
         <PackageReleaseNotes>
-            Release 3.2.2:
-            - Added Vineyard to PossibleUse (Value not found in documentation, but causing error)
+            Release 3.3.0:
+            - SystemOrigin added to MarketOptions
+            - SystemOrigin filter added for Property Resource
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     
     <ItemGroup>
         <PackageReference Include="Azure.Data.Tables" Version="12.7.1" />
+        <PackageReference Include="Husa.Extensions.Common" Version="3.9.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.2" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />

@@ -10,6 +10,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Threading.Tasks;
     using System.Xml;
     using Husa.Extensions.Downloader.Trestle.Contracts;
+    using Husa.Extensions.Downloader.Trestle.Helpers;
     using Husa.Extensions.Downloader.Trestle.Helpers.Converters;
     using Husa.Extensions.Downloader.Trestle.Models;
     using Microsoft.Extensions.Options;
@@ -64,6 +65,11 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         public async Task<IEnumerable<T>> GetData<T>(HttpClient client, string resource, string filter = null)
         {
             var uri = $"odata/{resource}";
+            if (resource == "Property")
+            {
+                filter = Utils.AddSystemOriginFilter(filter, this.connectionOptions.Market);
+            }
+
             if (!string.IsNullOrEmpty(filter))
             {
                 uri += filter;
