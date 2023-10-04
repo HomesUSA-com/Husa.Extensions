@@ -46,7 +46,7 @@ namespace Husa.Extensions.Media.Services
             // Set Image MetaData
             var fileMeta = new Dictionary<string, string>
             {
-                { "FileName", file.FileName },
+                { "FileName", file.FileName ?? string.Empty },
                 { "FileContentType", file.ContentType },
             };
 
