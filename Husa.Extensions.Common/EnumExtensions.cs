@@ -54,19 +54,28 @@ namespace Husa.Extensions.Common
             return (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name);
         }
 
-        public static T ToEnumFromEnumMember<T>(this string enumMemberValue)
+        public static string ToEnumNameFromEnumMember<T>(this string enumMemberValue)
             where T : Enum
         {
             var enumType = typeof(T);
-            var result = Enum.GetNames(enumType)
-            .Where(enumName =>
-                ((EnumMemberAttribute[])enumType.GetField(enumName).GetCustomAttributes(typeof(EnumMemberAttribute), inherit: true))
-                .Single()
-                .Value == enumMemberValue)
-            .Select(enumName => (T)Enum.Parse(enumType, enumName))
-            .SingleOrDefault();
+            foreach (var name in Enum.GetNames(enumType))
+            {
+                var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                if (enumMemberAttribute.Value == enumMemberValue)
+                {
+                    return name;
+                }
+            }
 
-            return result is not null ? result : default;
+            return null;
+        }
+
+        public static T ToEnumFromEnumMember<T>(this string enumMemberValue)
+            where T : Enum
+        {
+            var enumName = ToEnumNameFromEnumMember<T>(enumMemberValue);
+            var enumType = typeof(T);
+            return enumName is null ? default : (T)Enum.Parse(enumType, enumName);
         }
 
         public static T ToEnumFromString<T>(this string enumValue)
@@ -134,9 +143,14 @@ namespace Husa.Extensions.Common
                 return Array.Empty<T>();
             }
 
-            return enumElements
-                .Split(",")
-                .Select(garageFeature => enumMember ? garageFeature.ToEnumFromEnumMember<T>() : garageFeature.ToEnumFromString<T>());
+            var values = enumElements.Split(",");
+
+            if (enumMember)
+            {
+                return values.Select(feature => feature.ToEnumNameFromEnumMember<T>()).Where(name => name != null).Select(name => (T)Enum.Parse(typeof(T), name));
+            }
+
+            return values.Select(feature => feature.ToEnumFromString<T>());
         }
 
         public static TEnum? GetEnumFromText<TEnum>(this string enumValuetoFind)

@@ -6,11 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>3.9.0</Version>
+        <Version>3.10.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 3.9.0:
-            - Remove 'the' from excluded words when capitalizing words
+            Release 3.10.0:
+            - If a enum member does not exist, CsvToEnum will filter it instead of return a default value
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
