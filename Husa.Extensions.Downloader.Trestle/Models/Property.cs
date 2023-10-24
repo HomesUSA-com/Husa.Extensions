@@ -220,6 +220,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
 
         [JsonConverter(typeof(StringListEnumConverter<CommunityFeatures>))]
         public IEnumerable<CommunityFeatures> CommunityFeatures { get; set; }
+        public string CompensationComments { get; set; }
+        public bool? CompSaleYN { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Concessions?>))]
         public Concessions? Concessions { get; set; }
         public int? ConcessionsAmount { get; set; }

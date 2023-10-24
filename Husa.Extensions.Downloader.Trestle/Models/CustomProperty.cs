@@ -35,6 +35,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CustomFields { get; set; }
         public string DevelopmentName { get; set; }
         public string FractionalShare { get; set; }
+        public string GarageArea { get; set; }
+        public string GarageAreaUnits { get; set; }
+        public string GarageDimensions { get; set; }
         public decimal GuestHouseAreaTotal { get; set; }
         public AreaSource? GuestHouseAreaTotalSource { get; set; }
         public AreaUnits? GuestHouseAreaTotalUnits { get; set; }
@@ -50,6 +53,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string LakeName { get; set; }
         public string LakeSize { get; set; }
         public LandTenure? LandTenure { get; set; }
+        public string Lang2_Type { get; set; }
+        public string Lang3_Type { get; set; }
         public bool LastMonthRentReqYN { get; set; }
         public decimal LeaseAmountPerArea { get; set; }
         public LeaseAmountPerAreaUnit? LeaseAmountPerAreaUnit { get; set; }
@@ -87,14 +92,18 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public PricePerAreaUnit? PricePerAreaUnit { get; set; }
         public string PrivateShowingInstructions { get; set; }
         public string ProjectName { get; set; }
+        public string PublicRemarks_lang2 { get; set; }
+        public string PublicRemarks_lang3 { get; set; }
         public Restrictions? Restrictions { get; set; }
         public string RiverName { get; set; }
         public string SaleOrLeaseIncludes { get; set; }
         public string SeasonRate { get; set; }
         public int SourceSupplementPublicCount { get; set; }
         public StandardStatus? StandardStatus { get; set; }
+        public string TaxAuthority { get; set; }
         public string TaxYearRange { get; set; }
         public string UnitLocation { get; set; }
+        public string WaterAccessDescription { get; set; }
         public bool WaterAccessYN { get; set; }
         public string WeeklyRate { get; set; }
     }

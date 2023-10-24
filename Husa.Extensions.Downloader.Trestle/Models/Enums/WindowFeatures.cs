@@ -43,6 +43,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Skylights,
         Sliding,
         SolarScreens,
+        SomeWindowTreatments,
         StainedGlass,
         StormWindows,
         ThermalWindows,
