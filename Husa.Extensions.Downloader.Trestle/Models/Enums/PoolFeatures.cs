@@ -49,6 +49,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ScreenEnclosure,
         SeeAgent,
         SeeRemarks,
+        Slide,
         SolarCover,
         SolarHeat,
         Sport,

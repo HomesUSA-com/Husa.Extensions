@@ -138,6 +138,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         MultiLevelBedroom,
         MultipleClosets,
         MultipleDiningAreas,
+        MultipleEnSuiteBathrooms,
         MultipleLivingAreas,
         MultipleMasterSuites,
         MultiplePrimarySuites,

@@ -5,6 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Apartmentscom,
         AustinHomeSearchcom,
         BrokerReciprocity,
+        Crexi,
         HARcom,
         Homescom,
         HomeSnap,

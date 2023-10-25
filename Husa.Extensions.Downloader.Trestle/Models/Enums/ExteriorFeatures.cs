@@ -16,6 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BrickDriveway,
         BuildingCourtyard,
         BuildingGarden,
+        BuildingNone,
         BuildingRoofDeck,
         BuiltinBarbecue,
         BurglarBar,

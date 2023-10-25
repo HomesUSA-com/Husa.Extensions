@@ -12,6 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Composite,
         Concrete,
         Covered,
+        CoveredPorch,
         Deck,
         Enclosed,
         FourSeason,

@@ -42,6 +42,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         LowerFixtures,
         NoStairs,
         None,
+        NotADACompliant,
         Other,
         Parking,
         ReinforcedFloors,

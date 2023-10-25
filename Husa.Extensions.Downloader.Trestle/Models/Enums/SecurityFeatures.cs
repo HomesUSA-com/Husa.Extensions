@@ -29,6 +29,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Intercom,
         KeyCardEntry,
         LobbySecured,
+        MedicalAlarm,
         Monitored,
         MotionDetectors,
         NoSafetyShelter,

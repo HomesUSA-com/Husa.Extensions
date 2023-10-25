@@ -12,6 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CallTenant,
         CombinationLockBox,
         DaySleeper,
+        DelayedShowing,
         DoNotDisturbTenant,
         DoNotShow,
         DriveBy,
