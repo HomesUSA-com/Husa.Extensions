@@ -29,7 +29,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? OfficeBrokerKeyNumeric { get; set; }
         public string OfficeBrokerMlsId { get; set; }
         public string OfficeCity { get; set; }
+        public string OfficeCityRegion { get; set; }
         public string OfficeCorporateLicense { get; set; }
+        public string OfficeCountry { get; set; }
         public string OfficeCountyOrParish { get; set; }
         public string OfficeEmail { get; set; }
         public string OfficeFax { get; set; }
@@ -49,6 +51,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public StateOrProvince? OfficeStateOrProvince { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<OfficeStatus?>))]
         public OfficeStatus? OfficeStatus { get; set; }
+        public string OfficeStreetAdditionalInfo { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<OfficeType?>))]
         public OfficeType? OfficeType { get; set; }
         public DateTimeOffset? OriginalEntryTimestamp { get; set; }

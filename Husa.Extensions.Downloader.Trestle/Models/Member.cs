@@ -21,6 +21,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string MemberAssociationComments { get; set; }
         public string MemberCarrierRoute { get; set; }
         public string MemberCity { get; set; }
+        public string MemberCityRegion { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Country?>))]
         public Country? MemberCountry { get; set; }
         public string MemberCountyOrParish { get; set; }
@@ -68,6 +69,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public StateOrProvince? MemberStateOrProvince { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<MemberStatus?>))]
         public MemberStatus? MemberStatus { get; set; }
+        public string MemberStreetAdditionalInfo { get; set; }
         public string MemberTollFreePhone { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<MemberType?>))]
         public MemberType? MemberType { get; set; }

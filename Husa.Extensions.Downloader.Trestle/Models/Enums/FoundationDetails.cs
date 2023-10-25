@@ -28,5 +28,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         StemWall,
         Stone,
         TieDown,
+        TreatedWood,
     }
 }

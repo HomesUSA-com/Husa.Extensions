@@ -39,6 +39,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         MeetingRooms,
         Mezzanine,
         MultiTenant,
+        NoElevators,
         NoLoading,
         NotApplicable,
         OffStreetLoading,

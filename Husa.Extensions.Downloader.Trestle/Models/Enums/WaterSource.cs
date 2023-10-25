@@ -13,6 +13,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DrivenWell,
         DugWell,
         HoldingTank,
+        IrrigationDistrict,
         Lake,
         MultipleMeters,
         MunicipalUtilityDistrict,

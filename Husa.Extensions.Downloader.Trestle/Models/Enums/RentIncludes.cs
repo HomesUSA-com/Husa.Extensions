@@ -26,6 +26,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Parking,
         PestControl,
         Pool,
+        Recycling,
         SecuritySystem,
         SeeRemarks,
         Sewer,

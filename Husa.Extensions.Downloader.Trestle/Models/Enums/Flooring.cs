@@ -23,6 +23,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         FSCorSFICertifiedSourceHardwood,
         Granite,
         Hardwood,
+        HeavyLoading,
         Laminate,
         Linoleum,
         LuxuryVinylPlank,
