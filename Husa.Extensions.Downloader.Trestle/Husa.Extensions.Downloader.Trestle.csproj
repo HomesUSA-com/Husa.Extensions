@@ -7,11 +7,11 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.3.0-dev001</Version>
+        <Version>3.4.0</Version>
         <PackageReleaseNotes>
-            Release 3.3.0:
-            - SystemOrigin added to MarketOptions
-            - SystemOrigin filter added for Property Resource
+            Release 3.4.0:
+            - Patches applied up to #169
+            - Building values added to diferent enums.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
