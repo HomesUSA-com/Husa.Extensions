@@ -18,7 +18,9 @@ pool:
   vmImage: windows-latest
 
 variables:
-  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+- group: homesusa.husa.extensions.global
+- name: isPullRequest
+  value: $[eq(variables['Build.Reason'], 'PullRequest')]
 
 steps:
 - task: SonarCloudPrepare@1
@@ -32,12 +34,15 @@ steps:
       sonar.exclusions=**/obj/**,**/*.dll
       sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
       sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+- task: NuGetAuthenticate@1
+  inputs:
+   forceReinstallCredentialProvider: true
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: restore
     projects: '**/Husa.Extensions.Api.Cors.csproj'
-    restoreArguments: '/property:Configuration=Release'
+    restoreArguments: '/property:Configuration=$(BuildConfiguration)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:

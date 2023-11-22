@@ -18,7 +18,9 @@ pool:
   vmImage: windows-latest
 
 variables:
-  isPullRequest: $[eq(variables['Build.Reason'], 'PullRequest')]
+- group: homesusa.husa.extensions.global
+- name: isPullRequest
+  value: $[eq(variables['Build.Reason'], 'PullRequest')]
 
 steps:
 - task: SonarCloudPrepare@1
@@ -32,17 +34,33 @@ steps:
       sonar.exclusions=**/obj/**,**/*.dll
       sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
       sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+- task: NuGetAuthenticate@1
+  inputs:
+   forceReinstallCredentialProvider: true
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: restore
-    projects: '**/Husa.Extensions.Logger.Enrichers.csproj'
-    restoreArguments: '/property:Configuration=Release'
+    projects: |
+      **/Husa.Extensions.Logger.Enrichers.csproj
+      **/Husa.Extensions.Logger.Enrichers.Tests.csproj
+    restoreArguments: '/property:Configuration=$(BuildConfiguration)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '**/Husa.Extensions.Logger.Enrichers.csproj'
+    projects: |
+      **/Husa.Extensions.Logger.Enrichers.csproj
+      **/Husa.Extensions.Logger.Enrichers.Tests.csproj
     arguments: '--configuration $(BuildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  continueOnError: true
+  inputs:
+    command: test
+    projects: |
+      **/Husa.Extensions.Logger.Enrichers.Tests.csproj
+    arguments: '--configuration $(BuildConfiguration) --no-build --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover --logger trx'
+    publishTestResults: true
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:

@@ -4,7 +4,7 @@ pr:
       - master
   paths:
     include:
-      - Husa.Extensions.Linq
+      - Husa.Extensions.Domain
 
 trigger:
   branches:
@@ -12,7 +12,7 @@ trigger:
       - master
   paths:
     include:
-      - Husa.Extensions.Linq
+      - Husa.Extensions.Domain
 
 pool:
   vmImage: windows-latest
@@ -28,8 +28,8 @@ steps:
     SonarCloud: 'SonarCloudHomesUSA'
     organization: 'homesusa'
     scannerMode: 'MSBuild'
-    projectKey: 'Husa_Extensions.Linq'
-    projectName: 'Husa.Extensions.Linq'
+    projectKey: 'Husa_Extensions.Domain'
+    projectName: 'Husa.Extensions.Domain'
     extraProperties: |
       sonar.exclusions=**/obj/**,**/*.dll
       sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
@@ -41,14 +41,12 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: restore
-    projects: '**/Husa.Extensions.Linq.csproj'
+    projects: '**/Husa.Extensions.Domain.csproj'
     restoreArguments: '/property:Configuration=$(BuildConfiguration)'
-    feedsToUse: 'select'
-    vstsFeed: 'f820f957-6781-4cd6-b5f5-e720c189507f/891ce0ed-37b7-4336-b1fe-079c0525a171'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
-    projects: '**/Husa.Extensions.Linq.csproj'
+    projects: '**/Husa.Extensions.Domain.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
@@ -58,7 +56,7 @@ steps:
   condition: ne(variables.isPullRequest, true)
   inputs:
     command: 'pack'
-    packagesToPack: '**/Husa.Extensions.Linq.csproj'
+    packagesToPack: '**/Husa.Extensions.Domain.csproj'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
