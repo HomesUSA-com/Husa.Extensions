@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
@@ -77,6 +78,12 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 
             var result = await this.GetData<T>(client, uri);
             return result;
+        }
+
+        public async Task<Stream> GetMediaStream(HttpClient client, string entityKey)
+        {
+            var uri = $"odata/Property('{entityKey}')/Media/All";
+            return await client.GetStreamAsync(uri);
         }
 
         public async Task<XmlDocument> GetMetadata(HttpClient client)
