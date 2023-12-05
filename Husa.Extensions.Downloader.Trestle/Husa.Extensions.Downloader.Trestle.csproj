@@ -7,11 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.4.0</Version>
+        <Version>3.5.0</Version>
         <PackageReleaseNotes>
-            Release 3.4.0:
-            - Patches applied up to #169
-            - Building values added to diferent enums.
+            Release 3.5.0:
+            - Get Media as stream bulk in Trestle
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

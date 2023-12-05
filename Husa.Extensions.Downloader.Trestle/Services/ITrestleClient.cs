@@ -3,6 +3,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Husa.Extensions.Downloader.Trestle.Helpers.Parsers;
     using Husa.Extensions.Downloader.Trestle.Models;
 
     public interface ITrestleClient
@@ -13,5 +14,6 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         Task<IEnumerable<GroupEntity<Media>>> GetMedia(IEnumerable<string> listingsKeys);
         Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingsKeys);
         Task<IEnumerable<GroupEntity<OpenHouse>>> GetOpenHouse(IEnumerable<string> listingsKeys);
+        Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId);
     }
 }
