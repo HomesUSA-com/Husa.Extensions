@@ -32,6 +32,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         FamilialRelation,
         FaultZone,
         FirstRightofRefusal,
+        FixtureLeases,
         FloodInsuranceRequired,
         FloodPlainDisclosure,
         ForeignSeller,
