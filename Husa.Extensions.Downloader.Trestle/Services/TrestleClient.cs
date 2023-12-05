@@ -6,6 +6,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Net.Http;
     using System.Threading.Tasks;
     using Husa.Extensions.Downloader.Trestle.Helpers;
+    using Husa.Extensions.Downloader.Trestle.Helpers.Parsers;
     using Husa.Extensions.Downloader.Trestle.Models;
 
     public class TrestleClient : ITrestleClient
@@ -59,6 +60,14 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             });
 
             return groupMedia;
+        }
+
+        public async Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId)
+        {
+            var client = await this.GetAuthenticatedClient();
+            var stream = await this.trestleRequester.GetMediaStream(client, listingId);
+            var multipartParser = new MultipartParser(stream);
+            return multipartParser.GetImages();
         }
 
         public async Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingsKeys)
