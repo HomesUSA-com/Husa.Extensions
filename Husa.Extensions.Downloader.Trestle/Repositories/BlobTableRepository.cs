@@ -20,44 +20,24 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             this.tableServiceClient = new TableServiceClient(blobOptions.Value.ConnectionString);
         }
 
-        public async Task<TokenEntity> GetTokenInfoFromStorage()
+        public async Task<TokenEntity> GetTokenInfoFromStorage(AuthInfo authInfo)
         {
             TableClient tableClient = this.tableServiceClient.GetTableClient(tableName: this.blobOptions.TableName);
             await tableClient.CreateIfNotExistsAsync();
-            return await this.GetTokenInfoFromStorage(tableClient);
+            return await this.GetTokenInfoFromStorage(tableClient, authInfo);
         }
 
-        public async Task<TokenEntity> GetTokenInfoFromStorage(TableClient tableClient)
-        {
-            try
-            {
-                var tokenInfo = await tableClient.GetEntityAsync<TokenEntity>(
-                rowKey: "1",
-                partitionKey: this.blobOptions.PartitionKey);
-                return tokenInfo;
-            }
-            catch (RequestFailedException ex)
-            {
-                if (ex.ErrorCode == "ResourceNotFound")
-                {
-                    return null;
-                }
-
-                throw;
-            }
-        }
-
-        public async Task SaveTokenInfo(AuthenticationResult auth)
+        public async Task SaveTokenInfo(AuthenticationResult auth, AuthInfo authInfo)
         {
             TableClient tableClient = this.tableServiceClient.GetTableClient(tableName: this.blobOptions.TableName);
             await tableClient.CreateIfNotExistsAsync();
 
-            var tokenEntity = await this.GetTokenInfoFromStorage(tableClient);
+            var tokenEntity = await this.GetTokenInfoFromStorage(tableClient, authInfo);
 
             var token = new TokenEntity()
             {
                 RowKey = "1",
-                PartitionKey = this.blobOptions.PartitionKey,
+                PartitionKey = authInfo.PartitionKey,
                 AccessToken = auth.AccessToken,
                 ExpireDate = DateTimeOffset.Now.AddSeconds(auth.ExpiresIn - 900),
                 TokenType = auth.TokenType,
@@ -70,6 +50,26 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             else
             {
                 await tableClient.AddEntityAsync(token);
+            }
+        }
+
+        private async Task<TokenEntity> GetTokenInfoFromStorage(TableClient tableClient, AuthInfo authInfo)
+        {
+            try
+            {
+                var tokenInfo = await tableClient.GetEntityAsync<TokenEntity>(
+                rowKey: "1",
+                partitionKey: authInfo.PartitionKey);
+                return tokenInfo;
+            }
+            catch (RequestFailedException ex)
+            {
+                if (ex.ErrorCode == "ResourceNotFound")
+                {
+                    return null;
+                }
+
+                throw;
             }
         }
     }

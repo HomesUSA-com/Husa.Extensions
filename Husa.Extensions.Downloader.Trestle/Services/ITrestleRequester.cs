@@ -6,14 +6,13 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Threading.Tasks;
     using System.Xml;
     using Husa.Extensions.Downloader.Trestle.Contracts;
+    using Husa.Extensions.Downloader.Trestle.Models;
 
     public interface ITrestleRequester
     {
         HttpClient GetAuthenticatedClient(string accessToken);
 
-        Task<HttpClient> GetAuthenticatedClient();
-
-        Task<AuthenticationResult> GetTokenInfo();
+        Task<AuthenticationResult> GetTokenInfo(AuthInfo authInfo);
 
         Task<XmlDocument> GetMetadata(HttpClient client);
 

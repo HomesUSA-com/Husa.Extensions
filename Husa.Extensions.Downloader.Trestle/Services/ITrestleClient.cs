@@ -8,6 +8,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 
     public interface ITrestleClient
     {
+        void Login(string clientId, string clientSecret, string partitionKey);
         Task<IEnumerable<Member>> GetAgents(DateTimeOffset? modificationTimestamp = null, string filter = null);
         Task<IEnumerable<Office>> GetOffices(DateTimeOffset? modificationTimestamp = null, string filter = null);
         Task<IEnumerable<Property>> GetListings(DateTimeOffset? modificationTimestamp = null, string filter = null, bool expand = false);
