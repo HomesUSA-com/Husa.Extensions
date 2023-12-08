@@ -23,7 +23,16 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Parsers
 
         public string GetId() => this.Headers["Content-ID"];
         public int GetOrder() => int.Parse(this.Headers["OrderHint"]);
-        public string GetFilename() => $"{this.Headers["Content-Description"]}.{this.Headers["Content-Type"].GetEnumFromText<MediaType>()}";
+        public string GetFilename()
+        {
+            if (this.Headers.TryGetValue("Content-Description", out var content))
+            {
+                return $"{content}.{this.Headers["Content-Type"].GetEnumFromText<MediaType>()}";
+            }
+
+            return $"{this.Headers["OrderHint"]}.{this.Headers["Content-Type"].GetEnumFromText<MediaType>()}";
+        }
+
         public string GetMediaType() => this.Headers["Content-Type"];
     }
 }
