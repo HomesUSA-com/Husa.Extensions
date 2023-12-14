@@ -6,6 +6,7 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
     using Husa.Extensions.Downloader.Trestle.Models;
     using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
     using Husa.Extensions.Downloader.Trestle.Services;
+    using Microsoft.Extensions.Options;
     using Moq;
     using Xunit;
 
@@ -15,9 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
         public async Task GetOpenHouseWithEmptyCollectionFails()
         {
             // Arrange
-            var trestleRequester = new Mock<ITrestleRequester>();
-            var blobTableRepository = new Mock<IBlobTableRepository>();
-            var sut = new TrestleClient(trestleRequester.Object, blobTableRepository.Object);
+            var sut = GetSut(new Mock<ITrestleRequester>());
 
             // Act && Assert
             await Assert.ThrowsAsync<ArgumentNullException>(() => sut.GetOpenHouse(listingsKeys: Array.Empty<string>()));
@@ -27,9 +26,7 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
         public async Task GetOpenHouseWithNullCollectionFails()
         {
             // Arrange
-            var trestleRequester = new Mock<ITrestleRequester>();
-            var blobTableRepository = new Mock<IBlobTableRepository>();
-            var sut = new TrestleClient(trestleRequester.Object, blobTableRepository.Object);
+            var sut = GetSut(new Mock<ITrestleRequester>());
 
             // Act && Assert
             await Assert.ThrowsAsync<ArgumentNullException>(() => sut.GetOpenHouse(listingsKeys: null));
@@ -43,23 +40,13 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
             const string listingKey = "9999222";
             const string fakeToken = "fake-token-value";
             var trestleRequester = new Mock<ITrestleRequester>();
-            var blobTableRepository = new Mock<IBlobTableRepository>();
-            var token = new TokenEntity
-            {
-                AccessToken = "fake-token-value",
-                ExpireDate = DateTimeOffset.UtcNow.AddDays(1),
-            };
-
-            blobTableRepository
-                .Setup(b => b.GetTokenInfoFromStorage())
-                .ReturnsAsync(token);
 
             var httpClient = new Mock<HttpClient>();
             trestleRequester
                 .Setup(r => r.GetAuthenticatedClient(It.Is<string>(token => token == fakeToken)))
                 .Returns(httpClient.Object);
 
-            var sut = new TrestleClient(trestleRequester.Object, blobTableRepository.Object);
+            var sut = GetSut(trestleRequester);
 
             // Act
             var result = await sut.GetOpenHouse(listingsKeys: new[] { listingKey });
@@ -67,6 +54,24 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
             // Assert
             Assert.Empty(result);
             trestleRequester.Verify(b => b.GetData<OpenHouse>(It.IsAny<HttpClient>(), It.Is<string>(dataClass => dataClass == openHouseClass), It.IsAny<string>()), Times.Once);
+        }
+
+        private static TrestleClient GetSut(Mock<ITrestleRequester> trestleRequester)
+        {
+            var blobTableRepository = new Mock<IBlobTableRepository>();
+            var marketOptions = Options.Create(new MarketOptions());
+            var blobOptions = Options.Create(new BlobOptions());
+
+            var token = new TokenEntity
+            {
+                AccessToken = "fake-token-value",
+                ExpireDate = DateTimeOffset.UtcNow.AddDays(1),
+            };
+
+            blobTableRepository
+                .Setup(b => b.GetTokenInfoFromStorage(It.IsAny<AuthInfo>()))
+                .ReturnsAsync(token);
+            return new TrestleClient(trestleRequester.Object, blobTableRepository.Object, marketOptions, blobOptions);
         }
     }
 }

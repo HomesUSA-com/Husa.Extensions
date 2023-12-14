@@ -6,17 +6,24 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Net.Http;
     using System.Threading.Tasks;
     using Husa.Extensions.Downloader.Trestle.Helpers;
+    using Husa.Extensions.Downloader.Trestle.Helpers.Parsers;
     using Husa.Extensions.Downloader.Trestle.Models;
+    using Microsoft.Extensions.Options;
 
     public class TrestleClient : ITrestleClient
     {
         private readonly ITrestleRequester trestleRequester;
         private readonly IBlobTableRepository tableStorageRepository;
+        private readonly MarketOptions connectionOptions;
+        private readonly BlobOptions blobOptions;
+        private AuthInfo authInfo = null;
 
-        public TrestleClient(ITrestleRequester trestleRequester, IBlobTableRepository tableStorageRepository)
+        public TrestleClient(ITrestleRequester trestleRequester, IBlobTableRepository tableStorageRepository, IOptions<MarketOptions> connectionOptions, IOptions<BlobOptions> blobOptions)
         {
             this.tableStorageRepository = tableStorageRepository ?? throw new ArgumentNullException(nameof(tableStorageRepository));
             this.trestleRequester = trestleRequester ?? throw new ArgumentNullException(nameof(trestleRequester));
+            this.connectionOptions = connectionOptions.Value ?? throw new ArgumentNullException(nameof(connectionOptions));
+            this.blobOptions = blobOptions.Value ?? throw new ArgumentNullException(nameof(blobOptions));
         }
 
         public async Task<IEnumerable<Member>> GetAgents(DateTimeOffset? modificationTimestamp = null, string filter = null)
@@ -61,6 +68,14 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupMedia;
         }
 
+        public async Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId)
+        {
+            var client = await this.GetAuthenticatedClient();
+            var stream = await this.trestleRequester.GetMediaStream(client, listingId);
+            var multipartParser = new MultipartParser(stream);
+            return multipartParser.GetImages();
+        }
+
         public async Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingsKeys)
         {
             var listingKeyString = string.Join(",", listingsKeys.Select(listingKey => { return $"'{listingKey}'"; }));
@@ -93,17 +108,32 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupOpenHouse;
         }
 
+        public void Login(string clientId, string clientSecret, string partitionKey)
+        {
+            this.authInfo = new AuthInfo(clientId, clientSecret, partitionKey);
+        }
+
         private async Task<HttpClient> GetAuthenticatedClient()
         {
-            var tokenInfo = await this.tableStorageRepository.GetTokenInfoFromStorage();
+            if (this.authInfo == null)
+            {
+                this.InitializeAuthInfo();
+            }
+
+            var tokenInfo = await this.tableStorageRepository.GetTokenInfoFromStorage(this.authInfo);
             if (!Utils.IsValidToken(tokenInfo))
             {
-                var newTokenInfo = await this.trestleRequester.GetTokenInfo();
-                await this.tableStorageRepository.SaveTokenInfo(newTokenInfo);
+                var newTokenInfo = await this.trestleRequester.GetTokenInfo(this.authInfo);
+                await this.tableStorageRepository.SaveTokenInfo(newTokenInfo, this.authInfo);
                 return this.trestleRequester.GetAuthenticatedClient(newTokenInfo.AccessToken);
             }
 
             return this.trestleRequester.GetAuthenticatedClient(tokenInfo.AccessToken);
+        }
+
+        private void InitializeAuthInfo()
+        {
+            this.authInfo = new AuthInfo(this.connectionOptions.ClientId, this.connectionOptions.ClientSecret, this.blobOptions.PartitionKey);
         }
     }
 }

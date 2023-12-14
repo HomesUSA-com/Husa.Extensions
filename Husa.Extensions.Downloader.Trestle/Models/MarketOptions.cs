@@ -1,6 +1,7 @@
 namespace Husa.Extensions.Downloader.Trestle.Models
 {
     using System;
+    using System.Collections.Generic;
     using Husa.Extensions.Downloader.Trestle.Models.Enums;
 
     public class MarketOptions
@@ -18,7 +19,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public TimeSpan Timeout { get; set; }
         public UriKind UriType { get; set; } = UriKind.Absolute;
         public string BaseUrl { get; set; }
-        public SystemOrigin? Market { get; set; }
+        public IEnumerable<SystemOrigin> Market { get; set; }
         public int MarketLimit { get; set; }
     }
 }

@@ -9,13 +9,11 @@ namespace Husa.Extensions.Authorization.Enums
         CompanyAdmin,
         [Display(Name = "Sales Employee")]
         SalesEmployee,
-        [Display(Name = "Photographer")]
-        Photographer,
-        [Display(Name = "Supra Tech")]
-        SupraTech,
         [Display(Name = "No Role")]
         NoRole,
         [Display(Name = "Read-only")]
         Readonly,
+        [Display(Name = "Sales Employee Read-only")]
+        SalesEmployeeReadonly,
     }
 }

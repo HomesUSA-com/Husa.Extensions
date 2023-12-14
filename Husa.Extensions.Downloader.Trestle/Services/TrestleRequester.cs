@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
@@ -37,20 +38,14 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return client;
         }
 
-        public async Task<HttpClient> GetAuthenticatedClient()
-        {
-            var tokenInfo = await this.GetTokenInfo();
-            return this.GetAuthenticatedClient(tokenInfo.AccessToken);
-        }
-
-        public async Task<AuthenticationResult> GetTokenInfo()
+        public async Task<AuthenticationResult> GetTokenInfo(AuthInfo authInfo)
         {
             var client = this.httpClientFactory.CreateClient();
 
             var stringContent = new FormUrlEncodedContent(new[]
                 {
-                    new KeyValuePair<string, string>("client_id", this.connectionOptions.ClientId),
-                    new KeyValuePair<string, string>("client_secret", this.connectionOptions.ClientSecret),
+                    new KeyValuePair<string, string>("client_id", authInfo.ClientId),
+                    new KeyValuePair<string, string>("client_secret", authInfo.ClientSecret),
                     new KeyValuePair<string, string>("grant_type", "client_credentials"),
                     new KeyValuePair<string, string>("scope", "api"),
                 });
@@ -77,6 +72,12 @@ namespace Husa.Extensions.Downloader.Trestle.Services
 
             var result = await this.GetData<T>(client, uri);
             return result;
+        }
+
+        public async Task<Stream> GetMediaStream(HttpClient client, string entityKey)
+        {
+            var uri = $"odata/Property('{entityKey}')/Media/All";
+            return await client.GetStreamAsync(uri);
         }
 
         public async Task<XmlDocument> GetMetadata(HttpClient client)

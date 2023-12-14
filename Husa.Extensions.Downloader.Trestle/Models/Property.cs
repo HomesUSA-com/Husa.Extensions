@@ -261,8 +261,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public DirectionFaces? DirectionFaces { get; set; }
         public string Directions { get; set; }
         public string Disclaimer { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<Disclosures?>))]
-        public Disclosures? Disclosures { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<Disclosures>))]
+        public IEnumerable<Disclosures> Disclosures { get; set; }
         public string DistanceToBusComments { get; set; }
         public int? DistanceToBusNumeric { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<LinearUnits?>))]
