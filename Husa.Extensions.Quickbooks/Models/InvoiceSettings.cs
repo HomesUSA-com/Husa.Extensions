@@ -1,4 +1,4 @@
-namespace Husa.Extensions.Media.Models
+namespace Husa.Extensions.Quickbooks.Models
 {
     using System.ComponentModel.DataAnnotations;
 
