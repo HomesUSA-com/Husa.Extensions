@@ -6,10 +6,10 @@
         <Product>Api Quickbooks</Product>
         <Description>Husa Quickbooks</Description>
         <PackageId>Husa.Extensions.Quickbooks</PackageId>
-        <Version>0.1.0-dev003</Version>
+        <Version>0.1.0</Version>
         <PackageReleaseNotes>
             Release 0.1.0:
-            - create quickbooks implementation
+            - create quickbooks refit implementation
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
