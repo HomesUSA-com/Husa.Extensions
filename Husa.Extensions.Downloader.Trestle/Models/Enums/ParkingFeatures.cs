@@ -72,6 +72,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         KitchenInGarage,
         KitchenLevel,
         Leased,
+        Lift,
         Lighted,
         Loft,
         Metered,

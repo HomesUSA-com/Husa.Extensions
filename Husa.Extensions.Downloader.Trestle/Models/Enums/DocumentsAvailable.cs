@@ -61,6 +61,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         RealEstateConditionReport,
         RealPropertyReport,
         RentRolls,
+        ResalePackage,
         RestrictiveCovenants,
         RoadMaintenanceAgreement,
         RoofInspection,

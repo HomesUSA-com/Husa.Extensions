@@ -58,5 +58,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Vacant,
         Vineyard,
         Warehouse,
+        Wholesale,
     }
 }

@@ -7,16 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>3.5.4</Version>
+        <Version>3.5.5</Version>
         <PackageReleaseNotes>
-            Release 3.5.4:
-            - Multiple markets can be used
-            - HAR market added to system origins
-            - Property Disclosures updated to list from single value
-            - Get Media as stream bulk in Trestle
-            - PossibleUse Enums updated
-            - Update method to obtain filename from headers
-            - Login option added to Trestle client
+            Release 3.5.5:
+            - Options added to CurrentUse, DocumentsAvailable and ParkingFeatures Enums
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
