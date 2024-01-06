@@ -6,17 +6,16 @@
         <Product>Api Quickbooks</Product>
         <Description>Husa Quickbooks</Description>
         <PackageId>Husa.Extensions.Quickbooks</PackageId>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <PackageReleaseNotes>
-            Release 0.1.0:
-            - create quickbooks refit implementation
+            Release 0.2.0:
+            - Improve invoice settings
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DinkToPdf" Version="1.0.8" />
         <PackageReference Include="Refit" Version="6.3.2" />
         <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
     </ItemGroup>
