@@ -9,7 +9,7 @@
         <Version>0.2.0</Version>
         <PackageReleaseNotes>
             Release 0.2.0:
-            - create quickbooks refit implementation
+            - Improve invoice settings
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
