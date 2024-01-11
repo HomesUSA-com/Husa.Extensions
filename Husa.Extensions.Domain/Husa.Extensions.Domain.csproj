@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Domain</AssemblyName>
@@ -6,11 +6,12 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>1.1.0</Version>
+        <Version>1.1.1</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
-            Release 1.1.0:
+            Release 1.1.1:
             - Added new validation attribute
+            - Added TodayOrAfterValidations for dates
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
