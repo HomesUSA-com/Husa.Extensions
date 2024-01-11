@@ -26,7 +26,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             this.connectionOptions = connectionOptions.Value ?? throw new ArgumentNullException(nameof(connectionOptions));
             this.httpClientFactory = httpClientFactory;
-            this.jsonSerializerOptions = new JsonSerializerOptions { Converters = { new BoolConverter() } };
+            this.jsonSerializerOptions = new JsonSerializerOptions { Converters = { new BoolConverter(), new DateTimeConverter() } };
         }
 
         public HttpClient GetAuthenticatedClient(string accessToken)
