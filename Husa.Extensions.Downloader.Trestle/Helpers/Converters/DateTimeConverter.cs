@@ -14,7 +14,19 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
             }
         }
 
-        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-            reader.TryGetDateTime(out var dateTime) ? DateTime.SpecifyKind(dateTime, DateTimeKind.Utc) : null;
+        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TryGetDateTime(out var dateTime))
+            {
+                if (dateTime.TimeOfDay.TotalSeconds == 0)
+                {
+                    dateTime = dateTime.AddHours(12);
+                }
+
+                return DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+            }
+
+            return null;
+        }
     }
 }
