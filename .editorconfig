@@ -56,3 +56,12 @@ dotnet_diagnostic.SA1400.severity = error
 
 # CA1707: Identifiers should not contain underscores
 dotnet_diagnostic.CA1707.severity = suggestion
+
+# S6602: "Find" method should be used instead of the "FirstOrDefault" extension
+dotnet_diagnostic.S6602.severity = suggestion
+
+# S6605: Collection-specific "Exists" method should be used instead of the "Any" extension
+dotnet_diagnostic.S6605.severity = suggestion
+
+# S6580: Use a format provider when parsing date and time
+dotnet_diagnostic.S6580.severity = suggestion

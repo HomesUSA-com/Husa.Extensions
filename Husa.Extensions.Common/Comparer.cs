@@ -219,7 +219,7 @@ namespace Husa.Extensions.Common
             }
 
             var ndarray = Array.Empty<decimal>();
-            foreach (string decimalPosition in commaSeparatedValues?.Split(','))
+            foreach (string decimalPosition in commaSeparatedValues.Split(','))
             {
                 Array.Resize(ref ndarray, ndarray.Length + 1);
                 ndarray[^1] = decimal.Parse(decimalPosition);

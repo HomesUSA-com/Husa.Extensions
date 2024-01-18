@@ -1,9 +1,13 @@
 namespace Husa.Extensions.Common.Exceptions
 {
     using System;
+#if !NET8_0_OR_GREATER
     using System.Runtime.Serialization;
+#endif
 
+#if !NET8_0_OR_GREATER
     [Serializable]
+#endif
     public class DomainException : Exception
     {
         public DomainException()
@@ -20,9 +24,11 @@ namespace Husa.Extensions.Common.Exceptions
         {
         }
 
+#if !NET8_0_OR_GREATER
         protected DomainException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+#endif
     }
 }
