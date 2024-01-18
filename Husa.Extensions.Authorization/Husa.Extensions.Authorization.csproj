@@ -5,10 +5,10 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>4.0.0</Version>
+        <Version>4.0.1</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.0:
+            Release 4.0.1:
             - Added support net8 frameworks
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
@@ -23,7 +23,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="3.7.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>
 </Project>

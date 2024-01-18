@@ -5,9 +5,9 @@
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>3.0.0</Version>
+        <Version>3.0.1</Version>
         <PackageReleaseNotes>
-            Release 3.0.0:
+            Release 3.0.1:
             - Added support for both net7 and net6 frameworks
         </PackageReleaseNotes>
         <PackageTags>Extensions; UserInfo;</PackageTags>
@@ -15,6 +15,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Cache" Version="3.0.0" />
+        <PackageReference Include="Husa.Extensions.Cache" Version="4.0.0" />
     </ItemGroup>
 </Project>
