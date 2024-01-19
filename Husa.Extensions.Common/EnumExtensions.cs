@@ -42,9 +42,7 @@ namespace Husa.Extensions.Common
             }
 
             var memberInfo = membersInfo
-                .SingleOrDefault(m => m
-                    .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                    .FirstOrDefault(attribute => ((DescriptionAttribute)attribute).Description == enumValue) != null);
+                .SingleOrDefault(m => Array.Find(m.GetCustomAttributes(typeof(DescriptionAttribute), false), attribute => ((DescriptionAttribute)attribute).Description == enumValue) != null);
 
             if (memberInfo == null)
             {
@@ -175,14 +173,25 @@ namespace Husa.Extensions.Common
             }
 
             var enumMembers = enumType.GetMembers();
-            var memberInfo = enumMembers.SingleOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => ((DescriptionAttribute)attribute).Description.EqualsTo(valueWithoutSpaces)) != null)
-                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => ((DescriptionAttribute)attribute).Description.Contains(valueWithoutSpaces, StringComparison.InvariantCultureIgnoreCase)) != null)
-                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).FirstOrDefault((object attribute) => enumValuetoFind.Contains(((DescriptionAttribute)attribute).Description, StringComparison.InvariantCultureIgnoreCase)) != null)
-                ?? enumMembers.SingleOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => ((EnumMemberAttribute)attribute).Value.EqualsTo(valueWithoutSpaces)) != null)
-                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => ((EnumMemberAttribute)attribute).Value.Contains(valueWithoutSpaces)) != null)
-                ?? enumMembers.FirstOrDefault(member => member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).FirstOrDefault((object attribute) => enumValuetoFind.Contains(((EnumMemberAttribute)attribute).Value, StringComparison.InvariantCultureIgnoreCase)) != null);
+
+            var memberInfo = enumMembers.SingleOrDefault(member => Array.Find(GetDescriptionAttributes(member), (DescriptionAttribute attribute) => attribute.Description.EqualsTo(valueWithoutSpaces)) != null)
+                ?? Array.Find(enumMembers, member => Array.Find(GetDescriptionAttributes(member), (DescriptionAttribute attribute) => attribute.Description.Contains(valueWithoutSpaces, StringComparison.InvariantCultureIgnoreCase)) != null)
+                ?? Array.Find(enumMembers, member => Array.Find(GetDescriptionAttributes(member), (DescriptionAttribute attribute) => enumValuetoFind.Contains(attribute.Description, StringComparison.InvariantCultureIgnoreCase)) != null)
+                ?? Array.Find(enumMembers, member => Array.Find(GetEnumMemberAttributes(member), (EnumMemberAttribute attribute) => attribute.Value.EqualsTo(valueWithoutSpaces)) != null)
+                ?? Array.Find(enumMembers, member => Array.Find(GetEnumMemberAttributes(member), (EnumMemberAttribute attribute) => attribute.Value.Contains(valueWithoutSpaces)) != null)
+                ?? Array.Find(enumMembers, member => Array.Find(GetEnumMemberAttributes(member), (EnumMemberAttribute attribute) => enumValuetoFind.Contains(attribute.Value, StringComparison.InvariantCultureIgnoreCase)) != null);
 
             return memberInfo != null ? (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name) : null;
+
+            DescriptionAttribute[] GetDescriptionAttributes(System.Reflection.MemberInfo member)
+            {
+                return member.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false).Select(attribute => (DescriptionAttribute)attribute).ToArray();
+            }
+
+            EnumMemberAttribute[] GetEnumMemberAttributes(System.Reflection.MemberInfo member)
+            {
+                return member.GetCustomAttributes(typeof(EnumMemberAttribute), inherit: false).Select(attribute => (EnumMemberAttribute)attribute).ToArray();
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Models
 
         public bool HasColumn(string columnName)
         {
-            bool exists = Columns.Any(x => x.Equals(columnName, StringComparison.CurrentCultureIgnoreCase));
+            bool exists = Columns.Exists(x => x.Equals(columnName, StringComparison.CurrentCultureIgnoreCase));
 
             return exists;
         }

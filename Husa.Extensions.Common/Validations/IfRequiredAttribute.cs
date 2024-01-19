@@ -86,7 +86,7 @@ namespace Husa.Extensions.Common.Validations
                         return ValidateRange(value, this.MinRange, this.MaxRange, validationContext.MemberName);
                     }
 
-                    if (value != null && value.GetType().GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEnumerable<>)))
+                    if (value != null && Array.Exists(value.GetType().GetInterfaces(), i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEnumerable<>)))
                     {
                         var valueList = ((System.Collections.IEnumerable)value).Cast<object>();
                         if (!valueList.Any())

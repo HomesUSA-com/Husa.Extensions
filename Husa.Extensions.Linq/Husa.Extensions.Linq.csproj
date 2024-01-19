@@ -6,11 +6,12 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.0.1</Version>
+        <Version>4.0.2</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.1:
+            Release 4.0.2:
             - Added support net8 frameworks
+            - Available S6602 and S6605 rules
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

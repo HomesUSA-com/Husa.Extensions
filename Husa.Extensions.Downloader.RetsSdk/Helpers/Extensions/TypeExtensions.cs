@@ -180,9 +180,9 @@ namespace Husa.Extensions.Downloader.RetsSdk.Helpers.Extensions
 
         public static Type ExtractGenericInterface(this Type queryType, Type interfaceType)
         {
-            Func<Type, bool> matchesInterface = t => t.IsGenericType && t.GetGenericTypeDefinition() == interfaceType;
+            Predicate<Type> matchesInterface = t => t.IsGenericType && t.GetGenericTypeDefinition() == interfaceType;
 
-            return (matchesInterface(queryType)) ? queryType : queryType.GetInterfaces().FirstOrDefault(matchesInterface);
+            return (matchesInterface(queryType)) ? queryType : Array.Find(queryType.GetInterfaces(), matchesInterface);
         }
 
         public static Type[] GetTypeArgumentsIfMatch(this Type closedType, Type matchingOpenType)

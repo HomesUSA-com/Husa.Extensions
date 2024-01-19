@@ -1,7 +1,6 @@
 namespace Husa.Extensions.Api.Conventions
 {
     using System;
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
@@ -18,7 +17,7 @@ namespace Husa.Extensions.Api.Conventions
 
         public void Apply(ControllerModel controller)
         {
-            if (this.excludedNamespace.Any(n => controller.DisplayName.Contains(n)))
+            if (Array.Exists(this.excludedNamespace, n => controller.DisplayName.Contains(n)))
             {
                 return;
             }
