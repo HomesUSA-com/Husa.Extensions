@@ -69,6 +69,23 @@ namespace Husa.Extensions.Domain.Extensions
             return enumMemberAttribute != null ? enumMemberAttribute.Value : null;
         }
 
+        public static string CleanAfterKeyword(this string value, string keyword)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            int index = value.IndexOf(keyword, StringComparison.OrdinalIgnoreCase);
+
+            if (index != -1)
+            {
+                return value.Substring(0, index).Trim();
+            }
+
+            return value;
+        }
+
         private static bool EnumCollectionsAreEquals(PropertyInfo propertyInfo, object source, object target)
         {
             var argumentType = propertyInfo.PropertyType.GetGenericArguments().Single();
