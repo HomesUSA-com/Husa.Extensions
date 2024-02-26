@@ -1,6 +1,8 @@
 namespace Husa.Extensions.Common.Tests
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using Husa.Extensions.Common.Classes;
     using Husa.Extensions.Common.Tests.Providers;
     using Microsoft.AspNetCore.Http;
@@ -38,7 +40,23 @@ namespace Husa.Extensions.Common.Tests
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<BadRequestObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string[]>(objectResult.Value);
+            var value = GetValueByPropertyName(objectResult.Value, "Errors");
+            Assert.Equal(errors, value);
+        }
+
+        [Fact]
+        public void ToActionResult_CommandResult_ErrorResponse_HasErrors_ValidationResult()
+        {
+            // Arrange
+            var errors = new ValidationResult[] { new ValidationResult("Error1", new[] { "Field1" }), new ValidationResult("Error2", new[] { "Field2" }) };
+            var commandResult = CommandResult<ValidationResult>.Error(errors);
+
+            // Act
+            var result = this.sut.ToActionResult(commandResult);
+
+            // Assert
+            var objectResult = Assert.IsAssignableFrom<BadRequestObjectResult>(result);
+            var value = GetValueByPropertyName(objectResult.Value, "Errors");
             Assert.Equal(errors, value);
         }
 
@@ -54,7 +72,7 @@ namespace Husa.Extensions.Common.Tests
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<BadRequestObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string>(objectResult.Value);
+            var value = GetValueByPropertyName(objectResult.Value, "Message");
             Assert.Equal(errorMessage, value);
         }
 
@@ -70,8 +88,8 @@ namespace Husa.Extensions.Common.Tests
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<OkObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string>(objectResult.Value);
-            Assert.Equal(message, value);
+            var value = Assert.IsAssignableFrom<string[]>(objectResult.Value);
+            Assert.Equal(message, value.Single());
         }
 
         [Fact]
@@ -95,14 +113,14 @@ namespace Husa.Extensions.Common.Tests
         {
             // Arrange
             var message = "Success message";
-            var commandResult = CommandSingleResult<string, string>.Success(message);
+            var commandResult = CommandSingleResult<string, string>.Information(message);
 
             // Act
             var result = this.sut.ToActionResult(commandResult);
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<OkObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string>(objectResult.Value);
+            var value = GetValueByPropertyName(objectResult.Value, "Message");
             Assert.Equal(message, value);
         }
 
@@ -134,7 +152,7 @@ namespace Husa.Extensions.Common.Tests
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<BadRequestObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string[]>(objectResult.Value);
+            var value = GetValueByPropertyName(objectResult.Value, "Errors");
             Assert.Equal(errors, value);
         }
 
@@ -150,8 +168,13 @@ namespace Husa.Extensions.Common.Tests
 
             // Assert
             var objectResult = Assert.IsAssignableFrom<BadRequestObjectResult>(result);
-            var value = Assert.IsAssignableFrom<string>(objectResult.Value);
-            Assert.Equal(errorMessage, value);
+            var message = GetValueByPropertyName(objectResult.Value, "Message");
+            Assert.Equal(errorMessage, message);
+        }
+
+        private static object GetValueByPropertyName(object result, string propertyName)
+        {
+            return result.GetType().GetProperty(propertyName).GetValue(result, null);
         }
     }
 }

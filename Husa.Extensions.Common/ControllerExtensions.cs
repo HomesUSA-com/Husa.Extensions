@@ -1,6 +1,5 @@
 namespace Husa.Extensions.Common
 {
-    using System.Linq;
     using Husa.Extensions.Common.Classes;
     using Husa.Extensions.Common.Enums;
     using Microsoft.AspNetCore.Mvc;
@@ -12,32 +11,26 @@ namespace Husa.Extensions.Common
         {
             if (commandResult.Code == ResponseCode.Error)
             {
-                if (commandResult.HasErrors())
-                {
-                    return controllerBase.BadRequest(commandResult.Results);
-                }
-
-                return controllerBase.BadRequest(commandResult.Message);
+                return commandResult.HasErrors()
+                    ? controllerBase.BadRequest(new { commandResult.Message, Errors = commandResult.Results })
+                    : controllerBase.BadRequest(new { commandResult.Message });
             }
 
             if (commandResult.HasResults())
             {
-                return commandResult.Results.Count() == 1 ? controllerBase.Ok(commandResult.Results.Single()) : controllerBase.Ok(commandResult.Results);
+                return controllerBase.Ok(commandResult.Results);
             }
 
-            return controllerBase.Ok(commandResult.Message);
+            return controllerBase.OkMessage(commandResult.Message);
         }
 
         public static IActionResult ToActionResult<TResult, TError>(this ControllerBase controllerBase, CommandSingleResult<TResult, TError> commandResult)
         {
             if (commandResult.Code == ResponseCode.Error)
             {
-                if (commandResult.HasErrors())
-                {
-                    return controllerBase.BadRequest(commandResult.Errors);
-                }
-
-                return controllerBase.BadRequest(commandResult.Message);
+                return commandResult.HasErrors()
+                    ? controllerBase.BadRequest(new { commandResult.Message, commandResult.Errors })
+                    : controllerBase.BadRequest(new { commandResult.Message });
             }
 
             if (commandResult.HasResult())
@@ -45,7 +38,13 @@ namespace Husa.Extensions.Common
                 return controllerBase.Ok(commandResult.Result);
             }
 
-            return controllerBase.Ok(commandResult.Message);
+            return controllerBase.OkMessage(commandResult.Message);
+        }
+
+        private static IActionResult OkMessage(this ControllerBase controllerBase, string message)
+        {
+            var objectMessage = new { Message = message };
+            return controllerBase.Ok(objectMessage);
         }
     }
 }

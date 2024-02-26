@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.0.2</Version>
+        <Version>4.0.3</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.2:
+            Release 4.0.3:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
             - Transform CommandResult to ActionResult
