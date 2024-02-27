@@ -60,5 +60,11 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
 
             return filter;
         }
+
+        public static string AddPropertySubTypeFilter(string filter)
+        {
+            filter += $" and PropertySubType eq 'SingleFamilyResidence'";
+            return filter;
+        }
     }
 }

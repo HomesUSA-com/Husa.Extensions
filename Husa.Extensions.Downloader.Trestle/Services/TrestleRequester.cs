@@ -62,6 +62,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             var uri = $"odata/{resource}";
             if (resource == "Property")
             {
+                filter = Utils.AddPropertySubTypeFilter(filter);
                 filter = Utils.AddSystemOriginFilter(filter, this.connectionOptions.Market);
             }
 
