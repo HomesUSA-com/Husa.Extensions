@@ -6,13 +6,11 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.0.3</Version>
+        <Version>4.1.0</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.3:
-            - Added support net8 frameworks
-            - Available S6602 and S6605 rules
-            - Transform CommandResult to ActionResult
+            Release 4.1.0:
+            - Added param to GetEnumValueFromDescription for ignoring case
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

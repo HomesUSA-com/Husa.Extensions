@@ -30,7 +30,7 @@ namespace Husa.Extensions.Common
             return ((DescriptionAttribute)attribute)?.Description ?? throw new InvalidOperationException($"Unable to get memberinfo for enum '{type.FullName}'");
         }
 
-        public static TEnum GetEnumValueFromDescription<TEnum>(this string enumValue)
+        public static TEnum GetEnumValueFromDescription<TEnum>(this string enumValue, bool ignoreCase = false)
             where TEnum : struct
         {
             var type = typeof(TEnum);
@@ -41,8 +41,12 @@ namespace Husa.Extensions.Common
                 throw new InvalidOperationException($"Unable to get memberinfo for enum '{type.FullName}'");
             }
 
+            Predicate<object> predicate = ignoreCase
+                ? attribute => ((DescriptionAttribute)attribute).Description.ToLower() == enumValue.ToLower()
+                : attribute => ((DescriptionAttribute)attribute).Description == enumValue;
+
             var memberInfo = membersInfo
-                .SingleOrDefault(m => Array.Find(m.GetCustomAttributes(typeof(DescriptionAttribute), false), attribute => ((DescriptionAttribute)attribute).Description == enumValue) != null);
+                .SingleOrDefault(m => Array.Exists(m.GetCustomAttributes(typeof(DescriptionAttribute), false), predicate));
 
             if (memberInfo == null)
             {
