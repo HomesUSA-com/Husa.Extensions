@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.Document</AssemblyName>
+        <RootNamespace>Husa.Extensions.Document</RootNamespace>
+        <Product>Document Extensions</Product>
+        <Description>Husa Document</Description>
+        <PackageId>Husa.Extensions.Document</PackageId>
+        <Version>0.1.0</Version>
+        <PackageTags>Extensions; Document;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Initialize
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.37.1" />
+        <PackageReference Include="Husa.Extensions.Domain" Version="2.1.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.0" />
+    </ItemGroup>
+</Project>
