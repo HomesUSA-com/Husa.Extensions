@@ -14,5 +14,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         [EnumMember(Value = "HAR")]
         [Description("HOUSTON")]
         HAR,
+        [EnumMember(Value = "NTR")]
+        [Description("DFW")]
+        DFW,
     }
 }
