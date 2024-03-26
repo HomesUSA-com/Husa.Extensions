@@ -16,6 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         RentalBeast,
         RPR,
         State27Homescom,
+        SyndicationAllowed,
         TexasRealEstatecom,
         ZillowGroup,
         ZillowTrulia,

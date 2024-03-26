@@ -69,7 +69,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string SourceSystemOfficeKey { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<SyndicateAgentOption>))]
         public IEnumerable<SyndicateAgentOption> SyndicateAgentOption { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<SyndicateTo?>))]
-        public SyndicateTo? SyndicateTo { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<SyndicateTo>))]
+        public IEnumerable<SyndicateTo> SyndicateTo { get; set; }
     }
 }
