@@ -42,7 +42,7 @@ namespace Husa.Extensions.Common
             }
 
             Predicate<object> predicate = ignoreCase
-                ? attribute => ((DescriptionAttribute)attribute).Description.ToLower() == enumValue.ToLower()
+                ? attribute => string.Equals(((DescriptionAttribute)attribute).Description, enumValue, StringComparison.OrdinalIgnoreCase)
                 : attribute => ((DescriptionAttribute)attribute).Description == enumValue;
 
             var memberInfo = membersInfo
@@ -63,7 +63,7 @@ namespace Husa.Extensions.Common
             foreach (var name in Enum.GetNames(enumType))
             {
                 var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
-                if (enumMemberAttribute.Value == enumMemberValue)
+                if (string.Equals(enumMemberAttribute.Value, enumMemberValue, StringComparison.OrdinalIgnoreCase))
                 {
                     return name;
                 }

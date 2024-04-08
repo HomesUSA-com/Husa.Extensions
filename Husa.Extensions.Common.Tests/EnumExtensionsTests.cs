@@ -14,6 +14,19 @@ namespace Husa.Extensions.Common.Tests
 
     public class EnumExtensionsTests
     {
+        [Theory]
+        [InlineData("ATT")]
+        [InlineData("att")]
+        public void ToEnumFromEnumMember_Success(string value)
+        {
+            // Arrange
+            // Act
+            var result = value.ToEnumFromEnumMember<EnumTestDescription>();
+
+            // Assert
+            Assert.Equal(EnumTestDescription.Attached, result);
+        }
+
         [Fact]
         public void GetEnumValueFromDescription_Success()
         {
