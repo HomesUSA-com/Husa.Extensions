@@ -36,8 +36,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public FeeFrequency? AssociationFee3Frequency { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<FeeFrequency?>))]
         public FeeFrequency? AssociationFeeFrequency { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<AssociationFeeIncludes?>))]
-        public AssociationFeeIncludes? AssociationFeeIncludes { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<AssociationFeeIncludes>))]
+        public IEnumerable<AssociationFeeIncludes> AssociationFeeIncludes { get; set; }
         public string AssociationName { get; set; }
         public string AssociationName2 { get; set; }
         public string AssociationPhone { get; set; }
