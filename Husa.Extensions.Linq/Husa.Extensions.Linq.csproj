@@ -6,19 +6,21 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.0.3</Version>
+        <Version>4.0.4</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.3:
+            Release 4.0.4:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
             - Added ApplyPaginationFilter
+            - Added SortSpecifications
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Husa.Extensions.Common" Version="4.0.0" />
+        <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.8" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
