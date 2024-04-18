@@ -7,12 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.0.5</Version>
+        <Version>4.0.6</Version>
         <PackageReleaseNotes>
-            Release 4.0.5:
-            - DFW added to SystemOrigin
-            - Office SyndicateTo updated from single value to list
-            - Proeprty AssociationFeeIncludes updated from single value to list
+            Release 4.0.6:
+            - Office: Permission field changed from single value to list.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

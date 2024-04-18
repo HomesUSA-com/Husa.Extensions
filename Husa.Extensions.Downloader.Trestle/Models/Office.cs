@@ -59,8 +59,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemOfficeKey { get; set; }
         public string OriginatingSystemSubName { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
-        public Permission? Permission { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<Permission>))]
+        public IEnumerable<Permission> Permission { get; set; }
         public string PermissionPrivate { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<SocialMediaType>))]
         public IEnumerable<SocialMediaType> SocialMediaType { get; set; }

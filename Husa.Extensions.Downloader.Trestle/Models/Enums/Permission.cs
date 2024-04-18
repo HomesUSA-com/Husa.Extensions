@@ -10,6 +10,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         History,
         IDX,
         OfficeInactive,
+        OfficeSuspended,
         OfficeOnly,
         OfficeIDXOptOUT,
         PhotoOptedOut,
