@@ -609,9 +609,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<PatioAndPorchFeatures>))]
         public IEnumerable<PatioAndPorchFeatures> PatioAndPorchFeatures { get; set; }
         public DateTimeOffset? PendingTimestamp { get; set; }
-
-        [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
-        public Permission? Permission { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<Permission>))]
+        public IEnumerable<Permission> Permission { get; set; }
         public string PermissionPrivate { get; set; }
         public decimal? PestControlExpense { get; set; }
         public decimal? PetDeposit { get; set; }

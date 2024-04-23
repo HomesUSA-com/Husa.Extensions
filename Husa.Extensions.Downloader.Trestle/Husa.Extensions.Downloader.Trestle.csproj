@@ -7,10 +7,11 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.0.6</Version>
+        <Version>4.0.7</Version>
         <PackageReleaseNotes>
-            Release 4.0.6:
+            Release 4.0.7:
             - Office: Permission field changed from single value to list.
+            - Residential: Permission field changed from single value to list.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
