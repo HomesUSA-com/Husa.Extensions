@@ -15,5 +15,7 @@ namespace Husa.Extensions.Authorization.Enums
         Readonly,
         [Display(Name = "Sales Employee Read-only")]
         SalesEmployeeReadonly,
+        [Display(Name = "Company Admin Read-only")]
+        CompanyAdminReadonly,
     }
 }
