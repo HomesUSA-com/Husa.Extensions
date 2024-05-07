@@ -28,6 +28,17 @@ namespace Husa.Extensions.Common.Tests
         }
 
         [Fact]
+        public void ToEnumOrNullFromEnumMember_Null()
+        {
+            // Arrange
+            // Act
+            var result = "other".ToEnumOrNullFromEnumMember<EnumTestDescription>();
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
         public void GetEnumValueFromDescription_Success()
         {
             // Arrange

@@ -80,6 +80,13 @@ namespace Husa.Extensions.Common
             return enumName is null ? default : (T)Enum.Parse(enumType, enumName);
         }
 
+        public static T? ToEnumOrNullFromEnumMember<T>(this string enumMemberValue)
+            where T : struct, Enum
+        {
+            var enumName = ToEnumNameFromEnumMember<T>(enumMemberValue);
+            return enumName is null ? null : (T)Enum.Parse(typeof(T), enumName);
+        }
+
         public static T ToEnumFromString<T>(this string enumValue)
             where T : Enum
         {
