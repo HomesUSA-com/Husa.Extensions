@@ -6,6 +6,7 @@ namespace Husa.Extensions.Document.Extensions
     using System.Linq;
     using System.Reflection;
     using Husa.Extensions.Common;
+    using Husa.Extensions.Document.Interfaces;
     using Husa.Extensions.Document.ValueObjects;
 
     public static class SummaryExtensions
@@ -99,6 +100,63 @@ namespace Husa.Extensions.Document.Extensions
                         break;
                 }
             }
+        }
+
+        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(this ICollection<T> currentElements, IEnumerable<T> oldElements)
+            where T : IProvideType
+            where TComparer : IEqualityComparer<T>, new()
+        {
+            static IEnumerable<SummaryField> FieldSummary(IEnumerable<T> fieldElements, bool newValues)
+            {
+                foreach (var field in fieldElements)
+                {
+                    yield return new SummaryField(field.FieldType, newValues ? null : field, newValues ? field : null);
+                }
+            }
+
+            if (oldElements == null)
+            {
+                return FieldSummary(currentElements, newValues: true);
+            }
+
+            if (!currentElements.Any())
+            {
+                return FieldSummary(oldElements, newValues: false);
+            }
+
+            var summary = new List<SummaryField>();
+            var equalElements = new List<T>();
+            var comparer = new TComparer();
+
+            IEnumerable<T> currentElems = currentElements;
+            List<T> oldElems = oldElements.ToList();
+
+            foreach (var currentElem in currentElems)
+            {
+                var oldElementIndex = oldElems.FindIndex(x => comparer.Equals(x, currentElem));
+                if (oldElementIndex > -1)
+                {
+                    equalElements.Add(currentElem);
+                    oldElems.RemoveAt(oldElementIndex);
+                }
+                else
+                {
+                    // new
+                    summary.Add(new SummaryField(currentElem.FieldType, null, currentElem));
+                }
+            }
+
+            if (oldElems.Any())
+            {
+                summary.AddRange(FieldSummary(oldElems, newValues: false));
+            }
+
+            if (summary.Any())
+            {
+                summary.AddRange(equalElements.Select(elem => new SummaryField(elem.FieldType, elem, elem)));
+            }
+
+            return summary;
         }
 
         private static bool IsEmptyIEnumerable(object value)
