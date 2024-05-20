@@ -4,6 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         Item,
         Item1,
+        MX,
         Other,
         SeeRemarks,
     }

@@ -77,9 +77,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string BusinessName { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<BusinessType?>))]
         public BusinessType? BusinessType { get; set; }
-        public string BuyerAgencyCompensation { get; set; }
+        public string BuyerBrokerageCompensation { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<CompensationType>))]
-        public IEnumerable<CompensationType> BuyerAgencyCompensationType { get; set; }
+        public IEnumerable<CompensationType> BuyerBrokerageCompensationType { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? BuyerAgentAOR { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<BuyerAgentDesignation?>))]
