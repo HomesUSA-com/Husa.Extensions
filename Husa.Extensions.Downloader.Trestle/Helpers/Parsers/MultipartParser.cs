@@ -4,6 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Parsers
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+
     public class MultipartParser
     {
         private readonly MemoryStream input;
@@ -19,11 +20,12 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Parsers
             this.input = new MemoryStream();
             input.CopyTo(this.input);
             this.input.Seek(0, SeekOrigin.Begin);
-            this.state = State.Begin;
+            this.state = State.Validation;
         }
 
         private enum State
         {
+            Validation,
             Begin,
             BoundaryDef,
             Headers,
@@ -48,6 +50,9 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Parsers
                 b = (byte)this.input.ReadByte();
                 switch (this.state)
                 {
+                    case State.Validation:
+                        this.ValidateStream(b);
+                        break;
                     case State.Begin:
                         this.GetToBoundaryDef(b);
                         this.state = State.BoundaryDef;
@@ -85,6 +90,18 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Parsers
 
                         break;
                 }
+            }
+        }
+
+        private void ValidateStream(byte b)
+        {
+            if (b == (byte)'<')
+            {
+                this.state = State.Done;
+            }
+            else
+            {
+                this.state = State.Begin;
             }
         }
 
