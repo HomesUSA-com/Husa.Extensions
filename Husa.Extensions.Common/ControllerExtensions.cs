@@ -1,5 +1,7 @@
 namespace Husa.Extensions.Common
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using Husa.Extensions.Common.Classes;
     using Husa.Extensions.Common.Enums;
     using Microsoft.AspNetCore.Mvc;
@@ -28,9 +30,17 @@ namespace Husa.Extensions.Common
         {
             if (commandResult.Code == ResponseCode.Error)
             {
-                return commandResult.HasErrors()
-                    ? controllerBase.BadRequest(new { commandResult.Message, commandResult.Errors })
-                    : controllerBase.BadRequest(new { commandResult.Message });
+                if (!commandResult.HasErrors())
+                {
+                    return controllerBase.BadRequest(new { commandResult.Message });
+                }
+
+                if (commandResult.Errors is IEnumerable<ValidationResult> errors)
+                {
+                    return controllerBase.BadRequest(new { commandResult.Message, Errors = errors.ExtractErrors() });
+                }
+
+                return controllerBase.BadRequest(new { commandResult.Message, commandResult.Errors });
             }
 
             if (commandResult.HasResult())
@@ -39,6 +49,22 @@ namespace Husa.Extensions.Common
             }
 
             return controllerBase.OkMessage(commandResult.Message);
+        }
+
+        private static List<ValidationResult> ExtractErrors(this IEnumerable<ValidationResult> validationResults)
+        {
+            var errors = new List<ValidationResult>();
+
+            foreach (var validationResult in validationResults)
+            {
+                errors.Add(validationResult);
+                if (validationResult is CompositeValidationResult compositeResult)
+                {
+                    errors.AddRange(ExtractErrors(compositeResult.Results));
+                }
+            }
+
+            return errors;
         }
 
         private static IActionResult OkMessage(this ControllerBase controllerBase, string message)
