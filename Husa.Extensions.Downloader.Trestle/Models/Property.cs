@@ -134,6 +134,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CityRegion { get; set; }
         public long? CLIP { get; set; }
         public DateTime? CloseDate { get; set; }
+        public DateTime? EstimatedCloseDate { get; set; }
         public decimal? ClosePrice { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? CoBuyerAgentAOR { get; set; }
