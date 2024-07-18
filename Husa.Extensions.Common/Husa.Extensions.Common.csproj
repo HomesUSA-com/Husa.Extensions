@@ -6,12 +6,13 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.1.3</Version>
+        <Version>4.1.4</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.3:
+            Release 4.1.4:
             - Added param to GetEnumValueFromDescription for ignoring case
             - Added CompositeValidationResult
+            - Added ToEnumOrNullFromDescription to get enum by description or return null
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

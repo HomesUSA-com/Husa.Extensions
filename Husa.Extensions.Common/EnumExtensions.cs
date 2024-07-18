@@ -33,6 +33,12 @@ namespace Husa.Extensions.Common
         public static TEnum GetEnumValueFromDescription<TEnum>(this string enumValue, bool ignoreCase = false)
             where TEnum : struct
         {
+            return enumValue.ToEnumOrNullFromDescription<TEnum>(ignoreCase: ignoreCase) ?? throw new InvalidOperationException($"Unable to get memberinfo for enum '{typeof(TEnum).FullName}'");
+        }
+
+        public static TEnum? ToEnumOrNullFromDescription<TEnum>(this string enumValue, bool ignoreCase = true)
+            where TEnum : struct
+        {
             var type = typeof(TEnum);
             var membersInfo = type.GetMembers();
 
@@ -50,7 +56,7 @@ namespace Husa.Extensions.Common
 
             if (memberInfo == null)
             {
-                throw new InvalidOperationException($"Unable to get memberinfo for enum '{type.FullName}'");
+                return null;
             }
 
             return (TEnum)Enum.Parse(typeof(TEnum), memberInfo.Name);

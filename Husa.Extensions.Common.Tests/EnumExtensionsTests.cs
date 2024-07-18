@@ -65,5 +65,16 @@ namespace Husa.Extensions.Common.Tests
             // Assert
             Assert.Equal(EnumTestDescription.Attached, result);
         }
+
+        [Fact]
+        public void ToEnumOrNullFromDescription_ReturnNull()
+        {
+            // Arrange
+            // Act
+            var result = "notInEnum".ToEnumOrNullFromDescription<EnumTestDescription>(ignoreCase: true);
+
+            // Assert
+            Assert.Null(result);
+        }
     }
 }
