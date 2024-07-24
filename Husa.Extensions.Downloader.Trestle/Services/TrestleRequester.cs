@@ -10,6 +10,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Text.Json;
     using System.Threading.Tasks;
     using System.Xml;
+    using Husa.Extensions.Downloader.Trestle.Configuration;
     using Husa.Extensions.Downloader.Trestle.Contracts;
     using Husa.Extensions.Downloader.Trestle.Helpers;
     using Husa.Extensions.Downloader.Trestle.Helpers.Converters;

@@ -26,6 +26,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         HeavyLoading,
         Laminate,
         Linoleum,
+        LuxuryVinyl,
         LuxuryVinylPlank,
         LuxuryVinylTile,
         Marble,

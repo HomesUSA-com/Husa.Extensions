@@ -3,6 +3,7 @@ namespace Husa.Extensions.Downloader.Trestle.Tests
     using System;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using Husa.Extensions.Downloader.Trestle.Configuration;
     using Husa.Extensions.Downloader.Trestle.Models;
     using Husa.Extensions.Downloader.Trestle.Models.TableEntities;
     using Husa.Extensions.Downloader.Trestle.Services;
