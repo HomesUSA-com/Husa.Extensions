@@ -5,6 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using Husa.Extensions.Downloader.Trestle.Configuration;
     using Husa.Extensions.Downloader.Trestle.Helpers;
     using Husa.Extensions.Downloader.Trestle.Helpers.Parsers;
     using Husa.Extensions.Downloader.Trestle.Models;
