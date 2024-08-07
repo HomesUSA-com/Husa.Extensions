@@ -4,17 +4,15 @@ namespace Husa.Extensions.UserInfo
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Husa.Extensions.Cache;
     using Husa.Extensions.UserInfo.Interfaces;
 
-    public abstract class UserQueriesRepository : IQueryUsersRepository
+    public class UserQueriesRepository : IQueryUsersRepository
     {
-        private readonly ICache cache;
+        private readonly IUserCacheRepository userCacheRepository;
 
-        protected UserQueriesRepository(
-            ICache memoryCache)
+        public UserQueriesRepository(IUserCacheRepository memoryCache)
         {
-            this.cache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
+            this.userCacheRepository = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
         }
 
         public async Task FillUserNameAsync(IEnumerable<IProvideUserInfo> userInfos)
@@ -35,7 +33,7 @@ namespace Husa.Extensions.UserInfo
                 return ids;
             }).Distinct().ToList();
 
-            var users = await this.GetUsersById(userIds);
+            var users = await this.userCacheRepository.GetUsers(userIds);
             if (!users.Any())
             {
                 return;
@@ -68,48 +66,6 @@ namespace Husa.Extensions.UserInfo
             }
 
             await this.FillUserNameAsync(new List<IProvideUserInfo> { userInfo });
-        }
-
-        public async Task<IEnumerable<IUserEntity>> GetUsersById(IEnumerable<Guid> userIds)
-        {
-            var users = new List<IUserEntity>();
-
-            if (!userIds.Any())
-            {
-                return users;
-            }
-
-            var idsNotInCache = new List<Guid>();
-            foreach (Guid userId in userIds)
-            {
-                if (this.cache.Contains(userId.ToString()))
-                {
-                    var user = this.cache.Get(userId.ToString());
-                    users.Add(user as IUserEntity);
-                }
-                else
-                {
-                    idsNotInCache.Add(userId);
-                }
-            }
-
-            if (idsNotInCache.Count > 0)
-            {
-                var usersNotInCache = await this.GetUsersNotInCache(idsNotInCache);
-
-                foreach (IUserEntity user in usersNotInCache)
-                {
-                    this.cache.Insert(user.Id.ToString(), user, 3600);
-                    users.Add(user);
-                }
-            }
-
-            return users;
-        }
-
-        public virtual Task<IEnumerable<IUserEntity>> GetUsersNotInCache(IEnumerable<Guid> userIds)
-        {
-            throw new NotImplementedException();
         }
     }
 }
