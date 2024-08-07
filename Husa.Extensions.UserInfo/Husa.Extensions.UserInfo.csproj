@@ -6,9 +6,9 @@
         <Product>UserInfo Extensions</Product>
         <Description>Husa UserInfo</Description>
         <PackageId>Husa.Extensions.UserInfo</PackageId>
-        <Version>4.0.0</Version>
+        <Version>4.0.1</Version>
         <PackageReleaseNotes>
-            Release 4.0.0:
+            Release 4.0.1:
             - Added UserCacheRepository
         </PackageReleaseNotes>
         <PackageTags>Extensions; UserInfo;</PackageTags>
