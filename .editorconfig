@@ -59,3 +59,6 @@ dotnet_diagnostic.CA1707.severity = suggestion
 
 # S6580: Use a format provider when parsing date and time
 dotnet_diagnostic.S6580.severity = suggestion
+
+# SA1010: Opening square brackets should be spaced correctly
+dotnet_diagnostic.SA1010.severity = none

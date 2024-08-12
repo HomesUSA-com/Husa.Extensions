@@ -54,7 +54,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Document", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Document.Tests", "Husa.Extensions.DocumentTests\Husa.Extensions.Document.Tests.csproj", "{E8FBF156-6B83-45FE-849E-F7D210B3D550}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Linq.Tests", "Husa.Extensions.Linq.Tests\Husa.Extensions.Linq.Tests.csproj", "{58783FAB-F526-4F29-A511-20DA876263DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Linq.Tests", "Husa.Extensions.Linq.Tests\Husa.Extensions.Linq.Tests.csproj", "{58783FAB-F526-4F29-A511-20DA876263DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.OpenAI", "Husa.Extensions.OpenAI\Husa.Extensions.OpenAI.csproj", "{AE34F18D-2AE9-432D-9747-ADD6F60AD955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.OpenAI.Tests", "Husa.Extensions.OpenAI.Tests\Husa.Extensions.OpenAI.Tests.csproj", "{6D254656-F296-432E-AB29-2628840F824F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +154,14 @@ Global
 		{58783FAB-F526-4F29-A511-20DA876263DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58783FAB-F526-4F29-A511-20DA876263DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58783FAB-F526-4F29-A511-20DA876263DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE34F18D-2AE9-432D-9747-ADD6F60AD955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE34F18D-2AE9-432D-9747-ADD6F60AD955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE34F18D-2AE9-432D-9747-ADD6F60AD955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE34F18D-2AE9-432D-9747-ADD6F60AD955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D254656-F296-432E-AB29-2628840F824F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D254656-F296-432E-AB29-2628840F824F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D254656-F296-432E-AB29-2628840F824F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D254656-F296-432E-AB29-2628840F824F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

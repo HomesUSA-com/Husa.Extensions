@@ -1,0 +1,68 @@
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Husa.Extensions.OpenAI
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Husa.Extensions.OpenAI
+
+pool:
+  vmImage: windows-latest
+
+variables:
+- group: homesusa.husa.extensions.global
+- name: isPullRequest
+  value: $[eq(variables['Build.Reason'], 'PullRequest')]
+
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloudHomesUSA'
+    organization: 'homesusa'
+    scannerMode: 'MSBuild'
+    projectKey: 'Husa_Extensions.OpenAI'
+    projectName: 'Husa.Extensions.OpenAI'
+    extraProperties: |
+      sonar.exclusions=**/obj/**,**/*.dll
+      sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
+      sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+- task: NuGetAuthenticate@1
+  inputs:
+   forceReinstallCredentialProvider: true
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/Husa.Extensions.OpenAI.csproj'
+    restoreArguments: '/property:Configuration=$(BuildConfiguration)'
+    feedsToUse: 'select'
+    vstsFeed: 'f820f957-6781-4cd6-b5f5-e720c189507f/891ce0ed-37b7-4336-b1fe-079c0525a171'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/Husa.Extensions.OpenAI.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+- task: DotNetCoreCLI@2
+  condition: ne(variables.isPullRequest, true)
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/Husa.Extensions.OpenAI.csproj'
+    versioningScheme: 'off'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'drop'
+  condition: and(succeededOrFailed(), ne(variables.isPullRequest, true))

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.OpenAI</AssemblyName>
+        <RootNamespace>Husa.Extensions.OpenAI</RootNamespace>
+        <Product>OpenAI Extensions</Product>
+        <Description>Husa Extensions OpenAI</Description>
+        <PackageId>Husa.Extensions.OpenAI</PackageId>
+        <Version>0.1.0</Version>
+        <PackageTags>Extensions; OpenAI;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Initial version of the package
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+        <PackageReference Include="OpenAI" Version="1.11.0" />
+    </ItemGroup>
+
+</Project>
