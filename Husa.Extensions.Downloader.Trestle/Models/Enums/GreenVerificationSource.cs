@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Administrator,
         Assessor,
         Builder,
-        ContractororInstaller,
+        ContractorOrInstaller,
         Other,
         Owner,
         ProgramSponsor,

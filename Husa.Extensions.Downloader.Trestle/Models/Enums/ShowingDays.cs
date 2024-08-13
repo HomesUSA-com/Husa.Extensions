@@ -2,7 +2,12 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum ShowingDays
     {
-        None,
-        Other,
+        Friday,
+        Monday,
+        Saturday,
+        Sunday,
+        Thursday,
+        Tuesday,
+        Wednesday,
     }
 }

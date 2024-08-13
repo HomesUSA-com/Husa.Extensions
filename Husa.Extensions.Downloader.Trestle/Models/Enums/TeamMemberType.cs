@@ -4,13 +4,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         AdministrationAssistant,
         BuyerAgent,
-        BuyerAgent1,
         LeadManager,
         ListingAgent,
         MarketingAssistant,
         OperationsManager,
+        ShowingAgent,
         TeamLead,
         TeamMember,
+        TeamMemberLead,
         TransactionCoordinator,
     }
 }

@@ -1,8 +1,9 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    public enum MediaClassification
+    public enum PreferredMedia
     {
-        Document,
-        Photo,
+        Email,
+        Fax,
+        Mail
     }
 }

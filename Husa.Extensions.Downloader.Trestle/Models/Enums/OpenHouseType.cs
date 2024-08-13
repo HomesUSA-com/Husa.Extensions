@@ -3,9 +3,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     public enum OpenHouseType
     {
         Broker,
-        LiveStreamBroker,
-        LiveStreamOffice,
-        LiveStreamPublic,
+        LivestreamBroker,
+        LivestreamOffice,
+        LivestreamPublic,
         Office,
         Private,
         Public,

@@ -5,6 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Appliances,
         Construction,
         Doors,
+        EnergyRecoveryVentilator,
         ExposureShade,
         HealthyLivingFeatures,
         HVAC,

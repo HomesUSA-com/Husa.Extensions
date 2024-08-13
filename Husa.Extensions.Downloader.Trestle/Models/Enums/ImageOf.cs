@@ -16,6 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BonusRoom,
         BreakfastArea,
         Closet,
+        CommonAmenity,
         Community,
         Courtyard,
         Deck,

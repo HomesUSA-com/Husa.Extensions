@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum AssociationFeeIncludes
     {
+        AirConditioning,
         AllFacilities,
         Amenities,
         AssociationManagement,
@@ -52,7 +53,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SeeAgent,
         SeeRemarks,
         Sewer,
+        SharedAmenities,
         SnowRemoval,
+        SpecialAssessment,
         Sprinkler,
         StreetLights,
         Taxes,

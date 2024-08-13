@@ -9,6 +9,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Block,
         Brick,
         ChainLink,
+        Composite,
         CrossFenced,
         Decorative,
         DogRun,

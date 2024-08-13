@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum GreenWaterConservation
     {
+        CompostingToilet,
         DualFlushToilet,
         EfficientHotWaterDistribution,
         GrayWaterSystem,
@@ -9,6 +10,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         LowVolumeDripIrrigation,
         LowFlowFixtures,
         Other,
+        RainGardens,
         RainWaterCollection,
         WaterRecycling,
         WaterSmartLandscaping,

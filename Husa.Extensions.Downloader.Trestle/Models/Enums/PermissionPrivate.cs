@@ -4,9 +4,11 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         CompSold,
         DownPaymentResourceYes,
+        ExemptListing,
         MembersOnlyNo,
         MembersOnlyYes,
         None,
+        OfficeSuspended,
         RatePlugYes,
         Withheld,
     }
