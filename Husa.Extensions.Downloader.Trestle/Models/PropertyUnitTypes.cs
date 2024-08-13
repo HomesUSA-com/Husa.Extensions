@@ -9,20 +9,43 @@ namespace Husa.Extensions.Downloader.Trestle.Models
     public class PropertyUnitTypes
     {
         public bool? HumanModifiedYN { get; set; }
+        public bool? InternetEntireListingDisplayYN { get; set; }
         public string ListAgentKey { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
+        public AOR? ListAOR { get; set; }
         public string ListingId { get; set; }
         public string ListingKey { get; set; }
         public int? ListingKeyNumeric { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
+        public Permission? ListingPermission { get; set; }
         public string ListOfficeKey { get; set; }
+        public string ListOfficeMlsId { get; set; }
         public DateTimeOffset ModificationTimestamp { get; set; }
+        public DateTime OffMarketDate { get; set; }
+        public string OriginatingSystemListingKey { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
         public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<PropertySubType?>))]
+        public PropertySubType? PropertySubType { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<PropertySubTypeAdditional?>))]
+        public PropertySubTypeAdditional? PropertySubTypeAdditional { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<PropertyType?>))]
+        public PropertyType? PropertyType { get; set; }
+        public string SourceSystemID { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<StandardStatus?>))]
+        public StandardStatus? StandardStatus { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<SyndicateTo?>))]
+        public SyndicateTo? SyndicateTo { get; set; }
         public decimal? UnitTypeActualRent { get; set; }
         public string UnitTypeActualRentRange { get; set; }
         public decimal? UnitTypeArea { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AreaSource?>))]
+        public AreaSource? UnitTypeAreaSource { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AreaUnits?>))]
+        public AreaUnits? UnitTypeAreaUnits { get; set; }
         public int? UnitTypeBathsTotal { get; set; }
         public int? UnitTypeBedsTotal { get; set; }
         public decimal? UnitTypeDeposit { get; set; }

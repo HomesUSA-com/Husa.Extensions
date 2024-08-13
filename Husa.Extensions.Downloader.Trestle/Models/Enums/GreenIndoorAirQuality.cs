@@ -9,5 +9,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         MoistureControl,
         RadonMitigationSystem,
         Ventilation,
+        WholeHouseExhaustOnlyVentilation,
     }
 }

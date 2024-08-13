@@ -3,8 +3,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     public enum Basement
     {
         Apartment,
-        BathStubbed,
         Bathroom,
+        BathStubbed,
         Bedroom,
         Block,
         CommonBasement,
@@ -17,6 +17,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         EgressWindows,
         ExteriorEntry,
         Finished,
+        FoyerFinished,
         FrenchDrain,
         Full,
         GarageAccess,

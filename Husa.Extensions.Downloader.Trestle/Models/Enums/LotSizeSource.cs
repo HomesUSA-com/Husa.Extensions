@@ -7,6 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Builder,
         Estimated,
         GISCalculated,
+        ListingAgent,
         Measured,
         NotAvailable,
         NotTaped,

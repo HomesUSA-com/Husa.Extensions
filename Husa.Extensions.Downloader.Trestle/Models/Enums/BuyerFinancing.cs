@@ -2,7 +2,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum BuyerFinancing
     {
-        Item1031Exchange,
         ARM,
         Assumed,
         BondforDeed,
@@ -17,12 +16,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Conventional,
         CourtApproval,
         Cryptocurrency,
+        FederalLandBank,
         FHA,
         FHA203b,
         FHA203k,
         FHVA,
         FMHA,
         GraduatedPaymentMortgage,
+        Item1031Exchange,
         Lease,
         LenderApproval,
         NotDisclosed,

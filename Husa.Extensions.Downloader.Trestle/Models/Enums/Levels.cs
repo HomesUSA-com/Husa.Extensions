@@ -5,7 +5,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BiLevel,
         FiveLevelSplit,
         FourLevelSplit,
-        LuxuryVinyl,
         MultiLevelUnit,
         MultiSplit,
         None,
@@ -20,5 +19,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         TriLevel,
         Two,
         TwoandOneHalf,
+        TwoOrMore,
     }
 }

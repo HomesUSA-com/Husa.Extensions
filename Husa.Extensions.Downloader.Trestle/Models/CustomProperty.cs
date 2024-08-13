@@ -1,20 +1,30 @@
 namespace Husa.Extensions.Downloader.Trestle.Models
 {
     using System;
+    using System.Collections.Generic;
     using Husa.Extensions.Downloader.Trestle.Models.Enums;
 
     public class CustomProperty
     {
+        public string AboveGradeBedrooms { get; set; }
         public string AboveGradeFinishedAreaRange { get; set; }
         public AreaSource? AboveGradeFinishedAreaRangeSource { get; set; }
         public AreaUnits? AboveGradeFinishedAreaRangeUnits { get; set; }
         public string AboveGradeUnfinishedAreaRange { get; set; }
         public AreaSource? AboveGradeUnfinishedAreaRangeSource { get; set; }
         public AreaUnits? AboveGradeUnfinishedAreaRangeUnits { get; set; }
+        public decimal AdditionalFee { get; set; }
+        public string AdditionalFeeDescription { get; set; }
+        public IEnumerable<FeeFrequency> AdditionalFeeFrequency { get; set; }
+        public bool AdditionalFeeYN { get; set; }
         public string AdditionalInfo1 { get; set; }
         public string AdditionalInfo2 { get; set; }
         public string AdditionalInfo3 { get; set; }
+        public decimal AssociationFeeTotal { get; set; }
+        public IEnumerable<FeeFrequency> AssociationFeeTotalFrequency { get; set; }
+        public IEnumerable<Attic> Attic { get; set; }
         public AvailabilityType? AvailabilityType { get; set; }
+        public string BelowGradeBedrooms { get; set; }
         public string BelowGradeFinishedAreaRange { get; set; }
         public AreaSource? BelowGradeFinishedAreaRangeSource { get; set; }
         public AreaUnits? BelowGradeFinishedAreaRangeUnits { get; set; }
@@ -27,9 +37,11 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public BoatDockSlipFeatures? BoatDockSlipFeatures { get; set; }
         public bool BoatDockYN { get; set; }
         public bool BoatSlipYN { get; set; }
+        public decimal BonusAmount { get; set; }
         public string BuildingAreaTotalRange { get; set; }
         public AreaSource? BuildingAreaTotalRangeSource { get; set; }
         public AreaUnits? BuildingAreaTotalRangeUnits { get; set; }
+        public string BuildingSizeDimensions { get; set; }
         public string ComplexName { get; set; }
         public string ConsumerRemarks { get; set; }
         public string CustomFields { get; set; }
@@ -59,15 +71,20 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public decimal LeaseAmountPerArea { get; set; }
         public LeaseAmountPerAreaUnit? LeaseAmountPerAreaUnit { get; set; }
         public string LeaseTermsDescription { get; set; }
-        public string ListAgentKey { get; set; }
+        public AOR? ListAOR { get; set; }
         public string ListingId { get; set; }
         public string ListingKey { get; set; }
+        public int ListingKeyNumeric { get; set; }
         public string ListOfficeKey { get; set; }
         public string ListOfficeMlsId { get; set; }
         public string LivingAreaRange { get; set; }
+        public decimal LivingAreaRangeHigh { get; set; }
+        public decimal LivingAreaRangeLow { get; set; }
         public AreaSource? LivingAreaRangeSource { get; set; }
         public AreaSource? LivingAreaRangeUnits { get; set; }
         public string Location { get; set; }
+        public decimal LotSizeAreaRangeHigh { get; set; }
+        public decimal LotSizeAreaRangeLow { get; set; }
         public string LotSizeRange { get; set; }
         public LotSizeSource? LotSizeRangeSource { get; set; }
         public LotSizeUnits? LotSizeRangeUnits { get; set; }
@@ -80,28 +97,41 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string MonthlyRate { get; set; }
         public int NumberOfBoatDocks { get; set; }
         public int NumberOfBoatSlips { get; set; }
+        public string OffersDescription { get; set; }
+        public DateTime? OffersReviewDate { get; set; }
         public DateTime OffMarketDate { get; set; }
         public string OffSeasonRate { get; set; }
         public string OriginatingSystemKey { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
+        public string OtherExpenseDescription { get; set; }
         public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
-        public string PotentialShortSale { get; set; }
+        public string PetsAllowedDescription { get; set; }
+        public PotentialShortSale PotentialShortSale { get; set; }
         public decimal PricePerArea { get; set; }
         public PricePerAreaUnit? PricePerAreaUnit { get; set; }
         public string PrivateShowingInstructions { get; set; }
         public string ProjectName { get; set; }
+        public IEnumerable<PropertyAccess> PropertyAccess { get; set; }
         public string PublicRemarks_lang2 { get; set; }
         public string PublicRemarks_lang3 { get; set; }
         public Restrictions? Restrictions { get; set; }
         public string RiverName { get; set; }
         public string SaleOrLeaseIncludes { get; set; }
         public string SeasonRate { get; set; }
+        public string SecurityDepositDescription { get; set; }
+        public bool SecurityDepositYN { get; set; }
         public int SourceSupplementPublicCount { get; set; }
         public StandardStatus? StandardStatus { get; set; }
+        public string StoriesPartial { get; set; }
+        public string StoriesPartialTotal { get; set; }
+        public string TaxAssessedValueImprovement { get; set; }
+        public string TaxAssessedValueLand { get; set; }
         public string TaxAuthority { get; set; }
+        public decimal TaxRate { get; set; }
         public string TaxYearRange { get; set; }
+        public ThirdPartyIntegrationType? ThirdPartyIntegrationType { get; set; }
         public string UnitLocation { get; set; }
         public string WaterAccessDescription { get; set; }
         public bool WaterAccessYN { get; set; }

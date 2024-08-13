@@ -1,0 +1,31 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum WaterHeater
+    {
+        Central,
+        Coal,
+        Common,
+        Electric,
+        ENERGYSTARQualified,
+        Gas,
+        Geothermal,
+        HeatPump,
+        HighEfficiency,
+        Hybrid,
+        InstantHotWater,
+        Insulated,
+        Leased,
+        Multiple,
+        None,
+        OffHeatingSystem,
+        Oil,
+        Other,
+        Owned,
+        Propane,
+        Recirculating,
+        SeeRemarks,
+        Solar,
+        Tankless,
+        Wood,
+    }
+}

@@ -29,6 +29,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         River,
         Rural,
         SandPointWell,
+        Seasonal,
         SeeRemarks,
         SharedWell,
         Spring,

@@ -12,6 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Other,
         Seasonal,
         ShortTerm,
+        Vacation,
         Weekly,
     }
 }

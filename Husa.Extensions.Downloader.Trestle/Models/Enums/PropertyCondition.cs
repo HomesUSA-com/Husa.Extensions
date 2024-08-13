@@ -9,6 +9,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Excellent,
         Fixer,
         GoodCondition,
+        KnownDamage,
         NeverOccupied,
         NewConstruction,
         Other,

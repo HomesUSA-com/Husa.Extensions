@@ -7,12 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.0.11</Version>
+        <Version>4.1.0</Version>
         <PackageReleaseNotes>
-            Release 4.0.11:
-            - Residential: BuyerAgencyCompensation renamed to BuyerBrokerageCompensation.
-            - MultipartParser: Updated parser to handle empty stream.
-            - Property: New field EstimatedCloseDate added.
+            Release 4.1.0:
+            - Trestle content patches up to #175 have been applied.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

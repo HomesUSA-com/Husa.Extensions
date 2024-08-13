@@ -19,14 +19,17 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public DateTimeOffset OriginalEntryTimestamp { get; set; }
         public string OriginatingSystemID { get; set; }
         public string OriginatingSystemKey { get; set; }
+        public string OriginatingSystemMemberKey { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
+        public string OriginatingSystemTeamKey { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
         public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
         public string SourceSystemID { get; set; }
         public string SourceSystemKey { get; set; }
         public string SourceSystemName { get; set; }
+        public string StandardName { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<TeamImpersonationLevel?>))]
         public TeamImpersonationLevel? TeamImpersonationLevel { get; set; }
         public string TeamKey { get; set; }
@@ -35,7 +38,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? TeamMemberKeyNumeric { get; set; }
         public string TeamMemberNationalAssociationId { get; set; }
         public string TeamMemberStateLicense { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<MemberType?>))]
-        public MemberType? TeamMemberType { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<TeamMemberType?>))]
+        public TeamMemberType? TeamMemberType { get; set; }
     }
 }

@@ -4,9 +4,11 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         BirdOK,
         BreedRestrictions,
+        BuildingBreedRestrictions,
         BuildingCatsOK,
         BuildingDogsOK,
         BuildingNo,
+        BuildingNumberLimit,
         BuildingSizeLimit,
         BuildingYes,
         Call,

@@ -15,12 +15,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string OriginatingSystemID { get; set; }
         public string OriginatingSystemKey { get; set; }
         public string OriginatingSystemName { get; set; }
+        public string OriginatingSystemTeamLeadKey { get; set; }
         public string OriginatingSystemSubName { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Permission?>))]
         public Permission? Permission { get; set; }
         public string PermissionPrivate { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<SocialMediaType>))]
         public IEnumerable<SocialMediaType> SocialMediaType { get; set; }
+        public string SocialMediaTypeUrl { get; set; }
         public string SourceSystemID { get; set; }
         public string SourceSystemKey { get; set; }
         public string SourceSystemName { get; set; }

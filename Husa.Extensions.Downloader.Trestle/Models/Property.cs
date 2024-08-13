@@ -14,6 +14,10 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public AreaSource? AboveGradeFinishedAreaSource { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AreaUnits?>))]
         public AreaUnits? AboveGradeFinishedAreaUnits { get; set; }
+        public decimal? AboveGradeUnfinishedArea { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AreaSource?>))]
+        public AreaSource? AboveGradeUnfinishedAreaSource { get; set; }
+        public AreaUnits? AboveGradeUnfinishedAreaUnits { get; set; }
         public string AccessCode { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<AccessibilityFeatures>))]
         public IEnumerable<AccessibilityFeatures> AccessibilityFeatures { get; set; }
@@ -46,6 +50,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? AttachedGarageYN { get; set; }
         public string AttributionContact { get; set; }
         public DateTime? AvailabilityDate { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<ExistingLeaseType?>))]
+        public ExistingLeaseType? AvailableLeaseType { get; set; }
+        public DateTime? BackOnMarketDate { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<Basement>))]
         public IEnumerable<Basement> Basement { get; set; }
         public bool? BasementYN { get; set; }
@@ -62,6 +69,11 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public AreaSource? BelowGradeFinishedAreaSource { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AreaUnits?>))]
         public AreaUnits? BelowGradeFinishedAreaUnits { get; set; }
+        public decimal? BelowGradeUnfinishedArea { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AreaSource?>))]
+        public AreaSource? BelowGradeUnfinishedAreaSource { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AreaUnits?>))]
+        public AreaUnits? BelowGradeUnfinishedAreaUnits { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<BodyType?>))]
         public BodyType? BodyType { get; set; }
         public string BuilderModel { get; set; }
@@ -77,9 +89,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string BusinessName { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<BusinessType?>))]
         public BusinessType? BusinessType { get; set; }
-        public string BuyerBrokerageCompensation { get; set; }
-        [JsonConverter(typeof(StringListEnumConverter<CompensationType>))]
-        public IEnumerable<CompensationType> BuyerBrokerageCompensationType { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? BuyerAgentAOR { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<BuyerAgentDesignation?>))]
@@ -98,6 +107,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string BuyerAgentMobilePhone { get; set; }
         public string BuyerAgentNamePrefix { get; set; }
         public string BuyerAgentNameSuffix { get; set; }
+        public string BuyerAgentNationalAssociationId { get; set; }
         public string BuyerAgentOfficePhone { get; set; }
         public string BuyerAgentOfficePhoneExt { get; set; }
         public string BuyerAgentPager { get; set; }
@@ -108,6 +118,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string BuyerAgentURL { get; set; }
         public string BuyerAgentVoiceMail { get; set; }
         public string BuyerAgentVoiceMailExt { get; set; }
+        public string BuyerBrokerageCompensation { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<CompensationType>))]
+        public IEnumerable<CompensationType> BuyerBrokerageCompensationType { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<BuyerFinancing>))]
         public IEnumerable<BuyerFinancing> BuyerFinancing { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
@@ -118,6 +131,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? BuyerOfficeKeyNumeric { get; set; }
         public string BuyerOfficeMlsId { get; set; }
         public string BuyerOfficeName { get; set; }
+        public string BuyerOfficeNationalAssociationId { get; set; }
         public string BuyerOfficePhone { get; set; }
         public string BuyerOfficePhoneExt { get; set; }
         public string BuyerOfficeURL { get; set; }
@@ -134,7 +148,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CityRegion { get; set; }
         public long? CLIP { get; set; }
         public DateTime? CloseDate { get; set; }
-        public DateTime? EstimatedCloseDate { get; set; }
         public decimal? ClosePrice { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? CoBuyerAgentAOR { get; set; }
@@ -154,6 +167,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CoBuyerAgentMobilePhone { get; set; }
         public string CoBuyerAgentNamePrefix { get; set; }
         public string CoBuyerAgentNameSuffix { get; set; }
+        public string CoBuyerAgentNationalAssociationId { get; set; }
         public string CoBuyerAgentOfficePhone { get; set; }
         public string CoBuyerAgentOfficePhoneExt { get; set; }
         public string CoBuyerAgentPager { get; set; }
@@ -172,9 +186,46 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? CoBuyerOfficeKeyNumeric { get; set; }
         public string CoBuyerOfficeMlsId { get; set; }
         public string CoBuyerOfficeName { get; set; }
+        public string CoBuyerOfficeNationalAssociationId { get; set; }
         public string CoBuyerOfficePhone { get; set; }
         public string CoBuyerOfficePhoneExt { get; set; }
         public string CoBuyerOfficeURL { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
+        public AOR? CoListAgent2AOR { get; set; }
+        public string CoListAgent2DirectPhone { get; set; }
+        public string CoListAgent2Email { get; set; }
+        public string CoListAgent2FirstName { get; set; }
+        public string CoListAgent2FullName { get; set; }
+        public string CoListAgent2HomePhone { get; set; }
+        public string CoListAgent2Key { get; set; }
+        public string CoListAgent2LastName { get; set; }
+        public string CoListAgent2MiddleName { get; set; }
+        public string CoListAgent2MlsId { get; set; }
+        public string CoListAgent2MobilePhone { get; set; }
+        public string CoListAgent2NationalAssociationId { get; set; }
+        public string CoListAgent2Nickname { get; set; }
+        public string CoListAgent2OfficePhone { get; set; }
+        public string CoListAgent2PreferredPhone { get; set; }
+        public string CoListAgent2StateLicense { get; set; }
+        public string CoListAgent2URL { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
+        public AOR? CoListAgent3AOR { get; set; }
+        public string CoListAgent3DirectPhone { get; set; }
+        public string CoListAgent3Email { get; set; }
+        public string CoListAgent3FirstName { get; set; }
+        public string CoListAgent3FullName { get; set; }
+        public string CoListAgent3HomePhone { get; set; }
+        public string CoListAgent3Key { get; set; }
+        public string CoListAgent3LastName { get; set; }
+        public string CoListAgent3MiddleName { get; set; }
+        public string CoListAgent3MlsId { get; set; }
+        public string CoListAgent3MobilePhone { get; set; }
+        public string CoListAgent3NationalAssociationId { get; set; }
+        public string CoListAgent3Nickname { get; set; }
+        public string CoListAgent3OfficePhone { get; set; }
+        public string CoListAgent3PreferredPhone { get; set; }
+        public string CoListAgent3StateLicense { get; set; }
+        public string CoListAgent3URL { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? CoListAgentAOR { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<CoListAgentDesignation?>))]
@@ -193,6 +244,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CoListAgentMobilePhone { get; set; }
         public string CoListAgentNamePrefix { get; set; }
         public string CoListAgentNameSuffix { get; set; }
+        public string CoListAgentNationalAssociationId { get; set; }
+        public string CoListAgentNickname { get; set; }
         public string CoListAgentOfficePhone { get; set; }
         public string CoListAgentOfficePhoneExt { get; set; }
         public string CoListAgentPager { get; set; }
@@ -204,6 +257,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string CoListAgentVoiceMail { get; set; }
         public string CoListAgentVoiceMailExt { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
+        public AOR? CoListOffice2AOR { get; set; }
+        public string CoListOffice2Email { get; set; }
+        public string CoListOffice2Key { get; set; }
+        public string CoListOffice2MlsId { get; set; }
+        public string CoListOffice2Name { get; set; }
+        public string CoListOffice2Phone { get; set; }
+        public string CoListOffice2URL { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? CoListOfficeAOR { get; set; }
         public string CoListOfficeEmail { get; set; }
         public string CoListOfficeFax { get; set; }
@@ -211,6 +272,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? CoListOfficeKeyNumeric { get; set; }
         public string CoListOfficeMlsId { get; set; }
         public string CoListOfficeName { get; set; }
+        public string CoListOfficeNationalAssociationId { get; set; }
         public string CoListOfficePhone { get; set; }
         public string CoListOfficePhoneExt { get; set; }
         public string CoListOfficeURL { get; set; }
@@ -321,6 +383,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string DOH3 { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<DoorFeatures>))]
         public IEnumerable<DoorFeatures> DoorFeatures { get; set; }
+        public bool? DualOrVariableRateCommissionYN { get; set; }
         public bool? DualVariableCompensationYN { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<Electric>))]
         public IEnumerable<Electric> Electric { get; set; }
@@ -333,11 +396,13 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public LinearUnits? ElevationUnits { get; set; }
         public int? EntryLevel { get; set; }
         public string EntryLocation { get; set; }
+        public DateTime? EstimatedCloseDate { get; set; }
         public string Exclusions { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<ExistingLeaseType?>))]
         public ExistingLeaseType? ExistingLeaseType { get; set; }
         public DateTime? ExpirationDate { get; set; }
-
+        [JsonConverter(typeof(StringNullableEnumConverter<Exposures?>))]
+        public Exposures? Exposures { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<ExteriorFeatures>))]
         public IEnumerable<ExteriorFeatures> ExteriorFeatures { get; set; }
         public bool? FarmCreditServiceInclYN { get; set; }
@@ -347,6 +412,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public AreaUnits? FarmLandAreaUnits { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<Fencing>))]
         public IEnumerable<Fencing> Fencing { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<FhaEligibility>))]
+        public IEnumerable<FhaEligibility> FhaEligibility { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<FinancialDataSource?>))]
         public FinancialDataSource? FinancialDataSource { get; set; }
 
@@ -372,6 +439,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? GrazingPermitsBlmYN { get; set; }
         public bool? GrazingPermitsForestServiceYN { get; set; }
         public bool? GrazingPermitsPrivateYN { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<GreenBuildingVerificationType?>))]
+        public GreenBuildingVerificationType? GreenBuildingVerificationType { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<GreenEnergyEfficient>))]
         public IEnumerable<GreenEnergyEfficient> GreenEnergyEfficient { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GreenEnergyGeneration?>))]
@@ -382,6 +451,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public GreenLocation? GreenLocation { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GreenSustainability?>))]
         public GreenSustainability? GreenSustainability { get; set; }
+        public bool? GreenVerificationYN { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<GreenWaterConservation>))]
         public IEnumerable<GreenWaterConservation> GreenWaterConservation { get; set; }
         public decimal? GrossIncome { get; set; }
@@ -463,6 +533,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string ListAgentMobilePhone { get; set; }
         public string ListAgentNamePrefix { get; set; }
         public string ListAgentNameSuffix { get; set; }
+        public string ListAgentNationalAssociationId { get; set; }
+        public string ListAgentNickname { get; set; }
         public string ListAgentOfficePhone { get; set; }
         public string ListAgentOfficePhoneExt { get; set; }
         public string ListAgentPager { get; set; }
@@ -486,6 +558,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
 
         [JsonConverter(typeof(StringListEnumConverter<ListingTerms>))]
         public IEnumerable<ListingTerms> ListingTerms { get; set; }
+        public string ListingURL { get; set; }
+        public string ListingURLDescription { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? ListOfficeAOR { get; set; }
         public string ListOfficeEmail { get; set; }
@@ -494,6 +568,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? ListOfficeKeyNumeric { get; set; }
         public string ListOfficeMlsId { get; set; }
         public string ListOfficeName { get; set; }
+        public string ListOfficeNationalAssociationId { get; set; }
         public string ListOfficePhone { get; set; }
         public string ListOfficePhoneExt { get; set; }
         public string ListOfficeURL { get; set; }
@@ -572,6 +647,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public DateTimeOffset? OffMarketTimestamp { get; set; }
         public DateTime? OnMarketDate { get; set; }
         public DateTimeOffset? OnMarketTimestamp { get; set; }
+        public DateTimeOffset? OpenHouseModificationTimestamp { get; set; }
         public decimal? OpenParkingSpaces { get; set; }
         public bool? OpenParkingYN { get; set; }
         public decimal? OperatingExpense { get; set; }
@@ -579,10 +655,22 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public OperatingExpenseIncludes? OperatingExpenseIncludes { get; set; }
         public DateTimeOffset? OriginalEntryTimestamp { get; set; }
         public decimal? OriginalListPrice { get; set; }
+        public string OriginatingSystemBuyerAgentMemberKey { get; set; }
+        public string OriginatingSystemBuyerOfficeKey { get; set; }
         public string OriginatingSystemBuyerTeamKey { get; set; }
+        public string OriginatingSystemCoBuyerAgentMemberKey { get; set; }
+        public string OriginatingSystemCoBuyerOfficeKey { get; set; }
+        public string OriginatingSystemCoListAgent2MemberKey { get; set; }
+        public string OriginatingSystemCoListAgent3MemberKey { get; set; }
+        public string OriginatingSystemCoListAgentMemberKey { get; set; }
+        public string OriginatingSystemCoListOffice2Key { get; set; }
+        public string OriginatingSystemCoListOfficeKey { get; set; }
         public string OriginatingSystemID { get; set; }
         public string OriginatingSystemKey { get; set; }
+        public string OriginatingSystemListAgentMemberKey { get; set; }
+        public string OriginatingSystemListOfficeKey { get; set; }
         public string OriginatingSystemListTeamKey { get; set; }
+        public DateTimeOffset? OriginatingSystemModificationTimestamp { get; set; }
         public string OriginatingSystemName { get; set; }
         public string OriginatingSystemSubName { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<OtherEquipment>))]
@@ -592,6 +680,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<OtherStructures>))]
         public IEnumerable<OtherStructures> OtherStructures { get; set; }
         public string OwnerName { get; set; }
+        public string OwnerName2 { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<OwnerPays>))]
         public IEnumerable<OwnerPays> OwnerPays { get; set; }
         public string OwnerPhone { get; set; }
@@ -630,7 +719,12 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string PostalCity { get; set; }
         public string PostalCode { get; set; }
         public string PostalCodePlus4 { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<PowerProductionType>))]
+        public IEnumerable<PowerProductionType> PowerProductionType { get; set; }
+        public bool? PowerProductionYN { get; set; }
         public decimal? PreviousListPrice { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<StandardStatus?>))]
+        public StandardStatus? PreviousStandardStatus { get; set; }
         public DateTimeOffset? PriceChangeTimestamp { get; set; }
         public string PrivateOfficeRemarks { get; set; }
         public string PrivateRemarks { get; set; }
@@ -662,6 +756,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<Roof>))]
         public IEnumerable<Roof> Roof { get; set; }
         public int? RoomsTotal { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<RoomType>))]
+        public IEnumerable<RoomType> RoomType { get; set; }
         public string RVParkingDimensions { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<SaleOrLeaseIndicator?>))]
         public SaleOrLeaseIndicator? SaleOrLeaseIndicator { get; set; }
@@ -678,6 +774,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public IEnumerable<Sewer> Sewer { get; set; }
         public int? ShowingAdvanceNotice { get; set; }
         public bool? ShowingAttendedYN { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<ShowingConsiderations?>))]
+        public ShowingConsiderations? ShowingConsiderations { get; set; }
         public string ShowingContactName { get; set; }
         public string ShowingContactPhone { get; set; }
         public string ShowingContactPhoneExt { get; set; }
@@ -689,6 +787,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string ShowingInstructions { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<ShowingRequirements>))]
         public IEnumerable<ShowingRequirements> ShowingRequirements { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<ShowingServiceName?>))]
+        public ShowingServiceName? ShowingServiceName { get; set; }
         public DateTimeOffset? ShowingStartTime { get; set; }
         public bool? SignOnPropertyYN { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<Skirt>))]
@@ -705,6 +805,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public IEnumerable<SpecialListingConditions> SpecialListingConditions { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<StandardStatus?>))]
         public StandardStatus? StandardStatus { get; set; }
+        public DateTime? StartShowingDate { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<StateOrProvince?>))]
         public StateOrProvince? StateOrProvince { get; set; }
         public string StateRegion { get; set; }
@@ -759,6 +860,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string UnitNumber { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<UnitsFurnished?>))]
         public UnitsFurnished? UnitsFurnished { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<UnitTypeType>))]
+        public IEnumerable<UnitTypeType> UnitTypeType { get; set; }
         public string UniversalPropertyId { get; set; }
         public string UniversalPropertySubId { get; set; }
         public string UnparsedAddress { get; set; }
@@ -786,6 +889,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<WaterfrontFeatures>))]
         public IEnumerable<WaterfrontFeatures> WaterfrontFeatures { get; set; }
         public bool? WaterfrontYN { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<WaterHeater>))]
+        public IEnumerable<WaterHeater> WaterHeater { get; set; }
         public decimal? WaterSewerExpense { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<WaterSource>))]
         public IEnumerable<WaterSource> WaterSource { get; set; }
@@ -796,9 +901,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public decimal? WorkmansCompensationExpense { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<GeocodeSource?>))]
         public GeocodeSource? X_GeocodeSource { get; set; }
-        [JsonConverter(typeof(StringNullableEnumConverter<X_LandTenure?>))]
-        public X_LandTenure? X_LandTenure { get; set; }
-        public string X_LivingAreaRange { get; set; }
         public GeographyPoint X_Location { get; set; }
         public int? YearBuilt { get; set; }
         public string YearBuiltDetails { get; set; }
