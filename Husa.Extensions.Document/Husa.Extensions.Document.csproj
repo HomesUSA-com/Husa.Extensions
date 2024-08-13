@@ -6,11 +6,12 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.2.0</Version>
+        <Version>0.2.2</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
+            Release 0.2.2:
             - Initialize
+            - Custom comparer for dates
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -18,7 +19,7 @@
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.37.1" />
-        <PackageReference Include="Husa.Extensions.Domain" Version="2.1.0" />
-        <PackageReference Include="Husa.Extensions.Common" Version="4.1.0" />
+        <PackageReference Include="Husa.Extensions.Domain" Version="2.1.1" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.4" />
     </ItemGroup>
 </Project>

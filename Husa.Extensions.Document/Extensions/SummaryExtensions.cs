@@ -48,6 +48,18 @@ namespace Husa.Extensions.Document.Extensions
 
                 switch (newValue)
                 {
+                    case DateTime newDateTime:
+                        var oldDateTime = oldValue as DateTime?;
+                        if (oldDateTime.HasValue && newDateTime.Date != oldDateTime.Value.Date)
+                        {
+                            yield return new SummaryField(propertyInfo.Name, oldDateTime.Value.Date, newDateTime.Date);
+                        }
+                        else if (!oldDateTime.HasValue && newDateTime.Date != DateTime.MinValue.Date)
+                        {
+                            yield return new SummaryField(propertyInfo.Name, oldValue, newDateTime.Date);
+                        }
+
+                        break;
                     case string newValueAsString:
                         if (!newValueAsString.EqualsTo((string)oldValue))
                         {
