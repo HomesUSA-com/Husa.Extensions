@@ -6,6 +6,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         HomeAddress,
         MailingAddress,
         OfficeMailingAddress,
-        OfficeStreetAddress
+        OfficeStreetAddress,
     }
 }

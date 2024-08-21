@@ -4,6 +4,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         Email,
         Fax,
-        Mail
+        Mail,
     }
 }
