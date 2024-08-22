@@ -36,5 +36,16 @@ namespace Husa.Extensions.Common
                 .ToTimeZoneDateTime(timeZoneId)
                 .ToString("s");
         }
+
+        public static DateTime ToUtc(this DateTime date)
+        {
+            TimeZoneInfo cstTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
+            return TimeZoneInfo.ConvertTimeToUtc(date, cstTimeZone);
+        }
+
+        public static DateTime? ToUtc(this DateTime? date)
+        {
+            return date.HasValue ? date.Value.ToUtc() : null;
+        }
     }
 }
