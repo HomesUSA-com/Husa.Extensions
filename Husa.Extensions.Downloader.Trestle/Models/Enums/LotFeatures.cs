@@ -7,6 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         AdjacentToOpenSpace,
         AdjacentToPublicLand,
         Agricultural,
+        Airpark,
         Alley,
         BackstoCommonGrounds,
         BackstoGreenbeltPark,

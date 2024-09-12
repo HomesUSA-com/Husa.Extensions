@@ -312,8 +312,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<CurrentFinancing>))]
         public IEnumerable<CurrentFinancing> CurrentFinancing { get; set; }
         public decimal? CurrentPrice { get; set; }
-        [JsonConverter(typeof(StringListEnumConverter<CurrentUse>))]
-        public IEnumerable<CurrentUse> CurrentUse { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<CurrentOrPossibleUse>))]
+        public IEnumerable<CurrentOrPossibleUse> CurrentUse { get; set; }
         public int? DaysOnMarket { get; set; }
         public int? DaysOnMarketReplication { get; set; }
         public DateTime? DaysOnMarketReplicationDate { get; set; }
@@ -714,8 +714,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public bool? PoolPrivateYN { get; set; }
         [JsonConverter(typeof(StringListEnumConverter<Possession>))]
         public IEnumerable<Possession> Possession { get; set; }
-        [JsonConverter(typeof(StringListEnumConverter<PossibleUse>))]
-        public IEnumerable<PossibleUse> PossibleUse { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<CurrentOrPossibleUse>))]
+        public IEnumerable<CurrentOrPossibleUse> PossibleUse { get; set; }
         public string PostalCity { get; set; }
         public string PostalCode { get; set; }
         public string PostalCodePlus4 { get; set; }

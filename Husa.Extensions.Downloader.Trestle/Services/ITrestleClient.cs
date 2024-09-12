@@ -16,5 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         Task<IEnumerable<GroupEntity<PropertyRooms>>> GetRooms(IEnumerable<string> listingsKeys);
         Task<IEnumerable<GroupEntity<OpenHouse>>> GetOpenHouse(IEnumerable<string> listingsKeys);
         Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId);
+        Task<IEnumerable<Teams>> GetTeams(DateTimeOffset? modificationTimestamp = null, string filter = null);
+        Task<IEnumerable<GroupEntity<TeamMembers>>> GetTeamMembers(IEnumerable<string> teamKeys);
     }
 }

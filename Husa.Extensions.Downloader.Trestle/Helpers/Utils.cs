@@ -42,6 +42,10 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
             {
                 filterUrl = filterUrl.AddQueryString("filter", $"ListingKey in ({filter})", !string.IsNullOrEmpty(filter));
             }
+            else if (typeof(TeamMembers) == typeof(T))
+            {
+                filterUrl = filterUrl.AddQueryString("filter", $"TeamKey in ({filter})", !string.IsNullOrEmpty(filter));
+            }
             else
             {
                 filterUrl = filterUrl.AddQueryStrings("filter", new List<string> { modificationTime, filter });

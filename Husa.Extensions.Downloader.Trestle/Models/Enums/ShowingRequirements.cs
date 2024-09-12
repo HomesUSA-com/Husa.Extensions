@@ -2,7 +2,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum ShowingRequirements
     {
-        Item24HourNotice,
         AppointmentOnly,
         CallBeforeShowing,
         CallListingAgent,
@@ -18,13 +17,14 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DriveBy,
         EmailListingAgent,
         GoDirect,
+        Item24HourNotice,
         KeyInOffice,
         KeywithGateGuard,
         ListingAgentPresent,
         Lockbox,
         NoLockbox,
-        NoSign,
         None,
+        NoSign,
         Occupied,
         Other,
         PetsonPremises,
@@ -37,6 +37,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ShowingTime,
         TextListingAgent,
         ToBeBuilt,
+        TwentyFourHourNotice,
         UnderConstruction,
         Vacant,
     }
