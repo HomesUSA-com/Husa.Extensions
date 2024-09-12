@@ -82,6 +82,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         StormShelterExterior,
         StormShelterInterior,
         SurveillanceSystem,
+        TwentyFourHourSecurity,
         VariesByUnit,
         WindowBars,
         WindowBarswithQuickRelease,

@@ -7,10 +7,10 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.1.0</Version>
+        <Version>4.1.1</Version>
         <PackageReleaseNotes>
-            Release 4.1.0:
-            - Trestle content patches up to #175 have been applied.
+            Release 4.1.1:
+            - Teams support added and tresstle enums updated.
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

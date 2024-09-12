@@ -94,6 +94,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         PublicRestrooms,
         Racquetball,
         RailroadSiding,
+        RailService,
         ReceptionArea,
         RecreationRoom,
         Restaurant,

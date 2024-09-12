@@ -109,6 +109,31 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupOpenHouse;
         }
 
+        public async Task<IEnumerable<Teams>> GetTeams(DateTimeOffset? modificationTimestamp = null, string filter = null)
+        {
+            var queryFilter = Utils.GetFilter<Teams>(modificationTimestamp, filter);
+            var client = await this.GetAuthenticatedClient();
+            var teams = await this.trestleRequester.GetData<Teams>(client, resource: "Teams", queryFilter);
+
+            return teams;
+        }
+
+        public async Task<IEnumerable<GroupEntity<TeamMembers>>> GetTeamMembers(IEnumerable<string> teamKeys)
+        {
+            var teamKeyString = string.Join(",", teamKeys.Select(teamKey => { return $"'{teamKey}'"; }));
+            var queryFilter = Utils.GetFilter<TeamMembers>(filter: teamKeyString);
+            var client = await this.GetAuthenticatedClient();
+            var teamMembers = await this.trestleRequester.GetData<TeamMembers>(client, resource: "TeamMembers", queryFilter);
+
+            var groupTeamMembers = teamMembers.GroupBy(x => x.TeamKey).Select(group => new GroupEntity<TeamMembers>
+            {
+                Id = group.Key,
+                Values = group.ToList(),
+            });
+
+            return groupTeamMembers;
+        }
+
         public void Login(string clientId, string clientSecret, string partitionKey)
         {
             this.authInfo = new AuthInfo(clientId, clientSecret, partitionKey);

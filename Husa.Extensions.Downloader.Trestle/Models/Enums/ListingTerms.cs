@@ -2,8 +2,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum ListingTerms
     {
-        Item1031Exchange,
-        Item3rdPartyFinancing,
         AllFinancingConsidered,
         AllInclusiveTrustDeed,
         ARM,
@@ -20,6 +18,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Conventional,
         CourtApproval,
         Cryptocurrency,
+        Exchange1031,
         ExistingBonds,
         FannieMae,
         FederalLandBank,
@@ -30,6 +29,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         GovernmentLoan,
         GraduatedPaymentMortgage,
         InvestorFinancing,
+        Item1031Exchange,
+        Item3rdPartyFinancing,
         LandContract,
         LandUseFee,
         Lease,
