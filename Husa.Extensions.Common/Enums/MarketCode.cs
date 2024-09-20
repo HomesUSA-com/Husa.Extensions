@@ -8,6 +8,9 @@ namespace Husa.Extensions.Common.Enums
         [Display(Name = "DFW")]
         [Description("DFW")]
         DFW,
+        [Display(Name = "Amarillo")]
+        [Description("Amarillo")]
+        Amarillo,
         [Display(Name = "Austin")]
         [Description("Austin")]
         Austin,
