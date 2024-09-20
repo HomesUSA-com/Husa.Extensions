@@ -49,7 +49,7 @@ namespace Husa.Extensions.Document.Extensions
                 switch (newValue)
                 {
                     case string newValueAsString:
-                        if (!newValueAsString.EqualsTo((string)oldValue))
+                        if (!newValueAsString.Trim().EqualsTo(((string)oldValue)?.Trim()))
                         {
                             yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
                         }

@@ -6,12 +6,13 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.2.3</Version>
+        <Version>0.2.4</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.3:
+            Release 0.2.4:
             - Initialize
             - Remove datetime comparer
+            - SummaryExtensions.GetFieldSummary trim blank spaces in string compared elements
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
