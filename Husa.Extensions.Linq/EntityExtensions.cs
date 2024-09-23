@@ -32,5 +32,18 @@ namespace Husa.Extensions.Linq
                 .HasConversion<EnumFieldValueConverter<TEnum>>();
             return propertyBuilder;
         }
+
+        public static PropertyBuilder HasEnumStringCollectionValue<TEnum>(
+            this PropertyBuilder propertyBuilder,
+            int maxLength,
+            bool isRequired = false)
+           where TEnum : Enum
+        {
+            propertyBuilder
+                .HasMaxLength(maxLength)
+                .IsRequired(isRequired)
+                .HasConversion<EnumStringCollectionValueConverter<TEnum>>(valueComparer: new EnumCollectionValueComparer<TEnum>());
+            return propertyBuilder;
+        }
     }
 }
