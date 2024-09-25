@@ -65,9 +65,17 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers
             return filter;
         }
 
-        public static string AddPropertyTypeFilter(string filter)
+        public static string AddPropertyTypeFilter(string filter, IEnumerable<PropertyType> propertyTypes)
         {
-            filter += $" and PropertyType eq 'Residential'";
+            if (propertyTypes != null && propertyTypes.Any())
+            {
+                var propertyTypeValues = propertyTypes
+                .Select(pt => $"'{pt}'")
+                .ToArray();
+
+                filter += $" and PropertyType in ({string.Join(", ", propertyTypeValues)})";
+            }
+
             return filter;
         }
     }
