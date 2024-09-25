@@ -59,7 +59,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public string OfficeMlsId { get; set; }
         public string OfficeName { get; set; }
         public string OfficeNationalAssociationId { get; set; }
-        public DateTime OfficeNationalAssociationIdInsertDate { get; set; }
+        public DateTime? OfficeNationalAssociationIdInsertDate { get; set; }
         public string OfficePhone { get; set; }
         public string OfficePhoneExt { get; set; }
         public string OfficePostalCode { get; set; }

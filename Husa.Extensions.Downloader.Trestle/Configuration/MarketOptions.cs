@@ -25,6 +25,7 @@ namespace Husa.Extensions.Downloader.Trestle.Configuration
         public UriKind UriType { get; set; } = UriKind.Absolute;
         public string BaseUrl { get; set; }
         public IEnumerable<SystemOrigin> Market { get; set; }
+        public IEnumerable<PropertyType> GlobalPropertyTypes { get; set; }
         public int MarketLimit { get; set; }
         [Required]
         public IDictionary<MarketCode, MarketConfiguration> MarketConfiguration { get; set; }
