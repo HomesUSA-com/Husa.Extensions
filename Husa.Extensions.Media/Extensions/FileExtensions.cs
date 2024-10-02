@@ -9,11 +9,10 @@ namespace Husa.Extensions.Media.Extensions
     {
         public static Stream ResizeAndOpenStream(this IFormFile file, int width, int height)
         {
-            var format = Image.DetectFormat(file.OpenReadStream());
             var image = Image.Load(file.OpenReadStream());
             image.Resize(width, height, false);
             var memoryStream = new MemoryStream();
-            image.Save(memoryStream, format);
+            image.Save(memoryStream, image.Metadata.DecodedImageFormat);
             return memoryStream;
         }
 
