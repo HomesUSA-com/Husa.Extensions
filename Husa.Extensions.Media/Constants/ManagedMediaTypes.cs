@@ -14,7 +14,9 @@ namespace Husa.Extensions.Media.Constants
 
         public const string Xpng = "image/x-png";
 
-        public const string Png = "image/png";
+        public const string Png = MediaTypeNames.Image.Png;
+
+        public const string Svg = MediaTypeNames.Image.Svg;
 
         public const string Pdf = MediaTypeNames.Application.Pdf;
     }
