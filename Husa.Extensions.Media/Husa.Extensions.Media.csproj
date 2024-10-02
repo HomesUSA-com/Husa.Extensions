@@ -5,9 +5,9 @@
         <Product>Api Extensions</Product>
         <Description>Husa Media</Description>
         <PackageId>Husa.Extensions.Media</PackageId>
-        <Version>4.0.1</Version>
+        <Version>4.0.2</Version>
         <PackageReleaseNotes>
-            Release 4.0.1:
+            Release 4.0.2:
             - Included SVG to valid media content types.
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
