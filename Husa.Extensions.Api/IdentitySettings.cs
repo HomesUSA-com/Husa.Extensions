@@ -1,5 +1,6 @@
 namespace Husa.Extensions.Api
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class IdentitySettings
@@ -19,5 +20,6 @@ namespace Husa.Extensions.Api
         public string Scope { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public Guid? UserId { get; set; }
     }
 }
