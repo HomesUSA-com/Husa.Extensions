@@ -6,14 +6,15 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.0.6</Version>
+        <Version>4.0.7</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.6:
+            Release 4.0.7:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
             - Added ApplyPaginationFilter
             - Added SortSpecifications
+            - Fixed EnumStringCollectionValueConverter
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
