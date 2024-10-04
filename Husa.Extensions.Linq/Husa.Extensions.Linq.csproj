@@ -6,21 +6,22 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.0.7</Version>
+        <Version>4.0.8</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.7:
+            Release 4.0.8:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
             - Added ApplyPaginationFilter
             - Added SortSpecifications
             - Fixed EnumStringCollectionValueConverter
+            - Updated Extensions.Common for amarillo support
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="4.1.4" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
         <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.8" />
     </ItemGroup>
 

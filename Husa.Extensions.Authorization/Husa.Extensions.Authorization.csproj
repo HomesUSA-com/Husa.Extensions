@@ -5,11 +5,12 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>4.1.0</Version>
+        <Version>4.1.1</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.0:
+            Release 4.1.1:
             - Create Company Admin Read-only role
+            - Updated Extensions.Common for amarillo support
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -23,7 +24,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="Husa.Extensions.Common" Version="4.1.4" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>
 </Project>

@@ -7,10 +7,11 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.2.0</Version>
+        <Version>4.2.1</Version>
         <PackageReleaseNotes>
-            Release 4.2.0:
+            Release 4.2.1:
             - Trestle Enums updated to PascalCase.
+            - Updated Extensions.Common for amarillo support
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -29,7 +30,7 @@
 
     <ItemGroup>
         <PackageReference Include="Azure.Data.Tables" Version="12.7.1" />
-        <PackageReference Include="Husa.Extensions.Common" Version="4.1.4" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.Spatial" Version="7.14.0" />
         <PackageReference Include="MimeKit" Version="4.7.1" />
