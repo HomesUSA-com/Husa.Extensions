@@ -20,7 +20,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SeeDisclosure,
         SeeRemarks,
         ShowsWell,
-        TearDownValueinLand,
+        TearDownValueInLand,
         TermiteClearance,
         ToBeBuilt,
         Turnkey,

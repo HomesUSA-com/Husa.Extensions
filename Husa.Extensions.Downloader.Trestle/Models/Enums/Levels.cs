@@ -9,7 +9,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         MultiSplit,
         None,
         One,
-        OneandOneHalf,
+        OneAndOneHalf,
         Other,
         QuadLevel,
         SingleLevelUnit,
@@ -18,7 +18,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ThreeOrMore,
         TriLevel,
         Two,
-        TwoandOneHalf,
+        TwoAndOneHalf,
         TwoOrMore,
     }
 }

@@ -7,7 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Parking,
         Recreation,
         RentOnly,
-        RVStorage,
+        RvStorage,
         Storage,
     }
 }

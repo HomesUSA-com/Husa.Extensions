@@ -6,7 +6,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Coal,
         Common,
         Electric,
-        ENERGYSTARQualified,
+        EnergyStarQualified,
         Gas,
         Geothermal,
         HeatPump,

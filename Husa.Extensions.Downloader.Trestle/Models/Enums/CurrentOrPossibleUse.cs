@@ -41,7 +41,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Other,
         ParkingLot,
         Pasture,
-        PlaceofWorship,
+        PlaceOfWorship,
         Plantable,
         Poultry,
         Ranch,

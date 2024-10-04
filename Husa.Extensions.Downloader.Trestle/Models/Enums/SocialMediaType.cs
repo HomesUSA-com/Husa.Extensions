@@ -8,19 +8,19 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Digg,
         Facebook,
         FacebookMessenger,
-        GooglePlus,
+        Googleplus,
         [EnumMember(Value = "iMessage")]
         IMessage,
         Instagram,
-        LinkedIn,
+        Linkedin,
         Pinterest,
         Reddit,
         Slack,
         Snapchat,
-        StumbleUpon,
+        Stumbleupon,
         Tumblr,
         Twitter,
         Website,
-        YouTube,
+        Youtube,
     }
 }

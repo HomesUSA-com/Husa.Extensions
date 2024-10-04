@@ -6,7 +6,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Geothermal,
         GridTied,
         None,
-        OffGrid,
+        Offgrid,
         Other,
         Solar,
         Wind,

@@ -4,7 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         DownPaymentResource,
         RentalBeastApply,
-        RentSpree,
-        ShowingTime,
+        Rentspree,
+        Showingtime,
     }
 }

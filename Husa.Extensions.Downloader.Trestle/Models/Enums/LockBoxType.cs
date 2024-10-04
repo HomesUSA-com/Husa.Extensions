@@ -11,7 +11,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Other,
         Risco,
         SeeRemarks,
-        SentriLock,
+        Sentrilock,
         Supra,
     }
 }

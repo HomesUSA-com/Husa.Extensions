@@ -11,7 +11,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ShowingAgent,
         TeamLead,
         TeamMember,
-        TeamMemberLead,
+        Teammemberlead,
         TransactionCoordinator,
     }
 }

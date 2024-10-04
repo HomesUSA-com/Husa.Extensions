@@ -285,6 +285,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public IEnumerable<CommunityFeatures> CommunityFeatures { get; set; }
         public string CompensationComments { get; set; }
         public bool? CompSaleYN { get; set; }
+        public decimal? ConcessionInPrice { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<ConcessionInPriceType?>))]
+        public ConcessionInPriceType? ConcessionInPriceType { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<Concessions?>))]
         public Concessions? Concessions { get; set; }
         public int? ConcessionsAmount { get; set; }
@@ -427,6 +430,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<FoundationDetails>))]
         public IEnumerable<FoundationDetails> FoundationDetails { get; set; }
         public string FrontageLength { get; set; }
+        public string FrontageLengthRemarks { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<FrontageLengthUnit?>))]
+        public FrontageLengthUnit? FrontageLengthUnit { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<FrontageType?>))]
         public FrontageType? FrontageType { get; set; }
         public decimal? FuelExpense { get; set; }
@@ -559,7 +565,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         [JsonConverter(typeof(StringListEnumConverter<ListingTerms>))]
         public IEnumerable<ListingTerms> ListingTerms { get; set; }
         public string ListingURL { get; set; }
-        public string ListingURLDescription { get; set; }
+        [JsonConverter(typeof(StringNullableEnumConverter<ListingURLDescription?>))]
+        public ListingURLDescription? ListingURLDescription { get; set; }
         [JsonConverter(typeof(StringNullableEnumConverter<AOR?>))]
         public AOR? ListOfficeAOR { get; set; }
         public string ListOfficeEmail { get; set; }
@@ -623,6 +630,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public int? MobileWidth { get; set; }
         public string Model { get; set; }
         public DateTimeOffset? ModificationTimestamp { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<MoveInCosts>))]
+        public IEnumerable<MoveInCosts> MoveInCosts { get; set; }
         public decimal? NetOperatingIncome { get; set; }
         public bool? NewConstructionYN { get; set; }
         public decimal? NewTaxesExpense { get; set; }
@@ -645,6 +654,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models
         public OccupantType? OccupantType { get; set; }
         public DateTime? OffMarketDate { get; set; }
         public DateTimeOffset? OffMarketTimestamp { get; set; }
+        [JsonConverter(typeof(StringListEnumConverter<OngoingFees>))]
+        public IEnumerable<OngoingFees> OngoingFees { get; set; }
         public DateTime? OnMarketDate { get; set; }
         public DateTimeOffset? OnMarketTimestamp { get; set; }
         public DateTimeOffset? OpenHouseModificationTimestamp { get; set; }

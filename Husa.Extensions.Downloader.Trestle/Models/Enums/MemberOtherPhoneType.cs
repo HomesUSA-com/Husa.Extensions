@@ -12,7 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Pager,
         Preferred,
         Second,
-        SMS,
+        Sms,
         Third,
         TollFree,
         Voicemail,

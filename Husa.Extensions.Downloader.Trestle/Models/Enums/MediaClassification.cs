@@ -4,5 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         Document,
         Photo,
+        PHOTO,
+        DOCUMENT,
     }
 }

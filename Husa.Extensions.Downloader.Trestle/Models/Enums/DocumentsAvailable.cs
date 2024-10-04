@@ -35,7 +35,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         GeologicalSurvey,
         GroundPhoto,
         Historical,
-        HOADocuments,
+        HoaDocuments,
         HomeInspectionReport,
         HydrologyReport,
         Inventory,

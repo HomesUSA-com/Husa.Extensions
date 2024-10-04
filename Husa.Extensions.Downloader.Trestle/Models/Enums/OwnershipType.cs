@@ -2,17 +2,17 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum OwnershipType
     {
-        CoOwnership,
         Common,
+        CoOwnership,
         Corporation,
         FeeSimple,
         Fractional,
         Franchise,
         LimitedPartnership,
-        LLC,
+        Llc,
         Partnership,
         Private,
-        REO,
+        Reo,
         SeeRemarks,
         SoleProprietor,
     }

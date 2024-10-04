@@ -48,7 +48,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Den,
         Dinette,
         DiningRoom,
-        EatinKitchen,
+        EatInKitchen,
         EnSuiteBathroom,
         EntryFoyer,
         ExerciseRoom,

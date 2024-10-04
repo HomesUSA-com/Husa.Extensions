@@ -12,7 +12,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         NoHeat,
         NoInteriorLighting,
         Occupied,
-        PetsonPremises,
+        PetsOnPremises,
         RemoteLocation,
         SecuritySystem,
         SeeRemarks,

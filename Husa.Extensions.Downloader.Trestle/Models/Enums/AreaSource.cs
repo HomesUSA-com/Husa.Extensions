@@ -7,7 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Builder,
         CondoDocuments,
         Estimated,
-        GISCalculated,
+        GisCalculated,
         ListingAgent,
         Measured,
         Multiple,

@@ -14,8 +14,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CorporateListing,
         Estate,
         GovernmentOwned,
-        GSEOwned,
-        HUDOwned,
+        GseOwned,
+        HudOwned,
         InForeclosure,
         ListedAsIs,
         Model,
@@ -35,6 +35,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Standard,
         ThirdPartyApproval,
         Trust,
-        VAOwned,
+        VaOwned,
     }
 }

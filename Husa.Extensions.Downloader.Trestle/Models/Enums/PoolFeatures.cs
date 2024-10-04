@@ -45,7 +45,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Concrete,
         DivingBoard,
         ElectricHeat,
-        ENERGYSTARQualifiedpoolpump,
+        EnergyStarQualifiedPoolPump,
         Fenced,
         Fiberglass,
         Filtered,

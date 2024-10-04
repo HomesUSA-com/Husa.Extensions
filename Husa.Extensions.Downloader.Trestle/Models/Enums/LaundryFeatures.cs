@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum LaundryFeatures
     {
+        AccessibleUtilitiesOrLaundry,
         BuildingCoinOperated,
         BuildingInBasement,
         BuildingInHall,
@@ -15,7 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BuildingUpperLevel,
         BuildingWasherDryerInstallAllowed,
         Cabinets,
-        Coinoperated,
+        CoinOperated,
         CommonArea,
         CommonOnFloor,
         DryerHookup,
@@ -33,7 +34,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         InUnit,
         LaundryChute,
         LaundryCloset,
-        LaundryinUtilityRoom,
+        LaundryInUtilityRoom,
         LaundryLivingArea,
         LaundryRoom,
         LaundryTub,

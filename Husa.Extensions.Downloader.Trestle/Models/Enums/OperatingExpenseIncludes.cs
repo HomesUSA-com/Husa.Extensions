@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Accounting,
         Advertising,
         Association,
-        CableTV,
+        CableTv,
         CapitalImprovements,
         Depreciation,
         Electric,

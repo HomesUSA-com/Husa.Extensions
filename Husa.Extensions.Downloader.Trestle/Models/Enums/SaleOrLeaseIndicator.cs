@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Both,
         ForLease,
         ForSale,
-        ForSaleorLease,
+        ForSaleOrLease,
         Lease,
         Sale,
     }

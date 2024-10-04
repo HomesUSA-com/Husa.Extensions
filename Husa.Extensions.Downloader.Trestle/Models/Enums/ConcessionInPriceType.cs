@@ -1,8 +1,8 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    public enum ActorStateOrProvince
+    public enum ConcessionInPriceType
     {
-        None,
-        Other,
+        Item,
+        Item1,
     }
 }

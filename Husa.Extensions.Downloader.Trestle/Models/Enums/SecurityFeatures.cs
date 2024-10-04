@@ -45,11 +45,10 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         FloorAccessControl,
         GarageSecured,
         GatedCommunity,
-        GatedwithAttendant,
-        GatedwithGuard,
+        GatedWithAttendant,
+        GatedWithGuard,
         HeatDetector,
         Intercom,
-        Item24HourSecurity,
         KeyCardEntry,
         LobbySecured,
         MedicalAlarm,
@@ -85,7 +84,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         TwentyFourHourSecurity,
         VariesByUnit,
         WindowBars,
-        WindowBarswithQuickRelease,
+        WindowBarsWithQuickRelease,
         Wireless,
     }
 }

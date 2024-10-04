@@ -16,7 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DoublePaneWindows,
         DraperyTracks,
         Drapes,
-        ENERGYSTARQualifiedWindows,
+        EnergyStarQualifiedWindows,
         FiberglassFrames,
         FloorToCeilingWindows,
         FrenchMullioned,

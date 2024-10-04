@@ -4,12 +4,12 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         AlignedShowings,
         BrokerBay,
-        Homesnap,
-        Instashowing,
+        HomeSnap,
+        InstaShowing,
         LocalShowing,
         None,
         Other,
-        SentriKeyShowing,
+        SentrikeyShowing,
         Showingly,
         ShowingTime,
     }

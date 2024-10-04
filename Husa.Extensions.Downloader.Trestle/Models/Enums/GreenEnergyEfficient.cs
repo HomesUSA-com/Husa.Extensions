@@ -8,7 +8,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         EnergyRecoveryVentilator,
         ExposureShade,
         HealthyLivingFeatures,
-        HVAC,
+        Hvac,
         Incentives,
         Insulation,
         Lighting,

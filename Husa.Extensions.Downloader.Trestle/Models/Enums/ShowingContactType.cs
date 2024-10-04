@@ -14,7 +14,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Owner,
         PropertyManager,
         Prospect,
-        ReadytoBuy,
+        ReadyToBuy,
         SeeRemarks,
         ShowingService,
     }

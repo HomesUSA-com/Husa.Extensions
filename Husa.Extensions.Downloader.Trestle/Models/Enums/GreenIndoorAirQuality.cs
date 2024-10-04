@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         ContaminantControl,
         Filtration,
         IntegratedPestManagement,
-        LowVOCPaintMaterials,
+        LowVocPaintMaterials,
         MoistureControl,
         RadonMitigationSystem,
         Ventilation,

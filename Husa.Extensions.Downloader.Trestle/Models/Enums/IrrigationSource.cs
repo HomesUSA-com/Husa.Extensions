@@ -7,7 +7,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         CreekStream,
         DeededWaterRights,
         ExtraCost,
-        IncludedinAssessment,
+        IncludedInAssessment,
         Lake,
         Metered,
         Municipal,

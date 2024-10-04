@@ -43,7 +43,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         PoultryCoop,
         Quonset,
         Residence,
-        RVBoatStorage,
+        RvBoatStorage,
         SaunaPrivate,
         SecondGarage,
         SecondResidence,

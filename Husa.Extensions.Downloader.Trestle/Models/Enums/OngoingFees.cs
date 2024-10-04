@@ -1,8 +1,10 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    public enum ActorType
+    public enum OngoingFees
     {
-        None,
+        HoaFee,
         Other,
+        ParkingFee,
+        PetFee,
     }
 }

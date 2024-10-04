@@ -45,7 +45,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Pipe,
         Privacy,
         RanchFence,
-        RVGate,
+        RvGate,
         Security,
         SeeRemarks,
         SlumpStone,

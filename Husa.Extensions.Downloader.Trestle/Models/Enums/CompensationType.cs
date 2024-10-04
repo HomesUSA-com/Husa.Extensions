@@ -2,10 +2,10 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum CompensationType
     {
-        Item,
-        Item1,
-        MX,
+        Dollars,
+        Mx,
         Other,
+        Percent,
         SeeRemarks,
     }
 }

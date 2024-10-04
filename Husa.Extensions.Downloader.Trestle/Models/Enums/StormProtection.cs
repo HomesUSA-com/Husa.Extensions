@@ -1,0 +1,31 @@
+namespace Husa.Extensions.Downloader.Trestle.Models.Enums
+{
+    public enum StormProtection
+    {
+        CompleteAccordionShutters,
+        CompleteElectricShutters,
+        CompleteImpactGlass,
+        CompletePanelShutters,
+        CompleteRollDownShutters,
+        CurrentOwnerWindMitigationCertificate,
+        ElectricShutters,
+        GeneratorHookup,
+        ImpactGlass,
+        ImpactResistantDoors,
+        ManualShutters,
+        None,
+        NoStormShelter,
+        Other,
+        PartialAccordionShutters,
+        PartialElectricShutters,
+        PartialImpactGlass,
+        PartialPanelShutters,
+        PartialPermanentGenerator,
+        PartialRollDownShutters,
+        SafeRoom,
+        ScreenShutters,
+        Shutters,
+        StormShelter,
+        WholeHousePermanentGenerator,
+    }
+}

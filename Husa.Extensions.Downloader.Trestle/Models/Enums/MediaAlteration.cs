@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DeclutteredItemRemoved,
         ModelHome,
         None,
-        Other,
+        OtherMediaModification,
         TwilightConversion,
         VirtualEnhancements,
         VirtualRenovation,

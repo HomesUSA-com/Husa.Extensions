@@ -6,9 +6,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Open24Hours,
         Open7Days,
         Open8HoursDay,
-        Open8HoursDay1,
-        Open8HoursDay2,
+        OpenLessThan8HoursDay,
         OpenMondayFriday,
+        OpenMoreThan8HoursDay,
         OpenSaturday,
         OpenSunday,
     }

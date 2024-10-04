@@ -14,6 +14,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         NewListing,
         Pending,
         PriceChange,
+        StatusChange,
         Withdrawn,
     }
 }
