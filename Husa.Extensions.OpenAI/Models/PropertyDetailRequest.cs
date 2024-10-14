@@ -3,7 +3,6 @@ namespace Husa.Extensions.OpenAI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Husa.Extensions.OpenAI.Helpers;
 
@@ -14,9 +13,8 @@ public class PropertyDetailRequest
     private string userPrompt;
     private int maxReplyCharacters;
 
-    [Required(AllowEmptyStrings = false)]
     [Description("Property Type")]
-    public string PropertyType { get; set; } = string.Empty;
+    public string PropertyType { get; set; }
 
     [Description("Total Bedrooms")]
     public int? TotalBedrooms
@@ -199,7 +197,7 @@ public class PropertyDetailRequest
 
     public override string ToString()
     {
-        if (string.IsNullOrEmpty(this.PropertyType) || string.IsNullOrEmpty(this.userPrompt))
+        if (string.IsNullOrEmpty(this.userPrompt))
         {
             return DefaultMessage;
         }

@@ -5,11 +5,12 @@
         <Product>OpenAI Extensions</Product>
         <Description>Husa Extensions OpenAI</Description>
         <PackageId>Husa.Extensions.OpenAI</PackageId>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <PackageTags>Extensions; OpenAI;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.0:
+            Release 0.1.1:
             - Initial version of the package
+            - Make property type not required
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageReadmeFile>readme.md</PackageReadmeFile>

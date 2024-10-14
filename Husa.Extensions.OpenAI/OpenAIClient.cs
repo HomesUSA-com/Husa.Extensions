@@ -43,7 +43,7 @@ public class OpenAIClient : IOpenAIClient
             ],
         };
 
-        this.logger.LogDebug("Calling Open AI from application {ApplicationId} for property of type {PropertyType} with model {GptModel}", this.options.Value.ApplicationId, propertyDetails.PropertyType, GptModel);
+        this.logger.LogDebug("Calling Open AI from application {ApplicationId} with model {GptModel}", this.options.Value.ApplicationId, GptModel);
         var chatResult = await this.openAiApi.Chat.CreateChatCompletionAsync(chatRequest);
         this.logger.LogDebug("Reply {ReplyId} received from OpenAI with request Id {RequestId}", chatResult.Id, chatResult.RequestId);
         return new PromptResponse(Description: GetDescription(chatResult));
