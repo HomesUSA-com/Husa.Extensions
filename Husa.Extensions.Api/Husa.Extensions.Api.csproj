@@ -6,13 +6,14 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>5.0.2</Version>
+        <Version>5.0.3</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.0.2:
+            Release 5.0.3:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
             - Added optional user id to identity configuration
+            - Added host configuration
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
