@@ -40,11 +40,15 @@ namespace Husa.Extensions.ServiceBus.Services
             bool dispose = true)
             where T : IProvideBusEvent => await this.SendMessageBatch(messages, userId, market, correlationId, dispose);
 
-        public async Task DisposeClient()
+        public async Task DisposeClient(bool disposeClient = false)
         {
             this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic {topicName}.", this.topicName);
             await this.sender.DisposeAsync();
-            await this.client.DisposeAsync();
+
+            if (disposeClient)
+            {
+                await this.client.DisposeAsync();
+            }
         }
 
         private async Task SendMessageBatch<T>(
