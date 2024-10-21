@@ -12,6 +12,6 @@ namespace Husa.Extensions.ServiceBus.Interfaces
         Task SendMessage<T>(IEnumerable<T> messages, string userId, MarketCode market, string correlationId = null, bool dispose = true)
             where T : IProvideBusEvent;
 
-        Task DisposeClient(bool disposeClient = false);
+        Task DisposeClient();
     }
 }
