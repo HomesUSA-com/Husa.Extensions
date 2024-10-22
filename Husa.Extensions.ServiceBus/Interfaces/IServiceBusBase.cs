@@ -1,12 +1,11 @@
-namespace Husa.Extensions.ServiceBus.Interfaces
+namespace Husa.Extensions.ServiceBus.Interfaces;
+
+using System.Threading.Tasks;
+
+public interface IServiceBusBase
 {
-    using System.Threading.Tasks;
+    Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null, bool dispose = true)
+        where T : IProvideBusEvent;
 
-    public interface IServiceBusBase
-    {
-        Task SendMessage<T>(T eventMessage, string userId = null, string correlationId = null, bool dispose = true)
-            where T : IProvideBusEvent;
-
-        Task DisposeClient();
-    }
+    Task DisposeClient();
 }

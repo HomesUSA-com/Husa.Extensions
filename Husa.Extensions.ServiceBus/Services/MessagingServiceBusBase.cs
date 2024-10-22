@@ -42,7 +42,7 @@ namespace Husa.Extensions.ServiceBus.Services
 
         public async Task DisposeClient(bool disposeClient = false)
         {
-            this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic {topicName}.", this.topicName);
+            this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic {TopicName}.", this.topicName);
             await this.sender.DisposeAsync();
 
             if (disposeClient)
@@ -65,7 +65,7 @@ namespace Husa.Extensions.ServiceBus.Services
 
                 foreach (var message in messages)
                 {
-                    this.logger.LogInformation("Starting to send a message with id {messageId}. for topic {topicName}", message.Id, this.topicName);
+                    this.logger.LogInformation("Starting to send a message with id {MessageId}. for topic {TopicName}", message.Id, this.topicName);
                     var serviceBusMessage = new ServiceBusMessage(message.SerializeMessage());
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.BodyTypeField, typeof(T).FullName);
                     serviceBusMessage.ApplicationProperties.Add(MessageMetadataConstants.AssemblyNameField, typeof(T).AssemblyQualifiedName);
@@ -83,13 +83,13 @@ namespace Husa.Extensions.ServiceBus.Services
                     if (!messageBatch.TryAddMessage(serviceBusMessage))
                     {
                         // if it is too large for the batch
-                        this.logger.LogWarning("The message {messageId} is too large to fit in the batch.", message.Id);
+                        this.logger.LogWarning("The message {MessageId} is too large to fit in the batch.", message.Id);
                     }
                 }
 
                 // Use the producer client to send the batch of messages to the Service Bus topic
                 await this.sender.SendMessagesAsync(messageBatch);
-                this.logger.LogInformation("A batch of messages has been published to the topic {topicName}.", this.topicName);
+                this.logger.LogInformation("A batch of messages has been published to the topic {TopicName}.", this.topicName);
             }
             finally
             {

@@ -1,84 +1,83 @@
-namespace Husa.Extensions.ServiceBus.Services
+namespace Husa.Extensions.ServiceBus.Services;
+
+using System;
+using System.Threading.Tasks;
+using Husa.Extensions.Common.Enums;
+using Husa.Extensions.ServiceBus.Attributes;
+using Husa.Extensions.ServiceBus.Extensions;
+using Husa.Extensions.ServiceBus.Interfaces;
+using Microsoft.Azure.ServiceBus;
+using Microsoft.Extensions.Logging;
+
+public abstract class ServiceBusBase : IServiceBusBase
 {
-    using System;
-    using System.Threading.Tasks;
-    using Husa.Extensions.Common.Enums;
-    using Husa.Extensions.ServiceBus.Attributes;
-    using Husa.Extensions.ServiceBus.Extensions;
-    using Husa.Extensions.ServiceBus.Interfaces;
-    using Microsoft.Azure.ServiceBus;
-    using Microsoft.Extensions.Logging;
+    private readonly ITopicClient topicClient = null;
+    private readonly ILogger logger;
 
-    public abstract class ServiceBusBase : IServiceBusBase
+    protected ServiceBusBase(ILogger logger, ITopicClient topicClient)
     {
-        private readonly ITopicClient topicClient = null;
-        private readonly ILogger logger;
+        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        this.topicClient = topicClient ?? throw new ArgumentNullException(nameof(topicClient));
+    }
 
-        protected ServiceBusBase(ILogger logger, ITopicClient topicClient)
+    public async Task SendMessage<T>(
+        T eventMessage,
+        string userId = null,
+        string correlationId = null,
+        bool dispose = true)
+        where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market: null, correlationId, dispose);
+
+    public async Task SendMessage<T>(
+        T eventMessage,
+        string userId,
+        MarketCode market,
+        string correlationId = null,
+        bool dispose = true)
+        where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market, correlationId, dispose);
+
+    public async Task SendSingleMessage<T>(
+        T eventMessage,
+        string userId,
+        MarketCode? market,
+        string correlationId,
+        bool dispose)
+        where T : IProvideBusEvent
+    {
+        try
         {
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.topicClient = topicClient ?? throw new ArgumentNullException(nameof(topicClient));
-        }
+            this.logger.LogInformation("Starting to send a message with id {MessageId} to the topic: '{Topic}'.", eventMessage.Id, this.topicClient.TopicName);
 
-        public async Task SendMessage<T>(
-            T eventMessage,
-            string userId = null,
-            string correlationId = null,
-            bool dispose = true)
-            where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market: null, correlationId, dispose);
+            var message = new Message(eventMessage.SerializeMessage());
+            message.UserProperties[MessageMetadataConstants.BodyTypeField] = typeof(T).FullName;
+            message.UserProperties[MessageMetadataConstants.AssemblyNameField] = typeof(T).AssemblyQualifiedName;
+            message.UserProperties[MessageMetadataConstants.UserIdField] = userId;
 
-        public async Task SendMessage<T>(
-            T eventMessage,
-            string userId,
-            MarketCode market,
-            string correlationId = null,
-            bool dispose = true)
-            where T : IProvideBusEvent => await this.SendSingleMessage(eventMessage, userId, market, correlationId, dispose);
-
-        public async Task SendSingleMessage<T>(
-            T eventMessage,
-            string userId,
-            MarketCode? market,
-            string correlationId,
-            bool dispose)
-            where T : IProvideBusEvent
-        {
-            try
+            if (market.HasValue)
             {
-                this.logger.LogInformation("Starting to send a message with id {messageId} to the topic: '{topicName}'.", eventMessage.Id, this.topicClient.TopicName);
-
-                var message = new Message(eventMessage.SerializeMessage());
-                message.UserProperties[MessageMetadataConstants.BodyTypeField] = typeof(T).FullName;
-                message.UserProperties[MessageMetadataConstants.AssemblyNameField] = typeof(T).AssemblyQualifiedName;
-                message.UserProperties[MessageMetadataConstants.UserIdField] = userId;
-
-                if (market.HasValue)
-                {
-                    message.UserProperties[MessageMetadataConstants.MarketField] = market.Value.ToString();
-                }
-
-                if (string.IsNullOrEmpty(correlationId))
-                {
-                    message.CorrelationId = Guid.NewGuid().ToString();
-                }
-
-                await this.topicClient.SendAsync(message);
-
-                this.logger.LogInformation("Message to the topic: '{topicName}' was sent.", this.topicClient.TopicName);
+                message.UserProperties[MessageMetadataConstants.MarketField] = market.Value.ToString();
             }
-            finally
+
+            if (string.IsNullOrEmpty(correlationId))
             {
-                if (dispose)
-                {
-                    await this.DisposeClient();
-                }
+                message.CorrelationId = Guid.NewGuid().ToString();
+            }
+
+            await this.topicClient.SendAsync(message);
+
+            this.logger.LogInformation("Message to the topic: '{Topic}' was sent.", this.topicClient.TopicName);
+        }
+        finally
+        {
+            if (dispose)
+            {
+                await this.DisposeClient();
             }
         }
+    }
 
-        public async Task DisposeClient()
-        {
-            this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic '{topicName}'.", this.topicClient.TopicName);
-            await this.topicClient.CloseAsync();
-        }
+    public async Task DisposeClient()
+    {
+        this.logger.LogInformation("Closing connection with the Azure Service Bus made for topic '{Topic}'.", this.topicClient.TopicName);
+        await this.topicClient.CloseAsync();
     }
 }
