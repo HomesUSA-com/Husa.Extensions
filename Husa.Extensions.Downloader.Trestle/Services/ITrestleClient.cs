@@ -18,5 +18,6 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId);
         Task<IEnumerable<Teams>> GetTeams(DateTimeOffset? modificationTimestamp = null, string filter = null);
         Task<IEnumerable<GroupEntity<TeamMembers>>> GetTeamMembers(IEnumerable<string> teamKeys);
+        Task<IEnumerable<MediaBasic>> GetMediaByKey(string listingKey);
     }
 }

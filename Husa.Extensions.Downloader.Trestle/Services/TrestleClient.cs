@@ -69,6 +69,15 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             return groupMedia;
         }
 
+        public async Task<IEnumerable<MediaBasic>> GetMediaByKey(string listingKey)
+        {
+            ArgumentNullException.ThrowIfNullOrWhiteSpace(listingKey);
+            var queryFilter = "?".AddQueryString("filter", $"ResourceRecordKey eq '{listingKey}'", !string.IsNullOrEmpty(listingKey));
+            var client = await this.GetAuthenticatedClient();
+            var media = await this.trestleRequester.GetData<MediaBasic>(client, resource: "Media", queryFilter);
+            return media;
+        }
+
         public async Task<IEnumerable<MultipartImage>> GetMediaStream(string listingId)
         {
             var client = await this.GetAuthenticatedClient();

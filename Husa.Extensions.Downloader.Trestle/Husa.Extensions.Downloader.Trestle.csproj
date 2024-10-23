@@ -7,11 +7,12 @@
         <Description>.Client library for interacting with a Trestle server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.Trestle</PackageId>
         <PackageTags>Extensions; Trestle; Downloader</PackageTags>
-        <Version>4.2.1</Version>
+        <Version>4.2.2</Version>
         <PackageReleaseNotes>
-            Release 4.2.1:
+            Release 4.2.2:
             - Trestle Enums updated to PascalCase.
             - Updated Extensions.Common for amarillo support
+            - Get media by residential key without enums in contract
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
