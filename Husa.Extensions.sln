@@ -58,7 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.Linq.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.OpenAI", "Husa.Extensions.OpenAI\Husa.Extensions.OpenAI.csproj", "{AE34F18D-2AE9-432D-9747-ADD6F60AD955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.OpenAI.Tests", "Husa.Extensions.OpenAI.Tests\Husa.Extensions.OpenAI.Tests.csproj", "{6D254656-F296-432E-AB29-2628840F824F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Husa.Extensions.OpenAI.Tests", "Husa.Extensions.OpenAI.Tests\Husa.Extensions.OpenAI.Tests.csproj", "{6D254656-F296-432E-AB29-2628840F824F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Husa.Extensions.Authorization.Tests", "Husa.Extensions.Authorization.Tests\Husa.Extensions.Authorization.Tests.csproj", "{83E7F176-5DE9-4E48-B311-B59FA258976A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,6 +164,10 @@ Global
 		{6D254656-F296-432E-AB29-2628840F824F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D254656-F296-432E-AB29-2628840F824F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D254656-F296-432E-AB29-2628840F824F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E7F176-5DE9-4E48-B311-B59FA258976A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E7F176-5DE9-4E48-B311-B59FA258976A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E7F176-5DE9-4E48-B311-B59FA258976A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E7F176-5DE9-4E48-B311-B59FA258976A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

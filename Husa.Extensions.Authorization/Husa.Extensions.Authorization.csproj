@@ -5,10 +5,10 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>4.1.1</Version>
+        <Version>4.1.2</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.1:
+            Release 4.1.2:
             - Create Company Admin Read-only role
             - Updated Extensions.Common for amarillo support
         </PackageReleaseNotes>
