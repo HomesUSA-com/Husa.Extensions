@@ -1,4 +1,4 @@
-namespace Husa.Quicklister.Extensions.Domain.Entities.Base
+namespace Husa.Extensions.Domain.Entities.Base
 {
     using System;
 
