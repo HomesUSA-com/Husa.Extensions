@@ -159,6 +159,16 @@ namespace Husa.Extensions.Document.Extensions
             return summary;
         }
 
+        public static void AddFieldsToSummary(List<SummarySection> summarySections, string sectionName, params SummaryField[] fieldsToAdd)
+        {
+            var sectionIndex = summarySections.FindIndex(x => x.Name == sectionName);
+            if (sectionIndex != -1)
+            {
+                var section = summarySections[sectionIndex];
+                section.Fields = section.Fields.Concat(fieldsToAdd);
+            }
+        }
+
         private static bool IsEmptyIEnumerable(object value)
         {
             if (value is IEnumerable enumerable)
