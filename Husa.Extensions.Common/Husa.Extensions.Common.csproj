@@ -6,15 +6,16 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.1.6</Version>
+        <Version>4.1.7</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.6:
+            Release 4.1.7:
             - Added param to GetEnumValueFromDescription for ignoring case
             - Added CompositeValidationResult
             - Added ToEnumOrNullFromDescription to get enum by description or return null
             - Added ToUtc for dates
             - Added Amarillo to Market enum
+            - Added Newtonsoft.Json
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -31,6 +32,8 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="12.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
     </ItemGroup>
