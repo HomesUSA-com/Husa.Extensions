@@ -5,12 +5,11 @@
         <Product>OpenAI Extensions</Product>
         <Description>Husa Extensions OpenAI</Description>
         <PackageId>Husa.Extensions.OpenAI</PackageId>
-        <Version>0.1.1</Version>
+        <Version>2.0.0</Version>
         <PackageTags>Extensions; OpenAI;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.1:
-            - Initial version of the package
-            - Make property type not required
+            Release 2.0.0:
+            - Added support net9 frameworks
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
@@ -20,10 +19,19 @@
         <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="OpenAI" Version="1.11.0" />
     </ItemGroup>
