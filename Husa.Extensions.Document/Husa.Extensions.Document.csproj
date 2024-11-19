@@ -6,21 +6,22 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.2.7</Version>
+        <Version>0.2.8</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.7:
+            Release 0.2.8:
             - Initialize
             - Remove datetime comparer
             - SummaryExtensions.GetFieldSummary trim blank spaces in string compared elements
             - Updated Extensions.Common for amarillo support
+            - Update packages to remove vulnerabilities
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.37.1" />
+        <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.45.2" />
         <PackageReference Include="Husa.Extensions.Domain" Version="2.1.2" />
         <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
     </ItemGroup>
