@@ -6,26 +6,27 @@
         <Product>Api Quickbooks</Product>
         <Description>Husa Quickbooks</Description>
         <PackageId>Husa.Extensions.Quickbooks</PackageId>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <PackageReleaseNotes>
-            Release 1.0.1:
+            Release 1.0.2:
             - Added support net8 frameworks
             - Updated Extensions.Common for amarillo support
+            - Update packages
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Refit" Version="6.3.2" />
-        <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
-        <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
+        <PackageReference Include="Refit" Version="8.0.0" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
+        <PackageReference Include="Husa.Extensions.Common" Version="4.1.7" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0'">
