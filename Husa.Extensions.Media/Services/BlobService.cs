@@ -3,6 +3,7 @@ namespace Husa.Extensions.Media.Services
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using Azure.Storage.Blobs;
     using Azure.Storage.Blobs.Models;
@@ -21,7 +22,9 @@ namespace Husa.Extensions.Media.Services
 
         public async Task<Uri> AddToTemporalBlobAsync(Stream bynaryData, Guid mediaId, string contentType, IDictionary<string, string> fileMeta)
         {
-            var blobName = $"temporal/{mediaId}";
+            fileMeta.TryGetValue("FileName", out var filename);
+            var ext = filename?.Split(".").LastOrDefault();
+            var blobName = string.IsNullOrEmpty(ext) ? $"temporal/{mediaId}" : $"temporal/{mediaId}.{ext}";
             await this.blobContainerClient.UploadBlobAsync(blobName, bynaryData);
             var bblob = this.blobContainerClient.GetBlobClient(blobName);
             bblob.SetMetadata(fileMeta);
