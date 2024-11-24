@@ -24,7 +24,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
         {
             TableClient tableClient = this.tableServiceClient.GetTableClient(tableName: this.blobOptions.TableName);
             await tableClient.CreateIfNotExistsAsync();
-            return await this.GetTokenInfoFromStorage(tableClient, authInfo);
+            return await GetTokenInfoFromStorage(tableClient, authInfo);
         }
 
         public async Task SaveTokenInfo(AuthenticationResult auth, AuthInfo authInfo)
@@ -32,7 +32,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             TableClient tableClient = this.tableServiceClient.GetTableClient(tableName: this.blobOptions.TableName);
             await tableClient.CreateIfNotExistsAsync();
 
-            var tokenEntity = await this.GetTokenInfoFromStorage(tableClient, authInfo);
+            var tokenEntity = await GetTokenInfoFromStorage(tableClient, authInfo);
 
             var token = new TokenEntity()
             {
@@ -53,7 +53,7 @@ namespace Husa.Extensions.Downloader.Trestle.Services
             }
         }
 
-        private async Task<TokenEntity> GetTokenInfoFromStorage(TableClient tableClient, AuthInfo authInfo)
+        private static async Task<TokenEntity> GetTokenInfoFromStorage(TableClient tableClient, AuthInfo authInfo)
         {
             try
             {
