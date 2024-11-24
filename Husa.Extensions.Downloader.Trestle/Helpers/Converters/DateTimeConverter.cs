@@ -18,7 +18,7 @@ namespace Husa.Extensions.Downloader.Trestle.Helpers.Converters
         {
             if (reader.TryGetDateTime(out var dateTime))
             {
-                if (dateTime.TimeOfDay.TotalSeconds == 0)
+                if (dateTime.TimeOfDay.TotalSeconds < 0.0001f)
                 {
                     dateTime = dateTime.AddHours(12);
                 }
