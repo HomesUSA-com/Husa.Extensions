@@ -11,5 +11,6 @@ namespace Husa.Extensions.Media.Interfaces
         Task<Uri> AddToTemporalBlobAsync(Stream bynaryData, Guid mediaId, string contentType, IDictionary<string, string> fileMeta);
 
         Task<Uri> UploadToBlob(IFormFile file, int width, int height);
+        Task<Uri> UploadToBlob(IFormFile file, Dictionary<string, string> metadata);
     }
 }

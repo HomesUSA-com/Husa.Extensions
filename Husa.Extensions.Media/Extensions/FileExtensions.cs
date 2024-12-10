@@ -1,6 +1,8 @@
 namespace Husa.Extensions.Media.Extensions
 {
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using Microsoft.AspNetCore.Http;
     using SixLabors.ImageSharp;
     using SixLabors.ImageSharp.Processing;
@@ -14,6 +16,17 @@ namespace Husa.Extensions.Media.Extensions
             var memoryStream = new MemoryStream();
             image.Save(memoryStream, image.Metadata.DecodedImageFormat);
             return memoryStream;
+        }
+
+        public static Dictionary<string, string> ToDict(this IFormFile file, Dictionary<string, string> extraInfo = null)
+        {
+            var metadata = new Dictionary<string, string>
+            {
+                { "FileName", file.FileName ?? string.Empty },
+                { "FileContentType", file.ContentType },
+            };
+            extraInfo?.ToList().ForEach(item => metadata.Add(item.Key, item.Value));
+            return metadata;
         }
 
         public static void Resize(this Image imgPhoto, int width, int height, bool maintainRatio)
