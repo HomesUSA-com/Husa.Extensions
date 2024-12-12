@@ -18,7 +18,7 @@ namespace Husa.Extensions.Media.Extensions
             return memoryStream;
         }
 
-        public static Dictionary<string, string> ToDict(this IFormFile file, Dictionary<string, string> extraInfo = null)
+        public static Dictionary<string, string> Metadata(this IFormFile file, Dictionary<string, string> extraInfo = null)
         {
             var metadata = new Dictionary<string, string>
             {

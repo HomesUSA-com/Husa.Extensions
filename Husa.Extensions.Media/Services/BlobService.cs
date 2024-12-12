@@ -21,8 +21,7 @@ namespace Husa.Extensions.Media.Services
 
         public async Task<Uri> AddToTemporalBlobAsync(Stream bynaryData, Guid mediaId, string contentType, IDictionary<string, string> fileMeta)
         {
-            fileMeta.TryGetValue("Extension", out var ext);
-            var blobName = string.IsNullOrEmpty(ext) ? $"temporal/{mediaId}" : $"temporal/{mediaId}.{ext}";
+            var blobName = $"temporal/{mediaId}";
             await this.blobContainerClient.UploadBlobAsync(blobName, bynaryData);
             var bblob = this.blobContainerClient.GetBlobClient(blobName);
             bblob.SetMetadata(fileMeta);
@@ -30,38 +29,24 @@ namespace Husa.Extensions.Media.Services
             return bblob.Uri;
         }
 
-        public async Task<Uri> UploadToBlob(IFormFile file, int width, int height)
+        public Task<Uri> UploadToBlob(IFormFile file, int width, int height)
         {
             if (!file.IsValid())
             {
                 throw new ArgumentException($"Invalid file {file.FileName}", nameof(file));
             }
 
-            var resizeImage = file.ContentType.Contains("image") && width > 0 && height > 0;
+            return this.GetBlobUri(file, width, height);
+        }
+
+        private async Task<Uri> GetBlobUri(IFormFile file, int width, int height)
+        {
+            var resourceId = Guid.NewGuid();
+            var resizeImage = file.ContentType.Contains("image") && width != 0 && height != 0;
             using var memoryStream = resizeImage ? file.ResizeAndOpenStream(width, height) : file.OpenReadStream();
             memoryStream.Position = 0;
-
-            return await this.GetBlobUri(memoryStream, file.ToDict());
-        }
-
-        public async Task<Uri> UploadToBlob(IFormFile file, Dictionary<string, string> metadata)
-        {
-            if (!file.IsValid())
-            {
-                throw new ArgumentException($"Invalid file {file.FileName}", nameof(file));
-            }
-
-            var fileMeta = file.ToDict(metadata);
-            using var memoryStream = file.OpenReadStream();
-            memoryStream.Position = 0;
-
-            return await this.GetBlobUri(memoryStream, fileMeta);
-        }
-
-        private async Task<Uri> GetBlobUri(Stream file, Dictionary<string, string> metadata)
-        {
-            metadata.TryGetValue("ContentType", out string contentType);
-            return await this.AddToTemporalBlobAsync(file, Guid.NewGuid(), contentType, metadata);
+            var uri = await this.AddToTemporalBlobAsync(memoryStream, resourceId, file.ContentType, file.Metadata());
+            return uri;
         }
     }
 }
