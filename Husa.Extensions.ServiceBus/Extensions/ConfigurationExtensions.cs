@@ -3,8 +3,11 @@ namespace Husa.Extensions.ServiceBus.Extensions
     using System;
     using System.Threading.Tasks;
     using Husa.Extensions.ServiceBus.Handlers;
+    using Husa.Extensions.ServiceBus.Interfaces;
+    using Husa.Extensions.ServiceBus.Services;
     using Husa.Extensions.ServiceBus.Subscribers;
     using Microsoft.Azure.ServiceBus;
+    using Microsoft.Extensions.DependencyInjection;
 
     public static class ConfigurationExtensions
     {
@@ -27,6 +30,14 @@ namespace Husa.Extensions.ServiceBus.Extensions
             }
 
             return CloseClientAsync(provider);
+        }
+
+        public static IServiceCollection UseTraceIdProvider(this IServiceCollection services)
+        {
+            return services
+                   .AddScoped<TraceIdProvider>()
+                   .AddScoped<IProvideTraceId>(x => x.GetRequiredService<TraceIdProvider>())
+                   .AddScoped<IConfigureTraceId>(x => x.GetRequiredService<TraceIdProvider>());
         }
 
         private static async Task CloseClientAsync(IProvideSubscriptionClient provider)

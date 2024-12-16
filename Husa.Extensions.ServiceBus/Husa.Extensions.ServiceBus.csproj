@@ -6,10 +6,10 @@
         <Product>ServiceBus Extensions</Product>
         <Description>Husa ServiceBus</Description>
         <PackageId>Husa.Extensions.ServiceBus</PackageId>
-        <Version>5.0.8</Version>
+        <Version>5.0.9</Version>
         <PackageTags>Extensions; ServiceBus; Bus; Queues; Topics; Azure;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.0.8:
+            Release 5.0.9:
             - Added support net8 frameworks
             - Added ServiceBusOptions
             - Updated Extensions.Common for amarillo support
