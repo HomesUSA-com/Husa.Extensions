@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.1.9</Version>
+        <Version>4.1.10</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.9:
+            Release 4.1.10:
             - Added param to GetEnumValueFromDescription for ignoring case
             - Added CompositeValidationResult
             - Added ToEnumOrNullFromDescription to get enum by description or return null
@@ -18,6 +18,7 @@
             - Added Newtonsoft.Json
             - Added DataChecker Validation
             - Fixed DataChecker Null Case
+            - Added EntityAlreadyExistsException
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
