@@ -26,15 +26,18 @@ namespace Husa.Extensions.Common.Validations
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var description = value.ToString();
-
-            var words = (from string word in ForbiddenWords
-                         where description.Contains(word)
-                         select word).ToList();
-
-            if (words.Any())
+            if (value != null)
             {
-                return new ValidationResult(validationContext.MemberName + " contains forbidden words: " + string.Join(", ", words), new[] { validationContext.MemberName });
+                var description = value.ToString();
+
+                var words = (from string word in ForbiddenWords
+                            where description.Contains(word)
+                            select word).ToList();
+
+                if (words.Any())
+                {
+                    return new ValidationResult(validationContext.MemberName + " contains forbidden words: " + string.Join(", ", words), new[] { validationContext.MemberName });
+                }
             }
 
             return ValidationResult.Success;

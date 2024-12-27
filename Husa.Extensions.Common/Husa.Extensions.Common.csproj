@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.1.8</Version>
+        <Version>4.1.9</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.8:
+            Release 4.1.9:
             - Added param to GetEnumValueFromDescription for ignoring case
             - Added CompositeValidationResult
             - Added ToEnumOrNullFromDescription to get enum by description or return null
@@ -17,6 +17,7 @@
             - Added Amarillo to Market enum
             - Added Newtonsoft.Json
             - Added DataChecker Validation
+            - Fixed DataChecker Null Case
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
