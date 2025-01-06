@@ -42,6 +42,11 @@ namespace Husa.Extensions.Authorization
         {
             this.logger.LogInformation("Setting current user '{userId}'", user.Id);
             this.currentUser = user;
+
+            if (this.currentUser.UserRole == Enums.UserRole.MLSAdministrator)
+            {
+                this.currentUser.IsMLSAdministrator = true;
+            }
         }
     }
 }
