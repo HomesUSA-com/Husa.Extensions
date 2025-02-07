@@ -4,6 +4,7 @@ namespace Husa.Extensions.Common.Validations
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Text.RegularExpressions;
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class DataCheckerAttribute : ValidationAttribute
@@ -29,14 +30,14 @@ namespace Husa.Extensions.Common.Validations
             if (value != null)
             {
                 var description = value.ToString();
+                var forbiddenPattern = @"\b(" + string.Join("|", ForbiddenWords.Select(Regex.Escape)) + @")\b";
+                var regex = new Regex(forbiddenPattern, RegexOptions.IgnoreCase);
 
-                var words = (from string word in ForbiddenWords
-                            where description.Contains(word)
-                            select word).ToList();
+                var matches = regex.Matches(description).Cast<Match>().Select(m => m.Value).Distinct().ToList();
 
-                if (words.Any())
+                if (matches.Count != 0)
                 {
-                    return new ValidationResult(validationContext.MemberName + " contains forbidden words: " + string.Join(", ", words), new[] { validationContext.MemberName });
+                    return new ValidationResult(validationContext.MemberName + " contains forbidden words: " + string.Join(", ", matches), [validationContext.MemberName]);
                 }
             }
 
