@@ -33,7 +33,7 @@ public class OpenAIClient : IOpenAIClient
         var chatRequest = new ChatRequest
         {
             Model = this.GetModel(),
-            Temperature = this.options.Value.Temperature,
+            Temperature = propertyDetails.Temperature ?? this.options.Value.Temperature,
             MaxTokens = this.options.Value.MaxTokens,
             user = this.options.Value.ApplicationId.ToString(),
             Messages =

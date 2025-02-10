@@ -13,6 +13,8 @@ public class PropertyDetailRequest
     private string userPrompt;
     private int maxReplyCharacters;
 
+    public double? Temperature { get; set; }
+
     [Description("Property Type")]
     public string PropertyType { get; set; }
 
