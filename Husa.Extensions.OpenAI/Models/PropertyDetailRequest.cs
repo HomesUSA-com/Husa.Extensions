@@ -210,6 +210,14 @@ public class PropertyDetailRequest
         foreach (var property in this.GetType().GetProperties())
         {
             var propertyValue = property.GetValue(this);
+
+            if (propertyValue.IsNullOrEmpty() ||
+                propertyValue.IsEmptyCollections() ||
+                propertyValue.IsNullOrZero())
+            {
+                continue;
+            }
+
             prompt.AppendLine(obj: this, value: propertyValue, fieldName: property.Name);
         }
 

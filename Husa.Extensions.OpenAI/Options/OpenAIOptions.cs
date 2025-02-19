@@ -29,5 +29,5 @@ public record OpenAIOptions
 
     public string SystemRole { get; set; } = "You are a helpful real estate agent that uses the details of homes to write appealing and professional home descriptions for MLS listings.";
 
-    public string UserPrompt { get; set; } = "I am listing my home on the MLS and want it to stand out. Please write a detailed home description using the following bullet points";
+    public string UserPrompt { get; set; } = "I am listing my home on the MLS and want it to stand out. Please write a detailed home description using the following bullet points and avoid using welcome expresions";
 }

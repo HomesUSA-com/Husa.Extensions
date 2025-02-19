@@ -5,13 +5,14 @@
         <Product>OpenAI Extensions</Product>
         <Description>Husa Extensions OpenAI</Description>
         <PackageId>Husa.Extensions.OpenAI</PackageId>
-        <Version>0.1.3</Version>
+        <Version>0.1.4</Version>
         <PackageTags>Extensions; OpenAI;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.3:
+            Release 0.1.4:
             - Initial version of the package
             - Make property type not required
             - Added System.Text.Encodings.Web
+            - Focus on properties not null or empty
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
