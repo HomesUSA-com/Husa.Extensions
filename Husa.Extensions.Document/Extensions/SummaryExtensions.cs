@@ -5,7 +5,6 @@ namespace Husa.Extensions.Document.Extensions
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using Husa.Extensions.Common;
     using Husa.Extensions.Document.Interfaces;
     using Husa.Extensions.Document.ValueObjects;
 
@@ -49,7 +48,9 @@ namespace Husa.Extensions.Document.Extensions
                 switch (newValue)
                 {
                     case string newValueAsString:
-                        if (!newValueAsString.Trim().EqualsTo(((string)oldValue)?.Trim()))
+                        var oldString = ((string)oldValue ?? string.Empty).Trim();
+                        var newString = newValueAsString.Trim();
+                        if (!string.Equals(oldString, newString, StringComparison.Ordinal))
                         {
                             yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
                         }
