@@ -6,7 +6,7 @@
         <Product>Api Quickbooks</Product>
         <Description>Husa Quickbooks</Description>
         <PackageId>Husa.Extensions.Quickbooks</PackageId>
-        <Version>1.0.2</Version>
+        <Version>1.0.3-dev004</Version>
         <PackageReleaseNotes>
             Release 1.0.2:
             - Added support net8 frameworks
