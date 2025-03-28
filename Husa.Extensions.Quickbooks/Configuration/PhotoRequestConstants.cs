@@ -4,8 +4,8 @@ namespace Husa.Extensions.Quickbooks.Configuration
     {
         public const string InvoiceDetailType = "SalesItemLineDetail";
         public const string EntityTypeInvoice = "Invoice";
-        public const string StillHomeName = "Stills Home";
-        public const string StillExteriorOnlyName = "Stills - Exterior Only";
+        public const string StillsHomeName = "Stills Home";
+        public const string StillsExteriorOnlyName = "Stills - Exterior Only";
         public const string TwilightName = "Twilight 3 Photos";
         public const string VirtualTourName = "Virtual Tour";
         public const string VirtualStagingOneImageName = "Virtual Staging 1 Image";

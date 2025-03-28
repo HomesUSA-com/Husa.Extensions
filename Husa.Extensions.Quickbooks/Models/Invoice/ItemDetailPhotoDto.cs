@@ -6,8 +6,8 @@ namespace Husa.Extensions.Quickbooks.Models.Invoice
     {
         public ItemDetailPhotoDto(string itemRefId, string classRefId)
         {
-            this.StillHome = new SalesItemLineDetailDto(itemRefId, classRefId);
-            this.StillExteriorOnly = new SalesItemLineDetailDto(itemRefId, classRefId);
+            this.StillsHome = new SalesItemLineDetailDto(itemRefId, classRefId);
+            this.StillsExteriorOnly = new SalesItemLineDetailDto(itemRefId, classRefId);
             this.Twilight = new SalesItemLineDetailDto(itemRefId, classRefId);
             this.VirtualTour = new SalesItemLineDetailDto(itemRefId, classRefId);
             this.VirtualStagingOneImage = new SalesItemLineDetailDto(itemRefId, classRefId);
@@ -18,8 +18,8 @@ namespace Husa.Extensions.Quickbooks.Models.Invoice
             this.CommunityOptionThree = new SalesItemLineDetailDto(itemRefId, classRefId);
             this.TripCharge = new SalesItemLineDetailDto(itemRefId, classRefId);
             this.PhotoshopEditing = new SalesItemLineDetailDto(itemRefId, classRefId);
-            this.StillHome.TotalAmount =
-            this.StillExteriorOnly.TotalAmount =
+            this.StillsHome.TotalAmount =
+            this.StillsExteriorOnly.TotalAmount =
             this.Twilight.TotalAmount =
             this.VirtualTour.TotalAmount =
             this.VirtualStagingOneImage.TotalAmount =
@@ -33,8 +33,8 @@ namespace Husa.Extensions.Quickbooks.Models.Invoice
             this.TotalInvoice = 0;
         }
 
-        public SalesItemLineDetailDto StillHome { get; set; }
-        public SalesItemLineDetailDto StillExteriorOnly { get; set; }
+        public SalesItemLineDetailDto StillsHome { get; set; }
+        public SalesItemLineDetailDto StillsExteriorOnly { get; set; }
         public SalesItemLineDetailDto Twilight { get; set; }
         public SalesItemLineDetailDto VirtualTour { get; set; }
         public SalesItemLineDetailDto VirtualStagingOneImage { get; set; }
