@@ -24,7 +24,7 @@ namespace Husa.Extensions.Authorization.Filters
         protected override Task<bool> AuthorizeAsync(ActionExecutingContext context)
         {
             var userContext = context.HttpContext.RequestServices.GetRequiredService<IUserContextProvider>();
-            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<ApiAuthorizationAttribute>>();
+            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<RolesFilterAttribute>>();
 
             if (context.ActionDescriptor.EndpointMetadata.OfType<AllowAnonymousAttribute>().Any())
             {
@@ -33,14 +33,28 @@ namespace Husa.Extensions.Authorization.Filters
             }
 
             var user = userContext.GetCurrentUser();
-            logger.LogInformation("Validating API authorization for user '{userId}'.", user.Id);
+            logger.LogInformation("Validating API authorization for user '{@User}'.", user);
 
-            var allowedUserRole = !this.userRoles.Any() || this.userRoles.Contains(user.UserRole);
-            var allowedEmployeeRole = user.UserRole != UserRole.User
-                || !this.employeeRoles.Any()
-                || (user.EmployeeRole.HasValue && this.employeeRoles.Contains(user.EmployeeRole.Value));
+            if (user.IsMLSAdministrator && user.EmployeeRole.HasValue)
+            {
+                return Task.FromResult(this.IsAllowedUserRole(UserRole.User) && this.IsAllowedEmployeeRole(user.EmployeeRole));
+            }
+
+            var allowedUserRole = this.IsAllowedUserRole(user.UserRole);
+            var allowedEmployeeRole = user.UserRole != UserRole.User || this.IsAllowedEmployeeRole(user.EmployeeRole);
 
             return Task.FromResult(allowedUserRole && allowedEmployeeRole);
+        }
+
+        private bool IsAllowedEmployeeRole(RoleEmployee? employeeRole)
+        {
+            return !this.employeeRoles.Any()
+                || (employeeRole.HasValue && this.employeeRoles.Contains(employeeRole.Value));
+        }
+
+        private bool IsAllowedUserRole(UserRole userRole)
+        {
+            return !this.userRoles.Any() || this.userRoles.Contains(userRole);
         }
     }
 }

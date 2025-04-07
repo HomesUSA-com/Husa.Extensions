@@ -3,6 +3,7 @@ namespace Husa.Extensions.Authorization.Filters
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using Husa.Extensions.Authorization.Enums;
     using Husa.Extensions.Authorization.Extensions;
     using Husa.Extensions.Common.Enums;
     using Microsoft.AspNetCore.Authorization;
@@ -14,6 +15,7 @@ namespace Husa.Extensions.Authorization.Filters
     {
         public const string CurrentCompanyHeaderName = "CurrentCompanySelected";
         public const string CurrentMarketHeaderName = "CurrentMarketSelected";
+        public const string CurrentEmployeeRoleHeaderName = "CurrentEmployeeRole";
         protected readonly ILogger<AuthorizationFilter> logger;
         protected readonly IUserProvider userProvider;
 
@@ -47,6 +49,11 @@ namespace Husa.Extensions.Authorization.Filters
 
             user.CompanyId = Guid.TryParse(context.HttpContext.Request.Headers[CurrentCompanyHeaderName], out var currentCompanyId) &&
                 !currentCompanyId.Equals(Guid.Empty) ? currentCompanyId : null;
+
+            if (user.IsMLSAdministrator)
+            {
+                user.EmployeeRole = Enum.TryParse(context.HttpContext.Request.Headers[CurrentEmployeeRoleHeaderName], out RoleEmployee employeeRole) ? employeeRole : null;
+            }
 
             await this.GetCompanyEmployeeAsync(context, user);
 
