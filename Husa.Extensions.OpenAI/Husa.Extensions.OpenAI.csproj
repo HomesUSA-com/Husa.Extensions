@@ -5,14 +5,11 @@
         <Product>OpenAI Extensions</Product>
         <Description>Husa Extensions OpenAI</Description>
         <PackageId>Husa.Extensions.OpenAI</PackageId>
-        <Version>0.1.4</Version>
+        <Version>0.2.0</Version>
         <PackageTags>Extensions; OpenAI;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.4:
-            - Initial version of the package
-            - Make property type not required
-            - Added System.Text.Encodings.Web
-            - Focus on properties not null or empty
+            Release 0.2.0:
+            - Add functionality to locate people and brands from images
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
@@ -23,12 +20,32 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Faker.Net" Version="2.0.163" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-        <PackageReference Include="OpenAI" Version="1.11.0" />
+        <PackageReference Include="OpenAI" Version="2.1.0" />
         <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Husa.Extensions.Common\Husa.Extensions.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

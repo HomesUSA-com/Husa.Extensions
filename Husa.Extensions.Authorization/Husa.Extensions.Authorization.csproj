@@ -5,13 +5,11 @@
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>4.1.3</Version>
+        <Version>4.2.0</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.3:
-            - Create Company Admin Read-only role
-            - Updated Extensions.Common for amarillo support
-            - Set correct IsMLSAdministrator value in UserContext
+            Release 4.2.0:
+            - Get company employee role for mls admin from header
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
