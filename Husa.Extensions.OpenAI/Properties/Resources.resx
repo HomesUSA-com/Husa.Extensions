@@ -129,7 +129,7 @@
   </data>
   <data name="LocatePeopleAndBrandingsPrompt" xml:space="preserve">
     <value>I've uploaded several images. For each, tell me if it contains persons or branding signals, and explain your reasoning. Put your response in json format like this: 
-{"images": [{"image_index": 1, "contains_persons: "false, "contains_branding": false, "explanation": "no persons or brandings signals found"}]}.</value>
+{"images": [{"image_index": 1, "contains_persons": false, "contains_branding": false, "explanation": "no persons or brandings signals found"}]}.</value>
     <comment>Chat GPT prompt to locate people and branches on an image</comment>
   </data>
 </root>
