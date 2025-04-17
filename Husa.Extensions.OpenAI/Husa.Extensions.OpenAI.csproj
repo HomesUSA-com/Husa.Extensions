@@ -5,11 +5,12 @@
         <Product>OpenAI Extensions</Product>
         <Description>Husa Extensions OpenAI</Description>
         <PackageId>Husa.Extensions.OpenAI</PackageId>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <PackageTags>Extensions; OpenAI;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.0:
-            - Add functionality to locate people and brands from images
+            Release 0.2.1:
+            - Add functionality to locate persons and branding from images
+            - Update locate persons and branding prompt
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
         <PackageReadmeFile>readme.md</PackageReadmeFile>

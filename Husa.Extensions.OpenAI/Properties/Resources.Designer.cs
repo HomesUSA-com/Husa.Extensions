@@ -77,7 +77,7 @@ namespace Husa.Extensions.OpenAI.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to I&apos;ve uploaded several images. For each, tell me if it contains persons or branding signals, and explain your reasoning. Put your response in json format like this: 
-        ///{&quot;images&quot;: [{&quot;image_index&quot;: 1, &quot;contains_persons: &quot;false, &quot;contains_branding&quot;: false, &quot;explanation&quot;: &quot;no persons or brandings signals found&quot;}]}..
+        ///{&quot;images&quot;: [{&quot;image_index&quot;: 1, &quot;contains_persons&quot;: false, &quot;contains_branding&quot;: false, &quot;explanation&quot;: &quot;no persons or brandings signals found&quot;}]}..
         /// </summary>
         internal static string LocatePeopleAndBrandingsPrompt {
             get {
