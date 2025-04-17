@@ -6,16 +6,12 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>5.0.5</Version>
+        <Version>5.1.0</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.0.5:
-            - Added support net8 frameworks
-            - Available S6602 and S6605 rules
-            - Added optional user id to identity configuration
-            - Added host configuration
-            - Update packages to remove vulnerabilities
-            - Updated Azure.Identity
+            Release 5.1.0:
+            - Added class for Azure App Configuration
+            - Update Azure.Security.KeyVault.Secrets to 4.6
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -37,10 +33,11 @@
     <ItemGroup>
         <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
         <PackageReference Include="Azure.Identity" Version="1.13.1" />
-        <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.4.0" />
+        <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.6.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
         <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
         <PackageReference Include="IdentityModel" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="8.1.1" />
     </ItemGroup>
 
 </Project>
