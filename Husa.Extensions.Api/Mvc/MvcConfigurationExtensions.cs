@@ -34,6 +34,7 @@ namespace Husa.Extensions.Api.Mvc
             options.AllowTrailingCommas = true;
 
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            options.Converters.Add(new UtcDateTimeConverter());
 
             return options;
         }

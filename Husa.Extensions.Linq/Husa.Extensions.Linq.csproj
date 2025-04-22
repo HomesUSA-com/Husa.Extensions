@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Linq</AssemblyName>
@@ -6,17 +6,11 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.0.9</Version>
+        <Version>4.1.0</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.0.8:
-            - Added support net8 frameworks
-            - Available S6602 and S6605 rules
-            - Added ApplyPaginationFilter
-            - Added SortSpecifications
-            - Fixed EnumStringCollectionValueConverter
-            - Updated Extensions.Common for amarillo support
-            - Manage Enum option for complex property
+            Release 4.1.0:
+            - Added UtcDateTimeValueConverter
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
