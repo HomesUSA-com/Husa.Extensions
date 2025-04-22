@@ -5,6 +5,7 @@ namespace Husa.Extensions.Domain.Extensions
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;
+    using System.Text;
     using System.Text.RegularExpressions;
     using AutoMapper.Internal;
     using PropertyInfo = System.Reflection.PropertyInfo;
@@ -82,6 +83,22 @@ namespace Husa.Extensions.Domain.Extensions
             {
                 return value.Substring(0, index).Trim();
             }
+
+            return value;
+        }
+
+        public static string CleanForComparison(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            value = System.Text.RegularExpressions.Regex.Replace(value, @"\s", string.Empty);
+            value = value.Replace(".", string.Empty);
+            value = value.Replace("\"", string.Empty);
+            value = value.Replace("'", string.Empty);
+            value = value.Replace("’", string.Empty);
 
             return value;
         }
