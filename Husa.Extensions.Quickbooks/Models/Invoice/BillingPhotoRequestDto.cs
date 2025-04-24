@@ -34,5 +34,6 @@ namespace Husa.Extensions.Quickbooks.Models.Invoice
         public bool TripCharge { get; set; }
         public bool PhotoshopEditing { get; set; }
         public int Order { get; set; }
+        public string Type { get; set; }
     }
 }
