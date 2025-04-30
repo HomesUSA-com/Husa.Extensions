@@ -1,12 +1,15 @@
 namespace Husa.Extensions.Authorization.Filters
 {
     using System;
+    using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using Husa.Extensions.Authorization.Enums;
     using Husa.Extensions.Authorization.Extensions;
     using Husa.Extensions.Common.Enums;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.Logging;
@@ -35,6 +38,15 @@ namespace Husa.Extensions.Authorization.Filters
 
             this.logger.LogInformation("Authorizing user request to allow access to the application.");
 
+            if (context.HttpContext.User == null || context.HttpContext.User.Identity == null || !context.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var principal = this.GetClaimsPrincipalFromToken(context.HttpContext);
+                if (principal != null)
+                {
+                    context.HttpContext.User = principal;
+                }
+            }
+
             var user = await Task.FromResult(context.HttpContext.User.GetUserContext());
 
             if (user == null)
@@ -61,5 +73,31 @@ namespace Husa.Extensions.Authorization.Filters
         }
 
         public abstract Task GetCompanyEmployeeAsync(AuthorizationFilterContext context, IUserContext user);
+
+        protected ClaimsPrincipal GetClaimsPrincipalFromToken(HttpContext httpContext)
+        {
+            if (httpContext.Request.Headers.TryGetValue("Authorization", out var authHeaderValues))
+            {
+                var authHeader = authHeaderValues.FirstOrDefault();
+                if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                {
+                    var token = authHeader.Substring("Bearer ".Length).Trim();
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    try
+                    {
+                        var jwtToken = tokenHandler.ReadJwtToken(token);
+                        var identity = new ClaimsIdentity(jwtToken.Claims, "Custom");
+                        return new ClaimsPrincipal(identity);
+                    }
+                    catch (Exception ex)
+                    {
+                        this.logger.LogError($"Error al leer el token: {ex.Message}");
+                        return null;
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }

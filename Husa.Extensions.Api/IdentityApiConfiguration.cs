@@ -62,18 +62,24 @@ namespace Husa.Extensions.Api
             if (httpContextAccessor.HttpContext != null)
             {
                 var accessToken = await httpContextAccessor.HttpContext.GetTokenAsync(tokenName);
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authenticationHeaderScheme, accessToken);
+                client.ConfigureClientHeaders(httpContextAccessor, accessToken, authenticationHeaderScheme);
+            }
 
-                if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentCompanyHeaderName], out var currentCompanyId))
-                {
-                    client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentCompanyHeaderName, currentCompanyId.ToString());
-                }
+            client.BaseAddress = new Uri(baseAddress);
+        }
 
-                var market = httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentMarketHeaderName].FirstOrDefault();
-                if (!string.IsNullOrWhiteSpace(market))
-                {
-                    client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentMarketHeaderName, market);
-                }
+        public static void ConfigureClient(
+            this HttpClient client,
+            IServiceProvider provider,
+            string baseAddress,
+            string tokenName = HttpClientExtensions.AccessToken,
+            string authenticationHeaderScheme = HttpClientExtensions.Bearer)
+        {
+            var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
+            if (httpContextAccessor.HttpContext != null)
+            {
+                var accessToken = httpContextAccessor.HttpContext.GetTokenAsync(tokenName).GetAwaiter().GetResult();
+                client.ConfigureClientHeaders(httpContextAccessor, accessToken, authenticationHeaderScheme);
             }
 
             client.BaseAddress = new Uri(baseAddress);
@@ -84,6 +90,32 @@ namespace Husa.Extensions.Api
             var apiOptions = new ApiOptions();
             configuration.GetSection(ApiOptions.Section).Bind(apiOptions);
             settings = apiOptions;
+        }
+
+        private static void ConfigureClientHeaders(
+           this HttpClient client,
+           IHttpContextAccessor httpContextAccessor,
+           string accessToken,
+           string authenticationHeaderScheme = HttpClientExtensions.Bearer)
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authenticationHeaderScheme, accessToken);
+
+            if (Guid.TryParse(httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentCompanyHeaderName], out var currentCompanyId))
+            {
+                client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentCompanyHeaderName, currentCompanyId.ToString());
+            }
+
+            var market = httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentMarketHeaderName].FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(market))
+            {
+                client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentMarketHeaderName, market);
+            }
+
+            var employeeRole = httpContextAccessor.HttpContext.Request.Headers[HttpClientExtensions.CurrentEmployeeRoleHeaderName].FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(employeeRole))
+            {
+                client.DefaultRequestHeaders.Add(HttpClientExtensions.CurrentEmployeeRoleHeaderName, employeeRole);
+            }
         }
     }
 }

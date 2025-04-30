@@ -6,11 +6,12 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>5.2.0</Version>
+        <Version>5.2.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.2.0:
+            Release 5.2.1:
             - Added UtcDateTimeConverter
+            - Configure token
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

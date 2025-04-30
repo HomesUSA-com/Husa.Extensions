@@ -54,6 +54,11 @@ namespace Husa.Extensions.Authorization.Extensions
 
             var roles = user.FindAll(ClaimTypes.Role);
 
+            if (!roles.Any())
+            {
+                roles = user.FindAll(HusaClaimTypes.Role);
+            }
+
             if (Enum.TryParse(roles.First().Value, out UserRole userRole))
             {
                 return userRole;

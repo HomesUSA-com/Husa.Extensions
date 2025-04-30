@@ -1,15 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Authorization</AssemblyName>
         <RootNamespace>Husa.Extensions.Authorization</RootNamespace>
         <Product>Authorization Extensions</Product>
         <Description>Husa Authorization</Description>
         <PackageId>Husa.Extensions.Authorization</PackageId>
-        <Version>4.2.0</Version>
+        <Version>4.2.1</Version>
         <PackageTags>Extensions; Authorization;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.2.0:
+            Release 4.2.1:
             - Get company employee role for mls admin from header
+            - Get claims from token
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -23,6 +24,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.36.0" />
         <PackageReference Include="Husa.Extensions.Common" Version="4.1.6" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>

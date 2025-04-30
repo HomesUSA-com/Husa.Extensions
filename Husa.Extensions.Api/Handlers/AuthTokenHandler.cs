@@ -2,6 +2,7 @@ namespace Husa.Extensions.Api.Handlers
 {
     using System;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
     using Husa.Extensions.Api.Client;
@@ -24,7 +25,7 @@ namespace Husa.Extensions.Api.Handlers
             if (request.Headers.Authorization == null)
             {
                 var accessToken = await this.GetPasswordTokenString();
-                request.Headers.Add(HttpClientExtensions.AuthorizationHeaderName, $"{HttpClientExtensions.Bearer} {accessToken}");
+                request.Headers.Authorization = new AuthenticationHeaderValue(HttpClientExtensions.Bearer, accessToken);
             }
 
             return await base.SendAsync(request, cancellationToken);
