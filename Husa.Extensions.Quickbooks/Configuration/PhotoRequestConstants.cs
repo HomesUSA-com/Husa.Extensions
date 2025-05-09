@@ -16,5 +16,20 @@ namespace Husa.Extensions.Quickbooks.Configuration
         public const string CommunityOptionThreeName = "Community Option 3";
         public const string TripChargeName = "Trip Charge";
         public const string PhotoshopEditingName = "Photoshop Editing";
+        public const string Twilight = "Twilight";
+        public const string TripCharge = "TripCharge";
+        public const string CommunityOptionOne = "CommunityOptionOne";
+        public const string CommunityOptionTwo = "CommunityOptionTwo";
+        public const string CommunityOptionThree = "CommunityOptionThree";
+        public const string StillsHome = "StillsHome";
+        public const string StillsExteriorOnly = "StillsExteriorOnly";
+        public const string VirtualTour = "VirtualTour";
+        public const string VirtualStagingOneImage = "VirtualStagingOneImage";
+        public const string VirtualStagingThreeImage = "VirtualStagingThreeImage";
+        public const string VirtualStagingSixImage = "VirtualStagingSixImage";
+        public const string PhotoshopEditing = "PhotoshopEditing";
+        public const string Residential = "Residential";
+        public const string Plan = "Plan";
+        public const string Community = "Community";
     }
 }
