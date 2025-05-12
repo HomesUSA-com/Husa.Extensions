@@ -6,10 +6,10 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.2.0</Version>
+        <Version>4.2.1</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.2.0:
+            Release 4.2.1:
             - Added DateCompare to extensions
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>

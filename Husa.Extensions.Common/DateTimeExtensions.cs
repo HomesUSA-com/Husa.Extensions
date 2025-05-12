@@ -47,9 +47,7 @@ namespace Husa.Extensions.Common
 
             if (date.Kind == DateTimeKind.Local)
             {
-                var offsetHours = date.GetOffsetHours();
-                var newDate = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, DateTimeKind.Utc);
-                return newDate.AddHours(-offsetHours);
+                return date.ToUniversalTime();
             }
 
             TimeZoneInfo cstTimeZone;
@@ -73,10 +71,7 @@ namespace Husa.Extensions.Common
         }
 
         public static DateTime TodayUtc()
-        {
-            var offsetHours = DateTime.Now.GetOffsetHours();
-            return DateTime.UtcNow.Date.AddHours(-offsetHours);
-        }
+            => DateTime.Today.ToUniversalTime();
 
         public static bool DateCompare(this DateTime? date, OperatorType conditionOperator, DateTime? dateToCompare, bool compareTime = false)
             => date.HasValue && date.Value.DateCompare(conditionOperator, dateToCompare, compareTime);

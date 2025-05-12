@@ -84,21 +84,6 @@ namespace Husa.Extensions.Common.Tests
         }
 
         [Fact]
-        public void DateCompare_EqualToTomorrow()
-        {
-            // Arrange
-            var date = new DateTime(2025, 4, 24, 0, 0, 0, DateTimeKind.Utc);
-            var dateUtc = date.AddHours(-DateTime.Now.GetOffsetHours());
-
-            var today = DateTimeExtensions.TodayUtc();
-            var tomorrow = today.AddDays(1);
-
-            // Act & Assert
-            Assert.False(dateUtc.DateCompare(OperatorType.GreaterThan, tomorrow));
-            Assert.True(dateUtc.DateCompare(OperatorType.Equal, tomorrow));
-        }
-
-        [Fact]
         public void DateCompare_Equal_ReturnsCorrectResult()
         {
             // Arrange
