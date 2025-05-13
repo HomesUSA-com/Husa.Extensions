@@ -5,7 +5,6 @@ namespace Husa.Extensions.Domain.Extensions
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.Serialization;
-    using System.Text;
     using System.Text.RegularExpressions;
     using AutoMapper.Internal;
     using PropertyInfo = System.Reflection.PropertyInfo;
