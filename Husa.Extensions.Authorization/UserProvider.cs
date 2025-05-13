@@ -56,5 +56,30 @@ namespace Husa.Extensions.Authorization
                 ? null
                 : TimeZoneInfo.FindSystemTimeZoneById(user.TimeZoneId);
         }
+
+        public DateTime? GetUserLocalDateTimeNow()
+        {
+            var userTimeZone = this.GetUserTimeZone();
+            if (userTimeZone == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                var userLocalDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, userTimeZone);
+                return userLocalDateTime;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public DateTime GetUserLocalDate()
+        {
+            var userDate = this.GetUserLocalDateTimeNow();
+            return userDate.HasValue ? userDate.Value.Date : DateTime.Today.ToUniversalTime();
+        }
     }
 }

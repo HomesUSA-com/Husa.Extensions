@@ -11,5 +11,7 @@ namespace Husa.Extensions.Authorization
         IUserContext GetCurrentUser();
 
         TimeZoneInfo GetUserTimeZone();
+
+        DateTime GetUserLocalDate();
     }
 }
