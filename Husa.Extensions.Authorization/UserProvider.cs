@@ -48,5 +48,13 @@ namespace Husa.Extensions.Authorization
                 this.currentUser.IsMLSAdministrator = true;
             }
         }
+
+        public TimeZoneInfo GetUserTimeZone()
+        {
+            var user = this.GetCurrentUser();
+            return string.IsNullOrWhiteSpace(user.TimeZoneId)
+                ? null
+                : TimeZoneInfo.FindSystemTimeZoneById(user.TimeZoneId);
+        }
     }
 }

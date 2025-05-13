@@ -21,5 +21,7 @@ namespace Husa.Extensions.Authorization.Models
         public UserRole UserRole { get; set; }
 
         public RoleEmployee? EmployeeRole { get; set; }
+
+        public string TimeZoneId { get; set; }
     }
 }

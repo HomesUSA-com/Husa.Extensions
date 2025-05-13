@@ -19,6 +19,7 @@ namespace Husa.Extensions.Authorization.Filters
         public const string CurrentCompanyHeaderName = "CurrentCompanySelected";
         public const string CurrentMarketHeaderName = "CurrentMarketSelected";
         public const string CurrentEmployeeRoleHeaderName = "CurrentEmployeeRole";
+        public const string UserTimeZoneHeaderName = "X-User-TimeZone";
         protected readonly ILogger<AuthorizationFilter> logger;
         protected readonly IUserProvider userProvider;
 
@@ -68,6 +69,11 @@ namespace Husa.Extensions.Authorization.Filters
             }
 
             await this.GetCompanyEmployeeAsync(context, user);
+
+            if (context.HttpContext.Request.Headers.TryGetValue(UserTimeZoneHeaderName, out var timeZoneId))
+            {
+                user.TimeZoneId = timeZoneId;
+            }
 
             this.userProvider.SetCurrentUser(user);
         }

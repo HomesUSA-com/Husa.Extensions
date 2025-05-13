@@ -9,5 +9,7 @@ namespace Husa.Extensions.Authorization
         Guid GetCurrentUserId();
 
         IUserContext GetCurrentUser();
+
+        TimeZoneInfo GetUserTimeZone();
     }
 }
