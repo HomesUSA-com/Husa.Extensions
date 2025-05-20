@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Document</AssemblyName>
@@ -6,16 +6,17 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.2.9</Version>
+        <Version>0.2.10</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.2.9:
+            Release 0.2.10:
             - Initialize
             - Remove datetime comparer
             - SummaryExtensions.GetFieldSummary trim blank spaces in string compared elements
             - Updated Extensions.Common for amarillo support
             - Update packages to remove vulnerabilities
             - Improve string comparison
+            - Split summary extension methods
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
