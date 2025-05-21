@@ -1,5 +1,7 @@
 namespace Husa.Extensions.Document.QueryFilters
 {
+    using System;
+
     public class RequestBaseQueryFilter
     {
         public string SearchFilter { get; set; }
@@ -13,5 +15,7 @@ namespace Husa.Extensions.Document.QueryFilters
         public string CurrentToken { get; set; }
 
         public string ContinuationToken { get; set; }
+
+        public Guid? EntityId { get; set; }
     }
 }

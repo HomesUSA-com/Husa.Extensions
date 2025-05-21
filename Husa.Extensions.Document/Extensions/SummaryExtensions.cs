@@ -112,58 +112,51 @@ namespace Husa.Extensions.Document.Extensions
             }
         }
 
-        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(this ICollection<T> currentElements, IEnumerable<T> oldElements)
+        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(
+            this ICollection<T> currentElements,
+            IEnumerable<T> oldElements,
+            bool ignoreEqualElements = false,
+            string[] filterFields = null,
+            string[] excludeFields = null)
             where T : IProvideType
             where TComparer : IEqualityComparer<T>, new()
         {
-            static IEnumerable<SummaryField> FieldSummary(IEnumerable<T> fieldElements, bool newValues)
-            {
-                foreach (var field in fieldElements)
-                {
-                    yield return new SummaryField(field.FieldType, newValues ? null : field, newValues ? field : null);
-                }
-            }
-
             if (oldElements == null)
             {
-                return FieldSummary(currentElements, newValues: true);
+                return currentElements.GetSummaryFields(true, filterFields, excludeFields);
             }
 
             if (!currentElements.Any())
             {
-                return FieldSummary(oldElements, newValues: false);
+                return oldElements.GetSummaryFields(false, filterFields, excludeFields);
             }
 
             var summary = new List<SummaryField>();
-            var equalElements = new List<T>();
             var comparer = new TComparer();
+            var oldElems = oldElements.ToList();
 
-            IEnumerable<T> currentElems = currentElements;
-            List<T> oldElems = oldElements.ToList();
-
-            foreach (var currentElem in currentElems)
+            foreach (var currentElem in currentElements)
             {
                 var oldElementIndex = oldElems.FindIndex(x => comparer.Equals(x, currentElem));
                 if (oldElementIndex > -1)
                 {
-                    equalElements.Add(currentElem);
+                    if (!ignoreEqualElements)
+                    {
+                        var newElem = FilterObjectProperties(currentElem, filterFields, excludeFields);
+                        summary.Add(new SummaryField(currentElem.FieldType, newElem, newElem));
+                    }
+
                     oldElems.RemoveAt(oldElementIndex);
                 }
                 else
                 {
-                    // new
-                    summary.Add(new SummaryField(currentElem.FieldType, null, currentElem));
+                    summary.Add(new SummaryField(currentElem.FieldType, null, FilterObjectProperties(currentElem, filterFields, excludeFields)));
                 }
             }
 
-            if (oldElems.Any())
+            if (oldElems.Count != 0)
             {
-                summary.AddRange(FieldSummary(oldElems, newValues: false));
-            }
-
-            if (summary.Any())
-            {
-                summary.AddRange(equalElements.Select(elem => new SummaryField(elem.FieldType, elem, elem)));
+                summary.AddRange(oldElems.GetSummaryFields(false, filterFields, excludeFields));
             }
 
             return summary;
@@ -187,6 +180,34 @@ namespace Husa.Extensions.Document.Extensions
             }
 
             return false;
+        }
+
+        private static object FilterObjectProperties<T>(
+            T obj,
+            string[] filterFields = null,
+            string[] excludeFields = null)
+        {
+            if (filterFields == null && excludeFields == null)
+            {
+                return obj;
+            }
+
+            var properties = obj.GetType().GetProperties().FilterProperties(filterFields, excludeFields);
+            return properties.ToDictionary(p => p.Name, p => p.GetValue(obj));
+        }
+
+        private static IEnumerable<SummaryField> GetSummaryFields<T>(
+            this IEnumerable<T> fieldElements,
+            bool newValues,
+            string[] filterFields = null,
+            string[] excludeFields = null)
+            where T : IProvideType
+        {
+            foreach (var field in fieldElements)
+            {
+                var fieldObj = FilterObjectProperties(field, filterFields, excludeFields);
+                yield return new SummaryField(field.FieldType, newValues ? null : fieldObj, newValues ? fieldObj : null);
+            }
         }
 
         private static (object NewValueOrdered, object OldValueOrdered) SortArrays(Type underlyingType, object newValue, object oldValue)
