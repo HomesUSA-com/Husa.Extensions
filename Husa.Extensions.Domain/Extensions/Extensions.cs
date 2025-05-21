@@ -86,6 +86,22 @@ namespace Husa.Extensions.Domain.Extensions
             return value;
         }
 
+        public static string CleanForComparison(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            value = System.Text.RegularExpressions.Regex.Replace(value, @"\s", string.Empty);
+            value = value.Replace(".", string.Empty);
+            value = value.Replace("\"", string.Empty);
+            value = value.Replace("'", string.Empty);
+            value = value.Replace("’", string.Empty);
+
+            return value;
+        }
+
         private static bool EnumCollectionsAreEquals(PropertyInfo propertyInfo, object source, object target)
         {
             var argumentType = propertyInfo.PropertyType.GetGenericArguments().Single();

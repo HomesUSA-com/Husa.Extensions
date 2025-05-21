@@ -48,5 +48,38 @@ namespace Husa.Extensions.Authorization
                 this.currentUser.IsMLSAdministrator = true;
             }
         }
+
+        public TimeZoneInfo GetUserTimeZone()
+        {
+            var user = this.GetCurrentUser();
+            return string.IsNullOrWhiteSpace(user.TimeZoneId)
+                ? null
+                : TimeZoneInfo.FindSystemTimeZoneById(user.TimeZoneId);
+        }
+
+        public DateTime? GetUserLocalDateTimeNow()
+        {
+            var userTimeZone = this.GetUserTimeZone();
+            if (userTimeZone == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                var userLocalDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, userTimeZone);
+                return userLocalDateTime;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public DateTime GetUserLocalDate()
+        {
+            var userDate = this.GetUserLocalDateTimeNow();
+            return userDate.HasValue ? userDate.Value.Date : DateTime.Today.ToUniversalTime();
+        }
     }
 }

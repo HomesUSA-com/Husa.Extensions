@@ -6,12 +6,12 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>5.1.0</Version>
+        <Version>5.2.1</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.1.0:
-            - Added class for Azure App Configuration
-            - Update Azure.Security.KeyVault.Secrets to 4.6
+            Release 5.2.1:
+            - Added UtcDateTimeConverter
+            - Configure token
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

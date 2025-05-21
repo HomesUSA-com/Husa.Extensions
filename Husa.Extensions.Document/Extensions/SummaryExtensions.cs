@@ -28,18 +28,27 @@ namespace Husa.Extensions.Document.Extensions
 
         public static IEnumerable<SummaryField> GetFieldSummary<TRecord, T>(TRecord newObject, T oldObject, string[] filterFields = null, string[] excludeFields = null)
         {
-            var propertiesInfo = typeof(T).GetProperties().ToList();
+            var propertiesInfo = typeof(T).GetProperties().FilterProperties(filterFields, excludeFields);
+            return GetChangedFields(newObject, oldObject, propertiesInfo);
+        }
 
-            if (filterFields != null && filterFields.Any())
+        public static IEnumerable<PropertyInfo> FilterProperties(this IEnumerable<PropertyInfo> propertiesInfo, string[] filterFields = null, string[] excludeFields = null)
+        {
+            if (filterFields != null && filterFields.Length != 0)
             {
                 propertiesInfo = propertiesInfo.Where(propertyInfo => filterFields.Contains(propertyInfo.Name)).ToList();
             }
 
-            if (excludeFields != null && excludeFields.Any())
+            if (excludeFields != null && excludeFields.Length != 0)
             {
                 propertiesInfo = propertiesInfo.Where(propertyInfo => !excludeFields.Contains(propertyInfo.Name)).ToList();
             }
 
+            return propertiesInfo;
+        }
+
+        public static IEnumerable<SummaryField> GetChangedFields<TRecord, T>(TRecord newObject, T oldObject, IEnumerable<PropertyInfo> propertiesInfo)
+        {
             foreach (var propertyInfo in propertiesInfo)
             {
                 var newValue = propertyInfo.GetValue(newObject);

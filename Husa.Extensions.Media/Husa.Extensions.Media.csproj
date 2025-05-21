@@ -1,14 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Media</AssemblyName>
         <RootNamespace>Husa.Extensions.Media</RootNamespace>
         <Product>Api Extensions</Product>
         <Description>Husa Media</Description>
         <PackageId>Husa.Extensions.Media</PackageId>
-        <Version>4.0.5</Version>
+        <Version>4.0.8</Version>
         <PackageReleaseNotes>
-            Release 4.0.5:
-            - Undo media file extension changes.
+            Release 4.0.8:
+            - Add Standard File Format Converter Method For Images.
+            - Update ImageSharp to 3.1.7.
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
@@ -28,7 +29,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
         <PackageReference Include="Azure.Storage.Blobs" Version="12.13.1" />
     </ItemGroup>
 </Project>
