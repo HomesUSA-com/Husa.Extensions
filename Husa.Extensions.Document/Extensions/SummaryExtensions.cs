@@ -132,6 +132,7 @@ namespace Husa.Extensions.Document.Extensions
             }
 
             var summary = new List<SummaryField>();
+            var equalElements = new List<SummaryField>();
             var comparer = new TComparer();
             var oldElems = oldElements.ToList();
 
@@ -143,7 +144,7 @@ namespace Husa.Extensions.Document.Extensions
                     if (!ignoreEqualElements)
                     {
                         var newElem = FilterObjectProperties(currentElem, filterFields, excludeFields);
-                        summary.Add(new SummaryField(currentElem.FieldType, newElem, newElem));
+                        equalElements.Add(new SummaryField(currentElem.FieldType, newElem, newElem));
                     }
 
                     oldElems.RemoveAt(oldElementIndex);
@@ -157,6 +158,11 @@ namespace Husa.Extensions.Document.Extensions
             if (oldElems.Count != 0)
             {
                 summary.AddRange(oldElems.GetSummaryFields(false, filterFields, excludeFields));
+            }
+
+            if (summary.Count != 0)
+            {
+                summary.AddRange(equalElements);
             }
 
             return summary;
