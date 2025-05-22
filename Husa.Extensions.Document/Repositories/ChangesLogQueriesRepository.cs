@@ -1,11 +1,11 @@
 namespace Husa.Extensions.Document.Repositories
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Husa.Extensions.Document.Interfaces;
     using Husa.Extensions.Document.Models;
-    using Husa.Extensions.Document.Projections;
     using Husa.Extensions.Document.QueryFilters;
     using Microsoft.Azure.Cosmos;
     using Microsoft.Azure.Cosmos.Linq;
@@ -21,15 +21,14 @@ namespace Husa.Extensions.Document.Repositories
         {
         }
 
-        public virtual async Task<DocumentGridQueryResult<SavedChangesLogQueryResult>> GetAsync(RequestBaseQueryFilter queryFilter, CancellationToken cancellationToken = default)
+        public virtual async Task<DocumentGridQueryResult<ChangesLogQueryResult>> GetAsync(RequestBaseQueryFilter queryFilter, CancellationToken cancellationToken = default)
         {
             var queryRequestOptions = new QueryRequestOptions() { MaxItemCount = queryFilter.Take };
             var continuationToken = queryFilter.IsPrint ? null : queryFilter.ContinuationToken;
 
-            var query = this.FilterByQueryFilter(this.DbContainer.GetItemLinqQueryable<SavedChangesLog>(false, continuationToken, queryRequestOptions), queryFilter)
-                .Select(SavedChangesLogProjection.ToProjection);
+            var query = this.FilterByQueryFilter(this.DbContainer.GetItemLinqQueryable<ChangesLogQueryResult>(false, continuationToken, queryRequestOptions), queryFilter);
 
-            var queryCount = await this.FilterByQueryFilter(this.DbContainer.GetItemLinqQueryable<SavedChangesLog>(false), queryFilter)
+            var queryCount = await this.FilterByQueryFilter(this.DbContainer.GetItemLinqQueryable<ChangesLogQueryResult>(false), queryFilter)
                 .CountAsync(cancellationToken);
 
             var requests = await this.ReadDocumentFeedToGrid(query, continuationToken, cancellationToken: cancellationToken);
@@ -38,7 +37,16 @@ namespace Husa.Extensions.Document.Repositories
             return requests;
         }
 
-        protected virtual IQueryable<SavedChangesLog> FilterByQueryFilter(IQueryable<SavedChangesLog> records, RequestBaseQueryFilter queryFilter)
+        public virtual Task<SavedChangesLog> GetByIdAsync(Guid documentId, CancellationToken cancellationToken = default)
+        {
+            var query = this.DbContainer
+                .GetItemLinqQueryable<SavedChangesLog>()
+                .Where(x => x.Id == documentId);
+
+            return this.ReadFirstDocument(query, cancellationToken);
+        }
+
+        protected virtual IQueryable<ChangesLogQueryResult> FilterByQueryFilter(IQueryable<ChangesLogQueryResult> records, RequestBaseQueryFilter queryFilter)
         {
             if (queryFilter.EntityId.HasValue)
             {

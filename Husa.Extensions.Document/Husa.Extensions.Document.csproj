@@ -6,7 +6,7 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.3.0-dev002</Version>
+        <Version>0.3.0-dev003</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
             Release 0.3.0:

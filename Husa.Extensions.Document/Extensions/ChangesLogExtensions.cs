@@ -4,11 +4,11 @@ namespace Husa.Extensions.Document.Extensions
     using System.Linq;
     using System.Reflection;
     using Husa.Extensions.Document.Interfaces;
-    using Husa.Extensions.Document.Models;
+    using Husa.Extensions.Document.ValueObjects;
 
     public static class ChangesLogExtensions
     {
-        public static void AddSectionProperties(this Dictionary<string, ChangedField> fields, Dictionary<string, (object Original, object Updated)> entityPairs, string prefix = "")
+        public static void AddSectionProperties(this List<SummaryField> fields, Dictionary<string, (object Original, object Updated)> entityPairs, string prefix = "")
         {
             foreach (var (key, (original, updated)) in entityPairs)
             {
@@ -27,7 +27,7 @@ namespace Husa.Extensions.Document.Extensions
         /// <param name="updated">The updated object.</param>
         /// <param name="prefix">Optional prefix for field names.</param>
         public static void AddProperties(
-            this Dictionary<string, ChangedField> fields,
+            this List<SummaryField> fields,
             object original,
             object updated,
             string prefix = "",
@@ -49,16 +49,17 @@ namespace Husa.Extensions.Document.Extensions
             foreach (var fieldSummary in summaryFields)
             {
                 string key = $"{prefix}{fieldSummary.FieldName}";
-                fields[key] = new ChangedField
+                fields.Add(new()
                 {
+                    FieldName = key,
                     OldValue = fieldSummary.OldValue,
                     NewValue = fieldSummary.NewValue,
-                };
+                });
             }
         }
 
         public static void AddPropertiesWithComparer<T, TComparer>(
-            this Dictionary<string, ChangedField> fields,
+            this List<SummaryField> fields,
             ICollection<T> updated,
             IEnumerable<T> original,
             string fieldName,
@@ -78,11 +79,12 @@ namespace Husa.Extensions.Document.Extensions
                 return;
             }
 
-            fields[fieldName] = new ChangedField
+            fields.Add(new()
             {
+                FieldName = fieldName,
                 OldValue = summaryFields.Select(x => x.OldValue).Where(x => x != null),
                 NewValue = summaryFields.Select(x => x.NewValue).Where(x => x != null),
-            };
+            });
         }
     }
 }
