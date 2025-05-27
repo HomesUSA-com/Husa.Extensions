@@ -5,10 +5,10 @@
         <Product>Api Extensions</Product>
         <Description>Husa Media</Description>
         <PackageId>Husa.Extensions.Media</PackageId>
-        <Version>4.0.8</Version>
+        <Version>4.0.9</Version>
         <PackageReleaseNotes>
-            Release 4.0.8:
-            - Add Standard File Format Converter Method For Images.
+            Release 4.0.9:
+            - Update Standard File Format Converter Method For Images.
             - Update ImageSharp to 3.1.7.
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>

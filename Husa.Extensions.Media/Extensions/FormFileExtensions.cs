@@ -14,7 +14,7 @@ namespace Husa.Extensions.Media.Extensions
         public const string RegexExp = @"<script|<html|<head|<title|<body|<pre|<table|<a\s+href|<img|<plaintext|<cross\-domain\-policy";
         private static readonly string[] ValidContentTypes = new[] { ManagedMediaTypes.Jpg, ManagedMediaTypes.Jpeg, ManagedMediaTypes.Pjpeg, ManagedMediaTypes.Gif, ManagedMediaTypes.Xpng, ManagedMediaTypes.Png, ManagedMediaTypes.Svg, ManagedMediaTypes.Pdf };
 
-        public static IFormFile ToStandarFileFormat(this IFormFile file)
+        public static IFormFile ToStandardFileFormat(this IFormFile file)
             => file?.ContentType.StartsWith("image/", StringComparison.CurrentCultureIgnoreCase) ?? false ? file.ToJpeg() : file;
 
         public static IFormFile ToJpeg(this IFormFile file)
@@ -37,10 +37,10 @@ namespace Husa.Extensions.Media.Extensions
                         {
                             Headers = new HeaderDictionary
                             {
-                                { "Content-Type", ManagedMediaTypes.Jpg },
+                                { "Content-Type", ManagedMediaTypes.Jpeg },
                                 { "Content-Disposition", $"form-data; name=\"{file.Name}\"; filename=\"{filename}\"" },
                             },
-                            ContentType = ManagedMediaTypes.Jpg,
+                            ContentType = ManagedMediaTypes.Jpeg,
                         };
                     }
                 }
