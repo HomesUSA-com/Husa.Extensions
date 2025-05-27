@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Common</AssemblyName>
@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.2.1</Version>
+        <Version>4.2.2</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.2.1:
+            Release 4.2.2:
             - Added DateCompare to extensions
+            - Added UnauthorizedAccessException to ExceptionLoggingFilterAttribute
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
