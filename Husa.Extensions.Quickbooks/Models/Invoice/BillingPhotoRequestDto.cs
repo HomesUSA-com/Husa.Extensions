@@ -38,5 +38,6 @@ namespace Husa.Extensions.Quickbooks.Models.Invoice
         public string PlanName { get; set; }
         public string ModelAddress { get; set; }
         public string UnitNumber { get; set; }
+        public int? NumberOfPhotosEdited { get; set; }
     }
 }
