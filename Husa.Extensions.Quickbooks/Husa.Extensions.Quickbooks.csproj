@@ -6,14 +6,15 @@
         <Product>Api Quickbooks</Product>
         <Description>Husa Quickbooks</Description>
         <PackageId>Husa.Extensions.Quickbooks</PackageId>
-        <Version>1.1.4</Version>
+        <Version>1.1.5</Version>
         <PackageReleaseNotes>
-            Release 1.1.4:
+            Release 1.1.5:
             - Added contracts for PhotoRequest Invoice
             - Type string parameter added to BillingPhotoRequestDto
             - Updated constanst
             - ModelAddress added to BillingPhotoRequestDto
             - UnitNumber added to BillingPhotoRequestDto
+            - NumberOfPhotosEdited added to BillingPhotoRequestDto
         </PackageReleaseNotes>
         <PackageTags>Extensions; Media;</PackageTags>
         <IsPackable>true</IsPackable>
