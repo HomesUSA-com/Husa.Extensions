@@ -39,6 +39,10 @@ namespace Husa.Extensions.Common.Exceptions.Filters
                     handledApiError.Message = domainException.Message;
                     context.Result = new BadRequestObjectResult(handledApiError);
                     break;
+                case UnauthorizedAccessException:
+                    context.Result = new ForbidResult();
+                    break;
+
                 default:
 #if !DEBUG
                     var apiError = new ApiError("An unhandled error occurred.")
