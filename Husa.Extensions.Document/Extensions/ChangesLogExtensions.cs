@@ -44,17 +44,16 @@ namespace Husa.Extensions.Document.Extensions
                     p.CanRead && p.CanWrite &&
                     !p.PropertyType.FullName.StartsWith("Microsoft.EntityFrameworkCore"))
                 .FilterProperties(filterFields, excludeFields);
-            var summaryFields = SummaryExtensions.GetChangedFields(updated, original, properties);
 
-            foreach (var fieldSummary in summaryFields)
+            foreach (var propertyInfo in properties)
             {
-                string key = $"{prefix}{fieldSummary.FieldName}";
-                fields.Add(new()
+                var newValue = propertyInfo.GetValue(updated);
+                var oldValue = propertyInfo.GetValue(original);
+                var summaryField = propertyInfo.GetCustomFieldChanges(newValue, oldValue, namePrefix: prefix, transformEnumToString: true);
+                if (summaryField != null)
                 {
-                    FieldName = key,
-                    OldValue = fieldSummary.OldValue,
-                    NewValue = fieldSummary.NewValue,
-                });
+                    fields.Add(summaryField);
+                }
             }
         }
 
@@ -73,7 +72,7 @@ namespace Husa.Extensions.Document.Extensions
                 return;
             }
 
-            var summaryFields = updated.GetSummaryByComparer<T, TComparer>(original, true, filterFields, excludeFields);
+            var summaryFields = updated.GetSummaryByComparer<T, TComparer>(original, true, filterFields, excludeFields, transformEnumToString: true);
             if (summaryFields == null || !summaryFields.Any())
             {
                 return;
