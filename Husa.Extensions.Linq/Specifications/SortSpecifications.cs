@@ -1,11 +1,18 @@
 namespace Husa.Extensions.Linq.Specifications
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Dynamic.Core;
     using System.Reflection;
 
     public static class SortSpecifications
     {
+        public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> records, Func<T, TKey> keySelector, bool isDescending)
+        {
+            return isDescending ? records?.OrderByDescending(keySelector) : records?.OrderBy(keySelector);
+        }
+
         public static IOrderedQueryable<T> ApplySortByFields<T>(this IQueryable<T> records, string orderQueryString)
         {
             var attributeName = GetAttributeName<T>(orderQueryString?[1..]);
