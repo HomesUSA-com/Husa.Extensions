@@ -6,11 +6,12 @@
         <Product>Linq Extensions</Product>
         <Description>Husa Linq</Description>
         <PackageId>Husa.Extensions.Linq</PackageId>
-        <Version>4.1.0</Version>
+        <Version>4.1.1</Version>
         <PackageTags>Extensions; Linq;</PackageTags>
         <PackageReleaseNotes>
-            Release 4.1.0:
+            Release 4.1.1:
             - Added UtcDateTimeValueConverter
+            - Add ApplySortByFields extension for IEnumerables
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
