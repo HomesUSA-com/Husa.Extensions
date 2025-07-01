@@ -6,10 +6,10 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.3.1</Version>
+        <Version>0.3.2</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.3.1:
+            Release 0.3.2:
             - Added saved changes log
             - Copy properties using dot-separated field name path
         </PackageReleaseNotes>

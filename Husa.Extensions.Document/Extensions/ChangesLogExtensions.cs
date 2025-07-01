@@ -12,7 +12,7 @@ namespace Husa.Extensions.Document.Extensions
         {
             foreach (var (key, (original, updated)) in entityPairs)
             {
-                if (original != null && updated != null)
+                if (original != null || updated != null)
                 {
                     fields.AddProperties(original, updated, $"{prefix}{key}.");
                 }
@@ -34,7 +34,7 @@ namespace Husa.Extensions.Document.Extensions
             string[] filterFields = null,
             string[] excludeFields = null)
         {
-            if (original == null || updated == null)
+            if (updated == null)
             {
                 return;
             }
@@ -48,7 +48,7 @@ namespace Husa.Extensions.Document.Extensions
             foreach (var propertyInfo in properties)
             {
                 var newValue = propertyInfo.GetValue(updated);
-                var oldValue = propertyInfo.GetValue(original);
+                var oldValue = original != null ? propertyInfo.GetValue(original) : null;
                 var summaryField = propertyInfo.GetCustomFieldChanges(newValue, oldValue, namePrefix: prefix, transformEnumToString: true);
                 if (summaryField != null)
                 {

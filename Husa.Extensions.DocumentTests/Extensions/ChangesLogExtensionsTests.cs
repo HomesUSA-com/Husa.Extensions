@@ -10,6 +10,30 @@ namespace Husa.Extensions.Document.Tests.Extensions
     public class ChangesLogExtensionsTests
     {
         [Fact]
+        public void AddProperties_OriginalIsNull_AddsChangesToList()
+        {
+            // Arrange
+            var fields = new List<SummaryField>();
+            var original = (TestClass)null;
+            var updated = new TestClass { Name = "Updated", Value = 20 };
+
+            // Act
+            fields.AddProperties(original, updated);
+
+            // Assert
+            Assert.Equal(2, fields.Count);
+            var nameField = fields.Find(f => f.FieldName == "Name");
+            var valueField = fields.Find(f => f.FieldName == "Value");
+
+            Assert.NotNull(nameField);
+            Assert.NotNull(valueField);
+            Assert.Null(nameField.OldValue);
+            Assert.Null(valueField.OldValue);
+            Assert.Equal("Updated", nameField.NewValue);
+            Assert.Equal(20, valueField.NewValue);
+        }
+
+        [Fact]
         public void AddProperties_WithDifferentValues_AddsChangesToList()
         {
             // Arrange
@@ -190,24 +214,6 @@ namespace Husa.Extensions.Document.Tests.Extensions
             Assert.Equal("Section.TestEntity.Name", field.FieldName);
             Assert.Equal("Original", field.OldValue);
             Assert.Equal("Updated", field.NewValue);
-        }
-
-        [Fact]
-        public void AddSectionProperties_WithNullOriginal_SkipsComparison()
-        {
-            // Arrange
-            var fields = new List<SummaryField>();
-
-            var entityPairs = new Dictionary<string, (object Original, object Updated)>
-            {
-                { "TestEntity", (null, new TestClass { Name = "Updated" }) },
-            };
-
-            // Act
-            fields.AddSectionProperties(entityPairs);
-
-            // Assert
-            Assert.Empty(fields);
         }
 
         [Fact]
