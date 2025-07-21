@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Api</AssemblyName>
@@ -6,12 +6,13 @@
         <Product>Api Extensions</Product>
         <Description>Husa Api</Description>
         <PackageId>Husa.Extensions.Api</PackageId>
-        <Version>5.2.1</Version>
+        <Version>5.4.0-dev001</Version>
         <PackageTags>Extensions; Api;</PackageTags>
         <PackageReleaseNotes>
-            Release 5.2.1:
+            Release 5.4.0:
             - Added UtcDateTimeConverter
             - Configure token
+            - Update Microsoft.Extensions.Hosting.Abstractions to 9.0.7
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
@@ -20,7 +21,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="8.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.11" />
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.7" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0'">
