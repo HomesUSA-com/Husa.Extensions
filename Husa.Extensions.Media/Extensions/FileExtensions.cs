@@ -22,7 +22,7 @@ namespace Husa.Extensions.Media.Extensions
         {
             var metadata = new Dictionary<string, string>
             {
-                { "FileName", file.FileName ?? string.Empty },
+                { "FileName", file.FileName?.Trim() ?? string.Empty },
                 { "FileContentType", file.ContentType },
             };
             extraInfo?.ToList().ForEach(item => metadata.Add(item.Key, item.Value));
