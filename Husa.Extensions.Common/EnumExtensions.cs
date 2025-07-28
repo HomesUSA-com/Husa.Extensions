@@ -93,20 +93,25 @@ namespace Husa.Extensions.Common
             return enumName is null ? null : (T)Enum.Parse(typeof(T), enumName);
         }
 
+        public static T? ToEnumOrNullFromString<T>(this string enumValue, bool ignoreCase = true)
+            where T : struct, Enum
+        {
+            if (!string.IsNullOrEmpty(enumValue) && Enum.TryParse<T>(enumValue, ignoreCase: ignoreCase, out var result))
+            {
+                return result;
+            }
+
+            return null;
+        }
+
         public static T ToEnumFromString<T>(this string enumValue)
-            where T : Enum
+            where T : struct, Enum
         {
             var result = (T)default;
             if (!string.IsNullOrEmpty(enumValue))
             {
-                if (Enum.IsDefined(typeof(T), enumValue))
-                {
-                    result = (T)Enum.Parse(typeof(T), enumValue);
-                }
-                else
-                {
-                    throw new ArgumentException(string.Format("Unexpected value parsing. Expected {0} string, got {1}", typeof(T).Name, enumValue));
-                }
+                return enumValue.ToEnumOrNullFromString<T>(ignoreCase: false)
+                    ?? throw new ArgumentException(string.Format("Unexpected value parsing. Expected {0} string, got {1}", typeof(T).Name, enumValue));
             }
 
             return result;
@@ -151,21 +156,27 @@ namespace Husa.Extensions.Common
         }
 
         public static IEnumerable<T> CsvToEnum<T>(this string enumElements, bool enumMember = true)
-            where T : Enum
+            where T : struct, Enum
+            => enumElements.CsvToEnumerableEnum<T>(useEnumMember: enumMember, ignoreCase: false);
+
+        public static IEnumerable<T> CsvToEnumerableEnum<T>(this string enumElements, bool useEnumMember, bool ignoreCase)
+            where T : struct, Enum
         {
             if (string.IsNullOrWhiteSpace(enumElements))
             {
-                return Array.Empty<T>();
+                return [];
             }
 
-            var values = enumElements.Split(",");
+            IEnumerable<string> values = enumElements.Split(",");
 
-            if (enumMember)
+            if (useEnumMember)
             {
-                return values.Select(feature => feature.ToEnumNameFromEnumMember<T>()).Where(name => name != null).Select(name => (T)Enum.Parse(typeof(T), name));
+                values = values.Select(feature => feature.ToEnumNameFromEnumMember<T>());
             }
 
-            return values.Select(feature => feature.ToEnumFromString<T>());
+            return values.Select(feature => feature.ToEnumOrNullFromString<T>(ignoreCase: ignoreCase))
+                .Where(name => name.HasValue)
+                .Select(name => name.Value);
         }
 
         public static TEnum? GetEnumFromText<TEnum>(this string enumValuetoFind)

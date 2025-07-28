@@ -26,10 +26,20 @@ namespace Husa.Extensions.Document.Extensions
             };
         }
 
-        public static IEnumerable<SummaryField> GetFieldSummary<TRecord, T>(TRecord newObject, T oldObject, string[] filterFields = null, string[] excludeFields = null)
+        public static IEnumerable<SummaryField> GetFieldSummary<TRecord, T>(TRecord newObject, T oldObject, string[] filterFields = null, string[] excludeFields = null, string namePrefix = "")
         {
             var propertiesInfo = typeof(T).GetProperties().FilterProperties(filterFields, excludeFields);
-            return GetChangedFields(newObject, oldObject, propertiesInfo);
+            foreach (var propertyInfo in propertiesInfo)
+            {
+                var newValue = propertyInfo.GetValue(newObject);
+                var oldValue = oldObject is null ? null : propertyInfo.GetValue(oldObject);
+
+                var summaryField = propertyInfo.GetCustomFieldChanges(newValue, oldValue, namePrefix: namePrefix, transformEnumToString: false);
+                if (summaryField != null)
+                {
+                    yield return summaryField;
+                }
+            }
         }
 
         public static IEnumerable<PropertyInfo> FilterProperties(this IEnumerable<PropertyInfo> propertiesInfo, string[] filterFields = null, string[] excludeFields = null)
@@ -47,126 +57,127 @@ namespace Husa.Extensions.Document.Extensions
             return propertiesInfo;
         }
 
-        public static IEnumerable<SummaryField> GetChangedFields<TRecord, T>(TRecord newObject, T oldObject, IEnumerable<PropertyInfo> propertiesInfo)
+        public static SummaryField GetCustomFieldChanges(this PropertyInfo propertyInfo, object newValue, object oldValue, string namePrefix, bool transformEnumToString = false)
         {
-            foreach (var propertyInfo in propertiesInfo)
+            var fieldName = string.IsNullOrWhiteSpace(namePrefix) ? propertyInfo.Name : $"{namePrefix}{propertyInfo.Name}";
+            switch (newValue)
             {
-                var newValue = propertyInfo.GetValue(newObject);
-                var oldValue = oldObject is null ? null : propertyInfo.GetValue(oldObject);
+                case string newValueAsString:
+                    var oldString = ((string)oldValue ?? string.Empty).Trim();
+                    var newString = newValueAsString.Trim();
+                    if (!string.Equals(oldString, newString, StringComparison.Ordinal))
+                    {
+                        return new SummaryField(fieldName, oldValue: oldValue, newValue: newValue, transformEnumToString);
+                    }
 
-                switch (newValue)
-                {
-                    case string newValueAsString:
-                        var oldString = ((string)oldValue ?? string.Empty).Trim();
-                        var newString = newValueAsString.Trim();
-                        if (!string.Equals(oldString, newString, StringComparison.Ordinal))
-                        {
-                            yield return new SummaryField(fieldName: propertyInfo.Name, oldValue: oldValue, newValue: newValue);
-                        }
+                    break;
+                case IEnumerable:
+                    var underlyingType = propertyInfo.PropertyType.GetGenericArguments()[0];
+                    var sequenceEqualMethod = typeof(Enumerable)
+                        .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                        .Single(m => m.Name == nameof(Enumerable.SequenceEqual) && m.GetParameters().Length == 2)
+                        .MakeGenericMethod(underlyingType);
+                    if (oldValue is null && IsEmptyIEnumerable(newValue))
+                    {
+                        return null;
+                    }
 
-                        break;
-                    case IEnumerable:
-                        var underlyingType = propertyInfo.PropertyType.GetGenericArguments()[0];
-                        var sequenceEqualMethod = typeof(Enumerable)
-                            .GetMethods(BindingFlags.Public | BindingFlags.Static)
-                            .Single(m => m.Name == nameof(Enumerable.SequenceEqual) && m.GetParameters().Length == 2)
-                            .MakeGenericMethod(underlyingType);
-                        if (oldValue is null && IsEmptyIEnumerable(newValue))
-                        {
-                            break;
-                        }
+                    if (oldValue is null)
+                    {
+                        return new SummaryField(fieldName, oldValue: oldValue, newValue: newValue, transformEnumToString);
+                    }
 
-                        if (oldValue is null)
-                        {
-                            yield return new SummaryField(propertyInfo.Name, oldValue, newValue);
+                    var (newValueOrdered, oldValueOrdered) = SortArrays(underlyingType, newValue, oldValue);
+                    var valueOrdered = new object[] { newValueOrdered, oldValueOrdered };
+                    var areEqual = (bool)sequenceEqualMethod.Invoke(obj: null, valueOrdered);
+                    if (areEqual)
+                    {
+                        return null;
+                    }
 
-                            break;
-                        }
+                    return new SummaryField(fieldName, oldValue: oldValueOrdered, newValue: newValueOrdered, transformEnumToString);
+                default:
+                    if (object.Equals(newValue, oldValue) || (newValue is null && IsEmptyIEnumerable(oldValue)))
+                    {
+                        return null;
+                    }
 
-                        var (newValueOrdered, oldValueOrdered) = SortArrays(underlyingType, newValue, oldValue);
-                        var valueOrdered = new object[] { newValueOrdered, oldValueOrdered };
-                        var areEqual = (bool)sequenceEqualMethod.Invoke(obj: null, valueOrdered);
-                        if (areEqual)
-                        {
-                            break;
-                        }
-
-                        yield return new SummaryField(propertyInfo.Name, oldValueOrdered, newValueOrdered);
-
-                        break;
-                    default:
-                        if (object.Equals(newValue, oldValue))
-                        {
-                            break;
-                        }
-
-                        if (newValue is null && IsEmptyIEnumerable(oldValue))
-                        {
-                            break;
-                        }
-
-                        yield return new SummaryField(propertyInfo.Name, oldValue, newValue);
-
-                        break;
-                }
+                    return new SummaryField(fieldName, oldValue: oldValue, newValue: newValue, transformEnumToString);
             }
+
+            return null;
         }
 
-        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(this ICollection<T> currentElements, IEnumerable<T> oldElements)
+        public static IEnumerable<SummaryField> GetSummaryByComparer<T, TComparer>(
+            this ICollection<T> currentElements,
+            IEnumerable<T> oldElements,
+            bool ignoreEqualElements = false,
+            string[] filterFields = null,
+            string[] excludeFields = null,
+            bool transformEnumToString = false)
             where T : IProvideType
             where TComparer : IEqualityComparer<T>, new()
         {
-            static IEnumerable<SummaryField> FieldSummary(IEnumerable<T> fieldElements, bool newValues)
-            {
-                foreach (var field in fieldElements)
-                {
-                    yield return new SummaryField(field.FieldType, newValues ? null : field, newValues ? field : null);
-                }
-            }
-
             if (oldElements == null)
             {
-                return FieldSummary(currentElements, newValues: true);
+                return GetSummaryFields(currentElements, true, filterFields, excludeFields, transformEnumToString);
             }
 
             if (!currentElements.Any())
             {
-                return FieldSummary(oldElements, newValues: false);
+                return GetSummaryFields(oldElements, false, filterFields, excludeFields, transformEnumToString);
             }
 
             var summary = new List<SummaryField>();
-            var equalElements = new List<T>();
+            var equalElements = new List<SummaryField>();
             var comparer = new TComparer();
+            var oldElems = oldElements.ToList();
 
-            IEnumerable<T> currentElems = currentElements;
-            List<T> oldElems = oldElements.ToList();
-
-            foreach (var currentElem in currentElems)
+            foreach (var currentElem in currentElements)
             {
                 var oldElementIndex = oldElems.FindIndex(x => comparer.Equals(x, currentElem));
                 if (oldElementIndex > -1)
                 {
-                    equalElements.Add(currentElem);
+                    if (!ignoreEqualElements)
+                    {
+                        var newElem = FilterObjectProperties(currentElem, filterFields, excludeFields);
+                        equalElements.Add(new SummaryField(currentElem.FieldType, newElem, newElem, transformEnumToString));
+                    }
+
                     oldElems.RemoveAt(oldElementIndex);
                 }
                 else
                 {
-                    // new
-                    summary.Add(new SummaryField(currentElem.FieldType, null, currentElem));
+                    var newElement = FilterObjectProperties(currentElem, filterFields, excludeFields);
+                    summary.Add(new SummaryField(currentElem.FieldType, null, newElement, transformEnumToString));
                 }
             }
 
-            if (oldElems.Any())
+            if (oldElems.Count != 0)
             {
-                summary.AddRange(FieldSummary(oldElems, newValues: false));
+                summary.AddRange(GetSummaryFields(oldElems, false, filterFields, excludeFields, transformEnumToString));
             }
 
-            if (summary.Any())
+            if (summary.Count != 0)
             {
-                summary.AddRange(equalElements.Select(elem => new SummaryField(elem.FieldType, elem, elem)));
+                summary.AddRange(equalElements);
             }
 
             return summary;
+
+            static IEnumerable<SummaryField> GetSummaryFields(
+                IEnumerable<T> fieldElements,
+                bool newValues,
+                string[] filterFields,
+                string[] excludeFields,
+                bool transformEnumToString)
+            {
+                foreach (var field in fieldElements)
+                {
+                    var fieldObj = FilterObjectProperties(field, filterFields, excludeFields);
+                    yield return new SummaryField(field.FieldType, newValues ? null : fieldObj, newValues ? fieldObj : null, transformEnumToString);
+                }
+            }
         }
 
         public static void AddFieldsToSummary(List<SummarySection> summarySections, string sectionName, params SummaryField[] fieldsToAdd)
@@ -187,6 +198,20 @@ namespace Husa.Extensions.Document.Extensions
             }
 
             return false;
+        }
+
+        private static object FilterObjectProperties<T>(
+            T obj,
+            string[] filterFields = null,
+            string[] excludeFields = null)
+        {
+            if (filterFields == null && excludeFields == null)
+            {
+                return obj;
+            }
+
+            var properties = obj.GetType().GetProperties().FilterProperties(filterFields, excludeFields);
+            return properties.ToDictionary(p => p.Name, p => p.GetValue(obj));
         }
 
         private static (object NewValueOrdered, object OldValueOrdered) SortArrays(Type underlyingType, object newValue, object oldValue)

@@ -1,9 +1,8 @@
 namespace Husa.Extensions.Common.Exceptions.Filters
 {
     using System;
-    using System.Net;
     using System.Net.Http;
-    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.Logging;
@@ -17,56 +16,48 @@ namespace Husa.Extensions.Common.Exceptions.Filters
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public override Task OnExceptionAsync(ExceptionContext context)
+        public override void OnException(ExceptionContext context)
         {
-            var errorMessage = string.Empty;
-            var handledApiError = new ApiError(errorMessage);
+            var errorMessage = context.Exception.GetBaseException()?.Message
+                ?? context.Exception.Message
+                ?? "An unhandled error occurred.";
+            this.logger.LogError(context.Exception, "errorMessage: {errorMessage}", errorMessage);
+
+            ApiError apiError = new(errorMessage);
+#if DEBUG
+            apiError.Detail = context.Exception.StackTrace;
+#endif
+
+            var result = new ObjectResult(apiError)
+            {
+                StatusCode = StatusCodes.Status500InternalServerError,
+            };
+
+            // Handle specific exceptions with different status codes
             switch (context.Exception)
             {
-                case NotFoundException notFoundException:
-                    handledApiError.Message = notFoundException.Message;
-                    context.Result = new NotFoundObjectResult(handledApiError);
-                    break;
-                case HttpRequestException httpException when httpException.StatusCode == HttpStatusCode.NotFound:
-                    handledApiError.Message = httpException.Message;
-                    context.Result = new NotFoundObjectResult(handledApiError);
-                    break;
-                case HttpRequestException httpException:
-                    handledApiError.Message = httpException.Message;
-                    context.Result = new BadRequestObjectResult(handledApiError);
-                    break;
-                case DomainException domainException:
-                    handledApiError.Message = domainException.Message;
-                    context.Result = new BadRequestObjectResult(handledApiError);
+                case EntityAlreadyExistsException:
+                    result.StatusCode = StatusCodes.Status409Conflict;
                     break;
                 case UnauthorizedAccessException:
-                    context.Result = new ForbidResult();
+                    result.StatusCode = StatusCodes.Status403Forbidden;
                     break;
-
-                default:
-#if !DEBUG
-                    var apiError = new ApiError("An unhandled error occurred.")
-                    {
-                        Detail = null,
-                    };
-#else
-                    var exceptionMessage = context.Exception.GetBaseException().Message;
-                    string stackTrace = context.Exception.StackTrace;
-
-                    var apiError = new ApiError(exceptionMessage)
-                    {
-                        Detail = stackTrace,
-                    };
-#endif
-                    errorMessage = "The request could not be served.";
-                    context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    context.Result = new JsonResult(apiError);
+                case NotFoundException:
+                    result.StatusCode = StatusCodes.Status404NotFound;
+                    break;
+                case ArgumentNullException:
+                case ArgumentException:
+                case DomainException:
+                case InvalidOperationException:
+                    result.StatusCode = StatusCodes.Status400BadRequest;
+                    break;
+                case HttpRequestException httpException:
+                    result.StatusCode = (int)httpException.StatusCode;
                     break;
             }
 
-            this.logger.LogError(context.Exception, "errorMessage: {errorMessage}", errorMessage);
+            context.Result = result;
             context.ExceptionHandled = true;
-            return base.OnExceptionAsync(context);
         }
     }
 }

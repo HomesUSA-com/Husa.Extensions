@@ -2,11 +2,12 @@ namespace Husa.Extensions.Document.ValueObjects
 {
     using System;
     using System.Collections.Generic;
+    using Husa.Extensions.Document.Extensions;
     using Husa.Extensions.Domain.ValueObjects;
 
     public class SummaryField : ValueObject
     {
-        public SummaryField(string fieldName, object oldValue, object newValue)
+        public SummaryField(string fieldName, object oldValue, object newValue, bool transformEnumToString = false)
         {
             if (string.IsNullOrWhiteSpace(fieldName))
             {
@@ -14,8 +15,9 @@ namespace Husa.Extensions.Document.ValueObjects
             }
 
             this.FieldName = fieldName;
-            this.OldValue = oldValue;
-            this.NewValue = newValue;
+
+            this.OldValue = transformEnumToString ? oldValue.TransformEnumToString() : oldValue;
+            this.NewValue = transformEnumToString ? newValue.TransformEnumToString() : newValue;
         }
 
         public SummaryField()
