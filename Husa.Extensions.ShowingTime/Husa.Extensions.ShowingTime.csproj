@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>Husa.Extensions.ShowingTime</AssemblyName>
+        <RootNamespace>Husa.Extensions.ShowingTime</RootNamespace>
+        <Product>ShowingTime Extensions</Product>
+        <Description>Husa ShowingTime</Description>
+        <PackageId>Husa.Extensions.ShowingTime</PackageId>
+        <Version>0.1.0</Version>
+        <PackageTags>Extensions; ShowingTime;</PackageTags>
+        <PackageReleaseNotes>
+            Release 0.1.0:
+            - Showing Time
+        </PackageReleaseNotes>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Husa.Extensions.Domain" Version="2.1.3" />
+    </ItemGroup>
+
+</Project>

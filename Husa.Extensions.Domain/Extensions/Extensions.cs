@@ -37,6 +37,27 @@ namespace Husa.Extensions.Domain.Extensions
             }).Select(x => x.Name);
         }
 
+        public static void CopyProperties(this object target, IEnumerable<string> include)
+        {
+            if (target == null || include == null || !include.Any())
+            {
+                return;
+            }
+
+            Type sourceType = target.GetType();
+            Type targetType = target.GetType();
+            var sourceProperties = sourceType.GetProperties().Where(p => include.Contains(p.Name));
+            foreach (var property in sourceProperties)
+            {
+                var targetProperty = targetType.GetProperty(property.Name);
+                if (targetProperty != null && targetProperty.CanWrite)
+                {
+                    var sourceValue = property.GetValue(target);
+                    targetProperty.SetValue(target, sourceValue, null);
+                }
+            }
+        }
+
         public static IEnumerable<string> EnumCollectionToStringCollection(object obj, Type enumType)
         {
             if (obj == null)

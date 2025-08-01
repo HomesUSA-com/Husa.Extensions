@@ -6,13 +6,14 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>2.1.3</Version>
+        <Version>2.1.4</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.1.2:
+            Release 2.1.4:
             - Added support net8 frameworks
             - Added CleanAfterKeyword
             - Added CleanForComparison
+            - Move CopyProperties to extensions
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

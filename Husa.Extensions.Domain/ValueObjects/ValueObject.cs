@@ -3,6 +3,7 @@ namespace Husa.Extensions.Domain.ValueObjects
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Husa.Extensions.Domain.Extensions;
 
     [Serializable]
     public abstract class ValueObject : IComparable
@@ -37,26 +38,7 @@ namespace Husa.Extensions.Domain.ValueObjects
             return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
         }
 
-        public void CopyProperties(object target, IEnumerable<string> include)
-        {
-            if (target == null || include == null || !include.Any())
-            {
-                return;
-            }
-
-            Type sourceType = this.GetType();
-            Type targetType = target.GetType();
-            var sourceProperties = sourceType.GetProperties().Where(p => include.Contains(p.Name));
-            foreach (var property in sourceProperties)
-            {
-                var targetProperty = targetType.GetProperty(property.Name);
-                if (targetProperty != null && targetProperty.CanWrite)
-                {
-                    var sourceValue = property.GetValue(this);
-                    targetProperty.SetValue(target, sourceValue, null);
-                }
-            }
-        }
+        public void CopyProperties(object target, IEnumerable<string> include) => target.CopyProperties(include);
 
         public override bool Equals(object obj)
         {
