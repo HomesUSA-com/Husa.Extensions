@@ -6,10 +6,10 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>2.1.4</Version>
+        <Version>2.1.5</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
-            Release 2.1.4:
+            Release 2.1.5:
             - Added support net8 frameworks
             - Added CleanAfterKeyword
             - Added CleanForComparison
