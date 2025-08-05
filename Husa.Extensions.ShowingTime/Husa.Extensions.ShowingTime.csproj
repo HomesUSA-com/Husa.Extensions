@@ -5,10 +5,10 @@
         <Product>ShowingTime Extensions</Product>
         <Description>Husa ShowingTime</Description>
         <PackageId>Husa.Extensions.ShowingTime</PackageId>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <PackageTags>Extensions; ShowingTime;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.0:
+            Release 0.1.1:
             - Showing Time
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>

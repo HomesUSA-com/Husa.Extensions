@@ -2,11 +2,10 @@ namespace Husa.Extensions.ShowingTime.Extensions
 {
     using System;
     using Husa.Extensions.ShowingTime.Interfaces;
-    using Husa.Extensions.ShowingTime.Models;
 
     public static class ShowingTimeExtensions
     {
-        public static void UpdateShowingTime(this IShowingTime entity, ShowingTimeValueObject showingTime)
+        public static void UpdateShowingTime(this IShowingTime entity, IShowingTime showingTime)
         {
             ArgumentNullException.ThrowIfNull(showingTime);
             entity.AdditionalInstructions = showingTime.AdditionalInstructions;
