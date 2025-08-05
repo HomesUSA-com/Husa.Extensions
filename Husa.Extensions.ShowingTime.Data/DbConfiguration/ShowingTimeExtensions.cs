@@ -105,11 +105,11 @@ namespace Husa.Extensions.ShowingTime.Data.DbConfiguration
         {
             builder.Property(p => p.NotesForApptStaff)
                 .HasColumnName(nameof(IAdditionalInstructions.NotesForApptStaff))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(1000);
             builder.Property(p => p.NotesForShowingAgent)
                 .HasColumnName(nameof(IAdditionalInstructions.NotesForShowingAgent))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(1000);
         }
 
@@ -164,31 +164,31 @@ namespace Husa.Extensions.ShowingTime.Data.DbConfiguration
                 .HasMaxLength(50);
             builder.Property(p => p.Location)
                 .HasColumnName(nameof(IAccessInformation.Location))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(1000);
             builder.Property(p => p.Serial)
                 .HasColumnName(nameof(IAccessInformation.Serial))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.Combination)
                 .HasColumnName(nameof(IAccessInformation.Combination))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.SharingCode)
                 .HasColumnName(nameof(IAccessInformation.SharingCode))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.CbsCode)
                 .HasColumnName(nameof(IAccessInformation.CbsCode))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.Code)
                 .HasColumnName(nameof(IAccessInformation.Code))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.DeviceId)
                 .HasColumnName(nameof(IAccessInformation.DeviceId))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.AccessNotes)
                 .HasColumnName(nameof(IAccessInformation.AccessNotes))
@@ -199,19 +199,19 @@ namespace Husa.Extensions.ShowingTime.Data.DbConfiguration
                 .HasColumnName(nameof(IAccessInformation.HasManageKeySets));
             builder.Property(p => p.AlarmDisarmCode)
                 .HasColumnName(nameof(IAccessInformation.AlarmDisarmCode))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.AlarmArmCode)
                 .HasColumnName(nameof(IAccessInformation.AlarmArmCode))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.AlarmPasscode)
                 .HasColumnName(nameof(IAccessInformation.AlarmPasscode))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(100);
             builder.Property(p => p.AlarmNotes)
                 .HasColumnName(nameof(IAccessInformation.AlarmNotes))
-                .HasDefaultValue(string.Empty)
+                .IsRequired(false)
                 .HasMaxLength(1000);
         }
 

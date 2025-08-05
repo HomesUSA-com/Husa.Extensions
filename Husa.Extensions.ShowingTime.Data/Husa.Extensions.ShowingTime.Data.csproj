@@ -5,17 +5,18 @@
         <Product>ShowingTime Extensions</Product>
         <Description>Husa ShowingTime</Description>
         <PackageId>Husa.Extensions.ShowingTime.Data</PackageId>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <PackageTags>Extensions; ShowingTime; Data;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.1.0:
+            Release 0.1.1:
             - Showing Time DataBase
+            - Remove default values for string columns
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Husa.Extensions.Linq" Version="4.1.1" />
-        <PackageReference Include="Husa.Extensions.ShowingTime" Version="0.1.0" />
+        <PackageReference Include="Husa.Extensions.ShowingTime" Version="0.1.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.11" />
     </ItemGroup>
