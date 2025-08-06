@@ -10,5 +10,6 @@ namespace Husa.Extensions.ShowingTime.Enums
         SellerOrTenant = 8,
         GateGuardDoormanConcierge = 9,
         Keypad = 6,
+        Other = 0,
     }
 }
