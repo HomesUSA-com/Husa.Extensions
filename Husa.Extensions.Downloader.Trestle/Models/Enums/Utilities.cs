@@ -25,6 +25,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         PhoneConnected,
         PhoneNotAvailable,
         Propane,
+        RecyclingCollection,
         SatelliteInternetAvailable,
         SeeRemarks,
         SeparateMeters,

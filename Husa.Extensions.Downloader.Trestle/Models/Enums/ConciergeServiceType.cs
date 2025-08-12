@@ -1,8 +1,8 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    public enum SearchQueryType
+    public enum ConciergeServiceType
     {
-        Itemfilter,
-        DMQL2,
+        FullTime,
+        PartTime,
     }
 }

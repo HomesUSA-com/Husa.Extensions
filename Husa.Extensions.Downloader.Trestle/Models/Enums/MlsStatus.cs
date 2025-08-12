@@ -4,6 +4,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
     {
         Active,
         ActiveUnderContract,
+        AttorneyReview,
         Canceled,
         Closed,
         ComingSoon,

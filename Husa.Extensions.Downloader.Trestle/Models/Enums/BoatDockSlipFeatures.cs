@@ -10,6 +10,8 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Floating,
         Hoist,
         Lift,
+        LiftElectric,
+        LiftManual,
         MarinaServices,
         MarineRail,
         Other,
