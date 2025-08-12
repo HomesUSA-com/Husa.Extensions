@@ -1,6 +1,6 @@
 namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
-    public enum Permission
+    public enum ListingPermission
     {
         AgentOnly,
         CompSold,
@@ -8,7 +8,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DownPaymentResourceYes,
         FirmOnly,
         History,
-        Idx,
         IDX,
         MemberInactive,
         Officeidxoptout,
@@ -19,7 +18,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Private,
         Public,
         SyndicateOptOut,
-        Vow,
         VOW,
     }
 }

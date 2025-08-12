@@ -2,6 +2,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
 {
     public enum CommonInterest
     {
+        BareLandCondominium,
         CommunityApartment,
         Condominium,
         Condop,
