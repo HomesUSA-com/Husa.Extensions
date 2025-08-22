@@ -8,6 +8,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BaseLevelUser,
         Broker,
         HeadBroker,
+        InternalUser,
         NoAccess,
         OfficeLevel,
     }

@@ -16,6 +16,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         AicuzNoiseLevel75,
         AsbestosDisclosure,
         BeachRights,
+        BuilderExclusive,
         BuriedFuelTanks,
         CallAgent,
         CautionsCallAgent,
@@ -64,6 +65,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         NonConformingUse,
         None,
         NoSmoking,
+        NotBuilderExclusive,
         OccupancyPermitRequired,
         OilRights,
         OpenSpaceRestrictions,
@@ -116,5 +118,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         VirtuallyStagedPhotos,
         WaterRights,
         WellLogAvailable,
+        Winterized,
     }
 }

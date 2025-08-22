@@ -17,6 +17,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         GrinderPump,
         HoldingTank,
         Lagoon,
+        LiftStation,
         MoundSeptic,
         MunicipalUtilityDistrict,
         NeedsSeptic,

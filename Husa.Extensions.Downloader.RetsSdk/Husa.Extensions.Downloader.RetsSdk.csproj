@@ -7,11 +7,12 @@
         <Description>.Client library for interacting with a RETS server to pull real estate listings, photos and other data made available from an MLS system.</Description>
         <PackageId>Husa.Extensions.Downloader.RetsSdk</PackageId>
         <PackageTags>Extensions; Rets; RetsSDK; Downloader</PackageTags>
-        <Version>5.0.1</Version>
+        <Version>5.0.2</Version>
         <PackageReleaseNotes>
-            Release 5.0.1:
+            Release 5.0.2:
             - Added support net8 frameworks
             - Available S6602 and S6605 rules
+            - Implement retry feature when connecting to Rets
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

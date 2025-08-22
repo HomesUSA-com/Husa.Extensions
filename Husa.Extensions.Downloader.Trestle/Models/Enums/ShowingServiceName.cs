@@ -12,5 +12,6 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         SentrikeyShowing,
         Showingly,
         ShowingTime,
+        Touchbase,
     }
 }

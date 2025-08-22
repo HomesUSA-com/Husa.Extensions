@@ -1,16 +1,18 @@
 namespace Husa.Extensions.Downloader.RetsSdk.Services
 {
-    using Microsoft.Extensions.Logging;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
     using Husa.Extensions.Downloader.RetsSdk.Exceptions;
     using Husa.Extensions.Downloader.RetsSdk.Helpers;
     using Husa.Extensions.Downloader.RetsSdk.Models;
     using Husa.Extensions.Downloader.RetsSdk.Models.Enums;
-    using System;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Xml.Linq;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using static System.Net.WebRequestMethods;
 
     public class RetsSession : RetsResponseBase<RetsSession>, IRetsSession
     {
@@ -37,28 +39,50 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
             }
         }
 
-        public async Task<bool> Start()
+        public async Task<bool> Start(int retryAttempts = 3)
         {
-
-            _Resource = await RetsRequester.Get(LoginUri, async (response) =>
+            var attemptsLeft = retryAttempts;
+            while (attemptsLeft > 0)
             {
-                using (Stream stream = await GetStream(response))
+                try
                 {
-                    XDocument doc = XDocument.Load(stream);
+                    _Resource = await RetsRequester.Get(LoginUri, async (response) =>
+                    {
+                        using (Stream stream = await GetStream(response))
+                        {
+                            XDocument doc = XDocument.Load(stream);
 
-                    AssertValidReplay(doc.Root);
+                            AssertValidReplay(doc.Root);
 
-                    XNamespace ns = doc.Root.GetDefaultNamespace();
+                            XNamespace ns = doc.Root.GetDefaultNamespace();
 
-                    XElement element = doc.Descendants(ns + "RETS-RESPONSE").FirstOrDefault()
-                    ?? throw new RetsParsingException("Unable to find the RETS-RESPONSE element in the response.");
+                            XElement element = doc.Descendants(ns + "RETS-RESPONSE").FirstOrDefault()
+                            ?? throw new RetsParsingException("Unable to find the RETS-RESPONSE element in the response.");
 
-                    var parts = element.FirstNode.ToString().Split(Environment.NewLine);
-                    var cookie = response.Headers.GetValues("Set-Cookie").FirstOrDefault();
+                            var parts = element.FirstNode.ToString().Split(Environment.NewLine);
+                            var cookie = response.Headers.GetValues("Set-Cookie").FirstOrDefault();
 
-                    return GetRetsResource(parts, cookie);
+                            return GetRetsResource(parts, cookie);
+                        }
+                    });
+                    break;
                 }
-            });
+                catch (HttpRequestException httpEx)
+                {
+                    attemptsLeft--;
+                    this.Log.LogError(httpEx, "An error occurred while trying to connect to RETS: {Error}", httpEx);
+                    if (attemptsLeft > 0)
+                    {
+                        this.Log.LogInformation("Attempting to retry connection. Retries remaining: {AttemptsLeft}", attemptsLeft);
+                    }
+                }
+            }
+
+            if (attemptsLeft == 0)
+            {
+                this.Log.LogInformation("No retry attempts remaining. Aborting operation.");
+                throw new HttpRequestException("An error ocurred while trying to connect to Sabor");
+            }
 
             return IsStarted();
 

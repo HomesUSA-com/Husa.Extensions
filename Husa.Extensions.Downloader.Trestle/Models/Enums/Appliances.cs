@@ -80,6 +80,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Oven,
         PlumbedForGas,
         PlumbedForIceMaker,
+        PortableAirConditioningUnits,
         PortableDishwasher,
         PropaneCooking,
         PropaneCooktop,

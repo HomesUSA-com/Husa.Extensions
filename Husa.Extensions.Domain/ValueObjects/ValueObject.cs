@@ -37,27 +37,6 @@ namespace Husa.Extensions.Domain.ValueObjects
             return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
         }
 
-        public void CopyProperties(object target, IEnumerable<string> include)
-        {
-            if (target == null || include == null || !include.Any())
-            {
-                return;
-            }
-
-            Type sourceType = this.GetType();
-            Type targetType = target.GetType();
-            var sourceProperties = sourceType.GetProperties().Where(p => include.Contains(p.Name));
-            foreach (var property in sourceProperties)
-            {
-                var targetProperty = targetType.GetProperty(property.Name);
-                if (targetProperty != null && targetProperty.CanWrite)
-                {
-                    var sourceValue = property.GetValue(this);
-                    targetProperty.SetValue(target, sourceValue, null);
-                }
-            }
-        }
-
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != this.GetType())
