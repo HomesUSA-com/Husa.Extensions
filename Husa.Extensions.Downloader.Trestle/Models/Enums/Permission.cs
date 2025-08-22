@@ -8,7 +8,9 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         DownPaymentResourceYes,
         FirmOnly,
         History,
+        Idx,
         IDX,
+        MemberInactive,
         Officeidxoptout,
         OfficeInactive,
         OfficeOnly,
@@ -17,6 +19,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Private,
         Public,
         SyndicateOptOut,
+        Vow,
         VOW,
     }
 }

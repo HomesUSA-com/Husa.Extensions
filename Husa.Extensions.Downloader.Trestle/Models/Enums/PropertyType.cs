@@ -5,6 +5,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         BusinessOpportunity,
         CommercialLease,
         CommercialSale,
+        DisasterReliefRental,
         Farm,
         HighRise,
         Land,

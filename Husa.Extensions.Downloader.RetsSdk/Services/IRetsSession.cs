@@ -5,7 +5,7 @@ namespace Husa.Extensions.Downloader.RetsSdk.Services
 
     public interface IRetsSession
     {
-        Task<bool> Start();
+        Task<bool> Start(int retryAttempts = 3);
         Task End();
         int GetMarketLimit();
 
