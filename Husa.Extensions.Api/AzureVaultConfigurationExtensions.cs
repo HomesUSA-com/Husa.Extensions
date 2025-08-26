@@ -9,20 +9,20 @@ namespace Husa.Extensions.Api
 
     public static class AzureVaultConfigurationExtensions
     {
-        public static IConfigurationBuilder AddKeyVault(this IConfigurationBuilder configuration, HostBuilderContext host)
+        public static IConfigurationBuilder AddKeyVault(this IConfigurationBuilder configuration)
         {
-            if (host.HostingEnvironment.IsProduction())
-            {
-                var builtConfig = configuration.Build();
-                string assignedClientId = builtConfig["KeyVault:ClientId"];
-                var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = assignedClientId });
-                var secretClient = new SecretClient(
-                    new Uri($"https://{builtConfig["KeyVault:Name"]}.vault.azure.net/"),
-                    credential);
-                configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
-            }
+            var builtConfig = configuration.Build();
+            string assignedClientId = builtConfig["KeyVault:ClientId"];
+            var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = assignedClientId });
+            var secretClient = new SecretClient(
+                new Uri($"https://{builtConfig["KeyVault:Name"]}.vault.azure.net/"),
+                credential);
+            configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
 
             return configuration;
         }
+
+        public static IConfigurationBuilder AddKeyVault(this IConfigurationBuilder configuration, HostBuilderContext host)
+            => host.HostingEnvironment.IsProduction() ? configuration.AddKeyVault() : configuration;
     }
 }
