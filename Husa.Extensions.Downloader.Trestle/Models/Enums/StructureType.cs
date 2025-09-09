@@ -13,6 +13,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         Industrial,
         LowRise,
         ManufacturedHouse,
+        MidRise,
         MixedUse,
         MultiFamily,
         None,
