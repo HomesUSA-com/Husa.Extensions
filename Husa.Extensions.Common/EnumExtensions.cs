@@ -4,10 +4,32 @@ namespace Husa.Extensions.Common
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using System.Reflection;
     using System.Runtime.Serialization;
 
     public static class EnumExtensions
     {
+        public static string GetAttributeValue<TAttribute>(this Enum enumValue, string propertyName)
+            where TAttribute : Attribute
+        {
+            var memberInfo = enumValue.GetType().GetMember(enumValue.ToString());
+            if (memberInfo != null && memberInfo.Length > 0)
+            {
+                var attribute = memberInfo[0].GetCustomAttribute<TAttribute>(false);
+                if (attribute != null)
+                {
+                    return attribute
+                        .GetType()
+                        .GetProperty(propertyName)?
+                        .GetValue(attribute)?
+                        .ToString()
+                        ?? enumValue.ToString();
+                }
+            }
+
+            return enumValue.ToString();
+        }
+
         public static TEnum GetEnumFromString<TEnum>(this string enumElement)
             where TEnum : struct
         {
