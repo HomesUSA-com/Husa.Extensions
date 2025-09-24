@@ -18,12 +18,19 @@ namespace Husa.Extensions.Common
         public static IMapperConfigurationExpression AddMapping<T>(this IMapperConfigurationExpression mapperConfigExpression)
             where T : class
         {
-            if (mapperConfigExpression is null)
-            {
-                throw new ArgumentNullException(nameof(mapperConfigExpression));
-            }
+            ArgumentNullException.ThrowIfNull(mapperConfigExpression);
 
             mapperConfigExpression.AddMaps(typeof(T));
+
+            return mapperConfigExpression;
+        }
+
+        public static IMapperConfigurationExpression AddMappingProfile<T>(this IMapperConfigurationExpression mapperConfigExpression)
+            where T : Profile
+        {
+            ArgumentNullException.ThrowIfNull(mapperConfigExpression);
+
+            mapperConfigExpression.AddProfile(typeof(T));
 
             return mapperConfigExpression;
         }

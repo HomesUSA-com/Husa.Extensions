@@ -6,12 +6,11 @@
         <Product>Document Extensions</Product>
         <Description>Husa Document</Description>
         <PackageId>Husa.Extensions.Document</PackageId>
-        <Version>0.3.2</Version>
+        <Version>0.4.0-dev001</Version>
         <PackageTags>Extensions; Document;</PackageTags>
         <PackageReleaseNotes>
-            Release 0.3.2:
-            - Added saved changes log
-            - Copy properties using dot-separated field name path
+            Release 0.4.0:
+            - Add a filter to get documents by a list of entity ids
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

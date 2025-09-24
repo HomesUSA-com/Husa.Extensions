@@ -6,11 +6,12 @@
         <Product>Common Extensions</Product>
         <Description>Husa Common</Description>
         <PackageId>Husa.Extensions.Common</PackageId>
-        <Version>4.4.0-dev001</Version>
+        <Version>4.4.0-dev002</Version>
         <PackageTags>Extensions; Common;</PackageTags>
         <PackageReleaseNotes>
             Release 4.4.0:
             - Add GetAttributeValue to EnumExtensions
+            - Add mapping extension
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
