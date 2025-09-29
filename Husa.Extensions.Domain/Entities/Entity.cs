@@ -4,8 +4,10 @@ namespace Husa.Extensions.Domain.Entities
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using Husa.Extensions.Domain.Extensions;
+    using Husa.Extensions.Domain.Interfaces;
 
-    public abstract class Entity
+    public abstract class Entity : IEntity
     {
         protected Entity()
         {
@@ -23,9 +25,9 @@ namespace Husa.Extensions.Domain.Entities
 
         public virtual bool IsDeleted { get; protected set; }
 
-        public virtual Guid? SysModifiedBy { get; set; }
+        public virtual Guid? SysModifiedBy { get; protected set; }
 
-        public virtual Guid? SysCreatedBy { get; set; }
+        public virtual Guid? SysCreatedBy { get; protected set; }
 
         public virtual DateTime SysTimestamp { get; protected set; }
 
@@ -56,18 +58,6 @@ namespace Husa.Extensions.Domain.Entities
             this.IsDeleted = true;
         }
 
-        public virtual void UpdateTrackValues(Guid userId, bool isNewRecord = false)
-        {
-            if (isNewRecord)
-            {
-                this.SysCreatedBy = userId;
-            }
-
-            this.SysModifiedOn = DateTime.UtcNow;
-            this.SysTimestamp = DateTime.UtcNow;
-            this.SysModifiedBy = userId;
-        }
-
         public bool IsEqualTo(object obj)
         {
             if (obj == null || obj.GetType() != this.GetType())
@@ -79,6 +69,9 @@ namespace Husa.Extensions.Domain.Entities
 
             return this.GetEntityEqualityComponents().SequenceEqual(other.GetEntityEqualityComponents());
         }
+
+        public virtual void UpdateTrackValues(Guid userId, bool isNewRecord = false)
+            => this.UpdateTrackValuesExt(userId, isNewRecord);
 
         protected abstract void DeleteChildren(Guid userId);
 
