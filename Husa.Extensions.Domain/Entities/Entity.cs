@@ -3,7 +3,6 @@ namespace Husa.Extensions.Domain.Entities
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using Husa.Extensions.Domain.Extensions;
     using Husa.Extensions.Domain.Interfaces;
 
@@ -44,31 +43,9 @@ namespace Husa.Extensions.Domain.Entities
         }
 
         public virtual void Delete(Guid userId, bool deleteChildren = false)
-        {
-            if (this.IsDeleted)
-            {
-                return;
-            }
+            => this.DeleteExt(userId, deleteChildren);
 
-            if (deleteChildren)
-            {
-                this.DeleteChildren(userId);
-            }
-
-            this.IsDeleted = true;
-        }
-
-        public bool IsEqualTo(object obj)
-        {
-            if (obj == null || obj.GetType() != this.GetType())
-            {
-                return false;
-            }
-
-            var other = (Entity)obj;
-
-            return this.GetEntityEqualityComponents().SequenceEqual(other.GetEntityEqualityComponents());
-        }
+        public bool IsEqualTo(object obj) => this.IsEqualToExt(obj);
 
         public virtual void UpdateTrackValues(Guid userId, bool isNewRecord = false)
             => this.UpdateTrackValuesExt(userId, isNewRecord);

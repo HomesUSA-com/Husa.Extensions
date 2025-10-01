@@ -19,5 +19,11 @@ namespace Husa.Extensions.Domain.Interfaces
         bool IsDeleted { get; }
 
         void UpdateTrackValues(Guid userId, bool isNewRecord = false);
+
+        void Delete(Guid userId, bool deleteChildren = false);
+
+        bool IsEqualTo(object obj);
+
+        void Activate();
     }
 }

@@ -6,11 +6,11 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>2.2.0-dev001</Version>
+        <Version>2.2.0-dev002</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
             Release 2.2.0:
-            - Add IEntity
+            - Extend IEntity
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
