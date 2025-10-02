@@ -19,7 +19,12 @@ namespace Husa.Extensions.Domain.Extensions
 
         public static IEnumerable<string> GetDifferences(this object source, object target, IEnumerable<string> exclude = null)
         {
-            var properties = target.GetType().GetProperties();
+            var properties = target?.GetType().GetProperties();
+
+            if (properties is null)
+            {
+                return [];
+            }
 
             if (exclude != null)
             {
