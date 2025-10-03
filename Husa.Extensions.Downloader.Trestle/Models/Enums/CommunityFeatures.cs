@@ -72,6 +72,7 @@ namespace Husa.Extensions.Downloader.Trestle.Models.Enums
         MaintainedCommunity,
         MaintenanceOnSite,
         Marina,
+        MasterPlannedCommunity,
         MediaRoom,
         MedicalService,
         MilitaryLand,

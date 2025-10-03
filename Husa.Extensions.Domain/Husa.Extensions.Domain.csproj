@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <AssemblyName>Husa.Extensions.Domain</AssemblyName>
@@ -6,11 +6,12 @@
         <Product>Domain Extensions</Product>
         <Description>Husa Domain</Description>
         <PackageId>Husa.Extensions.Domain</PackageId>
-        <Version>2.2.0-dev002</Version>
+        <Version>2.2.0-dev003</Version>
         <PackageTags>Extensions; Domain;</PackageTags>
         <PackageReleaseNotes>
             Release 2.2.0:
             - Extend IEntity
+            - Add null check when getting differences between objects
         </PackageReleaseNotes>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
