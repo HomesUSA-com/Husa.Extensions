@@ -39,12 +39,15 @@ jobs:
     
     - name: Restore dependencies
       run: dotnet restore ${{ env.SOLUTION_FILE }}
+      shell: pwsh
       
     - name: Build solution (Release)
       run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore
+      shell: pwsh
       
     - name: Pack NuGet packages
       run: dotnet pack ${{ env.SOLUTION_FILE }} --configuration Release --no-build --output ./nupkgs
+      shell: pwsh
       
     - name: Publish packages to GitHub Packages
       run: |
