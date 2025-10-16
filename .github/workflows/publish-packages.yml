@@ -13,7 +13,7 @@ env:
 jobs:
   publish-packages:
     name: Build and Publish NuGet Packages
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read
       packages: write
@@ -47,14 +47,17 @@ jobs:
       
     - name: Publish packages to GitHub Packages
       run: |
-        for package in ./nupkgs/*.nupkg; do
-          echo "Publishing: $package"
-          dotnet nuget push "$package" \
-            --source github \
-            --api-key ${{ secrets.GITHUB_TOKEN }} \
-            --skip-duplicate \
-            || echo "Failed or duplicate: $package"
-        done
+        Get-ChildItem ./nupkgs/*.nupkg | ForEach-Object {
+          Write-Host "Publishing: $($_.Name)"
+          dotnet nuget push $_.FullName `
+            --source github `
+            --api-key ${{ secrets.GITHUB_TOKEN }} `
+            --skip-duplicate
+          if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne 409) {
+            Write-Host "Failed: $($_.Name)"
+          }
+        }
+      shell: pwsh
       
     - name: Upload package artifacts
       uses: actions/upload-artifact@v4
