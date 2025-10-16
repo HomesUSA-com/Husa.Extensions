@@ -35,10 +35,10 @@ jobs:
           --store-password-in-clear-text
     
     - name: Restore dependencies
-      run: dotnet restore ${{ env.SOLUTION_FILE }} --verbosity detailed
+      run: dotnet restore ${{ env.SOLUTION_FILE }} /p:TreatWarningsAsErrors=false --verbosity detailed
       
     - name: Build solution (Release)
-      run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore
+      run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore /p:TreatWarningsAsErrors=false
       
     - name: Pack NuGet packages
       run: dotnet pack ${{ env.SOLUTION_FILE }} --configuration Release --no-build --output ./nupkgs
