@@ -7,6 +7,7 @@
         <NeutralLanguage>en</NeutralLanguage>
         <Nullable>disable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <NuGetAuditLevel>high</NuGetAuditLevel>
         <Authors>HomesUSA.com Dev Team</Authors>
         <Company>HomesUSA.com, Inc.</Company>
         <Copyright>Copyright © 2021 HomesUSA.com, Inc. All rights reserved.</Copyright>
