@@ -27,6 +27,7 @@ jobs:
         
     - name: Configure NuGet authentication for GitHub Packages
       run: |
+        dotnet nuget remove source github || true
         dotnet nuget add source https://nuget.pkg.github.com/HomesUSA-com/index.json \
           --name github \
           --username ${{ github.repository_owner }} \
