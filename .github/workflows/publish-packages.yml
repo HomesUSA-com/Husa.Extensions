@@ -41,12 +41,15 @@ jobs:
       run: dotnet restore ${{ env.SOLUTION_FILE }}
       shell: pwsh
       
-    - name: Build solution (Release)
+    - name: Build solution (generates NuGet packages automatically)
       run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore
       shell: pwsh
       
-    - name: Pack NuGet packages
-      run: dotnet pack ${{ env.SOLUTION_FILE }} --configuration Release --no-build --output ./nupkgs
+    - name: Collect generated NuGet packages
+      run: |
+        mkdir -p ./nupkgs
+        Get-ChildItem -Recurse -Filter "*.nupkg" -Path . | Where-Object { $_.FullName -like "*\bin\Release\*" } | ForEach-Object { Copy-Item $_.FullName ./nupkgs/ }
+        Get-ChildItem ./nupkgs/
       shell: pwsh
       
     - name: Publish packages to GitHub Packages
